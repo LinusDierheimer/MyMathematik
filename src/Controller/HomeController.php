@@ -5,11 +5,11 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class RootController extends AbstractController
+class HomeController extends AbstractController
 {
     public function index()
     {
-        return $this->render('root.html.twig', [
+        return $this->render('home.html.twig', [
             'title' => "Mein Titel"
         ]);
     }

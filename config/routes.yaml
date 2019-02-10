@@ -1,3 +1,3 @@
-route_root:
+route_home:
   path: /
-  controller: App\Controller\RootController::index
+  controller: App\Controller\HomeController::index

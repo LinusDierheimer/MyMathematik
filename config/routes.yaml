@@ -1,3 +1,3 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+route_root:
+  path: /
+  controller: App\Controller\RootController::index

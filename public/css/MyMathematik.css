@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+}
+
+.header{
+    background-color: black;
+}
+
+.header .title{
+    margin: 0;
+    padding: 20px 0px 20px 50px;
+    color: whitesmoke;
+    font-size: 32px;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+}

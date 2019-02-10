@@ -6,15 +6,37 @@
             {{ title }}
         </title>
 
-        {% block stylesheets %}{% endblock %}
+        {% if app.environment == 'dev' %}
+            <link rel="stylesheet" href="/css/MyMathematik.css"></link>
+        {% else %}
+            <link rel="stylesheet" href="/css/MyMathematik.min.css"></link>
+        {% endif %}
+
     </head>
     <body>
-        {% block body %}{% endblock %}
+        
+        {% block header %}
+            <header class="header">
+                <a href="/" class="title" rel="home">
+                    MyMathematik
+                </a>
+            </header>
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+
+        {% block footer %}
+            <footer>
+                Hello Footwerr
+            </footer>
+        {% endblock %}
 
         {% if app.environment == 'dev' %}
             <script src="js/jquery-3.3.1.js"></script>
+            <script src="js/MyMathematik.js"></script>
         {% else %}
             <script src="js/jquery-3.3.1.min.js"></script>
+            <script src="js/MyMathematik.min.js"></script>
         {% endif %}
     </body>
 </html>

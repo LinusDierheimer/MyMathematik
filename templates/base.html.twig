@@ -37,12 +37,12 @@
         {% endblock %}
 
         {% if app.environment == 'dev' %}
-            <script src="/js/jquery-3.3.1.js"></script>
-            <script src="/js/vue.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
             <script src="/js/MyMathematik.js"></script>
         {% else %}
-            <script src="/js/jquery-3.3.1.min.js"></script>
-            <script src="/js/vue.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/vue"></script>
             <script src="/js/MyMathematik.min.js"></script>
         {% endif %}
     </body>

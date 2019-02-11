@@ -1,17 +1,26 @@
 body{
     margin: 0;
 }
-
 .header{
     background-color: black;
+    opacity: 0.92;
+    width: 100%;
 }
-
+.sticky{
+    position: fixed;
+}
 .header .title{
     margin: 0;
-    padding: 20px 0px 20px 50px;
+    padding: 10px 0px 10px 50px;
     color: whitesmoke;
     font-size: 32px;
     font-weight: 500;
     text-decoration: none;
-    display: block;
+    display: inline-block;
+}
+.header .classlinks{
+    margin: 0;
+    color: whitesmoke;
+    float: right;
+    padding: 19px 28px 0 0;
 }

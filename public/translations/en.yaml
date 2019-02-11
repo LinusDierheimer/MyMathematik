@@ -1,0 +1,10 @@
+site:
+  title: "MyMathematic"
+
+header:
+  title: "MyMathematic"
+  class: "Year level"
+  noclasses: "No videos are avaiable in your language!"
+
+videos:
+  notsupported: "Your Browser doesn't spport the HTLM5 <video> tag!"

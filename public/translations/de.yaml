@@ -1,0 +1,10 @@
+site:
+  title: "MyMathematik"
+
+header:
+  title: "MyMathematik"
+  class: "Klasse"
+  noclasses: "Keine Videos in deiner Sprache verfügbar!"
+
+videos:
+  notsupported: "Dein Browser unterstützt das HTLM5 <video> tag nicht!"

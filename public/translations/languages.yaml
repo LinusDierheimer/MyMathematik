@@ -1,0 +1,7 @@
+de:
+  name: "Deutsch"
+  file: "/var/www/MyMathematik/public/translations/de.yaml"
+
+en:
+  name: "English"
+  file: "/var/www/MyMathematik/public/translations/en.yaml"

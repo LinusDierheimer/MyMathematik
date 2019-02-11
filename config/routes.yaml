@@ -1,3 +1,11 @@
 route_home:
   path: /
   controller: App\Controller\HomeController::index
+
+route_videos:
+  path: /videos/{class}
+  controller: App\Controller\VideoController::index
+  defaults:
+    class: -1
+  requirements:
+    class: \d+

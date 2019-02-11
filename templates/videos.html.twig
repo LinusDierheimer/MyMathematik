@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+
+    <pre>
+        {{ dump(videos) }}
+    </pre>
+
+    {% macro video(v) %}
+        {{ v.name }}
+        <video width="320" height="240" controls>
+            <source src="{{ v.src }}" type="video/mp4"></source>
+            <source src="{{ v.src }}" type="video/ogg"></source>
+            {{ 'video.notsupported'|trans }}
+        </video> 
+    {% endmacro %}
+
+    {% if videos.chapters is defined %}
+        {% for c1 in videos.chapters %}
+            
+            {#{ c1.name }#}
+
+            {% if c1.chapters is defined %}
+                {% for c2 in c1.chapters %}
+                    
+                    {#{ c2.name }#}
+                    
+                    {% if c2.videos is defined %}
+                        {% for v2 in c2.videos %}
+                            
+                            {#{ _self.video(v2) }#}
+                        
+                        {% endfor %}
+                    {% endif %}
+
+                {% endfor %}
+            {% endif %}
+
+            {% if c1.videos is defined %}
+                {% for v1 in c1.videos %}
+                   
+                    {#{ _self.video(v1) }#}
+                
+                {% endfor %}
+            {% endif %}
+
+        {% endfor %}  
+    {% endif %}
+
+{% endblock %}

@@ -21,9 +21,13 @@
                     {{ "header.title"|trans }}
                 </a>
 
-                <span class="classlinks">
-                    Hallo
-                </span>
+                <div class="classlinks">
+                    {% for class in classes %}
+                        <a href="/videos/{{ class.name }}">
+                            {{ 'header.class'|trans }} {{ class.name }}
+                        </a>
+                    {% endfor %}
+                </div>
 
             </header>
         {% endblock %}

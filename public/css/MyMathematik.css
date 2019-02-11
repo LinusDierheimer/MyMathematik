@@ -12,15 +12,20 @@ body{
 .header .title{
     margin: 0;
     padding: 10px 0px 10px 50px;
-    color: whitesmoke;
     font-size: 32px;
     font-weight: 500;
-    text-decoration: none;
     display: inline-block;
+    text-decoration: none;
+    color: whitesmoke;
 }
 .header .classlinks{
     margin: 0;
     color: whitesmoke;
     float: right;
     padding: 19px 28px 0 0;
+}
+.header .classlinks a{
+    padding-right: 15px;
+    text-decoration: none;
+    color: whitesmoke;
 }

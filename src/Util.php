@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Yaml\Exception\ParseException;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * 
@@ -105,21 +106,42 @@ class Util
         return $finder;
     }
 
+    public static function get_classes_path()
+    {
+        return self::get_workspace_path() . '/public/videos/' . self::get_language_code();
+    }
+
     public static function get_classes()
     {
-        return self::get_finder()
-            ->depth('== 0')
-            ->in(self::get_workspace_path() . 'public/videos/' . self::get_language_code())
-            ->directories();
+        static $classes = null;
+        if($classes == null)
+            $classes = Yaml::parseFile(self::get_classes_path() . '/classes.yaml');
+        return $classes;
+    }
+
+    public static function get_file_system()
+    {
+        static $filesystem = null;
+        if($filesystem == null)
+            $filesystem = new Filesystem();
+        return $filesystem;
+    }
+
+    public static function class_exist($class)
+    {
+        return array_key_exists($class, self::get_classes());
     }
 
     public static function load_videos_by_path($path)
     {
-        return Yaml::parseFile($path . '/index.yaml');
+        $videos = null;
+        if($videos == null)
+            $videos = Yaml::parseFile($path . '/index.yaml');
+        return $videos;
     }
 
     public static function load_videos($class)
     {
-        return self::load_videos_by_path(self::get_workspace_path() . 'public/videos/' . self::get_language_code() . '/' . $class);
+        return self::load_videos_by_path(self::get_classes_path() . self::get_classes()[$class]['path']);
     }
 }

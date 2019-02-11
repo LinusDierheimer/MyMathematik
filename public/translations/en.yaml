@@ -8,3 +8,7 @@ header:
 
 videos:
   notsupported: "Your Browser doesn't spport the HTLM5 <video> tag!"
+  nochaptername: "<No chapter title avaiabel>"
+  novideoname: "<No video title avaiable>"
+  novideos: "No videos for that chapter yet!"
+  nochapters: "No subchapters for that chapter yet!"

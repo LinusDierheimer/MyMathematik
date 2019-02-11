@@ -29,3 +29,30 @@ body{
     text-decoration: none;
     color: whitesmoke;
 }
+.video{
+    margin-bottom: 40px;
+}
+.video video{
+    padding: 0;
+    width: 70%;
+    border: 1px solid dimgrey;
+}
+.video .videotitle{
+    color: dimgrey;
+    padding-bottom: 8px;
+}
+.chapters{
+    padding: 30px 0 0 30px;
+}
+.chapter h1, h2{
+    margin: 0;
+}
+.chaptercontent{
+    border-left: 1px solid lightgrey;
+    padding: 10px 0 0 30px;
+}
+.nocontent{
+    margin-bottom: 40px;
+    font-style: italic;
+    color: darkgray;
+}

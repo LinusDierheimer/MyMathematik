@@ -1,9 +1,9 @@
 chapters:
   c1:
-    name: "Natürliche und ganze Zahlen - Addition und Subtraktion"
+    name: "1 Natürliche und ganze Zahlen - Addition und Subtraktion"
     chapters:
       c1:
-        name: "Natürliche und ganze Zahlen und ihre Erweiterung zu den ganzen Zahlen"
+        name: "1.1 Natürliche und ganze Zahlen und ihre Erweiterung zu den ganzen Zahlen"
         videos:
           v1:
             name: "Natürliche und ganze Zahlen"
@@ -15,7 +15,7 @@ chapters:
             name: "Runden und Abschätzen"
             source: "/videos/de/5/1.1.3.mp4"
       c2:
-        name: "Addition und Subtraktion ganzer Zahlen"
+        name: "1.2 Addition und Subtraktion ganzer Zahlen"
         videos:
           v1:
             name: "Addition und Subtraktion ganzer Zahlen"
@@ -26,29 +26,26 @@ chapters:
           v3:
             name: "Rechengesetzte: Addition"
             source: "/videos/de/5/1.2.3.mp4"
-    videos: []
   c2:
-    name: "Geometrische Figuren und Lagebeziehungen"
+    name: "2 Geometrische Figuren und Lagebeziehungen"
     chapters: []
-    videos: []
   c3:
-    name: "Natürliche und ganze Zahlen - Multiplikation und Division"
+    name: "3 Natürliche und ganze Zahlen - Multiplikation und Division"
     chapters:
       c1: 
-        name: "Multiplikation und Division ganzer Zahlen"
+        name: "3.1 Multiplikation und Division ganzer Zahlen"
         videos: []
       c2:
-        name: "Verbindung der Grundrechenarten bei ganzen Zahlen"
+        name: "3.2 Verbindung der Grundrechenarten bei ganzen Zahlen"
         videos: []
-    videos: []
   c4:
-    name: "Größen und Einheiten"
+    name: "4 Größen und Einheiten"
     chapters:
       c1:
-        name: "Geld Länge Masse und Zeit"
+        name: "4.1 Geld Länge Masse und Zeit"
         videos: []
       c2:
-        name: "Flächeninhalt"
+        name: "4.2 Flächeninhalt"
         videos:
           v1:
             name: "Fläche und Flächeninhalt"
@@ -59,4 +56,3 @@ chapters:
           v3:
             name: "Flächeninhalt von Quadrat und Rechteck"
             source: "/videos/de/5/4.2.3.mp4"
-    videos: []

@@ -1,4 +1,4 @@
-c:
+chapters:
   c1:
     name: "Natürliche und ganze Zahlen - Addition und Subtraktion"
     chapters:
@@ -26,7 +26,7 @@ c:
           v3:
             name: "Rechengesetzte: Addition"
             source: "/videos/de/5/1.2.3.mp4"
-      videos: []
+    videos: []
   c2:
     name: "Geometrische Figuren und Lagebeziehungen"
     chapters: []

@@ -1,88 +1,62 @@
-c: [
-  c1: [
-    name: Natürliche und ganze Zahlen - Addition und Subtraktion,
-    chapters: [
-      c1: [
-        name: "Natürliche und ganze Zahlen und ihre Erweiterung zu den ganzen Zahlen",
-        videos: [
-          v1: [
-            name: "Natürliche und ganze Zahlen",
+c:
+  c1:
+    name: "Natürliche und ganze Zahlen - Addition und Subtraktion"
+    chapters:
+      c1:
+        name: "Natürliche und ganze Zahlen und ihre Erweiterung zu den ganzen Zahlen"
+        videos:
+          v1:
+            name: "Natürliche und ganze Zahlen"
             source: "/videos/de/5/1.1.1.mp4"
-          ],
-          v2: [
-            name: "Stellenwert und Dezimalsystem",
+          v2:
+            name: "Stellenwert und Dezimalsystem"
             source: "/videos/de/5/1.1.2.mp4"
-          ],
-          v3: [
-            name: "Runden und Abschätzen",
+          v3:
+            name: "Runden und Abschätzen"
             source: "/videos/de/5/1.1.3.mp4"
-          ]
-        ]
-      ],
-      c2: [
-        name: "Addition und Subtraktion ganzer Zahlen",
-        videos: [
-          v1: [
-            name: "Addition und Subtraktion ganzer Zahlen",
+      c2:
+        name: "Addition und Subtraktion ganzer Zahlen"
+        videos:
+          v1:
+            name: "Addition und Subtraktion ganzer Zahlen"
             source: "/videos/de/5/1.2.1.mp4"
-          ],
-          v2: [
-            name: "Addition und Subtraktion ganzer Zahlen (Version 2)",
+          v2:
+            name: "Addition und Subtraktion ganzer Zahlen (Version 2)"
             source: "/videos/de/5/1.2.2.mp4"
-          ],
-          v3: [
-            name: "Rechengesetzte: Addition",
+          v3:
+            name: "Rechengesetzte: Addition"
             source: "/videos/de/5/1.2.3.mp4"
-          ]
-        ]
-      ],
       videos: []
-    ]
-  ],
-  c2: [
-    name: "Geometrische Figuren und Lagebeziehungen",
-    chapters: [],
+  c2:
+    name: "Geometrische Figuren und Lagebeziehungen"
+    chapters: []
     videos: []
-  ],
-  c3: [
-    name: "Natürliche und ganze Zahlen - Multiplikation und Division",
-    chapters: [
-      c1: [
-        name: "Multiplikation und Division ganzer Zahlen",
+  c3:
+    name: "Natürliche und ganze Zahlen - Multiplikation und Division"
+    chapters:
+      c1: 
+        name: "Multiplikation und Division ganzer Zahlen"
         videos: []
-      ],
-      c2: [
-        name: "Verbindung der Grundrechenarten bei ganzen Zahlen",
+      c2:
+        name: "Verbindung der Grundrechenarten bei ganzen Zahlen"
         videos: []
-      ]
-    ],
     videos: []
-  ],
-  c4: [
-    name: "Größen und Einheiten",
-    chapters: [
-      c1: [
-        name: "Geld Länge Masse und Zeit",
+  c4:
+    name: "Größen und Einheiten"
+    chapters:
+      c1:
+        name: "Geld Länge Masse und Zeit"
         videos: []
-      ],
-      c2: [
-        name: "Flächeninhalt",
-        videos: [
-          v1: [
-            name: "Fläche und Flächeninhalt",
+      c2:
+        name: "Flächeninhalt"
+        videos:
+          v1:
+            name: "Fläche und Flächeninhalt"
             source: "/videos/de/5/4.2.1.mp4"
-          ],
-          v2: [
-            name: "Oberflächeninhalt von Körpern",
+          v2:
+            name: "Oberflächeninhalt von Körpern"
             source: "/videos/de/5/4.2.2.mp4"
-          ],
-          v3: [
-            name: "Flächeninhalt von Quadrat und Rechteck",
+          v3:
+            name: "Flächeninhalt von Quadrat und Rechteck"
             source: "/videos/de/5/4.2.3.mp4"
-          ]
-        ]
-      ]
-    ],
     videos: []
-  ]
-]

@@ -36,6 +36,7 @@ body{
     background-color: black;
     width: 100%;
     position: absolute;
+    bottom: 0;
 }
 .footer .footerlinks{
     margin: 20px 0 20px 50px;
@@ -50,7 +51,8 @@ body{
     max-width: 900px;
     padding: 15px;
     position: relative;
-    height: 100%;
+    height: 750px;
+    display: block;
 }
 .video{
     margin-bottom: 40px;
@@ -77,9 +79,11 @@ body{
 }
 .chapters .chapter{
     padding: 0;
+    display: block;
 }
 .chapters .chapter .chaptertitle{
     padding: 7px;
+    transition: 0.4s;
 }
 .chapters .chapter .chaptertitle:hover{
     background-color: lightgray;
@@ -95,8 +99,9 @@ body{
 }
 .chapters .chapter .chaptercontent{
     border-left: 1px solid lightgrey;
-    padding: 10px 0 0 30px;
-    display: inherit;
+    padding: 0px 0 0 30px;
+    max-height: 0;
+    overflow: hidden;
 }
 .chapters .chapter .chaptercontent .nocontent{
     margin-bottom: 40px;

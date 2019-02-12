@@ -136,12 +136,17 @@ class Util
     {
         $videos = null;
         if($videos == null)
-            $videos = Yaml::parseFile($path . '/index.yaml');
+            $videos = Yaml::parseFile($path);
         return $videos;
     }
 
     public static function load_videos($class)
     {
         return self::load_videos_by_path(self::get_classes_path() . self::get_classes()[$class]['path']);
+    }
+
+    public static function get_class_name($class)
+    {
+        return self::get_classes()[$class]['name'];
     }
 }

@@ -23,7 +23,7 @@ class VideoController extends AbstractController
             'title' => "MyMathematik - Videos - " . $class,
             'class' => $class,
             'videos' => Util::load_videos($class),
-            'classes' => Util::get_classes()
+            'classes' => Util::get_classes(),
         ]);
     }
 }

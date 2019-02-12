@@ -1,12 +1,15 @@
 body{
     margin: 0;
+    height: 100%;
 }
 .header{
     background-color: black;
     opacity: 0.96;
     width: 100%;
+    z-index: 9999;
+    position: relative;
 }
-.sticky{
+.headersticky{
     position: fixed;
 }
 .header .title{
@@ -29,29 +32,73 @@ body{
     text-decoration: none;
     color: whitesmoke;
 }
+.footer{
+    background-color: black;
+    width: 100%;
+    position: absolute;
+}
+.footer .footerlinks{
+    margin: 20px 0 20px 50px;
+}
+.footer .footerlinks .footerlink{
+    text-decoration: none;
+    color: whitesmoke;
+    margin: 10px 20px 10px 20px;
+}
+.content{
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 15px;
+    position: relative;
+    height: 100%;
+}
 .video{
     margin-bottom: 40px;
 }
 .video video{
     padding: 0;
-    width: 70%;
     border: 1px solid dimgrey;
+    width: 100%;
+    max-width: 800px;
 }
 .video .videotitle{
     color: dimgrey;
     padding-bottom: 8px;
 }
-.chapters{
-    padding: 30px 0 0 30px;
-}
-.chapter h1, h2{
+.content .classname{
     margin: 0;
+    padding: 50px 0 50px 0;
+    font-size: 40px;
+    color: rgb(51, 51, 51);
+    text-align: center;
 }
-.chaptercontent{
+.chapters{
+    display: block;
+}
+.chapters .chapter{
+    padding: 0;
+}
+.chapters .chapter .chaptertitle{
+    padding: 7px;
+}
+.chapters .chapter .chaptertitle:hover{
+    background-color: lightgray;
+}
+.chapters .chapter .chaptertitle h1, h2{
+    margin: 0;
+    display: inline;
+}
+.chapters .chapter .chaptertitle .dropdownbutton{
+    float: right;
+    width: 35px;
+    height: 35px;
+}
+.chapters .chapter .chaptercontent{
     border-left: 1px solid lightgrey;
     padding: 10px 0 0 30px;
+    display: inherit;
 }
-.nocontent{
+.chapters .chapter .chaptercontent .nocontent{
     margin-bottom: 40px;
     font-style: italic;
     color: darkgray;

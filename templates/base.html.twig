@@ -32,11 +32,21 @@
             </header>
         {% endblock %}
 
-        {% block content %}{% endblock %}
+        {% block fullcontent %}
+            <div class="content" id="content">
+                {% block content %}{% endblock %}
+            </div>            
+        {% endblock %}
 
         {% block footer %}
             <footer class="footer" id="footer">
-                
+                <div class="footerlinks">
+                    {% for info in informations %}
+                        <a href="{{ info.href }}" class="footerlink">
+                            {{ info.name|trans }}
+                        </a>
+                    {% endfor %}
+                </div>
             </footer>
         {% endblock %}
 

@@ -1,6 +1,6 @@
 5:
   name: "5"
-  path: "/5.yaml"
+  path: "/5/index.yaml"
 6:
   name: "6"
-  path: "/6.yaml"
+  path: "/6/index.yaml"

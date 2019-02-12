@@ -6,7 +6,12 @@ header:
   class: "Klasse"
   noclasses: "Keine Videos in deiner Sprache verfügbar!"
 
+footer:
+  impressum: "Impressum"
+  contact: "Kontakt"
+
 videos:
+  class: "Jahrgangsstufe"
   notsupported: "Dein Browser unterstützt das HTLM5 <video> tag nicht!"
   nochaptername: "<Keine Kapitelüberschrift verfügbar>"
   novideoname: "<Kein Videotitel verfügbar>"

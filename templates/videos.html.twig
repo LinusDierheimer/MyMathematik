@@ -21,6 +21,10 @@
         </div>
     {% endmacro %}
 
+    <h1 class="classname">
+        {{ 'videos.class'|trans }} {{ classes[class].name }}
+    </h1>
+
     <div class="chapters">
 
         {% if videos.chapters is defined %}
@@ -29,14 +33,20 @@
                 {% for c1 in videos.chapters %}
                 
                     <div class="chapter">
+                        
+                        <div class="chaptertitle">
 
-                        <h1>
-                            {% if c1.name is defined %}
-                                {{ c1.name }}   
-                            {% else %}
-                                {{ 'video.nochaptername'|trans }}            
-                            {% endif %}
-                        </h1>
+                            <h1>
+                                {% if c1.name is defined %}
+                                    {{ c1.name }}   
+                                {% else %}
+                                    {{ 'video.nochaptername'|trans }}            
+                                {% endif %}
+                            </h1>
+
+                            <img src="/assets/arrow_down.svg" class="dropdownbutton"></img>
+
+                        </div>
 
                         <div class="chaptercontent">
 
@@ -47,13 +57,19 @@
                                     
                                         <div class="chapter">
 
-                                            <h2>
-                                                {% if c2.name is defined %}
-                                                    {{ c2.name }}   
-                                                {% else %}
-                                                    {{ 'video.nochaptername'|trans }}           
-                                                {% endif %}
-                                            </h2>
+                                            <div class="chaptertitle">
+
+                                                <h2>
+                                                    {% if c2.name is defined %}
+                                                        {{ c2.name }}   
+                                                    {% else %}
+                                                        {{ 'video.nochaptername'|trans }}            
+                                                    {% endif %}
+                                                </h2>
+
+                                                <img src="/assets/arrow_down.svg" class="dropdownbutton"></img>
+
+                                            </div>
                                             
                                             <div class="chaptercontent">
 

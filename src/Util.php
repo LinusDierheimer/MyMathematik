@@ -149,4 +149,12 @@ class Util
     {
         return self::get_classes()[$class]['name'];
     }
+
+    public static function get_informations()
+    {
+        static $informations = null;
+        if($informations == null)
+            $informations = Yaml::parseFile(self::get_workspace_path() . 'public/information/information.yaml');
+        return $informations;
+    }
 }

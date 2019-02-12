@@ -7,6 +7,7 @@ header:
   noclasses: "No videos are avaiable in your language!"
 
 videos:
+  class: "Year level"
   notsupported: "Your Browser doesn't spport the HTLM5 <video> tag!"
   nochaptername: "<No chapter title avaiabel>"
   novideoname: "<No video title avaiable>"

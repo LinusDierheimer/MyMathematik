@@ -1,6 +1,12 @@
-1:
+impressum:
   name: "footer.impressum"
   href: "/information/impressum"
-2:
+contact:
   name: "footer.contact"
   href: "/information/contact"
+sponsors:
+  name: "footer.sponsors"
+  href: "/information/sponsors"
+cookies:
+  name: "footer.cookies"
+  href: "/information/cookies"

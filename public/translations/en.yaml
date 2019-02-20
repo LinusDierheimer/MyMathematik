@@ -5,6 +5,12 @@ header:
   title: "MyMathematic"
   class: "Year level"
   noclasses: "No videos are avaiable in your language!"
+  sponsors: "Sponsors"
+  cookies: "Cookies"
+
+cookies:
+  info: "This site is using cookies"
+  more: "learn more"
 
 videos:
   class: "Year level"

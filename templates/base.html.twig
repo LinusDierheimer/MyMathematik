@@ -2,6 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134811098-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-134811098-1');
+        </script>
+
+
         <title>
             {{ title }}
         </title>
@@ -23,7 +35,7 @@
 
                 <div class="classlinks">
                     {% for class in classes %}
-                        <a href="/videos/{{ class.name }}">
+                        <a href="{{ class.href }}">
                             {{ 'header.class'|trans }} {{ class.name }}
                         </a>
                     {% endfor %}
@@ -38,7 +50,7 @@
             </div>            
         {% endblock %}
 
-        {#% block footer %}
+        {% block footer %}
             <footer class="footer" id="footer">
                 <div class="footerlinks">
                     {% for info in informations %}
@@ -48,7 +60,21 @@
                     {% endfor %}
                 </div>
             </footer>
-        {% endblock %#}
+        {% endblock %}
+
+        {% block cookies %}
+            <div class="cookies" id="cookies">
+                <div class="cookiestext">
+                    {{ 'cookies.info'|trans }}
+                    <a href="{{ informations.cookies.href }}">
+                        {{ 'cookies.more'|trans }}
+                    </a>
+                    <button>
+                        ok
+                    </button>
+                </div>
+            </div>
+        {% endblock %}
 
         {% if app.environment == 'dev' %}
             <script src="https://code.jquery.com/jquery-3.3.1.js"></script>

@@ -9,6 +9,12 @@ header:
 footer:
   impressum: "Impressum"
   contact: "Kontakt"
+  sponsors: "Sponsoren"
+  cookies: "Cookies"
+
+cookies:
+  info: "Diese Seite benützt cookies"
+  more: "Mehr erfahren"
 
 videos:
   class: "Jahrgangsstufe"

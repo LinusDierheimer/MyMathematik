@@ -17,7 +17,7 @@ function initAccordion(){
 
             const panel = this.nextElementSibling;
             const image = this.children[1];
-            1 Natürliche und ganze Zahlen - Addition und Subtraktion if(isActive){
+            if(isActive){
                 panel.style.maxHeight = null;
                 panel.style.paddingTop = "0";
                 image.src = "/assets/arrow_down.svg";

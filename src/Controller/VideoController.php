@@ -30,13 +30,11 @@ class VideoController extends AbstractController
 
         if(!Util::class_exist($class))
             return $this->render('videos404.html.twig', [
-                'title' => "MyMathematik - Videos -" . $language . " - Not found",
                 'classes' => Util::get_classes(),
                 'informations' => Util::get_informations()
             ]);
 
         return $this->render('videos.html.twig', [
-            'title' => "MyMathematik - Videos - " . $language . " - " . $class,
             'class' => $class,
             'videos' => Util::load_videos($class),
             'classes' => Util::get_classes(),

@@ -15,7 +15,12 @@
 
 
         <title>
-            {{ title }}
+            {% if title is defined %}
+                {{ title }}
+            {% else %}
+                {{ 'site.title'|trans }}
+                {{ app.request.pathinfo|replace({"/": " - "})|trim(' - ', 'right') }}
+            {% endif %}
         </title>
 
         {% if app.environment == 'dev' %}

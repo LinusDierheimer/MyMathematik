@@ -1,0 +1,4 @@
+printf "Compiling files..."
+uglifyjs -o ./public/js/MyMathematik.min.js ./public/js/MyMathematik.js
+yui-compressor ./public/css/MyMathematik.css > ./public/css/MyMathematik.min.css
+printf "   done.\n"

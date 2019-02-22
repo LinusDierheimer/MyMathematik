@@ -2,10 +2,23 @@ route_home:
   path: /
   controller: App\Controller\HomeController::index
 
-route_videos:
+route_videos_redirect_with_language:
   path: /videos/{class}
-  controller: App\Controller\VideoController::index
+  controller: App\Controller\VideoController::redirect_with_language
   defaults:
-    class: -1
+    class: 5
   requirements:
-    class: \d+
+    class: 1|2|3|4|5|6|7|8|9|12
+
+route_videos_redirect_with_class:
+  path: /videos/{language}
+  controller: App\Controller\VideoController::redirect_with_class
+  requirements:
+    language: de|en
+
+route_videos:
+  path: /videos/{language}/{class}
+  controller: App\Controller\VideoController::index
+  requirements:
+    class: 1|2|3|4|5|6|7|8|9|12
+    language: de|en

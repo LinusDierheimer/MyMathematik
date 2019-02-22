@@ -81,7 +81,7 @@ class Util
     {
         static $translations = null;
         if($translations == null)
-            $translations = Yaml::parseFile(self::get_language()['file']);
+            $translations = Yaml::parseFile(self::get_workspace_path() . self::get_language()['file']);
         return $translations;
     }
 
@@ -156,5 +156,9 @@ class Util
         if($informations == null)
             $informations = Yaml::parseFile(self::get_workspace_path() . 'public/information/information.yaml');
         return $informations;
+    }
+
+    public static function get_default_class(){
+        return self::get_classes()[5]['name'];
     }
 }

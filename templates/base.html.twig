@@ -65,11 +65,13 @@
         {% block cookies %}
             <div class="cookies" id="cookies">
                 <div class="cookiestext">
-                    {{ 'cookies.info'|trans }}
+                    <label>
+                        {{ 'cookies.info'|trans }}
+                    </label>
                     <a href="{{ informations.cookies.href }}">
                         {{ 'cookies.more'|trans }}
                     </a>
-                    <button>
+                    <button onclick="cookiesaccepted();">
                         ok
                     </button>
                 </div>

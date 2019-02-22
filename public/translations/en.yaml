@@ -12,6 +12,12 @@ cookies:
   info: "This site is using cookies"
   more: "learn more"
 
+footer:
+  impressum: "Impressum"
+  contact: "Kontakt"
+  sponsors: "Sponsoren"
+  cookies: "Cookies"
+
 videos:
   class: "Year level"
   notsupported: "Your Browser doesn't spport the HTLM5 <video> tag!"

@@ -17,7 +17,7 @@ function initAccordion(){
 
             const panel = this.nextElementSibling;
             const image = this.children[1];
-            if(isActive){
+            1 Natürliche und ganze Zahlen - Addition und Subtraktion if(isActive){
                 panel.style.maxHeight = null;
                 panel.style.paddingTop = "0";
                 image.src = "/assets/arrow_down.svg";
@@ -40,13 +40,23 @@ function initAccordion(){
 }
 
 function initCookies(){
-    var cookies = document.cookie;
-    if(!cookies.includes("cookies=true")){
+    if(!document.cookie.includes("cookies=true"))
         document.getElementById("cookies").classList.add("cookiesvisible");
-    }
+}
+
+function initLanguage(){
+    if(!document.cookie.includes("language"))
+        document.cookie = "language=de; path=/";
+}
+
+function cookiesaccepted(){
+    document.cookie = "cookies=true; path=/";
+    document.getElementById("cookies").classList.remove("cookiesvisible");
+
 }
 
 window.onload = function(){
     initAccordion();
     initCookies();
+    initLanguage();
 }

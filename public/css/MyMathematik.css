@@ -1,121 +1,146 @@
-body{
-    margin: 0;
+body {
+    margin: 0
 }
-.header{
-    background-color: black;
-    opacity: 0.96;
+
+.header {
+    background-color: #000;
+    opacity: .96;
     width: 100%;
     z-index: 9999;
-    position: relative;
-}
-.headersticky{
     position: fixed;
+    top: 0;
 }
-.header .title{
+
+.header .title {
     margin: 0;
-    padding: 10px 0px 10px 50px;
+    padding: 10px 0 10px 50px;
     font-size: 32px;
     font-weight: 500;
     display: inline-block;
     text-decoration: none;
-    color: whitesmoke;
+    color: whitesmoke
 }
-.header .classlinks{
+
+.header .classlinks {
     margin: 0;
     color: whitesmoke;
     float: right;
-    padding: 19px 28px 0 0;
+    padding: 19px 28px 0 0
 }
-.header .classlinks a{
+
+.header .classlinks a {
     padding-right: 15px;
     text-decoration: none;
-    color: whitesmoke;
+    color: whitesmoke
 }
-.footer{
-    background-color: black;
+
+.footer {
+    background-color: #000;
     width: 100%;
     position: relative;
     bottom: 0;
-    display: inline-block;
+    display: inline-block
 }
-.footer .footerlinks{
-    margin: 20px 0 20px 50px;
+
+.footer .footerlinks {
+    margin: 20px 0 20px 50px
 }
-.footer .footerlinks .footerlink{
+
+.footer .footerlinks .footerlink {
     text-decoration: none;
     color: whitesmoke;
-    margin: 10px 20px 10px 20px;
+    margin: 10px 20px
 }
-.cookies{
+
+.cookies {
     background-color: gray;
     position: fixed;
     bottom: 0;
     width: 100%;
-    display: none;
+    display: none
 }
-.cookiesvisible{
-    display: block;
+
+.cookiesvisible {
+    display: block
 }
-.cookies .cookiestext{
-    margin: 40px 0 40px 50px;
+
+.cookies .cookiestext {
+    margin: 40px 0 40px 50px
 }
-.content{
-    margin: 50px auto 50px auto;
+
+.cookies .cookiestext * {
+    margin: 0 5px
+}
+
+.content {
+    margin: 125px auto 75px auto;
     max-width: 900px;
     padding: 15px;
     position: relative;
     display: block;
+    min-height: auto;
 }
-.video{
-    margin-bottom: 40px;
+
+.video {
+    margin-bottom: 40px
 }
-.video video{
+
+.video video {
     padding: 0;
     border: 1px solid dimgrey;
     width: 100%;
-    max-width: 800px;
+    max-width: 800px
 }
-.video .videotitle{
+
+.video .videotitle {
     color: dimgrey;
-    padding-bottom: 8px;
+    padding-bottom: 8px
 }
-.content .classname{
-    margin: 0 0 50px 0;
+
+.content .classname {
+    margin: 0 0 50px;
     font-size: 40px;
-    color: rgb(51, 51, 51);
-    text-align: center;
+    color: #333;
+    text-align: center
 }
-.chapters{
-    display: block;
+
+.chapters {
+    display: block
 }
-.chapters .chapter{
+
+.chapters .chapter {
     padding: 0;
-    display: block;
+    display: block
 }
-.chapters .chapter .chaptertitle{
+
+.chapters .chapter .chaptertitle {
     padding: 7px;
-    transition: 0.4s;
 }
-.chapters .chapter .chaptertitle:hover{
+
+.chapters .chapter .chaptertitle:hover {
     background-color: lightgray;
 }
-.chapters .chapter .chaptertitle h1, h2{
+
+.chapters .chapter .chaptertitle h1, h2 {
     margin: 0;
     display: inline;
 }
-.chapters .chapter .chaptertitle .dropdownbutton{
+
+.chapters .chapter .chaptertitle .dropdownbutton {
     float: right;
     width: 35px;
     height: 35px;
 }
-.chapters .chapter .chaptercontent{
+
+.chapters .chapter .chaptercontent {
     border-left: 1px solid lightgrey;
-    padding: 0px 0 0 30px;
+    padding: 0 0 0 30px;
     max-height: 0;
     overflow: hidden;
 }
-.chapters .chapter .chaptercontent .nocontent{
+
+.chapters .chapter .chaptercontent .nocontent {
     margin-bottom: 40px;
     font-style: italic;
-    color: darkgray;
+    color: darkgray
 }

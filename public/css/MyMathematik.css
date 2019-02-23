@@ -126,66 +126,67 @@ body {
     display: block;
 }
 
-.video {
-    margin-bottom: 40px
-}
-
-.video video {
-    padding: 0;
-    border: 1px solid dimgrey;
-    width: 100%;
-    max-width: 800px
-}
-
-.video .videotitle {
-    color: dimgrey;
-    padding-bottom: 8px
-}
-
-.content .classname {
+.content .videos .classname {
     margin: 0 0 50px;
     font-size: 40px;
     color: #333;
     text-align: center
 }
 
-.chapters {
+.content .videos .chapters {
     display: block
 }
 
-.chapters .chapter {
+.content .video .chapters .chapter {
     padding: 0;
     display: block
 }
 
-.chapters .chapter .chaptertitle {
+.content .videos .chapters .chapter .chapterheader {
     padding: 7px;
 }
 
-.chapters .chapter .chaptertitle:hover {
+.content .videos .chapters .chapter .chapterheader:hover {
     background-color: lightgray;
 }
 
-.chapters .chapter .chaptertitle h1, h2 {
+.content .videos .chapters .chapter .chapterheader .chaptertitle{
     margin: 0;
     display: inline;
 }
 
-.chapters .chapter .chaptertitle .dropdownbutton {
+.content .videos .chapters .chapter .chapterheader .dropdownbutton {
     float: right;
     width: 35px;
     height: 35px;
 }
 
-.chapters .chapter .chaptercontent {
+.content .videos .chapters .chapter .chaptercontent {
     border-left: 1px solid lightgrey;
     padding: 0 0 0 30px;
     max-height: 0;
     overflow: hidden;
 }
 
-.chapters .chapter .chaptercontent .nocontent {
+.content .videos .chapters .chapter .chaptercontent .nocontent {
     margin-bottom: 40px;
     font-style: italic;
     color: darkgray
+}
+
+
+.content .videos .chapters .chapter .chaptercontent .video {
+    margin-bottom: 40px
+}
+
+.content .videos .chapters .chapter .chaptercontent .video video {
+    padding: 0;
+    border: 1px solid dimgrey;
+    width: 100%;
+    max-width: 800px
+}
+
+.content .videos .chapters .chapter .chaptercontent .video .videotitle {
+    color: dimgrey;
+    padding-bottom: 8px
 }

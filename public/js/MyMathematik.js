@@ -1,5 +1,5 @@
 function initAccordion(){
-    const chapterbuttons = document.getElementsByClassName("chaptertitle");
+    const chapterbuttons = document.getElementsByClassName("chapterheader");
     for(var i = 0; i < chapterbuttons.length; i++){
         chapterbuttons[i].addEventListener('click', function(){
 

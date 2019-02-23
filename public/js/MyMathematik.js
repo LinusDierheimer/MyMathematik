@@ -45,6 +45,10 @@ function cookiesaccepted(){
 
 }
 
+function goup(){
+    $('html, body').animate({scrollTop:0}, 'slow');
+}
+
 window.onload = function(){
     initAccordion();
     initCookies();

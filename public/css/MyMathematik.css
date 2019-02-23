@@ -40,17 +40,28 @@ body {
     width: 100%;
     position: relative;
     bottom: 0;
-    display: inline-block
+    display: grid;
 }
 
-.footer .footerlinks {
-    margin: 20px 0 20px 50px
+.footer .footercontent {
+    margin: 20px 40px;
 }
 
-.footer .footerlinks .footerlink {
+.footer .footercontent .footerlinks {
+    float: left;
+}
+
+.footer .footercontent .footerlinks .footerlink {
     text-decoration: none;
     color: whitesmoke;
     margin: 10px 20px
+}
+
+.footer .footercontent .goup{
+    color: whitesmoke;
+    text-decoration: none;
+    float: right;
+    cursor: pointer;
 }
 
 .cookies {

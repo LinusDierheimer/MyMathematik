@@ -11,10 +11,24 @@ footer:
   contact: "Kontakt"
   sponsors: "Sponsoren"
   cookies: "Cookies"
+  vhg: "VHG"
 
 cookies:
   info: "Diese Seite benützt cookies"
   more: "Mehr erfahren"
+
+home:
+  welcome:
+    start: "Willkommen auf der Mathe-Homepage des"
+    school: "Valentin-Heider-Gymnasiums Lindau"
+    end: ""
+  info: > 
+    Wir, das P-Seminar Mathematik unter der Leitung von Herrn Neuendorf,
+    haben es uns zur Aufgabe gemacht, Mathematik für alle Jahrgangsstufen verständlich zu machen.
+  sponsors:
+    thanks:
+      single: "Wir danken unserem Sponsor:"
+      multiple: "Wir danken unseren Sponsoren:"
 
 videos:
   class: "Jahrgangsstufe"

@@ -1,5 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    Mein Cooler Content
+    <div class="home">
+        <div class="welcome">
+            {{ 'home.welcome.start'|trans }}
+            <a target="_blank" rel="noopener noreferrer" href="{{ informations.vhg.href }}">
+                {{ 'home.welcome.school'|trans }}
+            </a>
+            {{ 'home.welcome.end'|trans }}
+        </div>
+
+        <div class="info">
+            {{ 'home.info'|trans }}
+        </div>
+
+        <div class="vhgimage">
+            <img src="/assets/VHG.jpg" />
+        </div>
+
+        <div class="sponsors">
+            {% if sponsors|length > 0 %}
+                <div class="thanks">
+                    {% if sponsors|length > 1 %}
+                        {{ 'home.sponsors.thanks.multiple'|trans }}
+                    {% else %}
+                        {{ 'home.sponsors.thanks.single'|trans }}
+                    {% endif %}
+                </div>
+                <div class="sponsorlist">
+                    {% for sponsor in sponsors %}
+                        <a target="_blank" rel="noopener noreferrer" href="{{ sponsor.website }}" class="sponsor">
+                            <img src="{{ sponsor.image }}" />
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

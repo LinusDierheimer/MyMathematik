@@ -12,7 +12,8 @@ class HomeController extends AbstractController
     {
         return $this->render('home.html.twig', [
             'classes' => Util::get_classes(),
-            'informations' => Util::get_informations()
+            'informations' => Util::get_informations(),
+            'sponsors' => Util::get_sponsors()
         ]);
     }
 }

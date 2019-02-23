@@ -5,18 +5,30 @@ header:
   title: "MyMathematic"
   class: "Year level"
   noclasses: "No videos are avaiable in your language!"
+
+footer:
+  impressum: "Impressum"
+  contact: "Kontakt"
   sponsors: "Sponsors"
   cookies: "Cookies"
+  vhg: "VHG"
 
 cookies:
   info: "This site is using cookies"
   more: "learn more"
 
-footer:
-  impressum: "Impressum"
-  contact: "Kontakt"
-  sponsors: "Sponsoren"
-  cookies: "Cookies"
+home:
+  welcome:
+    start: "Welcome to the Maths homepage"
+    school: "Valentin Heider Gymnasium Lindau"
+    end: "."
+  info: > 
+    We, the P-Semianr Maths under the supervision by Mr Neuendorf,
+    have made it our buisness , to make Maths understandable for every yearlevel.
+  sponsors:
+    thanks:
+      single: "We say thank you to our sponsor:"
+      multiple: "We say thank you to ous sponsores:"
 
 videos:
   class: "Year level"

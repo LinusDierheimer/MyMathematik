@@ -161,4 +161,11 @@ class Util
     public static function get_default_class(){
         return self::get_classes()[5]['name'];
     }
+
+    public static function get_sponsors(){
+        static $sponsors = null;
+        if($sponsors == null)
+            $sponsors = Yaml::parseFile(self::get_workspace_path() . 'public/information/sponsors.yaml');
+        return $sponsors;
+    }
 }

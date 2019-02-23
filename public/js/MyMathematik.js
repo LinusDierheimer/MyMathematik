@@ -1,13 +1,3 @@
-function updateHeader(){
-    const header = document.getElementById("header");
-    const sticky = header.offsetTop;
-    if (window.pageYOffset > sticky) {
-        header.classList.add("headersticky");
-    } else {
-        header.classList.remove("headersticky");
-    }
-}
-
 function initAccordion(){
     const chapterbuttons = document.getElementsByClassName("chaptertitle");
     for(var i = 0; i < chapterbuttons.length; i++){

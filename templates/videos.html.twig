@@ -2,16 +2,18 @@
 
 {% import _self as this %}
 
-{% macro chapter(chapters, level) %}
+{% macro chapter(chapters, level, parentcontent) %}
 
     {% import _self as this %}
+
+    {% set mutableparentcontent = parentcontent %}
 
     {% if chapters|length > 0 %}
         {% for chapter in chapters %}
         
             <div class="chapter">
                 
-                <div class="chapterheader">
+                <div class="chapterheader" data-parentcontent="chaptercontent{{ parentcontent }}">
 
                     <h{{ level }} class="chaptertitle">
                         {% if chapter.name is defined %}
@@ -25,11 +27,13 @@
 
                 </div>
                 
-                <div class="chaptercontent">
+                <div class="chaptercontent" id="chaptercontent{{ mutableparentcontent }}">
 
                     {% if chapter.chapters is defined %}
-                        {{ this.chapter(chapter.chapters, level + 1) }}
+                        {{ this.chapter(chapter.chapters, level + 1, mutableparentcontent + loop.index) }}
                     {% endif %}
+
+                    {% set mutableparentcontent = mutableparentcontent + 1 %}
 
                     {% if chapter.videos is defined %}
                         {% if chapter.videos|length > 0 %}
@@ -60,10 +64,11 @@
                     {% endif %}
 
                 </div>
-
+                
             </div>
 
         {% endfor %}
+
 
     {% else %}
         <div class="nocontent">
@@ -82,7 +87,7 @@
 
         <div class="chapters">
             {% if videos.chapters is defined %}
-                {{ this.chapter(videos.chapters, 1) }}                
+                {{ this.chapter(videos.chapters, 1, 0) }}                
             {% endif %}
         </div>
 

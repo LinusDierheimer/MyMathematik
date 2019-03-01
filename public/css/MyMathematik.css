@@ -174,9 +174,11 @@ body {
 
 .content .videos .chapters .chapter .chaptercontent {
     border-left: 1px solid lightgrey;
-    padding: 0 0 0 30px;
+    padding: 0 0 0 25px;
+    margin-left: 15px;
     max-height: 0;
     overflow: hidden;
+    transition: ease 0.2s;
 }
 
 .content .videos .chapters .chapter .chaptercontent .nocontent {
@@ -199,5 +201,5 @@ body {
 
 .content .videos .chapters .chapter .chaptercontent .video .videotitle {
     color: dimgrey;
-    padding-bottom: 8px
+    padding: 8px 0;
 }

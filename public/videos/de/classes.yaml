@@ -2,11 +2,14 @@
   name: "5"
   path: "/5/index.yaml"
   href: "/videos/de/5"
+  curriculum: "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/5/mathematik"
 6:
   name: "6"
   path: "/6/index.yaml"
   href: "/videos/de/6"
+  curriculum: "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/7/mathematik"
 7:
   name: "7"
   path: "/7/index.yaml"
   href: "/videos/de/7"
+  curriculum: "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/7/mathematik"

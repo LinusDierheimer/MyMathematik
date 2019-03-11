@@ -23,7 +23,7 @@
                         {% endif %}
                     </h{{ level }}>
 
-                    <img src="/assets/arrow_down.svg" class="dropdownbutton"></img>
+                    <span class="fas fa-sort-down dropdownbutton"></span>
 
                 </div>
                 
@@ -81,9 +81,15 @@
 {% block content %}
     <div class="videos">
 
-        <h1 class="classname">
-            {{ 'videos.class'|trans }} {{ classes[class].name }}
-        </h1>
+        <div class="classname">
+            <h1>
+                {{ 'videos.class'|trans }} {{ classes[class].name }}
+            </h1>
+            <a href="{{ classes[class].curriculum }}" rel="noopener noreferrer" target="_blank">
+                {{ 'videos.curriculum.link'|trans }}
+                <i class="fas fa-link"></i>
+            </a>
+        </div>
 
         <div class="chapters">
             {% if videos.chapters is defined %}

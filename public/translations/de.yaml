@@ -39,3 +39,5 @@ videos:
   novideos: "Noch keine Videos für dieses Kapitel verfügbar!"
   nochapters: "Noch keine Unterkapitel für dieses Kapitel verfügbar!"
   nocontent: "Noch keine Kapitel für diese Klasse verfügar!"
+  curriculum:
+    link: "Zum Lehrplan"

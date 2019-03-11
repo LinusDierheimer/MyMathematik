@@ -29,11 +29,11 @@ function initAccordion(){
             if(isActive){
                 panel.style.maxHeight = null;
                 panel.style.paddingTop = "0";
-                image.src = "/assets/arrow_down.svg";
+                image.className = "fas fa-sort-down";
             }else{
                 panel.style.maxHeight = panel.scrollHeight + "px";
                 panel.style.paddingTop = "10px";
-                image.src = "/assets/arrow_up.svg";
+                image.className = "fas fa-sort-up";
             }
 
             this.classList.toggle("active");

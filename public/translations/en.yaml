@@ -39,3 +39,5 @@ videos:
   novideos: "No videos for that chapter yet!"
   nochapters: "No subchapters for that chapter yet!"
   nocontent: "No chapters for that class yet!"
+  curriculum:
+    link: "To curriclum"

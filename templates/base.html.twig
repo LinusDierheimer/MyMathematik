@@ -40,12 +40,23 @@
                     {{ "header.title"|trans }}
                 </a>
 
-                <div class="classlinks">
-                    {% for class in classes %}
-                        <a href="{{ class.href }}">
-                            {{ 'header.class'|trans }} {{ class.name }}
-                        </a>
-                    {% endfor %}
+                <div class="icons">
+                    <div class="icon">
+                        <i class="dropdown-header far fa-file-video"></i>
+                        <div class="dropdown-content">
+                            {% for class in classes %}
+                                <a href="{{ class.href }}">
+                                    {{ 'header.class'|trans }} {{ class.name }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <i class="dropdown-header far fa-user"></i>
+                        <div class="dropdown-content">
+                            
+                        </div>
+                    </div>
                 </div>
 
             </header>

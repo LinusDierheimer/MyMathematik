@@ -20,9 +20,9 @@ cookies:
 
 home:
   welcome:
-    start: "Welcome to the Maths homepage"
+    start: "Welcome to the Maths homepage of"
     school: "Valentin Heider Gymnasium Lindau"
-    end: "."
+    end: ""
   info: > 
     We, the P-Semianr Maths under the supervision by Mr Neuendorf,
     have made it our buisness , to make Maths understandable for every yearlevel.

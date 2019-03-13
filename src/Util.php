@@ -97,7 +97,11 @@ class Util
 
     public static function trans($key)
     {
-        return self::array_get(self::get_translations(), $key);
+        try{
+            return self::array_get(self::get_translations(), $key);
+        }catch(\Throwable $e){
+            return "{Couldn't translate key: " . $key . "}";
+        }
     } 
 
     public static function get_finder()

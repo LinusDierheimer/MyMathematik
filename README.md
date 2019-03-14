@@ -4,6 +4,7 @@
 * [PHP 7.x.x](http://php.net/downloads.php)  
 * [Composer](https://getcomposer.org/download/)  
 * [Git](https://git-scm.com/download/) + [Github Account](https://github.com/)  
+* [MySQL Server](https://dev.mysql.com/downloads/mysql/)
 
 ## Setup:
 1. Den Projektordner als lokales repository erstellen:  
@@ -13,7 +14,12 @@
 3. Die Projektabhängigkeiten installieren (Muss bei neuen Abhängigkeiten auch während der Entwicklung wiederhohlt werden):  
     `composer self-update`  
     `composer install`  
-    `composer update`  
+    `composer update`
+4. Den Sql Server einrichten und einen Benutzernamen und Passwort in .env oder .env.local eintragen, dann  
+    `php bin/console doctrine:database:create`  
+    `php bin/console make:migration`  
+    `php bin/console doctrine:migrations:migrate`
+    Siehe Anleitung [hier](https://symfony.com/doc/current/doctrine.html)
 
 ## Benützen des Projektes:
 * PHPs eingebauter Webserver (einfach zu benützen aber sehr langsam), erreichbar im Browser über localhost:8000. Zum starten:  

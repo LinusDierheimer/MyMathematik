@@ -1,9 +1,12 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/css/all";
 
 body {
     margin: 0
 }
 
 .header {
+
     background-color: #000;
     opacity: .96;
     width: 100%;
@@ -11,62 +14,62 @@ body {
     position: fixed;
     top: 0;
     min-height: 50px;
-}
 
-.header .title {
-    margin: 0;
-    padding: 10px 0 10px 50px;
-    font-size: 32px;
-    font-weight: 500;
-    display: inline-block;
-    text-decoration: none;
-    color: whitesmoke
-}
+    .title {
+        margin: 0;
+        padding: 10px 0 10px 50px;
+        font-size: 32px;
+        font-weight: 500;
+        display: inline-block;
+        text-decoration: none;
+        color: whitesmoke
+    }
 
-.header .icons{
-    margin-left: 20px;
-    color: whitesmoke;
-    float: right;
-    overflow: hidden;
-}
+    .icons{
+        margin-left: 20px;
+        color: whitesmoke;
+        float: right;
+        overflow: hidden;
 
-.header .icons .icon {
-    display: inline-block;
-    cursor: pointer;
-}
+        .icon {
+            display: inline-block;
+            cursor: pointer;
 
-.header .icons .icon .dropdown-header{
-    padding: 16px;
-    font-size: 25px;
-}
+            .dropdown-header{
+                padding: 16px;
+                font-size: 25px;
+            }
 
-.header .icons .icon .dropdown-content {
-    position: absolute;
-    display: none;
-    z-index: 1;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    min-width: 250px;
-    background-color: rgb(50, 50, 50);
-    right: 0;
-}
+            .dropdown-content {
+                position: absolute;
+                display: none;
+                z-index: 1;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                min-width: 250px;
+                background-color: rgb(50, 50, 50);
+                right: 0;
 
-.header .icons .icon .dropdown-content a{
-    padding: 15px;
-    text-decoration: none;
-    display: block;
-    color: white;
-}
+                a{
+                    padding: 15px;
+                    text-decoration: none;
+                    display: block;
+                    color: white;
 
-.header .icons .icon .dropdown-content a:hover{
-    background-color: rgb(75, 75, 75);
-}
+                    &:hover{
+                        background-color: rgb(75, 75, 75);
+                    }
+                }
+            }
 
-.header .icons .icon:hover{
-    background-color: rgb(50, 50, 50);
-}
-
-.header .icons .icon:hover .dropdown-content{
-    display: block;
+            &:hover{
+                background-color: rgb(50, 50, 50);
+    
+                .dropdown-content{
+                    display: block;
+                }
+            }
+        }
+    }
 }
 
 .footer {
@@ -75,27 +78,27 @@ body {
     position: relative;
     bottom: 0;
     display: grid;
-}
 
-.footer .footercontent {
-    margin: 20px 40px;
-}
+    .footercontent {
+        margin: 20px 40px;
 
-.footer .footercontent .footerlinks {
-    float: left;
-}
+        .footerlinks {
+            float: left;
 
-.footer .footercontent .footerlinks .footerlink {
-    text-decoration: none;
-    color: whitesmoke;
-    margin: 10px 20px
-}
+            .footerlink {
+                text-decoration: none;
+                color: whitesmoke;
+                margin: 10px 20px
+            }
+        }
 
-.footer .footercontent .goup{
-    color: whitesmoke;
-    text-decoration: none;
-    float: right;
-    cursor: pointer;
+        .goup{
+            color: whitesmoke;
+            text-decoration: none;
+            float: right;
+            cursor: pointer;
+        }
+    }
 }
 
 .cookies {
@@ -103,19 +106,19 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-    display: none
+    display: none;
+
+    .cookiestext {
+        margin: 40px 0 40px 50px;
+
+        * {
+            margin: 0 5px
+        }
+    }
 }
 
 .cookiesvisible {
     display: block
-}
-
-.cookies .cookiestext {
-    margin: 40px 0 40px 50px
-}
-
-.cookies .cookiestext * {
-    margin: 0 5px
 }
 
 .content {
@@ -125,126 +128,4 @@ body {
     position: relative;
     display: block;
     min-height: auto;
-}
-
-.content .home .welcome {
-    color: rgb(55, 55, 55);
-    font-size: 50px;
-    margin-bottom: 25px;
-}
-
-.content .home .welcome a{
-    text-decoration: inherit;
-    color: inherit;
-}
-
-.content .home .info {
-    color: rgb(75, 75, 75);
-}
-
-.content .home .vhgimage {
-    padding: 40px 25px;
-}
-
-.content .home .vhgimage img{
-    width: 100%;
-}
-
-.content .home .sponsors {
-    margin-top: 50px;
-    padding-top: 50px;
-    border-top: 1px solid lightgrey;
-}
-
-.content .home .sponsors .thanks{
-    font-size: 25px;
-    margin: 10px 0;
-    color: rgb(50, 50, 50);
-}
-
-.content .home .sponsors .sponsorlist {
-    margin: 25px 10px;
-}
-
-.content .home .sponsors .sponsorlist .sponsor{
-    margin: 15px;
-    display: block;
-}
-
-.content .videos .classname{
-    margin: 0 0 50px;
-    text-align: center;
-}
-
-.content .videos .classname h1{
-    font-size: 50px;
-    color: #333;
-    margin: 0 0 10px;
-}
-
-.content .videos .classname a{
-    text-decoration: none;
-    color: grey;
-    font-size: 20px;
-}
-
-.content .videos .classname a i{
-    font-size: 15px;
-}
-
-.content .videos .chapters {
-    display: block
-}
-
-.content .video .chapters .chapter {
-    padding: 0;
-    display: block
-}
-
-.content .videos .chapters .chapter .chapterheader {
-    padding: 7px;
-}
-
-.content .videos .chapters .chapter .chapterheader:hover {
-    background-color: lightgray;
-}
-
-.content .videos .chapters .chapter .chapterheader .chaptertitle{
-    margin: 0;
-    display: inline;
-}
-
-.content .videos .chapters .chapter .chapterheader span{
-    float: right;
-    font-size: 39px;
-}
-.content .videos .chapters .chapter .chaptercontent {
-    border-left: 1px solid lightgrey;
-    padding: 0 0 0 25px;
-    margin-left: 15px;
-    max-height: 0;
-    overflow: hidden;
-}
-
-.content .videos .chapters .chapter .chaptercontent .nocontent {
-    margin-bottom: 40px;
-    font-style: italic;
-    color: darkgray
-}
-
-
-.content .videos .chapters .chapter .chaptercontent .video {
-    margin-bottom: 40px
-}
-
-.content .videos .chapters .chapter .chaptercontent .video video {
-    padding: 0;
-    border: 1px solid dimgrey;
-    width: 100%;
-    max-width: 800px
-}
-
-.content .videos .chapters .chapter .chaptercontent .video .videotitle {
-    color: dimgrey;
-    padding: 8px 0;
 }

@@ -2,9 +2,14 @@ site:
   title: "MyMathematic"
 
 header:
-  title: "MyMathematic"
-  class: "Year level"
-  noclasses: "No videos are avaiable in your language!"
+  title: "MyMathematik"
+  icons:
+    classes:
+      class: "Class"
+    account:
+      me: "My Account"
+      login: "Login"
+      logout: "Logout"
 
 footer:
   impressum: "Impressum"

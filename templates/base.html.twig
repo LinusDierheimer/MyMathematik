@@ -42,7 +42,7 @@
                         <div class="dropdown-content">
                             {% for class in globals.classes %}
                                 <a href="{{ class.href }}">
-                                    {{ 'header.class'|trans }} {{ class.name }}
+                                    {{ 'header.icons.classes.class'|trans }} {{ class.name }}
                                 </a>
                             {% endfor %}
                         </div>
@@ -51,11 +51,17 @@
                         <a href="/account/me" class="dropdown-header fas fa-user"></a>
                         <div class="dropdown-content">
                             <a href="/account/me">
-                                Mein Account
+                                {{ 'header.icons.account.me'|trans }}
                             </a>
-                            <a href="">
-                                Toggle Login?
-                            </a>
+                            {% if app.user is null %}
+                                <a href="{{ path('route_account_login') }}">
+                                    {{ 'header.icons.account.login'|trans }}
+                                </a>
+                            {% else %}
+                                <a href="{{ path('route_account_logout') }}">
+                                    {{ 'header.icons.account.logout'|trans }}
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

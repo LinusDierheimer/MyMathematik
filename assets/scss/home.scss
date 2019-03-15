@@ -1,0 +1,47 @@
+.content{
+    .home{
+        .welcome {
+            color: rgb(55, 55, 55);
+            font-size: 50px;
+            margin-bottom: 25px;
+
+            a{
+                text-decoration: inherit;
+                color: inherit;
+            }
+        }
+
+        .info {
+            color: rgb(75, 75, 75);
+        }
+
+        .vhgimage {
+            padding: 40px 25px;
+
+            img{
+                width: 100%;
+            }
+        }
+
+        .sponsors {
+            margin-top: 50px;
+            padding-top: 50px;
+            border-top: 1px solid lightgrey;
+
+            .thanks{
+                font-size: 25px;
+                margin: 10px 0;
+                color: rgb(50, 50, 50);
+            }
+
+            .sponsorlist {
+                margin: 25px 10px;
+
+                .sponsor{
+                    margin: 15px;
+                    display: block;
+                }
+            }
+        }
+    }
+}

@@ -3,8 +3,13 @@ site:
 
 header:
   title: "MyMathematik"
-  class: "Klasse"
-  noclasses: "Keine Videos in deiner Sprache verfügbar!"
+  icons:
+    classes:
+      class: "Klasse"
+    account:
+      me: "Mein Account"
+      login: "Login"
+      logout: "Logout"
 
 footer:
   impressum: "Impressum"

@@ -5,9 +5,10 @@ namespace App\Controller;
 use App\Util;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
-use App\Security\UserAuthenticator;
+use App\Security\AccountAuthenticator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -31,6 +32,11 @@ class AccountController extends AbstractController
         return $this->redirectToRoute('route_account_me');
     }
 
+    public function redirect_logout()
+    {
+        return $this->redirectToRoute('route_account_logout');
+    }
+
     public function me()
     {
         return $this->render('account/account.html.twig', [
@@ -40,25 +46,11 @@ class AccountController extends AbstractController
         ]);
     }
 
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('account/login.html.twig', [
-            'classes' => Util::get_classes(),
-            'informations' => Util::get_informations(),
-            'sponsors' => Util::get_sponsors(),
-            'last_username' => $lastUsername,
-            'error' => $error
-        ]);
-    }
-
     public function register(
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
         GuardAuthenticatorHandler $guardHandler,
-        UserAuthenticator $authenticator
+        AccountAuthenticator $authenticator
     ): Response
     {
         $user = new User();
@@ -93,6 +85,20 @@ class AccountController extends AbstractController
             'informations' => Util::get_informations(),
             'sponsors' => Util::get_sponsors(),
             'registrationForm' => $form->createView(),
+        ]);
+    }
+
+    public function login(AuthenticationUtils $authenticationUtils): Response
+    {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('account/login.html.twig', [
+            'classes' => Util::get_classes(),
+            'informations' => Util::get_informations(),
+            'sponsors' => Util::get_sponsors(),
+            'last_username' => $lastUsername,
+            'error' => $error
         ]);
     }
 }

@@ -27,10 +27,6 @@ route_account_redirect:
   path: /account
   controller: App\Controller\AccountController::redirect_me
 
-route_account_me:
-  path: /account/me
-  controller: App\Controller\AccountController::me
-
 route_account_redirect_login:
   path: /login
   controller: App\Controller\AccountController::redirect_login
@@ -39,9 +35,17 @@ route_account_redirect_register:
   path: /register
   controller: App\Controller\AccountController::redirect_register
 
+route_account_redirect_logout:
+  path: /logout
+  controller: App\Controller\AccountController::redirect_logout
+
 route_account_redirect_me:
   path: /me
   controller: App\Controller\AccountController::redirect_me
+
+route_account_me:
+  path: /account/me
+  controller: App\Controller\AccountController::me
 
 route_account_login:
   path: /account/login
@@ -50,3 +54,7 @@ route_account_login:
 route_account_register:
   path: /account/register
   controller: App\Controller\AccountController::register
+
+route_account_logout:
+  path: /account/logout
+  methods: GET

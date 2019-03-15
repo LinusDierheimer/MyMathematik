@@ -29,16 +29,14 @@ class VideoController extends AbstractController
     {
 
         if(!Util::class_exist($class))
-            return $this->render('videos404.html.twig', [
-                'classes' => Util::get_classes(),
-                'informations' => Util::get_informations()
+            return $this->render('videos/videos404.html.twig', [
+                'globals' => Util::get_globals()
             ]);
 
-        return $this->render('videos.html.twig', [
+        return $this->render('videos/videos.html.twig', [
+            'globals' => Util::get_globals(),
             'class' => $class,
-            'videos' => Util::load_videos($class),
-            'classes' => Util::get_classes(),
-            'informations' => Util::get_informations()
+            'videos' => Util::load_videos($class)
         ]);
     }
 }

@@ -44,9 +44,28 @@ function initAccordion(){
     }
 }
 
-function initCookies(){
+function initCockieInfo(cookieinfo){
     if(!document.cookie.includes("cookies=true"))
-        document.getElementById("cookies").classList.add("cookiesvisible");
+        cookieinfo.classList.add("cookiesvisible");
+}
+
+function initCookieButton(cookieinfo){
+    $("#cookiesAccepted").click(function(){
+        document.cookie = "cookies=true; path=/";
+        cookieinfo.classList.remove("cookiesvisible");
+    })
+}
+
+function initCookies(){
+    const cookieinfo = document.getElementById("cookies"); 
+    initCockieInfo(cookieinfo);
+    initCookieButton(cookieinfo);
+}
+
+function initScrollUp(){
+    $("#scrollUp").click(function(){
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+    });
 }
 
 function initLanguage(){
@@ -54,18 +73,9 @@ function initLanguage(){
         document.cookie = "language=de; path=/";
 }
 
-function cookiesaccepted(){
-    document.cookie = "cookies=true; path=/";
-    document.getElementById("cookies").classList.remove("cookiesvisible");
-
-}
-
-function goup(){
-    $('html, body').animate({scrollTop:0}, 'slow');
-}
-
 window.onload = function(){
     initAccordion();
     initCookies();
     initLanguage();
+    initScrollUp();
 }

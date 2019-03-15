@@ -10,10 +10,8 @@ class HomeController extends AbstractController
 {
     public function index()
     {
-        return $this->render('home.html.twig', [
-            'classes' => Util::get_classes(),
-            'informations' => Util::get_informations(),
-            'sponsors' => Util::get_sponsors()
+        return $this->render('home/home.html.twig', [
+            'globals' => Util::get_globals()
         ]);
     }
 }

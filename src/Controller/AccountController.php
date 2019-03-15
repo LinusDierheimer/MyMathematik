@@ -40,9 +40,7 @@ class AccountController extends AbstractController
     public function me()
     {
         return $this->render('account/account.html.twig', [
-            'classes' => Util::get_classes(),
-            'informations' => Util::get_informations(),
-            'sponsors' => Util::get_sponsors()
+            'globals' => Util::get_globals()
         ]);
     }
 
@@ -81,9 +79,7 @@ class AccountController extends AbstractController
         }
 
         return $this->render('account/register.html.twig', [
-            'classes' => Util::get_classes(),
-            'informations' => Util::get_informations(),
-            'sponsors' => Util::get_sponsors(),
+            'globals' => Util::get_globals(),
             'registrationForm' => $form->createView(),
         ]);
     }
@@ -94,9 +90,7 @@ class AccountController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('account/login.html.twig', [
-            'classes' => Util::get_classes(),
-            'informations' => Util::get_informations(),
-            'sponsors' => Util::get_sponsors(),
+            'globals' => Util::get_globals(),
             'last_username' => $lastUsername,
             'error' => $error
         ]);

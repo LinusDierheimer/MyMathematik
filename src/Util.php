@@ -172,4 +172,12 @@ class Util
             $sponsors = Yaml::parseFile(self::get_workspace_path() . 'public/information/sponsors.yaml');
         return $sponsors;
     }
+
+    public static function get_globals(){
+        return [
+            "classes"      => self::get_classes(),
+            "informations" => self::get_informations(),
+            'sponsors'     => self::get_sponsors()
+        ];
+    }
 }

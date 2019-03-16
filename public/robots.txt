@@ -1,0 +1,4 @@
+User-agent: *
+Dissallow: /translations/
+Dissallow: /assets/
+Dissallow: /information/

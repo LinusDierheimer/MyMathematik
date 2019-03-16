@@ -27,9 +27,21 @@ function initScrollUp(){
     });
 }
 
-function initLanguage(){
+function initLanguageCookie(){
     if(!document.cookie.includes("language"))
         document.cookie = "language=de; path=/";
+}
+
+function initLanguageSwitcher(){
+    $(".languageswitcher").click(function(){
+        document.cookie = "language=" + $(this).data("language") + "; path=/";
+        location.reload();
+    });
+}
+
+function initLanguage(){
+    initLanguageCookie();
+    initLanguageSwitcher();
 }
 
 $(document).ready(function(){

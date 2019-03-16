@@ -175,9 +175,12 @@ class Util
 
     public static function get_globals(){
         return [
-            "classes"      => self::get_classes(),
-            "informations" => self::get_informations(),
-            'sponsors'     => self::get_sponsors()
+            "classes"          => self::get_classes(),
+            "informations"     => self::get_informations(),
+            "sponsors"         => self::get_sponsors(),
+            "languages"        => self::get_languages(),
+            "current_language" => self::get_language(),
+            "language_code"    => self::get_language_code()
         ];
     }
 }

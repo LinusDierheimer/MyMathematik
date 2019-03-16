@@ -2,7 +2,8 @@
 @import "~@fortawesome/fontawesome-free/css/all";
 
 body {
-    margin: 0
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
 }
 
 .header {
@@ -13,16 +14,16 @@ body {
     z-index: 9999;
     position: fixed;
     top: 0;
-    min-height: 50px;
+    height: 57px;
 
     .title {
         margin: 0;
-        padding: 10px 0 10px 50px;
-        font-size: 32px;
+        padding: 4px 0 10px 50px;
+        font-size: 38px;
         font-weight: 500;
         display: inline-block;
         text-decoration: none;
-        color: whitesmoke
+        color: whitesmoke;
     }
 
     .icons{
@@ -38,6 +39,7 @@ body {
             .dropdown-header{
                 padding: 16px;
                 font-size: 25px;
+                color: whitesmoke;
             }
 
             .dropdown-content {
@@ -49,15 +51,21 @@ body {
                 background-color: rgb(50, 50, 50);
                 right: 0;
 
-                a{
+                a, div{
                     padding: 15px;
                     text-decoration: none;
                     display: block;
                     color: white;
+                }
 
+                a{
                     &:hover{
                         background-color: rgb(75, 75, 75);
                     }
+                }
+
+                div{
+                    cursor: default;
                 }
             }
 

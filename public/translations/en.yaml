@@ -6,10 +6,13 @@ header:
   icons:
     classes:
       class: "Class"
+      noclass: "No videos for your language yet!"
     account:
       me: "My Account"
       login: "Login"
       logout: "Logout"
+      register: "Register"
+      switch: "Change user"
 
 footer:
   impressum: "Impressum"

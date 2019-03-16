@@ -32,7 +32,7 @@
         
         {% block header %}
             <header class="header" id="header" role="banner">
-                <a href="/" class="title" rel="home">
+                <a href="{{ path('route_home') }}" class="title" rel="home">
                     {{ "header.title"|trans }}
                 </a>
 
@@ -40,28 +40,51 @@
                     <div class="icon">
                         <i class="dropdown-header fas fa-video"></i>
                         <div class="dropdown-content">
-                            {% for class in globals.classes %}
-                                <a href="{{ class.href }}">
-                                    {{ 'header.icons.classes.class'|trans }} {{ class.name }}
-                                </a>
-                            {% endfor %}
+                            {% if globals.classes|length > 0 %}
+                                {% for class in globals.classes %}
+                                    <a href="{{ class.href }}">
+                                        {{ 'header.icons.classes.class'|trans }} {{ class.name }}
+                                    </a>
+                                {% endfor %}
+                            {% else %}
+                                <div>
+                                    {{ 'header.icons.classes.noclass'|trans }}
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="icon">
-                        <a href="/account/me" class="dropdown-header fas fa-user"></a>
+                        <a href="{{ path('route_account_me') }}" class="dropdown-header {{ app.user == null ? 'far' : 'fas' }} fa-user"></a>
                         <div class="dropdown-content">
-                            <a href="/account/me">
+                            <a href="{{ path('route_account_me') }}">
                                 {{ 'header.icons.account.me'|trans }}
                             </a>
                             {% if app.user is null %}
                                 <a href="{{ path('route_account_login') }}">
                                     {{ 'header.icons.account.login'|trans }}
                                 </a>
+                                <a href="{{ path('route_account_register') }}">
+                                    {{ 'header.icons.account.register'|trans }}
+                                </a>
                             {% else %}
                                 <a href="{{ path('route_account_logout') }}">
                                     {{ 'header.icons.account.logout'|trans }}
                                 </a>
+                                <a href="{{ path('route_account_login') }}">
+                                    {{ 'header.icons.account.switch'|trans }}
+                                </a>
                             {% endif %}
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <i class="dropdown-header fas fa-language"></i>
+                        <div class="dropdown-content">
+                            {% for language in globals.languages %}
+                                <a class="languageswitcher" data-language="{{ language.code }}" href="">
+                                    <i class="far {{ globals.current_language == language ? 'fa-check-circle' : 'fa-circle' }}"></i>
+                                    {{ language.name }}
+                                </a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

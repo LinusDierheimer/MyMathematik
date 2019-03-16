@@ -6,10 +6,13 @@ header:
   icons:
     classes:
       class: "Klasse"
+      noclass: "Keine Videos für die ausgewählte Sprache!"
     account:
       me: "Mein Account"
       login: "Login"
       logout: "Logout"
+      register: "Registrieren"
+      switch: "Benutzer wechseln"
 
 footer:
   impressum: "Impressum"
@@ -25,8 +28,8 @@ cookies:
 
 home:
   welcome:
-    start: "Willkommen auf der Mathe-Homepage des"
-    school: "Valentin-Heider-Gymnasiums Lindau"
+    start: "Willkommen zu MyMathematik"
+    school: ""
     end: ""
   info: > 
     Wir, das P-Seminar Mathematik unter der Leitung von Herrn Neuendorf,

@@ -24,7 +24,6 @@
         </title>
 
         {% block css %}
-            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
     </head>
@@ -125,14 +124,13 @@
                         {{ 'cookies.more'|trans }}
                     </a>
                     <button id="cookiesAccepted">
-                        ok
+                        {{ 'cookies.ok'|trans }}
                     </button>
                 </div>
             </div>
         {% endblock %}
 
         {% block js %}
-            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </body>
 </html>

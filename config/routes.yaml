@@ -58,3 +58,7 @@ route_account_register:
 route_account_logout:
   path: /account/logout
   methods: GET
+
+route_admin:
+  path: /admin
+  controller: App\Controller\AdminController::index

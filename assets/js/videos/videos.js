@@ -32,11 +32,11 @@ function initAccordion(){
             if(isActive){
                 panel.style.maxHeight = null;
                 panel.style.paddingTop = "0";
-                image.className = "fas fa-sort-down";
+                image.className = "fas fa-angle-down";
             }else{
                 panel.style.maxHeight = panel.scrollHeight + "px";
                 panel.style.paddingTop = "10px";
-                image.className = "fas fa-sort-up";
+                image.className = "fas fa-angle-up";
             }
 
             this.classList.toggle("active");

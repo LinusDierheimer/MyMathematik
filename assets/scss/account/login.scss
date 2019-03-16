@@ -1,1 +1,16 @@
-@import "../app.scss"
+@import "../app.scss";
+
+.content {
+    .login{
+
+        position: relative;
+        display: inline-block;
+        margin: 0 auto;
+
+        .form{
+            display: block;
+            position: relative;
+            width: 500px;
+        }
+    }
+}

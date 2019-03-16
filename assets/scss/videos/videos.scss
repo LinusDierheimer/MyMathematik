@@ -40,9 +40,10 @@
                     .chaptertitle{
                         margin: 0;
                         display: inline;
+                        font-size: 30px;
                     }
 
-                    span{
+                    i{
                         float: right;
                         font-size: 39px;
                     }
@@ -50,7 +51,7 @@
                 
                 .chaptercontent {
                     border-left: 1px solid lightgrey;
-                    padding: 0 0 0 25px;
+                    padding: 0 8px 0 25px;
                     margin-left: 15px;
                     max-height: 0;
                     overflow: hidden;

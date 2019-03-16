@@ -24,6 +24,7 @@
         </title>
 
         {% block css %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
     </head>
@@ -86,6 +87,11 @@
                             {% endfor %}
                         </div>
                     </div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="icon">
+                            <a target="_blank" rel="noopener noreferrer" href="{{ path('route_admin') }}" class="dropdown-header fas fa-cogs"></a>
+                        </div>
+                    {% endif %}
                 </div>
 
             </header>
@@ -131,6 +137,7 @@
         {% endblock %}
 
         {% block js %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </body>
 </html>

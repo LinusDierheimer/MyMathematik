@@ -6,6 +6,7 @@
 parameters:
     locale: 'de'
     ga_tracking: 'UA-134811098-1'
+    path_test: '%kernel.project_dir%/public/videos'
 
 services:
     # default configuration for services in *this* file

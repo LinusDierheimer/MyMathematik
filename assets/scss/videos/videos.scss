@@ -1,5 +1,7 @@
 @import "../app.scss";
 
+$animation_duration: 0.4s;
+
 .content{
     .videos{
         .classname{
@@ -45,16 +47,23 @@
 
                     i{
                         float: right;
-                        font-size: 39px;
+                        font-size: 31px;
+                        transition: $animation_duration;
+                    }
+
+                    .active{
+                        transform: rotate(180deg);
                     }
                 }
                 
                 .chaptercontent {
                     border-left: 1px solid lightgrey;
-                    padding: 0 8px 0 25px;
+                    padding: 0 25px;
                     margin-left: 15px;
-                    max-height: 0;
+                    height: auto;
                     overflow: hidden;
+                    transition: ease-out $animation_duration;
+                    display: none; 
 
                     .nocontent {
                         margin-bottom: 40px;

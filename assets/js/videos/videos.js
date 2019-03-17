@@ -30,15 +30,14 @@ function initAccordion(){
             const panel = this.nextElementSibling;
             const image = this.children[1];
             if(isActive){
-                panel.style.maxHeight = null;
+                panel.style.display = "none";
                 panel.style.paddingTop = "0";
-                image.className = "fas fa-angle-down";
             }else{
-                panel.style.maxHeight = panel.scrollHeight + "px";
+                panel.style.display = "block";
                 panel.style.paddingTop = "10px";
-                image.className = "fas fa-angle-up";
             }
 
+            image.classList.toggle("active");
             this.classList.toggle("active");
 
             updateAccordion();

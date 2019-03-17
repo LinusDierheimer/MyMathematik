@@ -110,17 +110,22 @@ class Util
         return $finder;
     }
 
-    public static function get_classes_path()
+    public static function get_public_path()
     {
-        return self::get_workspace_path() . '/public/videos/' . self::get_language_code();
+        return self::get_workspace_path() . 'public/';
+    }
+
+    public static function get_video_config()
+    {
+        static $info = null;
+        if($info == null)
+            $info = Yaml::parseFile(self::get_public_path() . 'videos/index.yaml');
+        return $info;
     }
 
     public static function get_classes()
     {
-        static $classes = null;
-        if($classes == null)
-            $classes = Yaml::parseFile(self::get_classes_path() . '/classes.yaml');
-        return $classes;
+        return self::get_video_config()[self::get_language_code()];
     }
 
     public static function get_file_system()
@@ -136,17 +141,9 @@ class Util
         return array_key_exists($class, self::get_classes());
     }
 
-    public static function load_videos_by_path($path)
-    {
-        $videos = null;
-        if($videos == null)
-            $videos = Yaml::parseFile($path);
-        return $videos;
-    }
-
     public static function load_videos($class)
     {
-        return self::load_videos_by_path(self::get_classes_path() . self::get_classes()[$class]['path']);
+        return self::get_classes()[$class]['chapters'];
     }
 
     public static function get_class_name($class)

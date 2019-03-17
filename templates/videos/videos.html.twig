@@ -11,7 +11,7 @@
     {% if chapters|length > 0 %}
         {% for chapter in chapters %}
         
-            <div class="chapter">
+            <div class="chapter panel panel-default">
                 
                 <div class="chapterheader" data-parentcontent="chaptercontent{{ parentcontent }}">
 
@@ -22,7 +22,7 @@
                             {{ 'video.nochaptername'|trans }}            
                         {% endif %}
                     </h{{ level }}>
-
+                    
                     <i class="fas fa-angle-down dropdownbutton"></i>
 
                 </div>
@@ -92,8 +92,8 @@
         </div>
 
         <div class="chapters">
-            {% if videos.chapters is defined %}
-                {{ this.chapter(videos.chapters, 1, 0) }}                
+            {% if videos is defined %}
+                {{ this.chapter(videos, 1, 0) }}                
             {% endif %}
         </div>
 

@@ -1,0 +1,74 @@
+de:
+  5:
+    name: "5"
+    href: "/videos/de/5"
+    curriculum: "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/5/mathematik"
+    chapters:
+      1:
+        name: "1 Natürliche und ganze Zahlen - Addition und Subtraktion"
+        chapters:
+          1:
+            name: "1.1 Ihre Erweiterung zu den ganzen Zahlen"
+            videos:
+              1:
+                name: "Natürliche und ganze Zahlen"
+                source: "/videos/de/5/1.1.1.mp4"
+              2:
+                name: "Stellenwert und Dezimalsystem"
+                source: "/videos/de/5/1.1.2.mp4"
+              3:
+                name: "Runden und Abschätzen"
+                source: "/videos/de/5/1.1.3.mp4"
+          2:
+            name: "1.2 Addition und Subtraktion ganzer Zahlen"
+            videos:
+              1:
+                name: "Addition und Subtraktion ganzer Zahlen"
+                source: "/videos/de/5/1.2.1.mp4"
+              2:
+                name: "Addition und Subtraktion ganzer Zahlen (Version 2)"
+                source: "/videos/de/5/1.2.2.mp4"
+              3:
+                name: "Rechengesetzte: Addition"
+                source: "/videos/de/5/1.2.3.mp4"
+      2:
+        name: "2 Geometrische Figuren und Lagebeziehungen"
+        chapters: []
+      3:
+        name: "3 Natürliche und ganze Zahlen - Multiplikation und Division"
+        chapters:
+          1: 
+            name: "3.1 Multiplikation und Division ganzer Zahlen"
+            videos: []
+          2:
+            name: "3.2 Verbindung der Grundrechenarten bei ganzen Zahlen"
+            videos: []
+      4:
+        name: "4 Größen und Einheiten"
+        chapters:
+          1:
+            name: "4.1 Geld Länge Masse und Zeit"
+            videos: []
+          2:
+            name: "4.2 Flächeninhalt"
+            videos:
+              1:
+                name: "Fläche und Flächeninhalt"
+                source: "/videos/de/5/4.2.1.mp4"
+              2:
+                name: "Oberflächeninhalt von Körpern"
+                source: "/videos/de/5/4.2.2.mp4"
+              3:
+                name: "Flächeninhalt von Quadrat und Rechteck"
+                source: "/videos/de/5/4.2.3.mp4"
+  6:
+    name: "6"
+    href: "/videos/de/6"
+    curriculum: "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/6/mathematik"
+    chapters: []
+  7:
+    name: "7"
+    href: "/videos/de/7"
+    curriculum: "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/7/mathematik"
+    chapters: []
+en: []

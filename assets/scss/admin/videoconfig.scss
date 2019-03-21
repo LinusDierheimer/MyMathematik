@@ -1,0 +1,59 @@
+@import "../app.scss";
+
+$border: 1px solid grey;
+
+.content{
+    .videoconfig{
+
+        h1{
+            text-align: center;
+        }
+    
+        .videofiles{
+            border-bottom: $border;
+            margin-bottom: 25px;
+    
+            .videofile{
+    
+                font-size: 15px;
+                padding: 5px 25px;
+                border: $border;
+                border-bottom: unset;
+                display: block;
+    
+                .videoname{
+                    width: 80%;
+                }
+    
+                .nameoptions{
+                    display: none;
+                }
+    
+                .videooptions{
+                    float: right;
+                }
+            }
+        }
+    
+        .configfile{
+    
+            .configoptions{
+                float: right;
+            }
+    
+            .editor{
+                width: 100%;
+                height: 2000px;
+                resize: both;
+                border: $border;
+            }
+        }
+    
+        .option{
+            margin: 5px;
+            font-size: 15px;
+            text-decoration: none;
+            color: rgb(20, 20 , 20);
+        }
+    }
+}

@@ -5,6 +5,7 @@ namespace App;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -115,12 +116,36 @@ class Util
         return self::get_workspace_path() . 'public/';
     }
 
+    public static function get_video_config_path()
+    {
+        return self::get_public_path() . 'videos/index.yaml';
+    }
+
     public static function get_video_config()
     {
         static $info = null;
         if($info == null)
-            $info = Yaml::parseFile(self::get_public_path() . 'videos/index.yaml');
+            $info = Yaml::parseFile(self::get_video_config_path());
         return $info;
+    }
+
+    public static function get_video_config_content()
+    {
+        static $content = null;
+        if($content == null)
+        {
+            $content = file_get_contents(self::get_video_config_path());
+        }
+        return $content;
+    }
+
+    public static function get_video_files()
+    {
+        return self::get_finder()
+            ->files()
+            ->in(self::get_public_path() . 'videos/')
+            ->name('*.mp4', '*.ogg')
+            ->sortByName();
     }
 
     public static function get_classes()
@@ -159,18 +184,54 @@ class Util
         return $informations;
     }
 
-    public static function get_default_class(){
+    public static function get_default_class()
+    {
         return self::get_classes()[5]['name'];
     }
 
-    public static function get_sponsors(){
+    public static function get_sponsors()
+    {
         static $sponsors = null;
         if($sponsors == null)
             $sponsors = Yaml::parseFile(self::get_workspace_path() . 'public/information/sponsors.yaml');
         return $sponsors;
     }
 
-    public static function get_globals(){
+    public static function delete_action($file)
+    {
+        return unlink(
+            self::get_public_path() . 'videos/' . $file
+        );
+    }
+
+    public static function rename_action($from, $to)
+    {
+        rename(
+            self::get_public_path() . 'videos/' . $from,
+            self::get_public_path() . 'videos/' . $to
+        );
+        return $to;
+    }
+
+    public static function doaction($query)
+    {
+        $action = $query->get("action");
+        switch($action)
+        {
+            case "rename":
+                return self::rename_action($query->get("from"), $query->get("to"));
+            case "delete":
+                return self::delete_action($query->get("file"));
+            default:
+                return [
+                    "error" => "Command not found",
+                    "query" => $query
+            ];
+        }
+    }
+    
+    public static function get_globals()
+    {
         return [
             "classes"          => self::get_classes(),
             "informations"     => self::get_informations(),

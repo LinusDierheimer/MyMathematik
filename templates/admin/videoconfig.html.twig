@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="videoconfig">
+        <h1>Video Files</h1>
+        <div class="videofiles">
+            {% for videofile in videofiles %}
+                <div class="videofile">
+                    <input class="videoname" type="text" value="{{ videofile.filename }}"/>
+                    <div class="nameoptions">
+                        <i data-file="{{ videofile.filename }}" class="dorename option fas fa-check"></i>
+                        <i class="discardrename option fas fa-undo"></i>
+                    </div>
+                    <div class="videooptions">
+                        <a target="_blank" rel="noopener noreferrer" href="/videos/{{ videofile.filename }}" class="option fas fa-eye"></a>
+                        <i data-file="{{ videofile.filename }}" class="delete option fas fa-trash-alt"></i>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <form name="videoUploadForm" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="videoUploadForm_name" class="required">Name: </label>
+                <input type="text" id="form_name" name="videoUploadForm[name]" required="required">
+            </div>
+            <div>
+                <label for="videoUploadForm_file" class="required">Video Datei: </label>
+                <input type="file" id="videoUploadForm_file" name="videoUploadForm[file]" required="required">
+            </div>
+            <div>
+                <button type="submit" id="videoUploadForm_send" name="videoUploadForm[send]">Hochladen</button>
+            </div>
+        </form>
+        <h1>Config File</h1>
+        <div class="configfile">
+            <div class="configoptions">
+                <i class="option fas fa-check"></i>
+                <i class="option fas fa-undo"></i>
+            </div>
+            <textarea class="editor">{{ content }}</textarea>
+        </div>
+    </div>
+{% endblock %}
+
+{% block css %}
+    {{ encore_entry_link_tags('videoconfig') }}
+{% endblock %}
+
+{% block js %}
+    {{ encore_entry_script_tags('videoconfig') }}
+{% endblock js %}

@@ -50,3 +50,10 @@ videos:
   nocontent: "Noch keine Kapitel für diese Klasse verfügar!"
   curriculum:
     link: "Zum Lehrplan"
+
+admin:
+  videoconfig:
+    upload:
+      name: "Name: "
+      file: "Video Datei: "
+      send: "Hochladen"

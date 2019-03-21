@@ -41,8 +41,8 @@
                         <i class="dropdown-header fas fa-video"></i>
                         <div class="dropdown-content">
                             {% if globals.classes|length > 0 %}
-                                {% for class in globals.classes %}
-                                    <a href="{{ class.href }}">
+                                {% for key, class in globals.classes %}
+                                    <a href="/videos/{{ globals.language_code }}/{{ key }}">
                                         {{ 'header.icons.classes.class'|trans }} {{ class.name }}
                                     </a>
                                 {% endfor %}
@@ -89,7 +89,7 @@
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
                         <div class="icon">
-                            <a target="_blank" rel="noopener noreferrer" href="{{ path('route_admin') }}" class="dropdown-header fas fa-cogs"></a>
+                            <a href="{{ path('route_admin') }}" class="dropdown-header fas fa-cogs"></a>
                         </div>
                     {% endif %}
                 </div>

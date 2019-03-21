@@ -62,3 +62,11 @@ route_account_logout:
 route_admin:
   path: /admin
   controller: App\Controller\AdminController::index
+
+route_admin_videoconfig:
+  path: /admin/videoconfig
+  controller: App\Controller\AdminController::videoconfig
+
+route_admin_doaction:
+  path: /admin/doaction
+  controller: App\Controller\AdminController::doaction

@@ -9,6 +9,7 @@ Encore
     .addEntry('login', './assets/js/account/login.js')
     .addEntry('register', './assets/js/account/register.js')
     .addEntry('me', './assets/js/account/me.js')
+    .addEntry('videoconfig', './assets/js/admin/videoconfig.js')
     .cleanupOutputBeforeBuild()
     .enableSingleRuntimeChunk()
     .splitEntryChunks()

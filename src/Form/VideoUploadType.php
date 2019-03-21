@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VideoUploadType extends AbstractType
@@ -17,6 +18,7 @@ class VideoUploadType extends AbstractType
             ->add('video', FileType::class, [
                 'label' => 'cookies.ok'
             ])
+            ->add('name', TextType::class)
             ->add('upload', SubmitType::class)
         ;
     }

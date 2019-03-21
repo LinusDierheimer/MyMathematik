@@ -61,6 +61,16 @@ function initAllOptions(){
     $(".videofile").each(initOptions);
 }
 
+function initResetConfig(){
+    const $editor = $(".editor");
+    const originContent = $editor.val();
+
+    $("#resetConfig").click(function(){
+        $editor.val(originContent);
+    })
+}
+
 $(document).ready(function(){
     initAllOptions();
+    initResetConfig();
 })

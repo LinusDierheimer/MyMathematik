@@ -18,26 +18,30 @@
                 </div>
             {% endfor %}
         </div>
-        <form name="videoUploadForm" method="post" enctype="multipart/form-data">
-            <div>
-                <label for="videoUploadForm_name" class="required">Name: </label>
-                <input type="text" id="form_name" name="videoUploadForm[name]" required="required">
-            </div>
-            <div>
-                <label for="videoUploadForm_file" class="required">Video Datei: </label>
-                <input type="file" id="videoUploadForm_file" name="videoUploadForm[file]" required="required">
-            </div>
-            <div>
-                <button type="submit" id="videoUploadForm_send" name="videoUploadForm[send]">Hochladen</button>
-            </div>
+        <h1>Video Hochladen</h1>
+        <form name="videoUploadForm" method="post" enctype="multipart/form-data" class="videoUploadForm">
+            <fieldset>
+                <div>
+                    <label for="videoUploadForm_name" class="required">Name: </label>
+                    <input type="text" id="form_name" name="videoUploadForm[name]" required="required">
+                </div>
+                <div>
+                    <label for="videoUploadForm_file" class="required">Video Datei: </label>
+                    <input type="file" id="videoUploadForm_file" name="videoUploadForm[file]" required="required">
+                </div>
+                <div>
+                    <button type="submit" id="videoUploadForm_send" name="videoUploadForm[send]">Hochladen</button>
+                </div>
+            </fieldset>
         </form>
         <h1>Config File</h1>
-        <div class="configfile">
+        <form  name="configFileForm" class="configfile" method="post" enctype="multipart/form-data">
             <div class="configoptions">
-                <i class="option fas fa-check"></i>
-                <i class="option fas fa-undo"></i>
+                <button id="resetConfig" type="button">Zurücksetzten</button>
+                <button type="submit">Hochladen</button>
             </div>
-            <textarea class="editor">{{ content }}</textarea>
+            <textarea name="configFileForm[text]" class="editor">{{ content }}</textarea>
+        </form>
         </div>
     </div>
 {% endblock %}

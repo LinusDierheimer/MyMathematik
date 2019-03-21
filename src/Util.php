@@ -3,6 +3,7 @@
 namespace App;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -31,7 +32,14 @@ class Util
     {
         static $request = null;
         if($request == null)
-            $request = Request::createFromGlobals();
+            $request = new Request(
+                $_GET,
+                $_POST,
+                [],
+                $_COOKIE,
+                $_FILES,
+                $_SERVER
+            );
 
         return $request;
     }
@@ -40,7 +48,7 @@ class Util
     {
         static $cookies = null;
         if($cookies == null)
-            $cookies = self::get_request()->cookies;
+            $cookies = new ParameterBag($_COOKIE);
         return $cookies;
     }
 

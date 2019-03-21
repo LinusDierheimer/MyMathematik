@@ -29,13 +29,22 @@ class AdminController extends AbstractController
     public function videoconfig(Request $request)
     {
 
-        if($request->files->count())
+        if($request->request->has("videoUploadForm"))
         {   
             $request->files->get("videoUploadForm")["file"]->move(
                 $this->getParameter("videos_directory"),
                 $request->request->get("videoUploadForm")["name"]
             );
-            $request->files->remove("videoUploadForm");
+            return $this->redirectToRoute("route_admin_videoconfig"); //reset POST request and load page ith GET
+        }
+
+        if($request->request->has("configFileForm"))
+        {
+            file_put_contents(
+                $this->getParameter("videos_directory") . "/index.yaml",
+                $request->request->get("configFileForm")["text"]
+
+            );
             return $this->redirectToRoute("route_admin_videoconfig"); //reset POST request and load page ith GET
         }
 

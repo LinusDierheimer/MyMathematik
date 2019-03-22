@@ -1,1 +1,9 @@
-@import "../app.scss"
+@import "../app.scss";
+
+.content {
+    .account {
+        a {
+            display: block;
+        }
+    }
+}

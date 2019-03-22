@@ -1,7 +1,22 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    MyAccount
+    <div class="account">
+        {% if app.user == null %}
+        You are not loged in!
+        <a href="{{ path('route_account_login') }}">
+            Login
+        </a>
+        <a href="{{ path('route_account_register') }}">
+            Register
+        </a>
+    {% else %}
+        You are logged in as {{ app.user.email }}
+        <a href="{{ path('route_account_logout') }}">
+            Logout
+        </a>
+    {% endif %}
+    </div>
 {% endblock %}
 
 {% block css %}

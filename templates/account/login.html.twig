@@ -31,7 +31,7 @@
     
                 {# See https://symfony.com/doc/current/security/remember_me.html #}
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="dropdownCheck" name="_remember_me">
+                    <input type="checkbox" class="form-check-input" id="dropdownCheck" name="_remember_me" checked>
                     <label class="form-check-label" for="dropdownCheck">
                         Remember me
                     </label>
@@ -45,7 +45,7 @@
     
             <div class="dropdown-divider"></div>
     
-            <a class="dropdown-item" href="#">New around here? Sign up</a>
+            <a class="dropdown-item" href="{{ path('route_account_register') }}">New around here? Sign up</a>
             <a class="dropdown-item" href="#">Forgot password?</a>
         </div>
     </form>

@@ -51,6 +51,11 @@ class Util
         return Yaml::parseFile($path, $flags);
     }
 
+    public static function load_file_content($path)
+    {
+        return \file_get_contents($path);
+    }
+
     /***********/
     /* Service */
     /***********/
@@ -107,9 +112,22 @@ class Util
         return $this->languages;
     }
 
+    public function get_languages_content()
+    {
+        return self::load_file_content($this->get_parameter('languages_file'));
+    }
+
     public function get_language()
     {
        return $this->get_languages()[$this->get_language_code()];
+    }
+
+    public function get_all_translations_content()
+    {
+        $content = [];
+        foreach($this->get_languages() as $language)
+            $content[$language['code']] = self::load_file_content($this->get_parameter('translations_directory') . $language['file']);
+        return $content;
     }
 
     public function get_translations()
@@ -137,7 +155,7 @@ class Util
 
     public function get_video_config_content()
     {
-        return file_get_contents($this->get_parameter('video_config_file'));
+        return self::load_file_content($this->get_parameter('video_config_file'));
     }
 
     public function get_video_files()
@@ -145,7 +163,7 @@ class Util
         return self::get_finder()
             ->files()
             ->in($this->get_parameter('videos_directory'))
-            ->name('*.mp4', '*.ogg')
+            ->name('*mp4*', '*ogg*', '*video*')
             ->sortByName();
     }
 

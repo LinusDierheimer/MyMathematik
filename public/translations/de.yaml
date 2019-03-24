@@ -28,6 +28,9 @@ cookies:
   ok: "ok"
 
 home:
+  preview:
+    welcome: "Willkommen zu MyMathematik"
+    start: "Los gehts"
   welcome:
     start: "Willkommen zu MyMathematik"
     school: ""

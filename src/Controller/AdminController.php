@@ -58,7 +58,9 @@ class AdminController extends AbstractController
     public function languageconfig(Util $util)
     {
         return $this->render('admin/languageconfig.html.twig', [
-            'globals' => $util->get_globals()
+            'globals' => $util->get_globals(),
+            'languages_content' => $util->get_languages_content(),
+            'all_translations_content' => $util->get_all_translations_content()
         ]);
     }
 

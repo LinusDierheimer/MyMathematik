@@ -1,5 +1,27 @@
 @import "../app.scss";
 
+.preview {
+
+    position: relative;
+    display: block;
+
+    .mainimage {
+        width: 100%;
+    }
+    
+    .welcome {
+        top: -300px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+
+        .text {
+            text-decoration: underline;
+        }
+
+    }
+}
+
 .content{
     .home{
         .welcome {

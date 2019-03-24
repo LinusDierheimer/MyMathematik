@@ -1,7 +1,29 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    Hallo
+    <div class="languageconfig">
+        <h1>Languages File</h1>
+        <form  name="languagesFileForm" class="configfile" method="post" enctype="multipart/form-data">
+            <div class="configoptions">
+                <button id="resetConfig" type="button">Zurücksetzten</button>
+                <button type="submit">Hochladen</button>
+            </div>
+            <textarea name="languagesFileForm[text]" class="editor">{{ languages_content }}</textarea>
+        </form>
+        <h1>Translation Files</h1>
+        <div class="translations">
+            {% for name, content in all_translations_content %}
+                <h1>Translation File {{ name }}</h1>
+                <form  name="translations{{ name }}FileForm" class="configfile" method="post" enctype="multipart/form-data">
+                    <div class="configoptions">
+                        <button id="resetConfig" type="button">Zurücksetzten</button>
+                        <button type="submit">Hochladen</button>
+                    </div>
+                    <textarea name="translations{{ name }}FileForm" class="editor">{{ content }}</textarea>
+                </form>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block css %}

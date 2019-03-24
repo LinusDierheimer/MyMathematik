@@ -90,6 +90,14 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <div class="icon">
                             <a href="{{ path('route_admin') }}" class="dropdown-header fas fa-cogs"></a>
+                            <div class="dropdown-content">
+                                <a href="{{ path('route_admin_videoconfig') }}">
+                                    Videoconfig
+                                </a>
+                                <a href="{{ path('route_admin_languageconfig') }}">
+                                    Languageconfig
+                                </a>
+                            </div>
                         </div>
                     {% endif %}
                 </div>

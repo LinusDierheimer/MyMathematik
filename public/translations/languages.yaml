@@ -1,9 +1,9 @@
 de:
   name: "Deutsch"
   code: "de"
-  file: "public/translations/de.yaml"
+  file: "de.yaml"
 
 en:
   name: "English"
   code: "en"
-  file: "public/translations/en.yaml"
+  file: "en.yaml"

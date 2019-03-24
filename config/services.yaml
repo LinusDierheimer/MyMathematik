@@ -6,8 +6,20 @@
 parameters:
     locale: 'de'
     ga_tracking: 'UA-134811098-1'
-    videos_directory: '%kernel.project_dir%/public/videos'
-    translations_directory: '%kernel.project_dir%/public/translations'
+
+    workspace_directory: '%kernel.project_dir%/'
+
+    public_directory: '%workspace_directory%public/'
+
+    videos_directory: '%public_directory%videos/'
+    video_config_file: '%videos_directory%index.yaml'
+
+    translations_directory: '%public_directory%translations/'
+    languages_file: '%translations_directory%languages.yaml'
+
+    informations_directory: '%public_directory%information/'
+    information_file: '%informations_directory%/information.yaml'
+    sponsors_file: '%informations_directory%sponsors.yaml'
 
 services:
     # default configuration for services in *this* file

@@ -10,6 +10,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * 
@@ -50,10 +51,22 @@ class Util
     /***********/
 
     protected $requestStack;
+    protected $container;
 
-    public function __construct(RequestStack $rs)
+    public function __construct(RequestStack $rs, ContainerInterface $ci)
     {
         $this->requestStack = $rs;
+        $this->container = $ci;
+    }
+
+    public function get_container()
+    {
+        return $this->container;
+    }
+
+    public function get_parameter($name)
+    {
+        return $this->get_container()->getParameter($name);
     }
 
     public function load_yaml_file($path, int $flags = 0)
@@ -63,7 +76,7 @@ class Util
 
     public function get_workspace_path()
     {
-        return __DIR__ . '/../';
+        return $this->get_parameter('workspace_directory');
     }
 
     public function get_request_stack()
@@ -93,7 +106,7 @@ class Util
 
     public function get_languages()
     {
-        return $this->load_yaml_file($this->get_workspace_path() . "public/translations/languages.yaml");
+        return $this->load_yaml_file($this->get_parameter('languages_file'));
     }
 
     public function get_language()
@@ -103,7 +116,7 @@ class Util
 
     public function get_translations()
     {
-        return $this->load_yaml_file($this->get_workspace_path() . $this->get_language()['file']);
+        return $this->load_yaml_file($this->get_parameter('translations_directory') . $this->get_language()['file']);
     }
 
     public function trans($key)
@@ -122,7 +135,7 @@ class Util
 
     public function get_video_config_path()
     {
-        return $this->get_public_path() . 'videos/index.yaml';
+        return $this->get_parameter('video_config_file');
     }
 
     public function get_video_config()
@@ -139,7 +152,7 @@ class Util
     {
         return self::get_finder()
             ->files()
-            ->in($this->get_public_path() . 'videos/')
+            ->in($this->get_parameter('videos_directory'))
             ->name('*.mp4', '*.ogg')
             ->sortByName();
     }
@@ -171,7 +184,7 @@ class Util
 
     public function get_informations()
     {
-        return $this->load_yaml_file($this->get_public_path() . 'information/information.yaml');
+        return $this->load_yaml_file($this->get_parameter('information_file'));
     }
 
     public function get_default_class()
@@ -181,21 +194,21 @@ class Util
 
     public function get_sponsors()
     {
-        return $this->load_yaml_file($this->get_public_path() . 'information/sponsors.yaml');
+        return $this->load_yaml_file($this->get_parameter('sponsors_file'));
     }
 
     public function delete_action($file)
     {
         return unlink(
-            $this->get_public_path() . 'videos/' . $file
+            $this->get_parameter('videos_directory') . $file
         );
     }
 
     public function rename_action($from, $to)
     {
         rename(
-            $this->get_public_path() . 'videos/' . $from,
-            $this->get_public_path() . 'videos/' . $to
+            $this->get_parameter('videos_directory') . $from,
+            $this->get_parameter('videos_directory') . $to
         );
         return $to;
     }

@@ -12,17 +12,21 @@
     `git clone https://github.com/Steinschnueffler/MyMathematik.git`  
 2. In den Projektordner navigieren:  
     `cd MyMathematik/`  
-3. Die Projektabhängigkeiten installieren (Muss bei neuen Abhängigkeiten auch während der Entwicklung wiederhohlt werden):  
+3. .env.local erstellen und folgendes Eintragen:  
+    `APP_ENV=` #here dev or prod  
+    `APP_SECRET=` #here any app secret, for example 3ed8e27d1e5129d918e8bd2b62a0e40f  
+    `DATABASE_URL=` #database connection: schema://user:password@ip:port/name, see point 5. example: mysql://standard:Pa44w0rd@127.0.0.1:3306/mymathematik  
+4. Die Projektabhängigkeiten installieren (Muss bei neuen Abhängigkeiten auch während der Entwicklung wiederhohlt werden):  
     `composer self-update`  
     `composer install`  
     `composer update`
-4. Den Sql Server einrichten und einen Benutzernamen und Passwort in .env oder .env.local eintragen, dann  
+5. Den Sql Server einrichten und einen Benutzernamen und Passwort in .env.local eintragen, dann  
     `php bin/console doctrine:database:create`  
     `php bin/console make:migration`  
     `php bin/console doctrine:migrations:migrate`
     Siehe Anleitung [hier](https://symfony.com/doc/current/doctrine.html)
 
-5. Die Frontend Abhängigkeiten installieren  
+6. Die Frontend Abhängigkeiten installieren  
     `npm install`
 
 ## Benützen des Projektes:

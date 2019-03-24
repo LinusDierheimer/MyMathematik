@@ -46,12 +46,23 @@ class Util
         return $filesystem;
     }
 
+    public static function load_yaml_file($path, int $flags = 0)
+    {
+        return Yaml::parseFile($path, $flags);
+    }
+
     /***********/
     /* Service */
     /***********/
 
     protected $requestStack;
     protected $container;
+
+    protected $videoconfig;
+    protected $languages;
+    protected $translations;
+    protected $informations;
+    protected $sponsors;
 
     public function __construct(RequestStack $rs, ContainerInterface $ci)
     {
@@ -69,16 +80,6 @@ class Util
         return $this->get_container()->getParameter($name);
     }
 
-    public function load_yaml_file($path, int $flags = 0)
-    {
-        return Yaml::parseFile($path, $flags);
-    }
-
-    public function get_workspace_path()
-    {
-        return $this->get_parameter('workspace_directory');
-    }
-
     public function get_request_stack()
     {
         return $this->requestStack;
@@ -94,19 +95,16 @@ class Util
         return $this->get_request()->cookies;
     }
 
-    public function has_cookie($name)
-    {
-        return $this->get_cookies()->has($name);
-    }
-
     public function get_language_code()
     {
-        return $this->get_cookies()->get('language') ?: 'de';
+        return $this->get_cookies()->get('language') ?: $this->get_parameter('default_locale');
     }
 
     public function get_languages()
     {
-        return $this->load_yaml_file($this->get_parameter('languages_file'));
+        if($this->languages == null)
+            $this->languages = self::load_yaml_file($this->get_parameter('languages_file'));
+        return $this->languages;
     }
 
     public function get_language()
@@ -116,7 +114,9 @@ class Util
 
     public function get_translations()
     {
-        return $this->load_yaml_file($this->get_parameter('translations_directory') . $this->get_language()['file']);
+        if($this->translations == null)
+            $this->translations = self::load_yaml_file($this->get_parameter('translations_directory') . $this->get_language()['file']);
+        return $this->translations;
     }
 
     public function trans($key)
@@ -128,24 +128,16 @@ class Util
         }
     }
 
-    public function get_public_path()
-    {
-        return $this->get_workspace_path() . 'public/';
-    }
-
-    public function get_video_config_path()
-    {
-        return $this->get_parameter('video_config_file');
-    }
-
     public function get_video_config()
     {
-        return $this->load_yaml_file($this->get_video_config_path());
+        if($this->videoconfig == null)
+            $this->videoconfig = self::load_yaml_file($this->get_parameter('video_config_file'));
+        return $this->videoconfig;
     }
 
     public function get_video_config_content()
     {
-        return file_get_contents($this->get_video_config_path());
+        return file_get_contents($this->get_parameter('video_config_file'));
     }
 
     public function get_video_files()
@@ -172,29 +164,28 @@ class Util
         return $this->get_classes()[$class];
     }
 
-    public function load_videos($class)
+    public function get_videos($class)
     {
         return $this->get_class($class)['chapters'];
     }
 
-    public function get_class_name($class)
-    {
-        return $this->get_class($class)['name'];
-    }
-
     public function get_informations()
     {
-        return $this->load_yaml_file($this->get_parameter('information_file'));
+        if($this->informations == null)
+            $this->informations = self::load_yaml_file($this->get_parameter('information_file'));
+        return $this->informations;
     }
 
     public function get_default_class()
     {
-        return self::get_classes()[5]['name'];
+        return $this->get_classes()[$this->get_parameter('default_class')]['name'];
     }
 
     public function get_sponsors()
     {
-        return $this->load_yaml_file($this->get_parameter('sponsors_file'));
+        if($this->sponsors == null)
+            $this->sponsors = self::load_yaml_file($this->get_parameter('sponsors_file'));
+        return $this->sponsors;
     }
 
     public function delete_action($file)

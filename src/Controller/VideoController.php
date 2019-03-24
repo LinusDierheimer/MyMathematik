@@ -36,7 +36,7 @@ class VideoController extends AbstractController
         return $this->render('videos/videos.html.twig', [
             'globals' => $util->get_globals(),
             'class' => $class,
-            'videos' => $util->load_videos($class)
+            'videos' => $util->get_videos($class)
         ]);
     }
 }

@@ -21,6 +21,9 @@ parameters:
     information_file: '%informations_directory%/information.yaml'
     sponsors_file: '%informations_directory%sponsors.yaml'
 
+    default_class: '5'
+    default_locale: '%locale%'
+
 services:
     # default configuration for services in *this* file
     _defaults:

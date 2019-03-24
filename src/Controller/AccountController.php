@@ -37,14 +37,15 @@ class AccountController extends AbstractController
         return $this->redirectToRoute('route_account_logout');
     }
 
-    public function me()
+    public function me(Util $util)
     {
         return $this->render('account/account.html.twig', [
-            'globals' => Util::get_globals()
+            'globals' => $util->get_globals()
         ]);
     }
 
     public function register(
+        Util $util,
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
         GuardAuthenticatorHandler $guardHandler,
@@ -79,18 +80,18 @@ class AccountController extends AbstractController
         }
 
         return $this->render('account/register.html.twig', [
-            'globals' => Util::get_globals(),
+            'globals' => $util->get_globals(),
             'registrationForm' => $form->createView(),
         ]);
     }
 
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(Util $util, AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('account/login.html.twig', [
-            'globals' => Util::get_globals(),
+            'globals' => $util->get_globals(),
             'last_username' => $lastUsername,
             'error' => $error
         ]);

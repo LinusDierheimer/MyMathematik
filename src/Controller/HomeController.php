@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-    public function index()
+    public function index(Util $util)
     {
         return $this->render('home/home.html.twig', [
-            'globals' => Util::get_globals()
+            'globals' => $util->get_globals()
         ]);
     }
 }

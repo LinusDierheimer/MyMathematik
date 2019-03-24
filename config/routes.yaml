@@ -67,6 +67,10 @@ route_admin_videoconfig:
   path: /admin/videoconfig
   controller: App\Controller\AdminController::videoconfig
 
+route_admin_languageconfig:
+  path: /admin/languageconfig
+  controller: App\Controller\AdminController::languageconfig
+
 route_admin_doaction:
   path: /admin/doaction
   controller: App\Controller\AdminController::doaction

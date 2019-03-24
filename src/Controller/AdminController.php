@@ -19,14 +19,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  */
 class AdminController extends AbstractController
 {
-    public function index(Request $request)
+    public function index(Util $util, Request $request)
     {
         return $this->render('admin/admin.html.twig', [
-            'globals' => Util::get_globals()
+            'globals' => $util->get_globals()
         ]);
     }
 
-    public function videoconfig(Request $request)
+    public function videoconfig(Util $util, Request $request)
     {
 
         if($request->request->has("videoUploadForm"))
@@ -49,15 +49,22 @@ class AdminController extends AbstractController
         }
 
         return $this->render('admin/videoconfig.html.twig', [
-            'globals' => Util::get_globals(),
-            'content' => Util::get_video_config_content(),
-            'videofiles' => Util::get_video_files(),
+            'globals' => $util->get_globals(),
+            'content' => $util->get_video_config_content(),
+            'videofiles' => $util->get_video_files(),
         ]);
     }
 
-    public function doaction(Request $request)
+    public function languageconfig(Util $util)
     {
-        return $this->json(Util::doaction($request->query));
+        return $this->render('admin/languageconfig.html.twig', [
+            'globals' => $util->get_globals()
+        ]);
+    }
+
+    public function doaction(util $util, Request $request)
+    {
+        return $this->json($util->doaction($request->query));
     }
 
 }

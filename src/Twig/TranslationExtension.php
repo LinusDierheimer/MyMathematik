@@ -9,6 +9,14 @@ use Twig\TwigFilter;
 
 class TranslationExtension extends AbstractExtension
 {
+
+    protected $util;
+
+    public function __construct(Util $util)
+    {
+        $this->util = $util;
+    }
+
     public function getFilters()
     {
         return [
@@ -18,6 +26,6 @@ class TranslationExtension extends AbstractExtension
 
     public function trans($key)
     {
-        return Util::trans($key);
+        return $this->util->trans($key);
     }
 }

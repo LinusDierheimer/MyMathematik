@@ -9,34 +9,34 @@ use App\Util;
 class VideoController extends AbstractController
 {
 
-    public function redirect_with_language($class)
+    public function redirect_with_language(Util $util, $class)
     {
         return $this->redirectToRoute('route_videos', [
-            'language' => Util::get_language_code(),
+            'language' => $util->get_language_code(),
             'class' => $class
         ]);
     }
 
-    public function redirect_with_class($language)
+    public function redirect_with_class(Util $util, $language)
     {
         return $this->redirectToRoute('route_videos', [
             'language' => $language,
-            'class' => Util::get_default_class()
+            'class' => $util->get_default_class()
         ]);
     }
 
-    public function index($language, $class)
+    public function index(Util $util, $language, $class)
     {
 
-        if(!Util::class_exist($class))
+        if(!$util->class_exist($class))
             return $this->render('videos/videos404.html.twig', [
-                'globals' => Util::get_globals()
+                'globals' => $util->get_globals()
             ]);
 
         return $this->render('videos/videos.html.twig', [
-            'globals' => Util::get_globals(),
+            'globals' => $util->get_globals(),
             'class' => $class,
-            'videos' => Util::load_videos($class)
+            'videos' => $util->load_videos($class)
         ]);
     }
 }

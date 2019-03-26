@@ -1,21 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block fullcontent %}
-    <div class="preview">
-        <img class="mainimage" src="/assets/Startseite.jpg" />
-        <div class="welcome">
-            <h1 class="text">
-                {{ 'home.preview.welcome'|trans }}
-            </h1>
-            <div class="start">
-                {{ 'home.preview.start'|trans }}
-            </div>
-        </div>
-    </div>
-
-    {{ parent() }} {# Calls block content inside content div #}
-{% endblock %}
-
 {% block content %}
 
     <div class="home">

@@ -7,6 +7,9 @@ parameters:
     locale: 'de'
     ga_tracking: 'UA-134811098-1'
 
+    favicon_svg: '/assets/Taschenrechner.svg'
+    favicon_png: '/assets/Taschenrechner.png'
+
     workspace_directory: '%kernel.project_dir%/'
 
     public_directory: '%workspace_directory%public/'

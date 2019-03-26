@@ -3,6 +3,11 @@
     <head>
         <meta charset="UTF-8">
 
+        <link rel="shortcut icon" type="image/png" href="{{ favicon_png }}" sizes="any"> 
+            {# Blink based Browsers don't support svg yet, so there might be quality loss on them.
+               See https://bugs.chromium.org/p/chromium/issues/detail?id=294179 #}
+        <link rel="shortcut icon" type="image/svg+xml" href="{{ favicon_svg }}" sizes="any">
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
         <script>

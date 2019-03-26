@@ -4,3 +4,5 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         ga_tracking: '%ga_tracking%'
+        favicon_png: '%favicon_png%'
+        favicon_svg: '%favicon_svg%'

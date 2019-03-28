@@ -10,7 +10,7 @@ class HomeController extends AbstractController
 {
     public function index(Util $util)
     {
-        return $this->render('home/home.html.twig', [
+        return $this->render('site/home/home.html.twig', [
             'globals' => $util->get_globals()
         ]);
     }

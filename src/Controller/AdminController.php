@@ -21,7 +21,7 @@ class AdminController extends AbstractController
 {
     public function index(Util $util, Request $request)
     {
-        return $this->render('admin/admin.html.twig', [
+        return $this->render('site/admin/admin.html.twig', [
             'globals' => $util->get_globals()
         ]);
     }
@@ -48,7 +48,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute("route_admin_videoconfig"); //reset POST request and load page ith GET
         }
 
-        return $this->render('admin/videoconfig.html.twig', [
+        return $this->render('site/admin/videoconfig.html.twig', [
             'globals' => $util->get_globals(),
             'content' => $util->get_video_config_content(),
             'videofiles' => $util->get_video_files(),
@@ -57,7 +57,7 @@ class AdminController extends AbstractController
 
     public function languageconfig(Util $util)
     {
-        return $this->render('admin/languageconfig.html.twig', [
+        return $this->render('site/admin/languageconfig.html.twig', [
             'globals' => $util->get_globals(),
             'languages_content' => $util->get_languages_content(),
             'all_translations_content' => $util->get_all_translations_content()

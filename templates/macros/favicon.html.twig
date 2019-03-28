@@ -1,0 +1,17 @@
+{% macro favicon(path, extensions, sizes="") %}
+    
+    {% for extension in extensions %}
+        {% if extension == "png" or extensions == "image/png" %}
+            <link rel="shortcut icon" type="image/png" href="{{ path }}.png" {{ sizes == "" ? "" : ', sizes="' ~ sizes ~ '"' }}>
+        {% elseif extension == "svg" or extensions == "image/svg+xml" %}
+            <link rel="shortcut icon" type="image/svg+xml" href="{{ path }}.svg" {{ sizes == "" ? 'sizes="any"' : ', sizes="' ~ sizes ~ '"' }}>
+        {% elseif extension == "ico" or extensions == "image/x-icon" %}
+            <link rel="shortcut icon" type="image/x-icon" href="{{ path }}.png">
+        {% elseif extension == "gif" or extension == "image/gif" %}
+            <link rel="shortcut icon" type="image/gif" href="{{ path }}.png" {{ sizes == "" ? "" : ', sizes="' ~ sizes ~ '"' }}>
+        {% else %}
+            <link rel="shortcut icon" type="{{ extension }}"  href="{{ path }}.png" {{ sizes == "" ? "" : ', sizes="' ~ sizes ~ '"' }}>
+        {% endif %}
+    {% endfor %}
+
+{% endmacro %}

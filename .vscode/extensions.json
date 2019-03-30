@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "bajdzis.vscode-twig-pack",
+        "felixfbecker.php-intellisense",
+        "editorconfig.editorconfig",
+        "mikestead.dotenv",
+        "cssho.vscode-svgviewer",
+        "mrmlnc.vscode-apache",
+        "msjsdiag.debugger-for-chrome"
+    ]
+}

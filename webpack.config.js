@@ -16,9 +16,17 @@ Encore
     .addEntry('impressum', './assets/js/information/impressum.js')
     .addEntry('sponsors', './assets/js/information/sponsors.js')
     .cleanupOutputBeforeBuild()
-    .disableSingleRuntimeChunk()
     .enableSassLoader()
     .autoProvidejQuery()
+
+    if(Encore.isProduction()){
+        Encore
+            .disableSingleRuntimeChunk()
+    }else {
+        Encore
+            .enableSingleRuntimeChunk()
+            .splitEntryChunks()
+    }
 ;
 
 module.exports = Encore.getWebpackConfig();

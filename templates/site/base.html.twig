@@ -27,7 +27,7 @@
         </title>
 
         {% block css %}
-            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('base') }}
         {% endblock %}
 
     </head>
@@ -41,8 +41,8 @@
 
                 <div class="icons">
                     <div class="icon">
-                        <i class="dropdown-header fas fa-video"></i>
-                        <div class="dropdown-content">
+                        <i class="dropdownheader fas fa-video"></i>
+                        <div class="dropdowncontent">
                             {% if globals.classes|length > 0 %}
                                 {% for key, class in globals.classes %}
                                     <a href="/videos/{{ globals.language_code }}/{{ key }}">
@@ -57,8 +57,8 @@
                         </div>
                     </div>
                     <div class="icon">
-                        <a href="{{ path('route_account_me') }}" class="dropdown-header {{ app.user == null ? 'far' : 'fas' }} fa-user"></a>
-                        <div class="dropdown-content">
+                        <a href="{{ path('route_account_me') }}" class="dropdownheader {{ app.user == null ? 'far' : 'fas' }} fa-user"></a>
+                        <div class="dropdowncontent">
                             <a href="{{ path('route_account_me') }}">
                                 {{ 'header.icons.account.me'|trans }}
                             </a>
@@ -80,8 +80,8 @@
                         </div>
                     </div>
                     <div class="icon">
-                        <i class="dropdown-header fas fa-language"></i>
-                        <div class="dropdown-content">
+                        <i class="dropdownheader fas fa-language"></i>
+                        <div class="dropdowncontent">
                             {% for language in globals.languages %}
                                 <a class="languageswitcher" data-language="{{ language.code }}" href="">
                                     <i class="far {{ globals.current_language == language ? 'fa-check-circle' : 'fa-circle' }}"></i>
@@ -92,8 +92,8 @@
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
                         <div class="icon">
-                            <a href="{{ path('route_admin') }}" class="dropdown-header fas fa-cogs"></a>
-                            <div class="dropdown-content">
+                            <a href="{{ path('route_admin') }}" class="dropdownheader fas fa-cogs"></a>
+                            <div class="dropdowncontent">
                                 <a href="{{ path('route_admin_videoconfig') }}">
                                     Videoconfig
                                 </a>
@@ -148,7 +148,7 @@
         {% endblock %}
 
         {% block js %}
-            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('base') }}
         {% endblock %}
     </body>
 </html>

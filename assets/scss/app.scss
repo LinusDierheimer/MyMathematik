@@ -2,6 +2,7 @@
 @import "~@fortawesome/fontawesome-free/css/all";
 
 $mainColor: rgb(214, 80, 80);
+$backgroundColor: rgb(25, 25, 25);
 
 body {
     margin: 0;
@@ -10,17 +11,18 @@ body {
 
 .header {
 
-    background-color: #000;
+    background-color: $backgroundColor;
     opacity: .96;
     width: 100%;
-    z-index: 9999;
+    z-index: 20;
     position: fixed;
     top: 0;
-    height: 57px;
+    padding: 0;
+    box-shadow: 0 0 5px $backgroundColor;
 
     .title {
         margin: 0;
-        padding: 4px 0 10px 50px;
+        padding: 0px 50px;
         font-size: 38px;
         font-weight: 500;
         display: inline-block;
@@ -32,7 +34,7 @@ body {
         margin-left: 20px;
         color: whitesmoke;
         float: right;
-        overflow: hidden;
+        height: 100%;
 
         .icon {
             display: inline-block;
@@ -40,17 +42,19 @@ body {
 
             $hoverColor: rgb(50, 50, 50);
 
-            .dropdown-header{
-                padding: 16px;
+            .dropdownheader{
+                height: 100%;
+                width: 100%;
                 font-size: 25px;
                 color: whitesmoke;
                 text-decoration: none;
+                padding: 0.7em;
             }
 
-            .dropdown-content {
+            .dropdowncontent {
                 position: absolute;
                 display: none;
-                z-index: 1;
+                z-index: 21;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 min-width: 275px;
                 background-color: $hoverColor;
@@ -77,11 +81,11 @@ body {
             &:hover{
                 background-color: $hoverColor;
     
-                .dropdown-header{
+                .dropdownheader{
                     color: $mainColor;
                 }
 
-                .dropdown-content{
+                .dropdowncontent{
                     display: block;
                 }
             }
@@ -90,7 +94,7 @@ body {
 }
 
 .footer {
-    background-color: #000;
+    background-color: $backgroundColor;
     width: 100%;
     position: relative;
     bottom: 0;

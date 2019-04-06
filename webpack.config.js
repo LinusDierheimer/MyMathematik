@@ -3,7 +3,7 @@ var Encore = require('@symfony/webpack-encore');
 Encore
     .setOutputPath('public/build')
     .setPublicPath('/build')
-    .addEntry('app', './assets/js/app.js')
+    .addEntry('base', './assets/js/app.js')
     .addEntry('home', './assets/js/home/home.js')
     .addEntry('videos', './assets/js/videos/videos.js')
     .addEntry('login', './assets/js/account/login.js')
@@ -18,15 +18,7 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSassLoader()
     .autoProvidejQuery()
-
-    if(Encore.isProduction()){
-        Encore
-            .disableSingleRuntimeChunk()
-    }else {
-        Encore
-            .enableSingleRuntimeChunk()
-            .splitEntryChunks()
-    }
+    .disableSingleRuntimeChunk()
 ;
 
 module.exports = Encore.getWebpackConfig();

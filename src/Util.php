@@ -5,6 +5,8 @@ namespace App;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\ParameterBag;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -95,14 +97,10 @@ class Util
         return $this->get_request_stack()->getCurrentRequest();
     }
 
-    public function get_cookies()
+    public function get_cookies($request = null)
     {
-        return $this->get_request()->cookies;
-    }
-
-    public function get_language_code()
-    {
-        return $this->get_cookies()->get('language') ?: $this->get_parameter('default_locale');
+        $request = $request ?: $this->get_request();
+        return $request->cookies;
     }
 
     public function get_languages()
@@ -110,6 +108,21 @@ class Util
         if($this->languages == null)
             $this->languages = self::load_yaml_file($this->get_parameter('languages_file'));
         return $this->languages;
+    }
+
+    public function get_language_code()
+    {
+        $request = $this->get_request();
+
+        $locale = 
+            $this->get_cookies($request)->get('language') ?:
+                $request->getLocale();
+
+        if(\array_key_exists($locale, $this->get_languages()))
+            return $locale;
+
+        return $this->get_parameter('default_locale');
+
     }
 
     public function get_languages_content()

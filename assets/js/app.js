@@ -27,11 +27,6 @@ function initScrollUp(){
     });
 }
 
-function initLanguageCookie(){
-    if(!document.cookie.includes("language"))
-        document.cookie = "language=de; path=/";
-}
-
 function initLanguageSwitcher(){
     $(".languageswitcher").click(function(){
         document.cookie = "language=" + $(this).data("language") + "; path=/";
@@ -39,8 +34,13 @@ function initLanguageSwitcher(){
     });
 }
 
+function initLanguageCookie(){
+    const language = $('#language_code').val();
+    document.cookie = "language=" + language + "; path=/";
+}
+
 function initLanguage(){
-    initLanguageCookie();
+    initLanguageCookie()
     initLanguageSwitcher();
 }
 

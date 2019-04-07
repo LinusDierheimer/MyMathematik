@@ -6,6 +6,7 @@
         "mikestead.dotenv",
         "cssho.vscode-svgviewer",
         "mrmlnc.vscode-apache",
-        "msjsdiag.debugger-for-chrome"
+        "msjsdiag.debugger-for-chrome",
+        "waderyan.gitblame"
     ]
 }

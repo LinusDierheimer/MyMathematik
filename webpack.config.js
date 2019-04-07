@@ -1,7 +1,7 @@
 var Encore = require('@symfony/webpack-encore');
 
 Encore
-    .setOutputPath('public/build')
+    .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addEntry('base', './assets/js/app.js')
     .addEntry('home', './assets/js/home/home.js')
@@ -15,6 +15,14 @@ Encore
     .addEntry('cookies', './assets/js/information/cookies.js')
     .addEntry('impressum', './assets/js/information/impressum.js')
     .addEntry('sponsors', './assets/js/information/sponsors.js')
+    .copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[ext]'
+    })
+    .copyFiles({
+        from: './assets/videos',
+        to: 'videos/[path][name].[ext]'
+    })
     .cleanupOutputBeforeBuild()
     .enableSassLoader()
     .autoProvidejQuery()

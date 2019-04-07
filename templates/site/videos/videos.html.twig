@@ -49,8 +49,9 @@
                                     </div>
 
                                     <video controls>
-                                        <source src="/videos/{{ video.source }}" type="video/mp4"></source>
-                                        <source src="/videos/{{ video.source }}" type="video/ogg"></source>
+                                        {% set src = asset('build/videos/' ~ video.source) %}
+                                        <source src="{{ src }}" type="video/mp4"></source>
+                                        <source src="{{ src }}" type="video/ogg"></source>
                                         {{ 'videos.notsupported'|trans }}
                                     </video> 
 

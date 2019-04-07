@@ -7,21 +7,19 @@ parameters:
     locale: 'de'
     ga_tracking: 'UA-134811098-1'
 
-    favicon: '/assets/Taschenrechner'
+    favicon: 'build/images/Taschenrechner'
 
     workspace_directory: '%kernel.project_dir%/'
-
+    config_directory: '%workspace_directory%config/'
     public_directory: '%workspace_directory%public/'
+    translations_directory: '%workspace_directory%translations/'
+    assets_directory: '%workspace_directory%assets/'
+    videos_directory: '%assets_directory%videos/'
 
-    videos_directory: '%public_directory%videos/'
-    video_config_file: '%videos_directory%index.yaml'
-
-    translations_directory: '%public_directory%translations/'
-    languages_file: '%translations_directory%languages.yaml'
-
-    informations_directory: '%public_directory%information/'
-    information_file: '%informations_directory%/information.yaml'
-    sponsors_file: '%informations_directory%sponsors.yaml'
+    video_config_file: '%config_directory%videos.yaml'
+    languages_file: '%config_directory%languages.yaml'
+    information_file: '%config_directory%informations.yaml'
+    sponsors_file: '%config_directory%sponsors.yaml'
 
     default_class: '5'
     default_locale: '%locale%'

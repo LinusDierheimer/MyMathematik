@@ -1,11 +1,11 @@
 {% import "macros/favicon.html.twig" as favicondrawer %}
-
+{% filter spaceless %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
 
-        {{ favicondrawer.favicon( favicon , ['svg', 'png']) }}
+        {{ favicondrawer.favicon( asset(favicon) , ['svg', 'png']) }}
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
@@ -152,3 +152,4 @@
         {% endblock %}
     </body>
 </html>
+{% endfilter %}

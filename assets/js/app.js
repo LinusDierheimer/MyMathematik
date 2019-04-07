@@ -40,7 +40,7 @@ function initLanguageCookie(){
 }
 
 function initLanguage(){
-    initLanguageCookie()
+    initLanguageCookie();
     initLanguageSwitcher();
 }
 

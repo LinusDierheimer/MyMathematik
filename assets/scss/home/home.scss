@@ -1,29 +1,14 @@
 @import "../app.scss";
 
-.preview {
-
-    position: relative;
-    display: block;
-
-    .mainimage {
-        width: 100%;
-    }
-    
-    .welcome {
-        top: -300px;
-        width: 100%;
-        text-align: center;
-        position: relative;
-
-        .text {
-            text-decoration: underline;
-        }
-
-    }
-}
-
 .content{
     .home{
+
+        .seperator {
+            width: 100%;
+            margin: 75px 5px;
+            border-top: 1px solid lightgrey;
+        }
+
         .welcome {
             color: rgb(55, 55, 55);
             font-size: 60px;
@@ -41,7 +26,7 @@
         }
 
         .vhgimage {
-            padding: 40px 25px;
+            padding: 50px 25px 0 25px;
 
             img{
                 width: 100%;
@@ -49,9 +34,6 @@
         }
 
         .sponsors {
-            margin-top: 50px;
-            padding-top: 50px;
-            border-top: 1px solid lightgrey;
 
             .thanks{
                 font-size: 25px;

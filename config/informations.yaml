@@ -10,6 +10,9 @@ sponsors:
 cookies:
     name: "footer.cookies"
     href: "/information/cookies"
+conditions:
+    name: "footer.conditions"
+    href: "/information/conditions"
 vhg:
     name: "footer.vhg"
     href: "https://www.valentin-heider-gymnasium.de/"

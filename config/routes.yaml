@@ -91,6 +91,10 @@ route_information_sponsors:
     path: /information/sponsors
     controller: App\Controller\InformationController::sponsors
 
+router_information_conditions:
+    path: /information/conditions
+    controller: App\Controller\InformationController::conditions
+
 route_information_redirect_contact:
     path: /contact
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
@@ -120,5 +124,13 @@ route_information_redirect_sponsors:
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
     defaults:
         route: route_information_sponsors
+        permanent: true
+        keepQueryParams: true
+
+route_information_redirect_conditions:
+    path: /conditions
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_information_conditions
         permanent: true
         keepQueryParams: true

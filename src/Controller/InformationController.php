@@ -37,4 +37,11 @@ class InformationController extends AbstractController
         ]);
     }
 
+    public function conditions(Util $util)
+    {
+        return $this->render('site/information/conditions.html.twig', [
+            'globals' => $util->get_globals()
+        ]);
+    }
+
 }

@@ -19,6 +19,8 @@
             <img src="{{ asset('build/images/VHG.jpg') }}" />
         </div>
 
+        <div class="seperator"></div>
+
         <div class="sponsors">
             {% if globals.sponsors|length > 0 %}
                 <div class="thanks">
@@ -32,11 +34,18 @@
                     {% for sponsor in globals.sponsors %}
                         <a target="_blank" rel="noopener noreferrer" href="{{ sponsor.website }}" class="sponsor">
                             <img src="{{ asset(sponsor.image) }}" />
-                        </div>
+                        </a>
                     {% endfor %}
                 </div>
             {% endif %}
         </div>
+
+        <div class="seperator"></div>
+
+        <div class="reference">
+            {{ 'home.reference'|trans }}
+        </div>
+
     </div>
 {% endblock %}
 

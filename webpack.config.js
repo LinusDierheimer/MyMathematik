@@ -15,6 +15,7 @@ Encore
     .addEntry('cookies', './assets/js/information/cookies.js')
     .addEntry('impressum', './assets/js/information/impressum.js')
     .addEntry('sponsors', './assets/js/information/sponsors.js')
+    .addEntry('conditions', './assets/js/information/conditions.js')
     .copyFiles({
         from: './assets/images',
         to: 'images/[path][name].[ext]'

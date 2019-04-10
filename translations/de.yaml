@@ -20,6 +20,7 @@ footer:
     sponsors: "Sponsoren"
     cookies: "Cookies"
     vhg: "VHG"
+    conditions: "AGB"
     goup: "Zum Seitenanfang"
 
 cookies:
@@ -42,6 +43,7 @@ home:
         thanks:
             single: "Wir danken unserem Sponsor:"
             multiple: "Wir danken unseren Sponsoren:"
+    reference: ""
 
 videos:
     class: "Jahrgangsstufe"

@@ -1,52 +1,52 @@
 site:
-  title: "MyMathematic"
+    title: "MyMathematic"
 
 header:
-  title: "MyMathematik"
-  icons:
-    classes:
-      class: "Class"
-      noclass: "No videos for your language yet!"
-    account:
-      me: "My Account"
-      login: "Login"
-      logout: "Logout"
-      register: "Register"
-      switch: "Change user"
+    title: "MyMathematik"
+    icons:
+        classes:
+            class: "Class"
+            noclass: "No videos for your language yet!"
+        account:
+            me: "My Account"
+            login: "Login"
+            logout: "Logout"
+            register: "Register"
+            switch: "Change user"
 
 footer:
-  impressum: "Impressum"
-  contact: "Kontakt"
-  sponsors: "Sponsors"
-  cookies: "Cookies"
-  vhg: "VHG"
-  goup: "To site beginn"
+    impressum: "Impressum"
+    contact: "Kontakt"
+    sponsors: "Sponsors"
+    cookies: "Cookies"
+    vhg: "VHG"
+    goup: "To site beginn"
 
 cookies:
-  info: "This site is using cookies"
-  more: "learn more"
-  ok: "ok"
+    info: "This site is using cookies"
+    more: "learn more"
+    ok: "ok"
 
 home:
-  welcome:
-    start: "Welcome to the Maths homepage of"
-    school: "Valentin Heider Gymnasium Lindau"
-    end: ""
-  info: > 
-    We, the P-Semianr Maths under the supervision by Mr Neuendorf,
-    have made it our buisness , to make Maths understandable for every yearlevel.
-  sponsors:
-    thanks:
-      single: "We say thank you to our sponsor:"
-      multiple: "We say thank you to ous sponsores:"
+    welcome:
+        start: "Welcome to the Maths homepage of"
+        school: "Valentin Heider Gymnasium Lindau"
+        end: ""
+    info: > 
+        We, the P-Semianr Maths under the supervision by Mr Neuendorf,
+        have made it our buisness , to make Maths understandable for every yearlevel.
+    sponsors:
+        thanks:
+            single: "We say thank you to our sponsor:"
+            multiple: "We say thank you to ous sponsores:"
 
 videos:
-  class: "Year level"
-  notsupported: "Your Browser doesn't spport the HTLM5 <video> tag!"
-  nochaptername: "<No chapter title avaiabel>"
-  novideoname: "<No video title avaiable>"
-  novideos: "No videos for that chapter yet!"
-  nochapters: "No subchapters for that chapter yet!"
-  nocontent: "No chapters for that class yet!"
-  curriculum:
-    link: "To curriclum"
+    class: "Year level"
+    notsupported: "Your Browser doesn't spport the HTLM5 <video> tag!"
+    nochaptername: "<No chapter title avaiabel>"
+    novideoname: "<No video title avaiable>"
+    novideos: "No videos for that chapter yet!"
+    nochapters: "No subchapters for that chapter yet!"
+    nocontent: "No chapters for that class yet!"
+    curriculum:
+        link: "To curriclum"

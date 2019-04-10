@@ -152,6 +152,9 @@ class Util
 
     public function trans($key)
     {
+        if(\substr($key, 0, 2) == "> ")
+            return \substr($key, 2);
+
         try{
             return self::array_get($this->get_translations(), $key);
         }catch(\Throwable $e){

@@ -1,124 +1,124 @@
 route_home:
-  path: /
-  controller: App\Controller\HomeController::index
+    path: /
+    controller: App\Controller\HomeController::index
 
 route_videos_redirect_with_language:
-  path: /videos/{class}
-  controller: App\Controller\VideoController::redirect_with_language
-  defaults:
-    class: 5
-  requirements:
-    class: 1|2|3|4|5|6|7|8|9|12
+    path: /videos/{class}
+    controller: App\Controller\VideoController::redirect_with_language
+    defaults:
+        class: 5
+    requirements:
+        class: 1|2|3|4|5|6|7|8|9|12
 
 route_videos_redirect_with_class:
-  path: /videos/{language}
-  controller: App\Controller\VideoController::redirect_with_class
-  requirements:
-    language: de|en
+    path: /videos/{language}
+    controller: App\Controller\VideoController::redirect_with_class
+    requirements:
+        language: de|en
 
 route_videos:
-  path: /videos/{language}/{class}
-  controller: App\Controller\VideoController::index
-  requirements:
-    class: 1|2|3|4|5|6|7|8|9|12
-    language: de|en
+    path: /videos/{language}/{class}
+    controller: App\Controller\VideoController::index
+    requirements:
+        class: 1|2|3|4|5|6|7|8|9|12
+        language: de|en
 
 route_account_redirect:
-  path: /account
-  controller: App\Controller\AccountController::redirect_me
+    path: /account
+    controller: App\Controller\AccountController::redirect_me
 
 route_account_redirect_login:
-  path: /login
-  controller: App\Controller\AccountController::redirect_login
+    path: /login
+    controller: App\Controller\AccountController::redirect_login
 
 route_account_redirect_register:
-  path: /register
-  controller: App\Controller\AccountController::redirect_register
+    path: /register
+    controller: App\Controller\AccountController::redirect_register
 
 route_account_redirect_logout:
-  path: /logout
-  controller: App\Controller\AccountController::redirect_logout
+    path: /logout
+    controller: App\Controller\AccountController::redirect_logout
 
 route_account_redirect_me:
-  path: /me
-  controller: App\Controller\AccountController::redirect_me
+    path: /me
+    controller: App\Controller\AccountController::redirect_me
 
 route_account_me:
-  path: /account/me
-  controller: App\Controller\AccountController::me
+    path: /account/me
+    controller: App\Controller\AccountController::me
 
 route_account_login:
-  path: /account/login
-  controller: App\Controller\AccountController::login
+    path: /account/login
+    controller: App\Controller\AccountController::login
 
 route_account_register:
-  path: /account/register
-  controller: App\Controller\AccountController::register
+    path: /account/register
+    controller: App\Controller\AccountController::register
 
 route_account_logout:
-  path: /account/logout
-  methods: GET
+    path: /account/logout
+    methods: GET
 
 route_admin:
-  path: /admin
-  controller: App\Controller\AdminController::index
+    path: /admin
+    controller: App\Controller\AdminController::index
 
 route_admin_videoconfig:
-  path: /admin/videoconfig
-  controller: App\Controller\AdminController::videoconfig
+    path: /admin/videoconfig
+    controller: App\Controller\AdminController::videoconfig
 
 route_admin_languageconfig:
-  path: /admin/languageconfig
-  controller: App\Controller\AdminController::languageconfig
+    path: /admin/languageconfig
+    controller: App\Controller\AdminController::languageconfig
 
 route_admin_doaction:
-  path: /admin/doaction
-  controller: App\Controller\AdminController::doaction
+    path: /admin/doaction
+    controller: App\Controller\AdminController::doaction
 
 route_information_contact:
-  path: /information/contact
-  controller: App\Controller\InformationController::contact
+    path: /information/contact
+    controller: App\Controller\InformationController::contact
 
 route_information_cookies:
-  path: /information/cookies
-  controller: App\Controller\InformationController::cookies
+    path: /information/cookies
+    controller: App\Controller\InformationController::cookies
 
 route_information_impressum:
-  path: /information/impressum
-  controller: App\Controller\InformationController::impressum
+    path: /information/impressum
+    controller: App\Controller\InformationController::impressum
 
 route_information_sponsors:
-  path: /information/sponsors
-  controller: App\Controller\InformationController::sponsors
+    path: /information/sponsors
+    controller: App\Controller\InformationController::sponsors
 
 route_information_redirect_contact:
-  path: /contact
-  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
-  defaults:
-    route: route_information_contact
-    permanent: true
-    keepQueryParams: true
+    path: /contact
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_information_contact
+        permanent: true
+        keepQueryParams: true
 
 route_information_redirect_cookies:
-  path: /cookies
-  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
-  defaults:
-    route: route_information_cookies
-    permanent: true
-    keepQueryParams: true
+    path: /cookies
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_information_cookies
+        permanent: true
+        keepQueryParams: true
 
 route_information_redirect_impressum:
-  path: /impressum
-  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
-  defaults:
-    route: route_information_impressum
-    permanent: true
-    keepQueryParams: true
+    path: /impressum
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_information_impressum
+        permanent: true
+        keepQueryParams: true
 
 route_information_redirect_sponsors:
-  path: /sponsors
-  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
-  defaults:
-    route: route_information_sponsors
-    permanent: true
-    keepQueryParams: true
+    path: /sponsors
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_information_sponsors
+        permanent: true
+        keepQueryParams: true

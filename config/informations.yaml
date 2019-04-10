@@ -1,15 +1,15 @@
 impressum:
-  name: "footer.impressum"
-  href: "/information/impressum"
+    name: "footer.impressum"
+    href: "/information/impressum"
 contact:
-  name: "footer.contact"
-  href: "/information/contact"
+    name: "footer.contact"
+    href: "/information/contact"
 sponsors:
-  name: "footer.sponsors"
-  href: "/information/sponsors"
+    name: "footer.sponsors"
+    href: "/information/sponsors"
 cookies:
-  name: "footer.cookies"
-  href: "/information/cookies"
+    name: "footer.cookies"
+    href: "/information/cookies"
 vhg:
-  name: "footer.vhg"
-  href: "https://www.valentin-heider-gymnasium.de/"
+    name: "footer.vhg"
+    href: "https://www.valentin-heider-gymnasium.de/"

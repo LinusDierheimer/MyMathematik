@@ -1,71 +1,71 @@
 de:
-  5:
-    name: 5
-    curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/5/mathematik
-    chapters:
-      1:
-        name: 1 Natürliche und ganze Zahlen - Addition und Subtraktion
+    5:
+        name: 5
+        curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/5/mathematik
         chapters:
-          1:
-            name: 1.1 Ihre Erweiterung zu den ganzen Zahlen
-            videos:
-              1:
-                name: Natürliche und ganze Zahlen
-                source: de_5_1_1_1.mp4
-              2:
-                name: Stellenwert und Dezimalsystem
-                source: de_5_1_1_2.mp4
-              3:
-                name: Runden und Abschätzen
-                source: de_5_1_1_3.mp4
-          2:
-            name: 1.2 Addition und Subtraktion ganzer Zahlen
-            videos:
-              1:
-                name: Addition und Subtraktion ganzer Zahlen
-                source: de_5_1_2_1.mp4
-              2:
-                name: Addition und Subtraktion ganzer Zahlen (Version 2)
-                source: de_5_1_2_2.mp4
-              3:
-                name: Rechengesetzte Addition
-                source: de_5_1_2_3.mp4
-      2:
-        name: 2 Geometrische Figuren und Lagebeziehungen
+            1:
+                name: 1 Natürliche und ganze Zahlen - Addition und Subtraktion
+                chapters:
+                    1:
+                        name: 1.1 Ihre Erweiterung zu den ganzen Zahlen
+                        videos:
+                            1:
+                                name: Natürliche und ganze Zahlen
+                                source: de_5_1_1_1.mp4
+                            2:
+                                name: Stellenwert und Dezimalsystem
+                                source: de_5_1_1_2.mp4
+                            3:
+                                name: Runden und Abschätzen
+                                source: de_5_1_1_3.mp4
+                    2:
+                        name: 1.2 Addition und Subtraktion ganzer Zahlen
+                        videos:
+                            1:
+                                name: Addition und Subtraktion ganzer Zahlen
+                                source: de_5_1_2_1.mp4
+                            2:
+                                name: Addition und Subtraktion ganzer Zahlen (Version 2)
+                                source: de_5_1_2_2.mp4
+                            3:
+                                name: Rechengesetzte Addition
+                                source: de_5_1_2_3.mp4
+            2:
+                name: 2 Geometrische Figuren und Lagebeziehungen
+                chapters: []
+            3:
+                name: 3 Natürliche und ganze Zahlen - Multiplikation und Division
+                chapters:
+                    1: 
+                        name: 3.1 Multiplikation und Division ganzer Zahlen
+                        videos: []
+                    2:
+                        name: 3.2 Verbindung der Grundrechenarten bei ganzen Zahlen
+                        videos: []
+            4:
+                name: 4 Größen und Einheiten
+                chapters:
+                    1:
+                        name: 4.1 Geld Länge Masse und Zeit
+                        videos: []
+                    2:
+                        name: 4.2 Flächeninhalt
+                        videos:
+                            1:
+                                name: Fläche und Flächeninhalt
+                                source: de_5_4_2_1.mp4
+                            2:
+                                name: Oberflächeninhalt von Körpern
+                                source: de_5_4_2_2.mp4
+                            3:
+                                name: Flächeninhalt von Quadrat und Rechteck
+                                source: de_5_4_2_3.mp4
+    6:
+        name: 6
+        curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/6/mathematik
         chapters: []
-      3:
-        name: 3 Natürliche und ganze Zahlen - Multiplikation und Division
-        chapters:
-          1: 
-            name: 3.1 Multiplikation und Division ganzer Zahlen
-            videos: []
-          2:
-            name: 3.2 Verbindung der Grundrechenarten bei ganzen Zahlen
-            videos: []
-      4:
-        name: 4 Größen und Einheiten
-        chapters:
-          1:
-            name: 4.1 Geld Länge Masse und Zeit
-            videos: []
-          2:
-            name: 4.2 Flächeninhalt
-            videos:
-              1:
-                name: Fläche und Flächeninhalt
-                source: de_5_4_2_1.mp4
-              2:
-                name: Oberflächeninhalt von Körpern
-                source: de_5_4_2_2.mp4
-              3:
-                name: Flächeninhalt von Quadrat und Rechteck
-                source: de_5_4_2_3.mp4
-  6:
-    name: 6
-    curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/6/mathematik
-    chapters: []
-  7:
-    name: 7
-    curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/7/mathematik
-    chapters: []
+    7:
+        name: 7
+        curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/7/mathematik
+        chapters: []
 en: []

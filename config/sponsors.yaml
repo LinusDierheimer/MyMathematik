@@ -1,4 +1,4 @@
 1:
-  name: "Dornier"
-  image: "build/images/dornier.png"
-  website: "https://www.lindauerdornier.com/de/"
+    name: "Dornier"
+    image: "build/images/dornier.png"
+    website: "https://www.lindauerdornier.com/de/"

@@ -1,62 +1,62 @@
 site:
-  title: "MyMathematik"
+    title: "MyMathematik"
 
 header:
-  title: "MyMathematik"
-  icons:
-    classes:
-      class: "Klasse"
-      noclass: "Keine Videos für die ausgewählte Sprache!"
-    account:
-      me: "Mein Account"
-      login: "Login"
-      logout: "Logout"
-      register: "Registrieren"
-      switch: "Benutzer wechseln"
+    title: "MyMathematik"
+    icons:
+        classes:
+            class: "Klasse"
+            noclass: "Keine Videos für die ausgewählte Sprache!"
+        account:
+            me: "Mein Account"
+            login: "Login"
+            logout: "Logout"
+            register: "Registrieren"
+            switch: "Benutzer wechseln"
 
 footer:
-  impressum: "Impressum"
-  contact: "Kontakt"
-  sponsors: "Sponsoren"
-  cookies: "Cookies"
-  vhg: "VHG"
-  goup: "Zum Seitenanfang"
+    impressum: "Impressum"
+    contact: "Kontakt"
+    sponsors: "Sponsoren"
+    cookies: "Cookies"
+    vhg: "VHG"
+    goup: "Zum Seitenanfang"
 
 cookies:
-  info: "Diese Seite benützt cookies"
-  more: "Mehr erfahren"
-  ok: "ok"
+    info: "Diese Seite benützt cookies"
+    more: "Mehr erfahren"
+    ok: "ok"
 
 home:
-  preview:
-    welcome: "Willkommen zu MyMathematik"
-    start: "Los gehts"
-  welcome:
-    start: "Willkommen zu MyMathematik"
-    school: ""
-    end: ""
-  info: > 
-    Wir, das P-Seminar Mathematik unter der Leitung von Herrn Neuendorf,
-    haben es uns zur Aufgabe gemacht, Mathematik für alle Jahrgangsstufen verständlich zu machen.
-  sponsors:
-    thanks:
-      single: "Wir danken unserem Sponsor:"
-      multiple: "Wir danken unseren Sponsoren:"
+    preview:
+        welcome: "Willkommen zu MyMathematik"
+        start: "Los gehts"
+    welcome:
+        start: "Willkommen zu MyMathematik"
+        school: ""
+        end: ""
+    info: > 
+        Wir, das P-Seminar Mathematik unter der Leitung von Herrn Neuendorf,
+        haben es uns zur Aufgabe gemacht, Mathematik für alle Jahrgangsstufen verständlich zu machen.
+    sponsors:
+        thanks:
+            single: "Wir danken unserem Sponsor:"
+            multiple: "Wir danken unseren Sponsoren:"
 
 videos:
-  class: "Jahrgangsstufe"
-  notsupported: "Dein Browser unterstützt das HTLM5 <video> tag nicht!"
-  nochaptername: "<Keine Kapitelüberschrift verfügbar>"
-  novideoname: "<Kein Videotitel verfügbar>"
-  novideos: "Noch keine Videos für dieses Kapitel verfügbar!"
-  nochapters: "Noch keine Unterkapitel für dieses Kapitel verfügbar!"
-  nocontent: "Noch keine Kapitel für diese Klasse verfügar!"
-  curriculum:
-    link: "Zum Lehrplan"
+    class: "Jahrgangsstufe"
+    notsupported: "Dein Browser unterstützt das HTLM5 <video> tag nicht!"
+    nochaptername: "<Keine Kapitelüberschrift verfügbar>"
+    novideoname: "<Kein Videotitel verfügbar>"
+    novideos: "Noch keine Videos für dieses Kapitel verfügbar!"
+    nochapters: "Noch keine Unterkapitel für dieses Kapitel verfügbar!"
+    nocontent: "Noch keine Kapitel für diese Klasse verfügar!"
+    curriculum:
+        link: "Zum Lehrplan"
 
 admin:
-  videoconfig:
-    upload:
-      name: "Name: "
-      file: "Video Datei: "
-      send: "Hochladen"
+    videoconfig:
+        upload:
+            name: "Name: "
+            file: "Video Datei: "
+            send: "Hochladen"

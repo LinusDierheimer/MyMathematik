@@ -12,12 +12,12 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.7.2",
+        "@fortawesome/fontawesome-free": "^5.8.1",
         "bootstrap": "^4.3.1",
-        "jquery": "^3.3.1",
+        "jquery": "^3.4.0",
         "node-sass": "^4.11.0",
-        "popper.js": "^1.14.7",
-        "sass": "^1.17.3",
+        "popper.js": "^1.15.0",
+        "sass": "^1.18.0",
         "sass-loader": "^7.1.0"
     }
 }

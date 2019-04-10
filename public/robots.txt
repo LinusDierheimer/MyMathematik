@@ -1,4 +1,5 @@
 User-agent: *
-Dissallow: /translations/
-Dissallow: /assets/
+Dissallow: /build/
 Dissallow: /information/
+Dissallow: /account/
+Dissallow: /admin/

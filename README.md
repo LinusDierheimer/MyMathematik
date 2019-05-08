@@ -20,7 +20,7 @@
     `composer install`
 5. Den Sql Server einrichten und einen Benutzernamen und Passwort in .env.local eintragen, dann  
     `php bin/console doctrine:database:create`  
-    `php bin/console doctrine:migrations:migrate`
+    `php bin/console doctrine:migrations:migrate`  
     Siehe Anleitung [hier](https://symfony.com/doc/current/doctrine.html)
 
 6. Die Frontend Abhängigkeiten installieren  

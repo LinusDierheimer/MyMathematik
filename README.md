@@ -4,7 +4,7 @@
 * [PHP 7.x.x](http://php.net/downloads.php)  
 * [Composer](https://getcomposer.org/download/)  
 * [Git](https://git-scm.com/download/) + [Github Account](https://github.com/)  
-* [MySQL Server](https://dev.mysql.com/downloads/mysql/)
+* [MySQL](https://dev.mysql.com/downloads/mysql/)
 * [Node.js und npm](https://nodejs.org/de/download/)
 
 ## Setup:
@@ -17,17 +17,15 @@
     `APP_SECRET=` #here any app secret, for example 3ed8e27d1e5129d918e8bd2b62a0e40f  
     `DATABASE_URL=` #database connection: schema://user:password@ip:port/name, see point 5. example: mysql://standard:Pa44w0rd@127.0.0.1:3306/mymathematik  
 4. Die Projektabhängigkeiten installieren (Muss bei neuen Abhängigkeiten auch während der Entwicklung wiederhohlt werden):  
-    `composer self-update`  
-    `composer install`  
-    `composer update`
+    `composer install`
 5. Den Sql Server einrichten und einen Benutzernamen und Passwort in .env.local eintragen, dann  
     `php bin/console doctrine:database:create`  
-    `php bin/console make:migration`  
     `php bin/console doctrine:migrations:migrate`
     Siehe Anleitung [hier](https://symfony.com/doc/current/doctrine.html)
 
 6. Die Frontend Abhängigkeiten installieren  
-    `npm install`
+    `npm install`  
+    `npm run dev`
 
 ## Benützen des Projektes:
 * PHPs eingebauter Webserver (einfach zu benützen aber sehr langsam), erreichbar im Browser über localhost:8000. Zum starten:  

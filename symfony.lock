@@ -1,4 +1,7 @@
 {
+    "alchemy/binary-driver": {
+        "version": "5.0.0"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -77,6 +80,9 @@
     "egulias/email-validator": {
         "version": "2.1.7"
     },
+    "evenement/evenement": {
+        "version": "v2.1.0"
+    },
     "facebook/webdriver": {
         "version": "1.6.0"
     },
@@ -89,6 +95,9 @@
     "monolog/monolog": {
         "version": "1.24.0"
     },
+    "neutron/temporary-filesystem": {
+        "version": "2.3.0"
+    },
     "nikic/php-parser": {
         "version": "v4.2.0"
     },
@@ -97,6 +106,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
+    },
+    "php-ffmpeg/php-ffmpeg": {
+        "version": "v0.14"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"

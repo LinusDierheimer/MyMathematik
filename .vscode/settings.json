@@ -8,6 +8,8 @@
         "**/.classpath": true,
         "**/.project": true,
         "**/.settings": true,
-        "**/.factorypath": true
+        "**/.factorypath": true,
+        "**/node_modules": true,
+        "**/vendor": true
     }
 }

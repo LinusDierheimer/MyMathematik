@@ -1,2 +1,2 @@
-import "../../scss/information/impressum.scss";
 import "../app.js";
+import "../../scss/information/impressum.scss";

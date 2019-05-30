@@ -1,2 +1,2 @@
-import "../../scss/information/sponsors.scss";
 import "../app.js";
+import "../../scss/information/sponsors.scss";

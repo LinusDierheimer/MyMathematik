@@ -111,6 +111,9 @@
         {% endblock %}
 
         {% block fullcontent %}
+            <div class="headerimage">
+                <img src="{{ asset('build/images/Header.jpg') }}"></img>
+            </div>
             <div class="content" id="content">
                 {% block content %}{% endblock %}
             </div>            

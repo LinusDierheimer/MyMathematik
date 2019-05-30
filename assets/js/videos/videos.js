@@ -1,5 +1,5 @@
-import "../../scss/videos/videos.scss";
 import "../app.js";
+import "../../scss/videos/videos.scss";
 
 function updateAccordion(){
     const chapterbuttons = document.getElementsByClassName("chapterheader");

@@ -1,2 +1,2 @@
-import "../../scss/information/conditions.scss";
 import "../app.js";
+import "../../scss/information/conditions.scss";

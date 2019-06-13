@@ -19,6 +19,7 @@ body {
     top: 0;
     padding: 0;
     box-shadow: 0 0 5px $backgroundColor;
+    transition: ease-in-out 0.3s;
 
     .title {
         margin: 0;
@@ -93,6 +94,12 @@ body {
     }
 }
 
+.header-transparent {
+    background-color: transparent;
+    box-shadow: unset;
+    padding-top: 20px;
+}
+
 .footer {
     background-color: $backgroundColor;
     width: 100%;
@@ -142,8 +149,22 @@ body {
     display: block
 }
 
+.headerimage {
+    width: 100%;
+    margin: 0;
+    filter: brightness(35%);
+    display: block;
+    overflow: hidden;
+
+    img{
+        display: block;
+        width: 100%;
+        margin:-110px 0;
+    }
+}
+
 .content {
-    margin: 125px auto 100px auto;
+    margin: 25px auto 100px auto;
     max-width: 900px;
     padding: 15px;
     position: relative;

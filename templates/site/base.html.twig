@@ -36,7 +36,7 @@
         <input type="hidden" id="language_code" value="{{ globals.language_code }}" />
 
         {% block header %}
-            <header class="header" id="header" role="banner">
+            <header class="header header-transparent" id="header" role="banner">
                 <a href="{{ path('route_home') }}" class="title" rel="home">
                     {{ "header.title"|trans }}
                 </a>
@@ -111,12 +111,14 @@
         {% endblock %}
 
         {% block fullcontent %}
-            <div class="headerimage">
-                <img src="{{ asset('build/images/Header.jpg') }}"></img>
-            </div>
-            <div class="content" id="content">
-                {% block content %}{% endblock %}
-            </div>            
+            <div class="fullcontent">
+                <div class="headerimage">
+                    <img src="{{ asset('build/images/Header.jpg') }}"></img>
+                </div>
+                <div class="content" id="content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>         
         {% endblock %}
 
         {% block footer %}

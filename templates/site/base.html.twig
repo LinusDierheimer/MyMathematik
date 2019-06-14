@@ -112,16 +112,16 @@
             </header>
         {% endblock %}
 
-        {% block fullcontent %}
-            <div class="fullcontent">
+        <div class="fullcontent">
+            {% block fullcontent %}
                 <div class="headerimage">
                     <img src="{{ asset('build/images/Header.jpg') }}"></img>
                 </div>
                 <div class="content" id="content">
                     {% block content %}{% endblock %}
                 </div>
-            </div>         
-        {% endblock %}
+            {% endblock %}
+        </div>
 
         {% block footer %}
             <footer class="footer" id="footer">

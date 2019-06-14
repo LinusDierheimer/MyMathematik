@@ -1,8 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all";
-
-$mainColor: rgb(214, 80, 80);
-$backgroundColor: rgb(25, 25, 25);
+@import "colors.scss";
 
 body {
     margin: 0;

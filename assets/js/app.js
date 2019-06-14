@@ -8,7 +8,7 @@ function initMenuBar(){
     const $header = $('#header');
 
     function updateMenuBar(){
-        if($(window).scrollTop() < 50 )
+        if($(window).scrollTop() < 150 )
             $header.addClass('header-transparent');
         else
             $header.removeClass('header-transparent');

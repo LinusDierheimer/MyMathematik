@@ -33,7 +33,9 @@
     </head>
     <body>
         
-        <input type="hidden" id="language_code" value="{{ globals.language_code }}" />
+        <input type="hidden" id="language_code" value="{{ globals.current_language.code }}" />
+        <input type="hidden" id="cookiesaccepted_livetime" value="{{ cookiesaccepted_livetime }}" />
+        <input type="hidden" id="language_livetime" value="{{ language_livetime }}" />
 
         {% block header %}
             <header class="header header-transparent" id="header" role="banner">
@@ -47,7 +49,7 @@
                         <div class="dropdowncontent">
                             {% if globals.classes|length > 0 %}
                                 {% for key, class in globals.classes %}
-                                    <a href="/videos/{{ globals.language_code }}/{{ key }}">
+                                    <a href="/videos/{{ globals.current_language.code }}/{{ key }}">
                                         {{ 'header.icons.classes.class'|trans }} {{ class.name }}
                                     </a>
                                 {% endfor %}

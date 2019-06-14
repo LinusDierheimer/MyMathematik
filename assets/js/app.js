@@ -25,7 +25,8 @@ function initCockieInfo(cookieinfo){
 
 function initCookieButton(cookieinfo){
     $("#cookiesAccepted").click(function(){
-        document.cookie = "cookies=true; path=/";
+        const livetime = $('#cookiesaccepted_livetime').val();
+        document.cookie = "cookies=true; path=/; max-age=" + eval(livetime);
         cookieinfo.classList.remove("cookiesvisible");
     })
 }
@@ -51,7 +52,8 @@ function initLanguageSwitcher(){
 
 function initLanguageCookie(){
     const language = $('#language_code').val();
-    document.cookie = "language=" + language + "; path=/";
+    const livetime = $('#language_livetime').val();
+    document.cookie = "language=" + language + "; path=/; max-age=" + eval(livetime);
 }
 
 function initLanguage(){

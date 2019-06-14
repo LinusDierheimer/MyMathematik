@@ -5,3 +5,5 @@ twig:
     globals:
         ga_tracking: '%ga_tracking%'
         favicon: '%favicon%'
+        cookiesaccepted_livetime: '%cookiesaccepted_livetime%'
+        language_livetime: '%language_livetime%'

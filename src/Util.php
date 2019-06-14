@@ -263,7 +263,6 @@ class Util
             "sponsors"         => $this->get_sponsors(),
             "languages"        => $this->get_languages(),
             "current_language" => $this->get_language(),
-            "language_code"    => $this->get_language_code()
         ];
     }
 }

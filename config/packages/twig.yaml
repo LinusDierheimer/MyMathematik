@@ -7,3 +7,4 @@ twig:
         favicon: '%favicon%'
         cookiesaccepted_livetime: '%cookiesaccepted_livetime%'
         language_livetime: '%language_livetime%'
+        captcha_website: '%captcha_website%'

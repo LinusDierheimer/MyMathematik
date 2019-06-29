@@ -17,6 +17,8 @@
             gtag('config', '{{ ga_tracking }}');
         </script>
 
+        <script src="https://www.google.com/recaptcha/api.js?hl={{ globals.current_language.code }}" async defer></script>
+
         <title>
             {% if title is defined %}
                 {{ title }}

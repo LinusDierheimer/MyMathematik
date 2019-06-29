@@ -75,6 +75,7 @@ body {
                 div{
                     cursor: default;
                 }
+
             }
 
             &:hover{
@@ -96,6 +97,14 @@ body {
     background-color: transparent;
     box-shadow: unset;
     padding-top: 20px;
+
+    .icon:hover {
+        background-color: rgba($color: $backgroundColor, $alpha: .1) !important;
+
+        .dropdowncontent {
+            background-color: rgba($color: $backgroundColor, $alpha: .1);
+        }
+    }
 }
 
 .footer {

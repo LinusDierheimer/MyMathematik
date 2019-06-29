@@ -56,6 +56,13 @@ videos:
     curriculum:
         link: "Zum Lehrplan"
 
+account:
+    register:
+        nousername: "Bitte einen Benutzernamen eingeben"
+        nopassword: "Bitte ein Passwort eingeben"
+        shortpassword: "Das Passwort muss mindestens 6 Zeichen lang sein"
+        nocaptcha: "Bitte bestätige das Captcha"
+
 admin:
     videoconfig:
         upload:

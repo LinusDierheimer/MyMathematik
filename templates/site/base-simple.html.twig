@@ -1,0 +1,17 @@
+{% extends "site/base.html.twig" %}
+
+{% block fullcontent %}
+    <div class="content" id="content">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('base-simple') }}
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('base-simple') }}
+{% endblock %}

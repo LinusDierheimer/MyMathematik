@@ -1,37 +1,91 @@
-{% extends 'site/base.html.twig' %}
+{% extends 'site/base-simple.html.twig' %}
 
 {% block content %}
+    <form method="POST" class="register d-flex justify-content-center" name="register_form">
+        <div class="dropdown-menu form">
+            <div class="px-4 py-3">
 
-    {% if errors is defined %}
-        {{ dump(errors) }}
-    {% endif %}
+                <div class="title">
+                    <h1>{{ "account.register.title"|trans }}</h1>
+                </div>
 
-    <form method="POST" name="register_form">
+                {% if "invalid_form" in errors %}
+                    {{ "account.register.inputs.invalid"|trans }}
+                {% endif %}
 
-        <div class="form-group">
-            <label for="email_input">Email</label>
-            <input type="email" name="email_input" id="email_input" class="input" maxlength="4096" required autofocus>
+                <div class="group">
+                    <div class="form-group">
+                        <label for="email_input" class="input_label">{{ "account.register.inputs.email.name"|trans }}</label>
+                        <input type="email" name="email_input" id="email_input" class="input form-control" maxlength="4096" autocomplete="email" placeholder="{{ "account.register.inputs.email.placeholder"|trans }}" {% if last_email is defined %}value="{{ last_email }}"{% endif %} required autofocus>
+                        <div class="error">
+                            {% if "already_used_email" in errors %}
+                                {{ "account.register.inputs.email.errors.already_used"|trans }}
+                            {% elseif "invalid_email" in errors %}
+                                {{ "account.register.inputs.email.errors.invalid"|trans }}
+                            {% elseif "too_long_email" in errors %}
+                                {{ "account.register.inputs.email.errors.too_long"|trans }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="form-group">
+                        <label for="password_input" class="input_label">{{ "account.register.inputs.password.name"|trans }}</label>
+                        <input type="password" name="password_input" id="password_input" class="input form-control" minlength="6" maxlength="4096" autocomplete="new-password" placeholder="{{ "account.register.inputs.password.placeholder"|trans }}" required>
+                        <div class="error">
+                            {% if "too_short_password" in errors %}
+                                {{ "account.register.inputs.password.errors.too_short"|trans }}
+                            {% elseif "too_long_password" in errors %}
+                                {{ "account.register.inputs.password.errors.too_long"|trans }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password_repeat_input" class="input_label">{{ "account.register.inputs.repeat_password.name"|trans }}</label>
+                        <input type="password" name="password_repeat_input" id="password_repeat_input" class="input form-control" minlength="6" maxlength="4096" autocomplete="current-password" placeholder="{{ "account.register.inputs.repeat_password.placeholder"|trans }}" required>
+                        <span toggle="#password-field" class="fa fa-fw fa-eye show-password toggle-password"></span>
+                        <div class="error">
+                            {% if "unequal_passwords" in errors %}
+                                {{ "account.register.inputs.repeat_password.errors.unequal"|trans }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="form-group">
+                        <div class="g-recaptcha justify-content-center" data-sitekey="{{ captcha_website }}"></div>
+                        <div class="error">
+                            {% if "invalid_captcha" in errors %}
+                                {{ "account.register.inputs.captcha.errors.invalid"|trans }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <button type="submit" class="submit">
+                        {{ "account.register.submit"|trans }}
+                    </button>
+                </div>
+            </div>
         </div>
-
-        <div class="form-group">
-            <label for="password_input">Password</label>
-            <input type="password" name="password_input" id="password_input" class="input" maxlength="4096" required>
-        </div>
-
-        <div class="g-recaptcha" data-sitekey="{{ captcha_website }}"></div>
-
-        <button type="submit" class="submit">
-            Registrieren
-        </button>
-
     </form>    
+{% endblock %}
 
+{% block data %}
+    <input type="hidden" id="header_config" value="simple" />
 {% endblock %}
 
 {% block css %}
+    {{ parent() }}
     {{ encore_entry_link_tags('register') }}
 {% endblock %}
 
 {% block js %}
+    {{ parent() }}
+    <script src="https://www.google.com/recaptcha/api.js?hl={{ globals.current_language.code }}" async defer></script>
     {{ encore_entry_script_tags('register') }}
 {% endblock js %}

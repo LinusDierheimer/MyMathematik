@@ -7,6 +7,6 @@
         "cssho.vscode-svgviewer",
         "mrmlnc.vscode-apache",
         "msjsdiag.debugger-for-chrome",
-        "waderyan.gitblame"
+        "eamodio.gitlens"
     ]
 }

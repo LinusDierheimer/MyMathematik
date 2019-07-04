@@ -58,10 +58,31 @@ videos:
 
 account:
     register:
-        nousername: "Bitte einen Benutzernamen eingeben"
-        nopassword: "Bitte ein Passwort eingeben"
-        shortpassword: "Das Passwort muss mindestens 6 Zeichen lang sein"
-        nocaptcha: "Bitte bestätige das Captcha"
+        title: "Registrieren"
+        submit: "Registrieren"
+        inputs:
+            invalid: "Die Registrierungs-Form scheint unvollständig zu sein. Bitte aktualisiere das Fenster"
+            email:
+                name: "Email"
+                placeholder: "email@example.de"
+                errors:
+                    invalid: "Ungültige Email-Adresse"
+                    too_long: "Email muss kürzer als 4096 Zeichen sein"
+                    already_used: "Email wird bereits von einem anderen Konto benützt"
+            password:
+                name: "Passwort"
+                placeholder: "Mindestens 6 Zeichen"
+                errors:
+                    too_short: "Passwort muss länger als 6 Zeichen sein"
+                    too_long: "Passwort muss kürzer als 40"
+            repeat_password:
+                name: "Passwort wiederhohlen"
+                placeholder: "Passwort wiederhohlen"
+                errors:
+                    unequal: "Passwörter stimmen nicht überein"
+            captcha:
+                errors:
+                    invalid: "Bitte bestätige das Captcha"
 
 admin:
     videoconfig:

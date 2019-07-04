@@ -1,0 +1,35 @@
+{% extends "site/base.html.twig" %}
+
+{% block fullcontent %}
+    <div class="homeimage">
+        <img src="{{ asset('/build/images/Startseite.jpg') }}" />
+        <div class="slider">
+            <div class="preview">
+                <div class="message">
+                    {{ 'home.preview.welcome'|trans }}
+                    <div class="underline"></div>
+                </div>
+            </div>
+            <div class="start">
+                <button id="scrollToContentButton">
+                    {{ 'home.preview.start'|trans }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content" id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('base-home') }}
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('base-home') }}
+{% endblock %}

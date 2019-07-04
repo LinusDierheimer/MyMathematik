@@ -1,13 +1,15 @@
-{% extends "site/base.html.twig" %}
+{% extends "site/base-simple.html.twig" %}
 
 {% block content %}
     AGB
 {% endblock %}
 
 {% block css %}
+    {{ parent() }}
     {{ encore_entry_link_tags('conditions') }}
 {% endblock %}
 
 {% block js %}
+    {{ parent() }}
     {{ encore_entry_script_tags('conditions') }}
 {% endblock %}

@@ -17,8 +17,6 @@
             gtag('config', '{{ ga_tracking }}');
         </script>
 
-        <script src="https://www.google.com/recaptcha/api.js?hl={{ globals.current_language.code }}" async defer></script>
-
         <title>
             {% if title is defined %}
                 {{ title }}
@@ -28,119 +26,115 @@
             {% endif %}
         </title>
 
-        {% block css %}
-            {{ encore_entry_link_tags('base') }}
-        {% endblock %}
+        {% block css %}{% endblock %}
 
     </head>
     <body>
         
-        <input type="hidden" id="language_code" value="{{ globals.current_language.code }}" />
-        <input type="hidden" id="cookiesaccepted_livetime" value="{{ cookiesaccepted_livetime }}" />
-        <input type="hidden" id="language_livetime" value="{{ language_livetime }}" />
+        {% block global_data %}
+            <input type="hidden" id="language_code" value="{{ globals.current_language.code }}" />
+            <input type="hidden" id="cookiesaccepted_livetime" value="{{ cookiesaccepted_livetime }}" />
+            <input type="hidden" id="language_livetime" value="{{ language_livetime }}" />
+            {% block data %}{% endblock %}
+        {% endblock %}
 
-        {% block header %}
-            <header class="header header-transparent" id="header" role="banner">
-                <a href="{{ path('route_home') }}" class="title" rel="home">
-                    {{ "header.title"|trans }}
-                </a>
+        {% block body %}
+            {% block header %}
+                <header class="header header-transparent" id="header" role="banner">
+                    <a href="{{ path('route_home') }}" class="title" rel="home">
+                        {{ "header.title"|trans }}
+                    </a>
 
-                <div class="icons">
-                    <div class="icon">
-                        <i class="dropdownheader fas fa-video"></i>
-                        <div class="dropdowncontent">
-                            {% if globals.classes|length > 0 %}
-                                {% for key, class in globals.classes %}
-                                    <a href="/videos/{{ globals.current_language.code }}/{{ key }}">
-                                        {{ 'header.icons.classes.class'|trans }} {{ class.name }}
+                    <div class="icons">
+                        <div class="icon">
+                            <i class="dropdownheader fas fa-video"></i>
+                            <div class="dropdowncontent">
+                                {% if globals.classes|length > 0 %}
+                                    {% for key, class in globals.classes %}
+                                        <a href="/videos/{{ globals.current_language.code }}/{{ key }}">
+                                            {{ 'header.icons.classes.class'|trans }} {{ class.name }}
+                                        </a>
+                                    {% endfor %}
+                                {% else %}
+                                    <div>
+                                        {{ 'header.icons.classes.noclass'|trans }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <a href="{{ path('route_account_me') }}" class="dropdownheader {{ app.user == null ? 'far' : 'fas' }} fa-user"></a>
+                            <div class="dropdowncontent">
+                                <a href="{{ path('route_account_me') }}">
+                                    {{ 'header.icons.account.me'|trans }}
+                                </a>
+                                {% if app.user is null %}
+                                    <a href="{{ path('route_account_login') }}">
+                                        {{ 'header.icons.account.login'|trans }}
+                                    </a>
+                                    <a href="{{ path('route_account_register') }}">
+                                        {{ 'header.icons.account.register'|trans }}
+                                    </a>
+                                {% else %}
+                                    <a href="{{ path('route_account_logout') }}">
+                                        {{ 'header.icons.account.logout'|trans }}
+                                    </a>
+                                    <a href="{{ path('route_account_login') }}">
+                                        {{ 'header.icons.account.switch'|trans }}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="dropdownheader fas fa-language"></i>
+                            <div class="dropdowncontent">
+                                {% for language in globals.languages %}
+                                    <a class="languageswitcher" data-language="{{ language.code }}" href="">
+                                        <i class="far {{ globals.current_language == language ? 'fa-check-circle' : 'fa-circle' }}"></i>
+                                        {{ language.name }}
                                     </a>
                                 {% endfor %}
-                            {% else %}
-                                <div>
-                                    {{ 'header.icons.classes.noclass'|trans }}
+                            </div>
+                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="icon">
+                                <a href="{{ path('route_admin') }}" class="dropdownheader fas fa-cogs"></a>
+                                <div class="dropdowncontent">
+                                    <a href="{{ path('route_admin_videoconfig') }}">
+                                        Videoconfig
+                                    </a>
+                                    <a href="{{ path('route_admin_languageconfig') }}">
+                                        Languageconfig
+                                    </a>
                                 </div>
-                            {% endif %}
-                        </div>
+                            </div>
+                        {% endif %}
                     </div>
-                    <div class="icon">
-                        <a href="{{ path('route_account_me') }}" class="dropdownheader {{ app.user == null ? 'far' : 'fas' }} fa-user"></a>
-                        <div class="dropdowncontent">
-                            <a href="{{ path('route_account_me') }}">
-                                {{ 'header.icons.account.me'|trans }}
-                            </a>
-                            {% if app.user is null %}
-                                <a href="{{ path('route_account_login') }}">
-                                    {{ 'header.icons.account.login'|trans }}
-                                </a>
-                                <a href="{{ path('route_account_register') }}">
-                                    {{ 'header.icons.account.register'|trans }}
-                                </a>
-                            {% else %}
-                                <a href="{{ path('route_account_logout') }}">
-                                    {{ 'header.icons.account.logout'|trans }}
-                                </a>
-                                <a href="{{ path('route_account_login') }}">
-                                    {{ 'header.icons.account.switch'|trans }}
-                                </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="icon">
-                        <i class="dropdownheader fas fa-language"></i>
-                        <div class="dropdowncontent">
-                            {% for language in globals.languages %}
-                                <a class="languageswitcher" data-language="{{ language.code }}" href="">
-                                    <i class="far {{ globals.current_language == language ? 'fa-check-circle' : 'fa-circle' }}"></i>
-                                    {{ language.name }}
+
+                </header>
+            {% endblock %}
+
+            <div class="fullcontent">
+                {% block fullcontent %}{% endblock %}
+            </div>
+
+            {% block footer %}
+                <footer class="footer" id="footer">
+                    <div class="footercontent">
+                        <div class="footerlinks">
+                            {% for info in globals.informations %}
+                                <a href="{{ info.href }}" class="footerlink">
+                                    {{ info.name|trans }}
                                 </a>
                             {% endfor %}
                         </div>
+                        <span id="scrollUp" class="goup">
+                            {{ 'footer.goup'|trans }}
+                        </span>
                     </div>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <div class="icon">
-                            <a href="{{ path('route_admin') }}" class="dropdownheader fas fa-cogs"></a>
-                            <div class="dropdowncontent">
-                                <a href="{{ path('route_admin_videoconfig') }}">
-                                    Videoconfig
-                                </a>
-                                <a href="{{ path('route_admin_languageconfig') }}">
-                                    Languageconfig
-                                </a>
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
-
-            </header>
-        {% endblock %}
-
-        <div class="fullcontent">
-            {% block fullcontent %}
-                <div class="headerimage">
-                    <img src="{{ asset('build/images/Header.jpg') }}"></img>
-                </div>
-                <div class="content" id="content">
-                    {% block content %}{% endblock %}
-                </div>
+                </footer>
             {% endblock %}
-        </div>
-
-        {% block footer %}
-            <footer class="footer" id="footer">
-                <div class="footercontent">
-                    <div class="footerlinks">
-                        {% for info in globals.informations %}
-                            <a href="{{ info.href }}" class="footerlink">
-                                {{ info.name|trans }}
-                            </a>
-                        {% endfor %}
-                    </div>
-                    <span id="scrollUp" class="goup">
-                        {{ 'footer.goup'|trans }}
-                    </span>
-                </div>
-            </footer>
-        {% endblock %}
+        {% endblock body %}
 
         {% block cookies %}
             <div class="cookies" id="cookies">
@@ -158,9 +152,7 @@
             </div>
         {% endblock %}
 
-        {% block js %}
-            {{ encore_entry_script_tags('base') }}
-        {% endblock %}
+        {% block js %}{% endblock %}
     </body>
 </html>
 {% endapply %}

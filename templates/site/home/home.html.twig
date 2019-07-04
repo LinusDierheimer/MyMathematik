@@ -1,77 +1,59 @@
-{% extends 'site/base.html.twig' %}
+{% extends 'site/base-home.html.twig' %}
 
-{% block fullcontent %}
+{% block content %}
+    <div class="home" id="home">
+        <div class="welcome">
+            {{ 'home.welcome.start'|trans }}
+            <a target="_blank" rel="noopener noreferrer" href="{{ globals.informations.vhg.href }}">
+                {{ 'home.welcome.school'|trans }}
+            </a>
+            {{ 'home.welcome.end'|trans }}
+        </div>
 
-    <div class="homeimage">
-        <img src="{{ asset('/build/images/Startseite.jpg') }}" />
-        <div class="slider">
-            <div class="preview">
-                <div class="message">
-                    {{ 'home.preview.welcome'|trans }}
-                    <div class="underline"></div>
+        <div class="info">
+            {{ 'home.info'|trans }}
+        </div>
+
+        <div class="vhgimage">
+            <img src="{{ asset('build/images/VHG.jpg') }}" />
+        </div>
+
+        <div class="seperator"></div>
+
+        <div class="sponsors">
+            {% if globals.sponsors|length > 0 %}
+                <div class="thanks">
+                    {% if globals.sponsors|length > 1 %}
+                        {{ 'home.sponsors.thanks.multiple'|trans }}
+                    {% else %}
+                        {{ 'home.sponsors.thanks.single'|trans }}
+                    {% endif %}
                 </div>
-            </div>
-            <div class="start">
-                <button id="scrollToContentButton">
-                    {{ 'home.preview.start'|trans }}
-                </button>
-            </div>
+                <div class="sponsorlist">
+                    {% for sponsor in globals.sponsors %}
+                        <a target="_blank" rel="noopener noreferrer" href="{{ sponsor.website }}" class="sponsor">
+                            <img src="{{ asset(sponsor.image) }}" />
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
-    </div>
 
-    <div class="content" id="content">
-        <div class="home" id="home">
-            <div class="welcome">
-                {{ 'home.welcome.start'|trans }}
-                <a target="_blank" rel="noopener noreferrer" href="{{ globals.informations.vhg.href }}">
-                    {{ 'home.welcome.school'|trans }}
-                </a>
-                {{ 'home.welcome.end'|trans }}
-            </div>
+        {# <div class="seperator"></div>
 
-            <div class="info">
-                {{ 'home.info'|trans }}
-            </div>
+        <div class="reference">
+            {{ 'home.reference'|trans }}
+        </div> #}
 
-            <div class="vhgimage">
-                <img src="{{ asset('build/images/VHG.jpg') }}" />
-            </div>
-
-            <div class="seperator"></div>
-
-            <div class="sponsors">
-                {% if globals.sponsors|length > 0 %}
-                    <div class="thanks">
-                        {% if globals.sponsors|length > 1 %}
-                            {{ 'home.sponsors.thanks.multiple'|trans }}
-                        {% else %}
-                            {{ 'home.sponsors.thanks.single'|trans }}
-                        {% endif %}
-                    </div>
-                    <div class="sponsorlist">
-                        {% for sponsor in globals.sponsors %}
-                            <a target="_blank" rel="noopener noreferrer" href="{{ sponsor.website }}" class="sponsor">
-                                <img src="{{ asset(sponsor.image) }}" />
-                            </a>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-
-            {# <div class="seperator"></div>
-
-            <div class="reference">
-                {{ 'home.reference'|trans }}
-            </div> #}
-
-        </div>
     </div>
 {% endblock %}
 
 {% block css %}
+    {{ parent() }}
     {{ encore_entry_link_tags('home') }}
 {% endblock %}
 
 {% block js %}
+    {{ parent() }}
     {{ encore_entry_script_tags('home') }}
 {% endblock js %}

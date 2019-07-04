@@ -1,4 +1,3 @@
-import "../app.js";
 import "../../scss/admin/videoconfig.scss";
 
 function initOptions(){

@@ -1,9 +1,7 @@
-import "../scss/app.scss";
-
 import $ from "jquery";
 import "bootstrap";
 
-function initMenuBar(){
+export function initMenuBar(){
 
     const $header = $('#header');
 
@@ -65,5 +63,4 @@ $(document).ready(function(){
     initCookies();
     initLanguage();
     initScrollUp();
-    initMenuBar();
 });

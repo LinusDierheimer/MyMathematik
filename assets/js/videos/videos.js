@@ -1,4 +1,3 @@
-import "../app.js";
 import "../../scss/videos/videos.scss";
 
 function updateAccordion(){

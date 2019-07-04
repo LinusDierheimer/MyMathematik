@@ -11,5 +11,14 @@
         "**/.factorypath": true,
         "**/node_modules": true,
         "**/vendor": true
-    }
+    },
+    "gitlens.settings.mode": "advanced",
+    "gitlens.views.fileHistory.location": "scm",
+    "gitlens.views.repositories.location": "scm",
+    "gitlens.views.lineHistory.location": "scm",
+    "gitlens.views.search.location": "scm",
+    "gitlens.views.compare.location": "scm",
+    "gitlens.defaultDateStyle": "absolute",
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line"
 }

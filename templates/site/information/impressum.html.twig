@@ -1,13 +1,15 @@
-{% extends "site/base.html.twig" %}
+{% extends "site/base-simple.html.twig" %}
 
 {% block content %}
     Impressum
 {% endblock %}
 
 {% block css %}
+    {{ parent() }}
     {{ encore_entry_link_tags('impressum') }}
 {% endblock %}
 
 {% block js %}
+    {{ parent() }}
     {{ encore_entry_script_tags('impressum') }}
 {% endblock %}

@@ -3,7 +3,9 @@ var Encore = require('@symfony/webpack-encore');
 Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
-    .addEntry('base', './assets/js/app.js')
+    .addEntry('base-simple', './assets/js/app-simple.js')
+    .addEntry('base-designed', './assets/js/app-designed.js')
+    .addEntry('base-home', './assets/js/app-home.js')
     .addEntry('home', './assets/js/home/home.js')
     .addEntry('videos', './assets/js/videos/videos.js')
     .addEntry('login', './assets/js/account/login.js')

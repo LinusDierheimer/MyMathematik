@@ -1,4 +1,4 @@
-{% extends "site/base.html.twig" %}
+{% extends "site/base-simple.html.twig" %}
 
 {% block content %}
     <div class="videoconfig">
@@ -47,9 +47,11 @@
 {% endblock %}
 
 {% block css %}
+    {{ parent() }}
     {{ encore_entry_link_tags('videoconfig') }}
 {% endblock %}
 
 {% block js %}
+    {{ parent() }}
     {{ encore_entry_script_tags('videoconfig') }}
 {% endblock js %}

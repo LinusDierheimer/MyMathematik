@@ -29,10 +29,13 @@
                     </div>
                 </div>
 
+                {% set single_password_field = single_password_field is defined and single_password_field %}
+
                 <div class="group">
                     <div class="form-group">
                         <label for="password_input" class="input_label">{{ "account.register.inputs.password.name"|trans }}</label>
-                        <input type="password" name="password_input" id="password_input" class="input form-control" minlength="6" maxlength="4096" autocomplete="new-password" placeholder="{{ "account.register.inputs.password.placeholder"|trans }}" required>
+                        <input type="{% if single_password_field %}text{% else %}password{% endif %}" name="password_input" id="password_input" class="input form-control" minlength="6" maxlength="4096" autocomplete="new-password" placeholder="{{ "account.register.inputs.password.placeholder"|trans }}" required>
+                        <span id="toggle_password" toggle="#password_input" class="far {% if single_password_field %}fa-eye-slash{% else %}fa-eye{% endif %} show-password"></span>
                         <div class="error">
                             {% if "too_short_password" in errors %}
                                 {{ "account.register.inputs.password.errors.too_short"|trans }}
@@ -42,10 +45,9 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="password_repeat_form"{% if single_password_field %} style="display: none;"{% endif %}>
                         <label for="password_repeat_input" class="input_label">{{ "account.register.inputs.repeat_password.name"|trans }}</label>
-                        <input type="password" name="password_repeat_input" id="password_repeat_input" class="input form-control" minlength="6" maxlength="4096" autocomplete="current-password" placeholder="{{ "account.register.inputs.repeat_password.placeholder"|trans }}" required>
-                        <span toggle="#password-field" class="fa fa-fw fa-eye show-password toggle-password"></span>
+                        <input type="password" name="password_repeat_input" id="password_repeat_input" class="input form-control" minlength="6" maxlength="4096" autocomplete="current-password" placeholder="{{ "account.register.inputs.repeat_password.placeholder"|trans }}" {% if single_password_field %} value="dummy" {% endif %} required>
                         <div class="error">
                             {% if "unequal_passwords" in errors %}
                                 {{ "account.register.inputs.repeat_password.errors.unequal"|trans }}
@@ -65,11 +67,12 @@
                     </div>
                 </div>
 
-                <div class="group">
-                    <button type="submit" class="submit">
-                        {{ "account.register.submit"|trans }}
-                    </button>
-                </div>
+                <input type="hidden" name="single_password_field" id="single_password_field" value="{% if single_password_field %}true{% else %}false{% endif %}" />
+
+                <button type="submit" class="btn btn-lg btn-primary submit">
+                    {{ "account.register.submit"|trans }}
+                </button>
+
             </div>
         </div>
     </form>    

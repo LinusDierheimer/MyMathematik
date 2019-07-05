@@ -30,7 +30,7 @@ class AccountController extends AbstractController
 
     public function redirect_register()
     {
-        return $this->redirectToRoute('route_account_me');
+        return $this->redirectToRoute('route_account_register');
     }
 
     public function redirect_logout()
@@ -62,7 +62,8 @@ class AccountController extends AbstractController
             if(!$request->request->has("email_input") ||
                !$request->request->has("password_input") ||
                !$request->request->has("password_repeat_input") ||
-               !$request->request->has("g-recaptcha-response")
+               !$request->request->has("g-recaptcha-response") ||
+               !$request->request->has("single_password_field")
             ){
                 \array_push($errors, "invalid_form");
             }else{
@@ -84,8 +85,11 @@ class AccountController extends AbstractController
                 else if($password_length > 4096)
                     array_push($errors, "too_long_password");
 
-                if($request->request->get("password_repeat_input") != $password)
-                    array_push($errors, "unequal_passwords");
+                $single_password_field = !($request->request->get("single_password_field") != "true");
+
+                if(!$single_password_field)
+                    if($request->request->get("password_repeat_input") != $password)
+                        array_push($errors, "unequal_passwords");
 
                 //Verify Captcha
                 $captcha_verify = curl_init("https://www.google.com/recaptcha/api/siteverify");
@@ -105,6 +109,7 @@ class AccountController extends AbstractController
                 return $this->render("site/account/register.html.twig", [
                     "globals" => $util->get_globals(),
                     "errors" => $errors,
+                    "single_password_field" => $single_password_field,
                     "last_email" => $email 
                 ]);
 

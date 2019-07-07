@@ -60,8 +60,11 @@ account:
     register:
         title: "Registrieren"
         submit: "Registrieren"
+        tologin: "Stattdessen anmelden"
         inputs:
-            invalid: "Die Registrierungs-Form scheint unvollständig zu sein. Bitte aktualisiere das Fenster"
+            invalid_form: "Die Registrierungs-Form scheint unvollständig zu sein. Bitte aktualisiere das Fenster und versuche es erneut"
+            invalid_csrf_token: "Ein interner Sicherheitsmechanismus (CSRF) hat einen Fehler gemeldet. Bitte aktualisiere das Fenster und versuche es erneut"
+            remember_me: "Angemeldet bleiben"
             email:
                 name: "Email"
                 placeholder: "email@example.de"
@@ -73,8 +76,8 @@ account:
                 name: "Passwort"
                 placeholder: "Mindestens 6 Zeichen"
                 errors:
-                    too_short: "Passwort muss länger als 6 Zeichen sein"
-                    too_long: "Passwort muss kürzer als 40"
+                    too_short: "Passwort muss länger mindestens 6 Zeichen lang sein"
+                    too_long: "Passwort muss darf nicht länger als 4096 Zeichen sein"
             repeat_password:
                 name: "Passwort wiederhohlen"
                 placeholder: "Passwort wiederhohlen"
@@ -83,6 +86,27 @@ account:
             captcha:
                 errors:
                     invalid: "Bitte bestätige das Captcha"
+    login:
+        title: "Anmelden"
+        submit: "Anmelden"
+        toregister: "Stattdessen registrieren"
+        inputs:
+            invalid_form: "Die Registrierungs-Form scheint unvollständig zu sein. Bitte aktualisiere das Fenster und versuche es erneut"
+            invalid_csrf_token: "Ein interner Sicherheitsmechanismus (CSRF) hat einen Fehler gemeldet. Bitte aktualisiere das Fenster und versuche es erneut"
+            remember_me: "Angemeldet bleiben"
+            email:
+                name: "Email"
+                placeholder: "email@example.de"
+                errors:
+                    not_found: "Email nicht gefunden"
+                    too_long: "Email muss kürzer als 4096 Zeichen sein"
+            password:
+                name: "Passwort"
+                placeholder: "Mindestens 6 Zeichen"
+                errors:
+                    wrong: "Falsches Passwort"
+                    too_short: "Passwort muss länger mindestens 6 Zeichen lang sein"
+                    too_long: "Passwort muss darf nicht länger als 4096 Zeichen sein"
 
 admin:
     videoconfig:

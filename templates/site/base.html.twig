@@ -1,14 +1,14 @@
 {% import "macros/favicon.html.twig" as favicondrawer %}
-{% apply spaceless %}
+{% htmlcompress %}
 <!DOCTYPE html>
-<html>
+<html lang="{{ globals.current_language.code }}">
     <head>
         <meta charset="UTF-8">
 
         {{ favicondrawer.favicon( asset(favicon) , ['svg', 'png']) }}
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -40,7 +40,7 @@
 
         {% block body %}
             {% block header %}
-                <header class="header" id="header" role="banner">
+                <header class="header" id="header">
                     <a href="{{ path('route_home') }}" class="title" rel="home">
                         {{ "header.title"|trans }}
                     </a>
@@ -155,4 +155,4 @@
         {% block js %}{% endblock %}
     </body>
 </html>
-{% endapply %}
+{% endhtmlcompress %}

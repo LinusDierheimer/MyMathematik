@@ -8,7 +8,7 @@ function initTogglePassword(){
     const $register_config = $("#single_password_field");
 
     $button.click(function(){
-        $(this).toggleClass("fa-eye fa-eye-slash");
+        $button.toggleClass("fa-eye fa-eye-slash");
         if($password_field.attr("type") == "password"){
             $password_field.attr("type", "text");
             $repeat_password_form.css("display", "none");
@@ -20,7 +20,7 @@ function initTogglePassword(){
             $repeat_password_field.val($password_field.val());
             $register_config.val("false");
         }
-    })
+    });
 }
 
 $(document).ready(function(){

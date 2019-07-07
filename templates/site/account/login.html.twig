@@ -5,47 +5,104 @@
     <form method="POST" class="login d-flex justify-content-center">
         <div class="dropdown-menu form">
             <div class="px-4 py-3">
-                
-                {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    
+                {% set errors = errors ?? [] %}
+
+                <div class="title">
+                    <h1>{{ "account.login.title"|trans }}</h1>
+                </div>
+
+                {% if "invalid_form" in errors %}
+                    {{ "account.login.inputs.invalid_form"|trans }}
                 {% endif %}
-    
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+                {% if "invalid_csrf_token" in errors %}
+                    {{ "account.login.inputs.invalid_csrf_token"|trans }}
+                {% endif %}
+
+                <div class="form-group">
+                    <label
+                        for="email_input"
+                        class="input_label"
+                    >{{ "account.login.inputs.email.name"|trans }}</label>
+                    <input
+                        type="email"
+                        value="{{ last_email ?? "" }}"
+                        name="email_input"
+                        id="email_input"
+                        class="form-control"
+                        placeholder="{{ "account.login.inputs.email.placeholder"|trans }}"
+                        autocomplete="email"
+                        required
+                        autofocus
+                    />
+                    <div class="error">
+                        {% if "too_long_email" in errors %}
+                            {{ "account.login.inputs.email.errors.too_long"|trans }} 
+                        {% elseif "user_not_found" in errors %}
+                            {{ "account.login.inputs.email.errors.not_found"|trans }}
+                        {% endif %}
+                    </div>
+                </div>
     
                 <div class="form-group">
-                    <label for="inputEmail" class="sr-only">
-                        Email
-                    </label>
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" autocomplete="email" required autofocus>
+                    <label
+                        for="password_input"
+                        class="input_label"
+                    >{{ "account.login.inputs.password.name"|trans }}</label>
+                    <input
+                        type="password"
+                        name="password_input"
+                        id="password_input"
+                        class="form-control"
+                        placeholder="{{ "account.login.inputs.password.placeholder"|trans }}"
+                        autocomplete="current-password"
+                        minlength="6"
+                        maxlength="4096"
+                        required
+                    />
+                    <span
+                        id="toggle_password"
+                        class="far {{ show_password ? "fa-eye-slash" : "fa-eye" }} show-password">
+                    </span>
+                    <div class="error">
+                        {% if "too_short_password" in errors %}
+                            {{ "account.login.inputs.password.errors.too_short"|trans }}
+                        {% elseif "too_long_password" in errors %}
+                            {{ "account.login.inputs.password.errors.too_long"|trans }}
+                        {% elseif "wrong_password" in errors %}
+                            {{ "account.login.inputs.password.errors.wrong"|trans }}
+                        {% endif %}
+                    </div>
                 </div>
-    
-                <div class="form-group">
-                    <label for="inputPassword" class="sr-only">
-                        Password
-                    </label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" autocomplete="current-password" required>
+        
+                <div class="form-group checkbox-wrapper">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="remember_me_input"
+                        name="remember_me_input"
+                        {{ last_remember_me ? "checked" }}
+                    />
+                    <label
+                        class="rememberme-label"
+                        for="remember_me_input"
+                    >{{ "account.login.inputs.remember_me"|trans }}</label>
                 </div>
+
+                <input type="hidden" name="csrf_token_input" id="csrf_token_input" value="{{ csrf_token('authenticate') }}">
     
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-    
-                {# See https://symfony.com/doc/current/security/remember_me.html #}
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="dropdownCheck" name="_remember_me" checked>
-                    <label class="form-check-label" for="dropdownCheck">
-                        Remember me
-                    </label>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-lg btn-primary submit">
+                        {{ "account.login.submit"|trans }}
+                    </button>
+                    <a href="{{ path('route_account_register') }}" class="btn btn-lg btn-outline-secondary register">
+                            {{ "account.login.toregister"|trans }}
+                    </a>
                 </div>
-    
-                <button class="btn btn-lg btn-primary" type="submit">
-                    Sign in
-                </button>
         
             </div>
-    
-            <div class="dropdown-divider"></div>
-    
-            <a class="dropdown-item" href="{{ path('route_account_register') }}">New around here? Sign up</a>
-            <a class="dropdown-item" href="#">Forgot password?</a>
+
         </div>
     </form>
 {% endblock %}

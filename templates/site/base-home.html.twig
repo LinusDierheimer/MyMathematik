@@ -1,5 +1,10 @@
 {% extends "site/base.html.twig" %}
 
+{% block global_data %}
+    {{ parent() }}
+    <input type="hidden" id="design" value="home" />
+{% endblock %}
+
 {% block fullcontent %}
     <div class="homeimage">
         <img src="{{ asset('/build/images/Startseite.jpg') }}" />
@@ -22,14 +27,4 @@
         {% block content %}{% endblock %}
     </div>
 
-{% endblock %}
-
-{% block js %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('base-home') }}
-{% endblock %}
-
-{% block css %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('base-home') }}
 {% endblock %}

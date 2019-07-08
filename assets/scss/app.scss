@@ -1,6 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all";
-@import "colors.scss";
+
+$mainColor: rgb(214, 80, 80);
+$backgroundColor: rgb(25, 25, 25);
+$border: 1px solid grey;
 
 body {
     margin: 0;
@@ -170,6 +173,59 @@ body {
     }
 }
 
+.homeimage{
+    height: 100vh;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+    }
+
+    .slider{
+        position: absolute;
+        top: 35%;
+        width: 100%;
+
+        .preview {
+            .message {
+                width: fit-content;
+                font-size: 50px;
+                color: whitesmoke;
+                margin: 0 auto;
+                font-weight: 500;
+                text-shadow: 3px 3px 4px #777;
+    
+                .underline {
+                    margin: 0 30px 0 30px;
+                    border: 1px solid $mainColor;
+                }
+    
+            }
+        }
+
+        .start {
+
+            margin-top: 45px;
+
+            button {
+                width: fit-content;
+                margin: 0 auto;
+                display: block;
+
+                color: whitesmoke;
+                background-color: $mainColor;
+                border: none;
+                text-decoration: none;
+                text-align: center;
+                padding: 15px 56px;
+                border-radius: 2px;
+                outline-color: lighten($color: $mainColor, $amount: 20);
+            }
+        }
+
+    }
+}
+
 .content {
     margin: 25px auto 80px auto;
     max-width: 900px;
@@ -177,4 +233,358 @@ body {
     position: relative;
     display: block;
     min-height: auto;
+
+    .videos{
+        .classname{
+            margin: 0 0 50px;
+            text-align: center;
+
+            h1{
+                font-size: 50px;
+                color: #333;
+                margin: 0 0 10px;
+            }
+
+            a{
+                text-decoration: none;
+                color: grey;
+                font-size: 20px;
+
+                i{
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .chapters {
+            display: block;
+
+            .chapter {
+                padding: 0;
+                display: block;
+                
+                .chapterheader {
+                    padding: 7px;
+
+                    &:hover{
+                        background-color: lightgray;
+                    }
+
+                    .chaptertitle{
+                        margin: 0;
+                        display: inline;
+                        font-size: 30px;
+                    }
+
+                    i{
+                        float: right;
+                        font-size: 31px;
+                    }
+
+                    .active{
+                        transform: rotate(180deg);
+                    }
+                }
+                
+                .chaptercontent {
+                    border-left: 1px solid lightgrey;
+                    padding: 0 25px;
+                    margin-left: 15px;
+                    height: auto;
+                    overflow: hidden;
+                    display: none; 
+
+                    .nocontent {
+                        margin-bottom: 40px;
+                        font-style: italic;
+                        color: darkgray;
+                    }
+
+                    .video {
+                        margin-bottom: 40px;
+
+                        .videotitle {
+                            color: dimgrey;
+                            padding: 8px 0;
+                        }
+
+                        video {
+                            padding: 0;
+                            border: 1px solid dimgrey;
+                            width: 100%;
+                            max-width: 800px
+                        }
+                    }
+                }
+            }
+        }        
+    }
+
+    .home{
+
+        .seperator {
+            width: 100%;
+            margin: 75px 5px;
+            border-top: 1px solid lightgrey;
+        }
+
+        .welcome {
+            color: rgb(55, 55, 55);
+            font-size: 60px;
+            margin-bottom: 25px;
+            text-align: center;
+
+            a{
+                text-decoration: inherit;
+                color: inherit;
+            }
+        }
+
+        .info {
+            color: rgb(75, 75, 75);
+        }
+
+        .vhgimage {
+            padding: 50px 25px 0 25px;
+
+            img{
+                width: 100%;
+            }
+        }
+
+        .sponsors {
+
+            .thanks{
+                font-size: 25px;
+                margin: 10px 0;
+                color: rgb(50, 50, 50);
+            }
+
+            .sponsorlist {
+                margin: 25px 10px;
+
+                .sponsor{
+                    margin: 15px;
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .languageconfig{
+
+        h1{
+            margin-top: 50px;
+            text-align: center;
+        }
+    
+        .configfile{
+    
+            .configoptions{
+                padding: 15px;
+
+                button{
+                    padding-right: 20px;
+                }
+            }
+    
+            .editor{
+                width: 100%;
+                height: 250px;
+                resize: both;
+                border: $border;
+            }
+        }
+
+        .translations {
+            padding: 25px;
+            border: $border;
+
+            .editor {
+                height: 1250px;
+            }
+        }
+    
+        .option{
+            margin: 5px;
+            font-size: 15px;
+            text-decoration: none;
+            color: rgb(20, 20 , 20);
+        }
+    }
+
+    .videoconfig{
+
+        h1{
+            margin-top: 50px;
+            text-align: center;
+        }
+    
+        .videofiles{
+            border-bottom: $border;
+            margin-bottom: 25px;
+    
+            .videofile{
+    
+                font-size: 15px;
+                padding: 5px 25px;
+                border: $border;
+                border-bottom: unset;
+                display: block;
+    
+                .videoname{
+                    width: 80%;
+                }
+    
+                .nameoptions{
+                    display: none;
+                }
+    
+                .videooptions{
+                    float: right;
+                }
+            }
+        }
+
+        .videoUploadForm {
+            border: $border;
+            padding: 15px;
+        }
+    
+        .configfile{
+    
+            .configoptions{
+                padding: 15px;
+
+                button{
+                    padding-right: 20px;
+                }
+            }
+    
+            .editor{
+                width: 100%;
+                height: 2000px;
+                resize: both;
+                border: $border;
+            }
+        }
+    
+        .option{
+            margin: 5px;
+            font-size: 15px;
+            text-decoration: none;
+            color: rgb(20, 20 , 20);
+        }
+    }
+
+    .account {
+        a {
+            display: block;
+        }
+    }
+
+    .register {
+
+        position: relative;
+        display: inline-block;
+        margin: 0 auto;
+
+        .form{
+            display: block;
+            position: relative;
+            width: 500px;
+            z-index: unset;
+            
+            .title {
+                h1 {
+                    text-align: center;
+                }
+            }
+
+            .group {
+                margin: 20px 0;
+
+                .form-group {
+
+                    .show-password {
+                        float: right;
+                        margin: -26px 15px 0 5px;
+                        cursor: pointer;
+                    }
+
+                    .error {
+                        font-size: small;
+                        color: rgb(200, 30, 30);
+                    }
+                }
+
+            }
+
+            .input_label{
+                margin-bottom: 0;
+            }
+
+            .checkbox-wrapper {
+                padding-left: 1.25rem;
+            }
+
+            .buttons {
+                .login {
+                    margin-left: 20px;
+                }
+            }
+
+        }
+    }
+
+    .login{
+
+        position: relative;
+        display: inline-block;
+        margin: 0 auto;
+
+        .form{
+            display: block;
+            position: relative;
+            width: 500px;
+            z-index: unset;
+
+            .title {
+                h1 {
+                    text-align: center;
+                }
+            }
+
+            .form-group {
+                .show-password {
+                    float: right;
+                    margin: -26px 15px 0 5px;
+                    cursor: pointer;
+                }
+    
+                .error {
+                    font-size: small;
+                    color: rgb(200, 30, 30);
+                }
+            }
+
+            .input_label{
+                margin-bottom: 0;
+            }
+
+            .checkbox-wrapper {
+                padding-left: 1.25rem;
+            }
+
+            .buttons {
+                .register {
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+}
+
+.content-simple {
+    margin-top: 100px;
 }

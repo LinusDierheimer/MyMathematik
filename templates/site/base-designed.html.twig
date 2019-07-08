@@ -1,5 +1,10 @@
 {% extends "site/base.html.twig" %}
 
+{% block global_data %}
+    {{ parent() }}
+    <input type="hidden" id="design" value="designed" />
+{% endblock %}
+
 {% block fullcontent %}
     <div class="headerimage">
         <img src="{{ asset('build/images/Header.jpg') }}"></img>
@@ -7,14 +12,4 @@
     <div class="content" id="content">
         {% block content %}{% endblock %}
     </div>
-{% endblock %}
-
-{% block js %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('base-designed') }}
-{% endblock %}
-
-{% block css %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('base-designed') }}
 {% endblock %}

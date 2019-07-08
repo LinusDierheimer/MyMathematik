@@ -1,1 +1,0 @@
-import "../../scss/information/cookies.scss";

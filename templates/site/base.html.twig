@@ -26,7 +26,9 @@
             {% endif %}
         </title>
 
-        {% block css %}{% endblock %}
+        {% block css %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
     </head>
     <body>
@@ -35,7 +37,6 @@
             <input type="hidden" id="language_code" value="{{ globals.current_language.code }}" />
             <input type="hidden" id="cookiesaccepted_livetime" value="{{ cookiesaccepted_livetime }}" />
             <input type="hidden" id="language_livetime" value="{{ language_livetime }}" />
-            {% block data %}{% endblock %}
         {% endblock %}
 
         {% block body %}
@@ -152,7 +153,9 @@
             </div>
         {% endblock %}
 
-        {% block js %}{% endblock %}
+        {% block js %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>
 {% endhtmlcompress %}

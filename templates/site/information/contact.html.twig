@@ -1,15 +1,5 @@
 {% extends "site/base-simple.html.twig" %}
 
 {% block content %}
-    Email: info@vhg-lindau.de
-{% endblock %}
-
-{% block css %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('contact') }}
-{% endblock %}
-
-{% block js %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('contact') }}
+    {{ load_local_markdown("translations/contact") }}
 {% endblock %}

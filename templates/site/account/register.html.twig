@@ -152,14 +152,3 @@
 {% block data %}
     <input type="hidden" id="header_config" value="simple" />
 {% endblock %}
-
-{% block css %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('register') }}
-{% endblock %}
-
-{% block js %}
-    {{ parent() }}
-    <script src="https://www.google.com/recaptcha/api.js?hl={{ globals.current_language.code }}" async defer></script>
-    {{ encore_entry_script_tags('register') }}
-{% endblock js %}

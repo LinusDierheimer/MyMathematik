@@ -50,7 +50,8 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    htmlcompress:
-        class: '\nochso\HtmlCompressTwig\Extension'
+    nochso\HtmlCompressTwig\Extension:
+        arguments:
+            - true
         tags:
-            - { name: twig.extension }
+            - twig.extension

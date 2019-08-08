@@ -5,6 +5,9 @@ $mainColor: rgb(214, 80, 80);
 $backgroundColor: rgb(25, 25, 25);
 $border: 1px solid grey;
 
+$themeDarkBackground: rgb(35, 35, 35);
+$themeDarkColor: whitesmoke;
+
 body {
     margin: 0;
     font-family: 'Raleway', sans-serif;
@@ -587,4 +590,26 @@ body {
 
 .content-simple {
     margin-top: 100px;
+}
+
+.theme-dark {
+    background-color: $themeDarkBackground !important;
+    color: $themeDarkColor !important;
+
+    .content {
+        .home {
+            .welcome {
+                color: $themeDarkColor;
+            }
+            .info {
+                color: $themeDarkColor;
+            }
+            .sponsors {
+                .thanks {
+                    color: $themeDarkColor;
+                }
+            }
+        }
+    }
+
 }

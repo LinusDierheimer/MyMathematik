@@ -48,70 +48,50 @@
 
                     <div class="icons">
                         <div class="icon">
-                            <i class="dropdownheader fas fa-video"></i>
-                            <div class="dropdowncontent">
-                                {% if globals.classes|length > 0 %}
-                                    {% for key, class in globals.classes %}
-                                        <a href="/videos/{{ globals.current_language.code }}/{{ key }}">
-                                            {{ 'header.icons.classes.class'|trans }} {{ class.name }}
-                                        </a>
-                                    {% endfor %}
-                                {% else %}
-                                    <div>
-                                        {{ 'header.icons.classes.noclass'|trans }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="icon">
-                            <a href="{{ path('route_account_me') }}" class="dropdownheader {{ app.user == null ? 'far' : 'fas' }} fa-user"></a>
-                            <div class="dropdowncontent">
-                                <a href="{{ path('route_account_me') }}">
-                                    {{ 'header.icons.account.me'|trans }}
+                            {% for key, class in globals.classes %}
+                                <a href="/videos/{{ globals.current_language.code }}/{{ key }}">
+                                    {{ 'header.icons.classes.class'|trans }} {{ class.name }}
                                 </a>
-                                {% if app.user is null %}
-                                    <a href="{{ path('route_account_login') }}">
-                                        {{ 'header.icons.account.login'|trans }}
-                                    </a>
-                                    <a href="{{ path('route_account_register') }}">
-                                        {{ 'header.icons.account.register'|trans }}
-                                    </a>
-                                {% else %}
-                                    <a href="{{ path('route_account_logout') }}">
-                                        {{ 'header.icons.account.logout'|trans }}
-                                    </a>
-                                    <a href="{{ path('route_account_login') }}">
-                                        {{ 'header.icons.account.switch'|trans }}
-                                    </a>
-                                {% endif %}
-                            </div>
+                            {% else %}
+                                <div>
+                                    {{ 'header.icons.classes.noclass'|trans }}
+                                </div>
+                            {% endfor %}
                         </div>
                         <div class="icon">
-                            <i class="dropdownheader fas fa-language"></i>
+                            <i class="dropdownheader fas fa-bars"></i>
                             <div class="dropdowncontent">
-                                {% for language in globals.languages %}
-                                    <a class="languageswitcher" data-language="{{ language.code }}" href="">
-                                        <i class="far {{ globals.current_language == language ? 'fa-check-circle' : 'fa-circle' }}"></i>
-                                        {{ language.name }}
+                                <div class="menupart">
+                                    <a href="{{ path('route_account_me') }}">
+                                        {{ 'header.icons.account.me'|trans }}
                                     </a>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <div class="icon">
-                                <a href="{{ path('route_admin') }}" class="dropdownheader fas fa-cogs"></a>
-                                <div class="dropdowncontent">
-                                    <a href="{{ path('route_admin_videoconfig') }}">
-                                        Videoconfig
-                                    </a>
-                                    <a href="{{ path('route_admin_languageconfig') }}">
-                                        Languageconfig
-                                    </a>
+                                    {% if app.user is null %}
+                                        <a href="{{ path('route_account_login') }}">
+                                            {{ 'header.icons.account.login'|trans }}
+                                        </a>
+                                        <a href="{{ path('route_account_register') }}">
+                                            {{ 'header.icons.account.register'|trans }}
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('route_account_logout') }}">
+                                            {{ 'header.icons.account.logout'|trans }}
+                                        </a>
+                                        <a href="{{ path('route_account_login') }}">
+                                            {{ 'header.icons.account.switch'|trans }}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                                <div class="menupart">
+                                    <div>
+                                        Sprache
+                                    </div>
+                                    <div>
+                                        Design
+                                    </div>
                                 </div>
                             </div>
-                        {% endif %}
-                    </div>
-
+                        </div>
+                    </div>  
                 </header>
             {% endblock %}
 

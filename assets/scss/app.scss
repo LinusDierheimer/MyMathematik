@@ -28,35 +28,52 @@ body {
     .title {
         margin: 0;
         padding: 0px 50px;
-        font-size: 38px;
+        font-size: 37.4px;
         font-weight: 500;
         display: inline-block;
         text-decoration: none;
         color: whitesmoke;
     }
 
-    .icons{
+    .headerlinks{
         margin-left: 20px;
         color: whitesmoke;
         float: right;
         height: 100%;
 
-        .icon {
+        > * {
             display: inline-block;
-            cursor: pointer;
+        }
 
+        .classlinks {
+
+            a {
+                padding: 1.25em 0;
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+                margin-right: 35px;
+            }
+        }
+
+        .menu {
+            cursor: pointer;
             $hoverColor: rgb(50, 50, 50);
 
-            .dropdownheader{
-                height: 100%;
-                width: 100%;
-                font-size: 25px;
-                color: whitesmoke;
-                text-decoration: none;
-                padding: 0.7em;
+            .menuheader{
+
+                padding: 1.25em;
+
+                &::before{
+                    height: 100%;
+                    width: 100%;
+                    color: whitesmoke;
+                    text-decoration: none;
+                    font-size: 16px;
+                }
             }
 
-            .dropdowncontent {
+            .menucontent {
                 position: absolute;
                 display: none;
                 z-index: 21;
@@ -64,37 +81,42 @@ body {
                 min-width: 275px;
                 background-color: $hoverColor;
                 right: 0;
+                cursor: default;
 
-                a, div{
-                    padding: 15px;
-                    text-decoration: none;
-                    display: block;
-                    color: whitesmoke;
-                }
+                .menupart {
+                    &:not(:first-child){
+                        border-top: 1px solid lightgrey;
+                        padding-top: 10px;
+                        margin-top: 10px;
+                    }
 
-                a{
-                    &:hover{
-                        background-color: $mainColor;
+                    > * {
+                        padding: 15px;
+                        display: block;
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: white;
+
+                        &:hover {
+                            background-color: $mainColor;
+                        }
                     }
                 }
-
-                div{
-                    cursor: default;
-                }
-
             }
 
             &:hover{
                 background-color: $hoverColor;
     
-                .dropdownheader{
+                .menuheader{
                     color: $mainColor;
                 }
 
-                .dropdowncontent{
+                .menucontent{
                     display: block;
                 }
+
             }
+
         }
     }
 }
@@ -104,10 +126,10 @@ body {
     box-shadow: unset;
     padding-top: 20px;
 
-    .icon:hover {
+    .menu:hover {
         background-color: rgba($color: $backgroundColor, $alpha: .1) !important;
 
-        .dropdowncontent {
+        .menucontent {
             background-color: rgba($color: $backgroundColor, $alpha: .1);
         }
     }

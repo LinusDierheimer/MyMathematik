@@ -10,7 +10,7 @@ rm -rf vendor/
 echo -e "\e[35mdeleting composer.lock if exist...\e[0m"
 rm -f composer.lock
 
-echo -e "\e[35mdeleting symfony if exist...\e[0m"
+echo -e "\e[35mdeleting symfony.lock if exist...\e[0m"
 rm -f symfony.lock
 
 echo -e "\e[35mchecking for npm updates. This requires globally installed node-check-updates...\e[0m"

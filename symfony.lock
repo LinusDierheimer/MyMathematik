@@ -91,7 +91,7 @@
         ]
     },
     "egulias/email-validator": {
-        "version": "2.1.10"
+        "version": "2.1.11"
     },
     "erusev/parsedown": {
         "version": "1.7.3"
@@ -127,7 +127,7 @@
         "version": "2.4.8"
     },
     "nikic/php-parser": {
-        "version": "v4.2.2"
+        "version": "v4.2.3"
     },
     "nochso/html-compress-twig": {
         "version": "2.0.1"
@@ -136,7 +136,7 @@
         "version": "1.4.0"
     },
     "ocramius/proxy-manager": {
-        "version": "2.2.2"
+        "version": "2.2.3"
     },
     "patchwork/jsqueeze": {
         "version": "v2.0.5"
@@ -541,7 +541,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.0",
-            "ref": "e8b6b2ac4a1522bd688ea2953fbc264c968b8f39"
+            "ref": "faa1c4972a2b855edc2e113bcf9e1d84b02bf1de"
         },
         "files": [
             "assets/css/app.css",

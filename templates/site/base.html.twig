@@ -46,8 +46,8 @@
                         {{ "header.title"|trans }}
                     </a>
 
-                    <div class="icons">
-                        <div class="icon">
+                    <div class="headerlinks">
+                        <div class="classlinks">
                             {% for key, class in globals.classes %}
                                 <a href="/videos/{{ globals.current_language.code }}/{{ key }}">
                                     {{ 'header.icons.classes.class'|trans }} {{ class.name }}
@@ -58,9 +58,9 @@
                                 </div>
                             {% endfor %}
                         </div>
-                        <div class="icon">
-                            <i class="dropdownheader fas fa-bars"></i>
-                            <div class="dropdowncontent">
+                        <div class="menu">
+                            <i class="menuheader fas fa-bars"></i>
+                            <div class="menucontent">
                                 <div class="menupart">
                                     <a href="{{ path('route_account_me') }}">
                                         {{ 'header.icons.account.me'|trans }}
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="menupart">
                                     <div>
-                                        Sprache
+                                        Language
                                     </div>
                                     <div>
                                         Design

@@ -6,8 +6,8 @@
 parameters:
     locale: 'de'
     ga_tracking: 'UA-134811098-1'
-    captcha_website: 6LeKQ6sUAAAAADbylNqIkKX9YigcUZ-QhJQcDwLN
-    captcha_secret: 6LeKQ6sUAAAAAAflJ-Oc6MpzEHSawih6GePklWxX
+    captcha_website: '%env(string:CAPTCHA_WEBSITE)%'
+    captcha_secret: '%env(string:CAPTCHA_SECRET)%'
 
     favicon: 'build/images/Taschenrechner'
 

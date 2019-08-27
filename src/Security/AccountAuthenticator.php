@@ -79,7 +79,7 @@ class AccountAuthenticator extends AbstractFormLoginAuthenticator
         $request->getSession()->set(Security::LAST_USERNAME, $credentials["email"]);
         $request->getSession()->set("last_email", $credentials["email"]);
         $request->getSession()->set("last_remember_me", $credentials["remember_me"]);
-        $request->getSession()->set("last_show_password", $credentials["last_show_password"]);
+        $request->getSession()->set("last_show_password", $credentials["show_password"]);
 
         return $credentials;
     }

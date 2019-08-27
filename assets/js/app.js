@@ -228,6 +228,16 @@ function initMenuBar(){
     updateMenuBar(); //When page is reloaded, the scroll is saved in modern browsers. So have to check at init;
 }
 
+function initSwitchButtons(){
+    $(".switch-header").click(function(){
+        const body = $(this).next(".switch-content");
+        if(body.height() == 0)
+            body.animate({height:40},200);
+        else
+            body.animate({height:0}, 200);
+    })
+}
+
 $(document).ready(function(){
     initCookies();
     initLanguage();
@@ -239,4 +249,5 @@ $(document).ready(function(){
     initLoginTogglePassword();
     initRegisterTogglePassword();
     initMenuBar();
+    initSwitchButtons();
 });

@@ -62,31 +62,50 @@
                             <i class="menuheader fas fa-bars"></i>
                             <div class="menucontent">
                                 <div class="menupart">
-                                    <a href="{{ path('route_account_me') }}">
-                                        {{ 'header.icons.account.me'|trans }}
-                                    </a>
                                     {% if app.user is null %}
-                                        <a href="{{ path('route_account_login') }}">
+                                        <a class="menubutton" href="{{ path('route_account_me') }}">
+                                            <i class="menu-icon far fa-user"></i>
+                                            {{ 'header.icons.account.me'|trans }}
+                                        </a>
+                                        <a class="menubutton" href="{{ path('route_account_login') }}">
+                                            <i class="menu-icon fas fa-sign-in-alt"></i>
                                             {{ 'header.icons.account.login'|trans }}
                                         </a>
-                                        <a href="{{ path('route_account_register') }}">
+                                        <a class="menubutton" href="{{ path('route_account_register') }}">
+                                            <i class="menu-icon fas fa-user-plus"></i>
                                             {{ 'header.icons.account.register'|trans }}
                                         </a>
                                     {% else %}
-                                        <a href="{{ path('route_account_logout') }}">
+                                        <a class="menubutton" href="{{ path('route_account_me') }}">
+                                            <i class="menu-icon fas fa-user"></i>
+                                            {{ 'header.icons.account.me'|trans }}
+                                        </a>
+                                        <a class="menubutton" href="{{ path('route_account_logout') }}">
+                                            <i class="menu-icon fas fa-sign-out-alt"></i>
                                             {{ 'header.icons.account.logout'|trans }}
                                         </a>
-                                        <a href="{{ path('route_account_login') }}">
+                                        <a class="menubutton" href="{{ path('route_account_login') }}">
+                                            <i class="menu-icon fas fa-sync"></i>
                                             {{ 'header.icons.account.switch'|trans }}
                                         </a>
                                     {% endif %}
                                 </div>
                                 <div class="menupart">
-                                    <div>
-                                        Language
+                                    <div class="switch-button">
+                                        <div class="menubutton switch-header">
+                                            {{ dump(globals) }}
+                                        </div>
+                                        <div class="switch-content">
+                                            Body
+                                        </div>
                                     </div>
-                                    <div>
-                                        Design
+                                    <div class="menu-switch-button">
+                                        <div class="menubutton switch-header">
+                                            Design
+                                        </div>
+                                        <div class="switch-content">
+                                            Body
+                                        </div>
                                     </div>
                                 </div>
                             </div>

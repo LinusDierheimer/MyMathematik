@@ -1,0 +1,50 @@
+.home{
+
+    .seperator {
+        width: 100%;
+        margin: 75px 5px;
+        border-top: 1px solid lightgrey;
+    }
+
+    .welcome {
+        color: rgb(55, 55, 55);
+        font-size: 60px;
+        margin-bottom: 25px;
+        text-align: center;
+
+        a{
+            text-decoration: inherit;
+            color: inherit;
+        }
+    }
+
+    .info {
+        color: rgb(75, 75, 75);
+    }
+
+    .vhgimage {
+        padding: 50px 25px 0 25px;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .sponsors {
+
+        .thanks{
+            font-size: 25px;
+            margin: 10px 0;
+            color: rgb(50, 50, 50);
+        }
+
+        .sponsorlist {
+            margin: 25px 10px;
+
+            .sponsor{
+                margin: 15px;
+                display: block;
+            }
+        }
+    }
+}

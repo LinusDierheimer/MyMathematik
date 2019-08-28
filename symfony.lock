@@ -133,7 +133,7 @@
         "version": "2.0.1"
     },
     "ocramius/package-versions": {
-        "version": "1.4.0"
+        "version": "1.5.1"
     },
     "ocramius/proxy-manager": {
         "version": "2.2.3"
@@ -239,7 +239,7 @@
         "version": "v1.0.7"
     },
     "symfony/dependency-injection": {
-        "version": "v4.3.3"
+        "version": "v4.3.4"
     },
     "symfony/doctrine-bridge": {
         "version": "v4.3.4"
@@ -435,7 +435,7 @@
         "version": "v1.0.2"
     },
     "symfony/service-contracts": {
-        "version": "v1.1.5"
+        "version": "v1.1.6"
     },
     "symfony/stopwatch": {
         "version": "v4.3.4"
@@ -471,7 +471,7 @@
         ]
     },
     "symfony/translation-contracts": {
-        "version": "v1.1.5"
+        "version": "v1.1.6"
     },
     "symfony/twig-bridge": {
         "version": "v4.3.4"

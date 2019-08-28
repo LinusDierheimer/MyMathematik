@@ -1,0 +1,66 @@
+.headerimage {
+    width: 100%;
+    margin: 0;
+    filter: brightness(35%);
+    display: block;
+    overflow: hidden;
+
+    img{
+        display: block;
+        width: 100%;
+        margin:-110px 0;
+    }
+}
+
+.homeimage{
+    height: 100vh;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+    }
+
+    .slider{
+        position: absolute;
+        top: 35%;
+        width: 100%;
+
+        .preview {
+            .message {
+                width: fit-content;
+                font-size: 50px;
+                color: whitesmoke;
+                margin: 0 auto;
+                font-weight: 500;
+                text-shadow: 3px 3px 4px #777;
+    
+                .underline {
+                    margin: 0 30px 0 30px;
+                    border: 1px solid $main_color;
+                }
+    
+            }
+        }
+
+        .start {
+
+            margin-top: 45px;
+
+            button {
+                width: fit-content;
+                margin: 0 auto;
+                display: block;
+
+                color: whitesmoke;
+                background-color: $main_color;
+                border: none;
+                text-decoration: none;
+                text-align: center;
+                padding: 15px 56px;
+                border-radius: 2px;
+                outline-color: lighten($color: $main_color, $amount: 20);
+            }
+        }
+
+    }
+}

@@ -1,0 +1,164 @@
+$menu_color: rgb(50, 50, 50);
+
+.header {
+
+    background-color: $control_color;
+    opacity: .96;
+    width: 100%;
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    padding: 0;
+    box-shadow: 0 0 5px $control_color;
+    transition: ease-in-out 0.3s;
+
+    .title {
+        margin: 0;
+        padding: 0px 50px;
+        font-size: 37.4px;
+        font-weight: 500;
+        display: inline-block;
+        text-decoration: none;
+        color: whitesmoke;
+    }
+
+    .headerlinks{
+        margin-left: 20px;
+        color: whitesmoke;
+        float: right;
+        height: 100%;
+
+        > * {
+            display: inline-block;
+        }
+
+        .classlinks {
+
+            a {
+                padding: 1.25em 0;
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+                margin-right: 35px;
+            }
+        }
+
+        .menu {
+            cursor: pointer;
+
+            .menuheader{
+
+                padding: 1.25em;
+
+                &::before{
+                    height: 100%;
+                    width: 100%;
+                    color: whitesmoke;
+                    text-decoration: none;
+                    font-size: 16px;
+                }
+            }
+
+            .menucontent {
+                position: absolute;
+                display: none;
+                z-index: 21;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                min-width: 275px;
+                background-color: $menu_color;
+                right: 0;
+                cursor: default;
+
+                .menupart {
+                    &:not(:first-child){
+                        border-top: 1px solid lightgrey;
+                        padding-top: 10px;
+                        margin-top: 10px;
+                    }
+
+                    .menubutton {
+                        padding: 15px;
+                        display: block;
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: white;
+                        width: 100%;
+
+                        &:hover {
+                            background-color: $main_color;
+                        }
+
+                        .menu-icon {
+                            width: 20px;
+                            margin-right: 7px;
+                        }
+
+                    }
+
+                    .switch-button {
+                        .switch-header {
+                            @extend .menubutton;
+                        }
+                        .switch-content {
+                            height: 0;
+                            overflow: hidden;
+                            margin-left: 30px;
+                            border-left: 1px solid grey;
+                            padding-left: 15px;
+
+                            .switch-content-button {
+                                @extend .menubutton;
+
+                                &:hover {
+                                    background-color: inherit;
+                                    color: $main_color;
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            .switch-header {
+                                background-color: $main_color;
+                            }
+                        }
+
+                        &:not(:hover) {
+                            .switch-content {
+                                height: 0;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            &:hover{
+                background-color: $menu_color;
+    
+                .menuheader{
+                    color: $main_color;
+                }
+
+                .menucontent{
+                    display: block;
+                }
+
+            }
+
+        }
+    }
+}
+
+.header-transparent {
+    background-color: transparent;
+    box-shadow: unset;
+    padding-top: 20px;
+
+    .menu:hover {
+        background-color: rgba($color: $control_color, $alpha: .1) !important;
+
+        .menucontent {
+            background-color: rgba($color: $control_color, $alpha: .1);
+        }
+    }
+}

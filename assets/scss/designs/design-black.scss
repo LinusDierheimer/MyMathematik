@@ -1,0 +1,23 @@
+$design_black_bg: black;
+$design_black_col: whitesmoke;
+
+.design-black {
+    background-color:$design_black_bg !important;
+    color: $design_black_col !important;
+
+    .content {
+        .home {
+            .welcome {
+                color: $design_black_col;
+            }
+            .info {
+                color: $design_black_col;
+            }
+            .sponsors {
+                .thanks {
+                    color: $design_black_col;
+                }
+            }
+        }
+    }
+}

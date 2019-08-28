@@ -1,0 +1,19 @@
+.cookies {
+    background-color: gray;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: none;
+
+    .cookiestext {
+        margin: 40px 0 40px 50px;
+
+        * {
+            margin: 0 5px
+        }
+    }
+}
+
+.cookiesvisible {
+    display: block
+}

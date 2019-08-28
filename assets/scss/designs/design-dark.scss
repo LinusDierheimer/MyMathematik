@@ -1,0 +1,23 @@
+$design_dark_bg: rgb(45, 45, 45);
+$design_dark_col: whitesmoke;
+
+.design-dark {
+    background-color: $design_dark_bg !important;
+    color: $design_dark_col !important;
+
+    .content {
+        .home {
+            .welcome {
+                color: $design_dark_col;
+            }
+            .info {
+                color: $design_dark_col;
+            }
+            .sponsors {
+                .thanks {
+                    color: $design_dark_col;
+                }
+            }
+        }
+    }
+}

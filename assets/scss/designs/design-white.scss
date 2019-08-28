@@ -1,0 +1,7 @@
+$design_white_bg: white;
+$design_white_col: black;
+
+.design-white {
+    background-color: $design_white_bg !important;
+    color: $design_white_col !important;
+}

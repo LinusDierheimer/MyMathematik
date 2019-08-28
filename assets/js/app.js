@@ -114,7 +114,7 @@ function initScrollUp(){
 
 function initLanguage() {
 
-    const language = $('#language_code').val();
+    const language = $('#current_language_code').val();
     setCookie("language", language);  
     
     $(".languageswitcher").click(function(){
@@ -123,43 +123,14 @@ function initLanguage() {
     });
 }
 
-function initAccordion(){
-    const chapterbuttons = document.getElementsByClassName("chapterheader");
-    
-    for(var i = 0; i < chapterbuttons.length; i++){
-        chapterbuttons[i].addEventListener('click', function(){
-
-            const isActive = this.classList.contains("active");
-
-            const panel = this.nextElementSibling;
-            const image = this.children[1];
-            if(isActive){
-                panel.style.display = "none";
-                panel.style.paddingTop = "0";
-            }else{
-                panel.style.display = "block";
-                panel.style.paddingTop = "10px";
-            }
-
-            image.classList.toggle("active");
-            this.classList.toggle("active");
-
-            for(var i = 0; i < chapterbuttons.length; i++){
-                const header = chapterbuttons[i];
-                const isActive = header.classList.contains("active");
-                const panel = header.nextElementSibling;
-        
-                if(isActive){
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                    panel.style.paddingTop = "10px";
-                }else{
-                    panel.style.maxHeight = null;
-                    panel.style.paddingTop = "0";
-                }
-        
-            }
-        });
-    }
+function initVideoList(){
+    $(".chaptertitle").click(function(){
+        const body = $(this).next(".chaptercontent");
+        if(body.height() == 0)
+            body.animate({height:body[0].scrollHeight},200);
+        else
+            body.animate({height:0}, 200);
+    })   
 }
 
 function initScrollToContent(){
@@ -278,7 +249,7 @@ $(document).ready(function(){
     initDesign();
     initScrollUp();
     initLanguage();
-    initAccordion();
+    initVideoList();
     initScrollToContent();
     initAdminVideo();
     initLogin();

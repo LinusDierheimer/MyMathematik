@@ -2,7 +2,7 @@
 @import "~@fortawesome/fontawesome-free/css/all";
 
 $main_color: rgb(214, 80, 80);
-$control_color: black;
+$control_color: rgb(35, 35, 35);
 
 body {
     margin: 0;
@@ -33,7 +33,7 @@ body {
     min-height: auto;
 
     @import "sites/home";
-    @import "sites/videos";
+    @import "sites/videolist";
     @import "sites/languageconfig";
     @import "sites/videoconfig";
     @import "sites/account";

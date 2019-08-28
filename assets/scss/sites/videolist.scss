@@ -1,0 +1,68 @@
+.videolist {
+    .head {
+        margin: 0 0 50px;
+        text-align: center;
+    
+        h1{
+            font-size: 50px;
+            margin: 0 0 10px;
+        }
+    
+        a{
+            text-decoration: none;
+            color: grey;
+            font-size: 20px;
+    
+            i{
+                font-size: 15px;
+            }
+        }  
+    }
+    .list {
+        .chapter {
+
+            .chaptertitle {
+                font-size: 25px;
+                padding: 10px 0;
+                .dropdownbutton {
+                    float: right;
+                }
+            }
+            .chaptercontent {
+                color: inherit;
+                padding-left: 25px;
+                margin-left: 40px;
+                height: 0;
+                overflow: hidden;
+
+                .contentwrapper {
+                    border-left: 1px solid grey;
+                    color: inherit;
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-bottom: 40px;
+
+                    .videocontainer {
+                        width: 230px;
+                        margin: 15px;
+                        overflow: hidden;
+                        color: inherit;
+    
+                        .videothumbnail {
+                            width: 100%;
+                        }
+    
+                        .videoname {
+                            text-decoration: none;
+                            color: inherit;
+                        }
+                    }
+
+                    .nocontent {
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+}

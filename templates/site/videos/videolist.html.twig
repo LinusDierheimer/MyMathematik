@@ -1,0 +1,45 @@
+{% extends "site/base-designed.html.twig" %}
+
+{% block content %}
+    <div class="videolist">
+        <div class="head">
+            <h1>
+                {{ 'videos.class'|trans }} {{ globals.classes[class].name }}
+            </h1>
+            <a href="{{ globals.classes[class].curriculum }}" rel="noopener noreferrer" target="_blank">
+                {{ 'videos.curriculum.link'|trans }}
+                <i class="fas fa-link"></i>
+            </a>
+        </div>
+        <div class="list">
+            {% for chapter in chapters %}
+                <div class="chapter">
+                    <div class="chaptertitle">
+                        {{ chapter.name }}
+                        <i class="fas fa-angle-down dropdownbutton"></i>
+                    </div>
+                    <div class="chaptercontent">
+                        <div class="contentwrapper">
+                            {% for video in chapter.videos %}
+                                <a href="{{ video.source }}" class="videocontainer">
+                                    <img
+                                        class="videothumbnail"
+                                        src="{{ video.thumbnail == "" ? asset('build/images/ThumbnailFallback.png') : video.thumbnail }}"
+                                        alt="{{ video.name }}"
+                                    />
+                                    <div class="videoname">
+                                        {{ video.name }}
+                                    </div>
+                                </a>
+                            {% else %}
+                                <div class="nocontent">
+                                    {{ 'videos.novideos'|trans }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

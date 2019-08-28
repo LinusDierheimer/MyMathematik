@@ -25,18 +25,20 @@ class VideoController extends AbstractController
         ]);
     }
 
-    public function index(Util $util, $language, $class)
+    public function list(Util $util, $language, $class)
     {
 
         if(!$util->class_exist($class))
-            return $this->render('videos/videos404.html.twig', [
+        {
+            return $this->render('site/videos/videos404.html.twig', [
                 'globals' => $util->get_globals()
             ]);
+        }
 
-        return $this->render('site/videos/videos.html.twig', [
+        return $this->render('site/videos/videolist.html.twig', [
             'globals' => $util->get_globals(),
             'class' => $class,
-            'videos' => $util->get_videos($class)
+            'chapters' => $util->get_videos($class)
         ]);
     }
 }

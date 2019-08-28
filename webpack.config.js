@@ -8,10 +8,6 @@ Encore
         from: "./assets/images",
         to: "images/[path][name].[ext]"
     })
-    .copyFiles({
-        from: "./assets/videos",
-        to: "videos/[path][name].[ext]"
-    })
     .cleanupOutputBeforeBuild()
     .enableSassLoader()
     .autoProvidejQuery()

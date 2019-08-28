@@ -27,6 +27,8 @@ parameters:
     default_class: '5'
     default_locale: '%locale%'
 
+    default_design: 'system'
+
     cookie_livetime: '60 * 60 * 24 * 365 * 2'
 
 services:

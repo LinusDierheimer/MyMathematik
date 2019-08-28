@@ -80,14 +80,21 @@ function initCookies(){
 
 function initDesign(){
 
-    var prev_design = getCookie("design");
-    if(prev_design == "")
-        prev_design = "system";
+    var prev_design = $("#initial_design").val();
 
     const setDesign = function(design){
 
-        prev_design = design;
+        $("#design-check-circle-" + prev_design)
+            .removeClass("fa-check-circle")
+            .addClass("fa-circle");
+
+        $("#design-check-circle-" + design)
+            .removeClass("fa-circle")
+            .addClass("fa-check-circle");
+
         setCookie("design", design);
+
+        prev_design = design; //set it already now, so system will stay system
 
         if(design == "" || design == "system"){
             if(window.matchMedia("(prefers-color-scheme: dark)").matches)
@@ -100,7 +107,7 @@ function initDesign(){
         $("body").addClass(design);
     }
 
-    setDesign(prev_design);
+    setDesign(prev_design); //inital design set
 
     const updateWhenSystemDesign = function(e) {
         if(prev_design == "system")

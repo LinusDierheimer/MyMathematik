@@ -1,3 +1,6 @@
+0:
+    name: header.navigation.menu.settings.design.options.system
+    css: system
 1:
     name: header.navigation.menu.settings.design.options.white
     css: design-white

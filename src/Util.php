@@ -170,6 +170,10 @@ class Util
         return $this->designs;
     }
 
+    public function get_current_design(){
+        return $this->get_cookies()->get("design") ?: $this->get_parameter("default_design");
+    }
+
     public function get_video_config()
     {
         if($this->videoconfig == null)
@@ -271,7 +275,8 @@ class Util
             "sponsors"         => $this->get_sponsors(),
             "languages"        => $this->get_languages(),
             "current_language" => $this->get_language(),
-            "designs"          => $this->get_designs()
+            "designs"          => $this->get_designs(),
+            "current_design"   => $this->get_current_design()
         ];
     }
 }

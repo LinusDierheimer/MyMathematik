@@ -33,9 +33,13 @@
     </head>
     <body>
         
+        {% set current_language_code = globals.current_language.code %}
+        {% set current_design = globals.current_design %}
+
         {% block global_data %}
-            <input type="hidden" id="language_code" value="{{ globals.current_language.code }}" />
+            <input type="hidden" id="current_language_code" value="{{ current_language_code }}" />
             <input type="hidden" id="cookie_livetime" value="{{ cookie_livetime }}" />
+            <input type="hidden" id="initial_design" value="{{ current_design }}" />
         {% endblock %}
 
         {% block body %}
@@ -48,7 +52,7 @@
                     <div class="headerlinks">
                         <div class="classlinks">
                             {% for key, class in globals.classes %}
-                                <a href="/videos/{{ globals.current_language.code }}/{{ key }}">
+                                <a href="/videos/{{ current_language_code }}/{{ key }}">
                                     {{ 'header.navigation.classes.class'|trans }} {{ class.name }}
                                 </a>
                             {% else %}
@@ -98,6 +102,7 @@
                                         <div class="switch-content">
                                             {% for language in globals.languages %}
                                                 <div data-languagecode="{{ language.code }}" class="switch-content-button languageswitcher">
+                                                    <i class="far {{ language.code == current_language_code ? "fa-check-circle" : "fa-circle" }}"></i>
                                                     {{ language.name }}
                                                 </div>
                                             {% endfor %}
@@ -109,11 +114,12 @@
                                             {{ 'header.navigation.menu.settings.design.title'|trans }}
                                         </div>
                                         <div class="switch-content">
-                                            <div data-css="system" class="switch-content-button designswitcher">
-                                                {{ 'header.navigation.menu.settings.design.options.system'|trans }}
-                                            </div>
                                             {% for design in globals.designs %}
                                                 <div data-css="{{ design.css }}" class="switch-content-button designswitcher">
+                                                    <i
+                                                        class="far {{ design.css == current_design ? "fa-check-circle" : "fa-circle" }}"
+                                                        id="design-check-circle-{{ design.css }}"
+                                                    ></i>
                                                     {{ design.name|trans }}
                                                 </div>
                                             {% endfor %}

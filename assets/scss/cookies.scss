@@ -1,15 +1,24 @@
 .cookies {
-    background-color: gray;
-    position: fixed;
-    bottom: 0;
+    background-color: $control_color;
+    z-index: 12345;
     width: 100%;
     display: none;
 
     .cookiestext {
-        margin: 40px 0 40px 50px;
+        z-index: 12345;
+        padding: 20px;
+        border-bottom: 1px solid grey;
 
         * {
-            margin: 0 5px
+            color: whitesmoke;
+            margin: 0;
+        }
+
+        button {
+            float: right;
+            min-width: 120px;
+            background-color: $main_color;
+            border: none;
         }
     }
 }

@@ -43,94 +43,116 @@
         {% endblock %}
 
         {% block body %}
-            {% block header %}
-                <header class="header" id="header">
-                    <a href="{{ path('route_home') }}" class="title" rel="home">
-                        {{ "header.title"|trans }}
-                    </a>
 
-                    <div class="headerlinks">
-                        <div class="classlinks">
-                            {% for key, class in globals.classes %}
-                                <a href="/videos/{{ current_language_code }}/{{ key }}">
-                                    {{ 'header.navigation.classes.class'|trans }} {{ class.name }}
+            <div class="fixed-top">
+                {% block fixed_top %}
+                    
+                    {% block cookies %}
+                        <div class="cookies" id="cookieinfo">
+                            <div class="cookiestext">
+                                <label>
+                                    {{ 'cookies.info'|trans }}
+                                </label>
+                                <a href="{{ globals.informations.cookies.href }}">
+                                    {{ 'cookies.more'|trans }}
                                 </a>
-                            {% else %}
-                                <div>
-                                    {{ 'header.navigation.classes.noclass'|trans }}
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div class="menu">
-                            <i class="menuheader fas fa-bars"></i>
-                            <div class="menucontent">
-                                <div class="menupart">
-                                    {% if app.user is null %}
-                                        <a class="menubutton" href="{{ path('route_account_me') }}">
-                                            <i class="menu-icon far fa-user"></i>
-                                            {{ 'header.navigation.menu.account.me'|trans }}
-                                        </a>
-                                        <a class="menubutton" href="{{ path('route_account_login') }}">
-                                            <i class="menu-icon fas fa-sign-in-alt"></i>
-                                            {{ 'header.navigation.menu.account.login'|trans }}
-                                        </a>
-                                        <a class="menubutton" href="{{ path('route_account_register') }}">
-                                            <i class="menu-icon fas fa-user-plus"></i>
-                                            {{ 'header.navigation.menu.account.register'|trans }}
-                                        </a>
-                                    {% else %}
-                                        <a class="menubutton" href="{{ path('route_account_me') }}">
-                                            <i class="menu-icon fas fa-user"></i>
-                                            {{ 'header.navigation.menu.account.me'|trans }}
-                                        </a>
-                                        <a class="menubutton" href="{{ path('route_account_logout') }}">
-                                            <i class="menu-icon fas fa-sign-out-alt"></i>
-                                            {{ 'header.navigation.menu.account.logout'|trans }}
-                                        </a>
-                                        <a class="menubutton" href="{{ path('route_account_login') }}">
-                                            <i class="menu-icon fas fa-sync"></i>
-                                            {{ 'header.navigation.menu.account.switch'|trans }}
-                                        </a>
-                                    {% endif %}
-                                </div>
-                                <div class="menupart">
-                                    <div class="switch-button">
-                                        <div class="switch-header">
-                                            <i class="menu-icon fas fa-language"></i>
-                                            {{ 'header.navigation.menu.settings.language.title'|trans }}
-                                        </div>
-                                        <div class="switch-content">
-                                            {% for language in globals.languages %}
-                                                <div data-languagecode="{{ language.code }}" class="switch-content-button languageswitcher">
-                                                    <i class="far {{ language.code == current_language_code ? "fa-check-circle" : "fa-circle" }}"></i>
-                                                    {{ language.name }}
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                    <div class="switch-button">
-                                        <div class="switch-header">
-                                            <i class="menu-icon fas fa-palette"></i>
-                                            {{ 'header.navigation.menu.settings.design.title'|trans }}
-                                        </div>
-                                        <div class="switch-content">
-                                            {% for design in globals.designs %}
-                                                <div data-css="{{ design.css }}" class="switch-content-button designswitcher">
-                                                    <i
-                                                        class="far {{ design.css == current_design ? "fa-check-circle" : "fa-circle" }}"
-                                                        id="design-check-circle-{{ design.css }}"
-                                                    ></i>
-                                                    {{ design.name|trans }}
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
+                                <button id="cookiesAccepted">
+                                    {{ 'cookies.ok'|trans }}
+                                </button>
                             </div>
                         </div>
-                    </div>  
-                </header>
-            {% endblock %}
+                    {% endblock %}
+
+                    {% block header %}
+                        <header class="header" id="header">
+                            <a href="{{ path('route_home') }}" class="title" rel="home">
+                                {{ "header.title"|trans }}
+                            </a>
+
+                            <div class="headerlinks">
+                                <div class="classlinks">
+                                    {% for key, class in globals.classes %}
+                                        <a href="/videos/{{ current_language_code }}/{{ key }}">
+                                            {{ 'header.navigation.classes.class'|trans }} {{ class.name }}
+                                        </a>
+                                    {% else %}
+                                        <div>
+                                            {{ 'header.navigation.classes.noclass'|trans }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="menu">
+                                    <i class="menuheader fas fa-bars"></i>
+                                    <div class="menucontent">
+                                        <div class="menupart">
+                                            {% if app.user is null %}
+                                                <a class="menubutton" href="{{ path('route_account_me') }}">
+                                                    <i class="menu-icon far fa-user"></i>
+                                                    {{ 'header.navigation.menu.account.me'|trans }}
+                                                </a>
+                                                <a class="menubutton" href="{{ path('route_account_login') }}">
+                                                    <i class="menu-icon fas fa-sign-in-alt"></i>
+                                                    {{ 'header.navigation.menu.account.login'|trans }}
+                                                </a>
+                                                <a class="menubutton" href="{{ path('route_account_register') }}">
+                                                    <i class="menu-icon fas fa-user-plus"></i>
+                                                    {{ 'header.navigation.menu.account.register'|trans }}
+                                                </a>
+                                            {% else %}
+                                                <a class="menubutton" href="{{ path('route_account_me') }}">
+                                                    <i class="menu-icon fas fa-user"></i>
+                                                    {{ 'header.navigation.menu.account.me'|trans }}
+                                                </a>
+                                                <a class="menubutton" href="{{ path('route_account_logout') }}">
+                                                    <i class="menu-icon fas fa-sign-out-alt"></i>
+                                                    {{ 'header.navigation.menu.account.logout'|trans }}
+                                                </a>
+                                                <a class="menubutton" href="{{ path('route_account_login') }}">
+                                                    <i class="menu-icon fas fa-sync"></i>
+                                                    {{ 'header.navigation.menu.account.switch'|trans }}
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="menupart">
+                                            <div class="switch-button">
+                                                <div class="switch-header">
+                                                    <i class="menu-icon fas fa-language"></i>
+                                                    {{ 'header.navigation.menu.settings.language.title'|trans }}
+                                                </div>
+                                                <div class="switch-content">
+                                                    {% for language in globals.languages %}
+                                                        <div data-languagecode="{{ language.code }}" class="switch-content-button languageswitcher">
+                                                            <i class="far {{ language.code == current_language_code ? "fa-check-circle" : "fa-circle" }}"></i>
+                                                            {{ language.name }}
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                            <div class="switch-button">
+                                                <div class="switch-header">
+                                                    <i class="menu-icon fas fa-palette"></i>
+                                                    {{ 'header.navigation.menu.settings.design.title'|trans }}
+                                                </div>
+                                                <div class="switch-content">
+                                                    {% for design in globals.designs %}
+                                                        <div data-css="{{ design.css }}" class="switch-content-button designswitcher">
+                                                            <i
+                                                                class="far {{ design.css == current_design ? "fa-check-circle" : "fa-circle" }}"
+                                                                id="design-check-circle-{{ design.css }}"
+                                                            ></i>
+                                                            {{ design.name|trans }}
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </header>
+                    {% endblock %}
+                {% endblock %}
+            </div>
 
             <div class="fullcontent">
                 {% block fullcontent %}{% endblock %}
@@ -153,22 +175,6 @@
                 </footer>
             {% endblock %}
         {% endblock body %}
-
-        {% block cookies %}
-            <div class="cookies" id="cookieinfo">
-                <div class="cookiestext">
-                    <label>
-                        {{ 'cookies.info'|trans }}
-                    </label>
-                    <a href="{{ globals.informations.cookies.href }}">
-                        {{ 'cookies.more'|trans }}
-                    </a>
-                    <button id="cookiesAccepted">
-                        {{ 'cookies.ok'|trans }}
-                    </button>
-                </div>
-            </div>
-        {% endblock %}
 
         {% block js %}
             {{ encore_entry_script_tags('app') }}

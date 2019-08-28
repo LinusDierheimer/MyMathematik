@@ -110,13 +110,38 @@ body {
                     }
 
                     .switch-button {
+                        .switch-header {
+                            @extend .menubutton;
+                        }
                         .switch-content {
                             height: 0;
                             overflow: hidden;
-                            margin-left: 25px;
+                            margin-left: 30px;
                             border-left: 1px solid grey;
                             padding-left: 15px;
+
+                            .switch-content-button {
+                                @extend .menubutton;
+
+                                &:hover {
+                                    background-color: inherit;
+                                    color: $mainColor;
+                                }
+                            }
                         }
+
+                        &:hover {
+                            .switch-header {
+                                background-color: $mainColor;
+                            }
+                        }
+
+                        &:not(:hover) {
+                            .switch-content {
+                                height: 0;
+                            }
+                        }
+
                     }
                 }
             }
@@ -631,7 +656,17 @@ body {
     margin-top: 100px;
 }
 
-.theme-dark {
+.design-wight {
+    background-color: white !important;
+    color: black !important;
+}
+
+.design-light {
+    background-color: whitesmoke!important;
+    color: $black !important;
+}
+
+.design-dark {
     background-color: $themeDarkBackground !important;
     color: $themeDarkColor !important;
 
@@ -650,5 +685,25 @@ body {
             }
         }
     }
+}
 
+.design-dark {
+    background-color: black !important;
+    color: $themeDarkColor !important;
+
+    .content {
+        .home {
+            .welcome {
+                color: $themeDarkColor;
+            }
+            .info {
+                color: $themeDarkColor;
+            }
+            .sponsors {
+                .thanks {
+                    color: $themeDarkColor;
+                }
+            }
+        }
+    }
 }

@@ -92,19 +92,29 @@
                                 </div>
                                 <div class="menupart">
                                     <div class="switch-button">
-                                        <div class="menubutton switch-header">
-                                            {{ dump(globals) }}
+                                        <div class="switch-header">
+                                            <i class="menu-icon fas fa-language"></i>
+                                            Language
                                         </div>
                                         <div class="switch-content">
-                                            Body
+                                            {% for language in globals.languages %}
+                                                <a href="#" data-languagecode="{{ language.code }}" class="switch-content-button languageswitcher">
+                                                    {{ language.name }}
+                                                </a>
+                                            {% endfor %}
                                         </div>
                                     </div>
-                                    <div class="menu-switch-button">
-                                        <div class="menubutton switch-header">
+                                    <div class="switch-button">
+                                        <div class="switch-header">
+                                            <i class="menu-icon fas fa-palette"></i>
                                             Design
                                         </div>
                                         <div class="switch-content">
-                                            Body
+                                            {% for design in globals.designs %}
+                                                <div data-css="{{ design.css }}" class="switch-content-button designswitcher">
+                                                    {{ design.name|trans }}
+                                                </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>

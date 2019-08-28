@@ -22,6 +22,7 @@ parameters:
     languages_file: '%config_directory%languages.yaml'
     information_file: '%config_directory%informations.yaml'
     sponsors_file: '%config_directory%sponsors.yaml'
+    designs_file: '%config_directory%designs.yaml'
 
     default_class: '5'
     default_locale: '%locale%'

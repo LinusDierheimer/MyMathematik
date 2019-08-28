@@ -13,6 +13,11 @@ header:
             logout: "Logout"
             register: "Registrieren"
             switch: "Benutzer wechseln"
+        design:
+            white: "Weiss"
+            light: "Hell"
+            dark: "Dunkel"
+            black: "Schwarz"
 
 footer:
     impressum: "Impressum"

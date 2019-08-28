@@ -1,0 +1,16 @@
+1:
+    name: header.icons.design.white
+    css: design-white
+    dark: false
+2:
+    name: header.icons.design.light
+    css: design-light
+    dark: false
+3:
+    name: header.icons.design.dark
+    css: design-dark
+    dark: true
+4:
+    name: header.icons.design.black
+    css: design-black
+    dark: true

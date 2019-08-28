@@ -70,6 +70,7 @@ class Util
     protected $translations;
     protected $informations;
     protected $sponsors;
+    protected $designs;
 
     public function __construct(RequestStack $rs, ContainerInterface $ci)
     {
@@ -161,6 +162,13 @@ class Util
             return "{Couldn't translate.  key='" . $key . "', error='" . $e->getMessage() . "'}";
         }
     }
+    
+    public function get_designs()
+    {
+        if($this->designs == null)
+            $this->designs = self::load_yaml_file($this->get_parameter('designs_file'));
+        return $this->designs;
+    }
 
     public function get_video_config()
     {
@@ -171,7 +179,7 @@ class Util
 
     public function get_video_config_content()
     {
-        return self::load_file_content($this->get_parameter('video_config_file'));
+        return self::load_file_content($this->get_parameter('designs_file'));
     }
 
     public function get_video_files()
@@ -263,6 +271,7 @@ class Util
             "sponsors"         => $this->get_sponsors(),
             "languages"        => $this->get_languages(),
             "current_language" => $this->get_language(),
+            "designs"          => $this->get_designs()
         ];
     }
 }

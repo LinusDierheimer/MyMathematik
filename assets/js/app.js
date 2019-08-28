@@ -34,7 +34,7 @@ function initScrollUp(){
 
 function initLanguageSwitcher(){
     $(".languageswitcher").click(function(){
-        document.cookie = "language=" + $(this).data("language") + "; path=/";
+        document.cookie = "language=" + $(this).data("languagecode") + "; path=/";
         location.reload();
     });
 }
@@ -232,10 +232,57 @@ function initSwitchButtons(){
     $(".switch-header").click(function(){
         const body = $(this).next(".switch-content");
         if(body.height() == 0)
-            body.animate({height:40},200);
+            body.animate({height:body[0].scrollHeight},200);
         else
             body.animate({height:0}, 200);
     })
+}
+
+function setDesign(design){
+    const body = $("body");
+    body.removeClass (function (index, className) {
+        return (className.match (/(^|\s)design-\S+/g) || []).join(' ');
+    });
+    body.addClass(design);
+}
+
+function initDesignSwitcher(){
+    $(".designswitcher").click(function(){
+        const design = $(this).data("css");
+        const livetime = $("language_livetime").val();
+        document.cookie = "design=" + design + "; path=/; max-age=" + eval(livetime);
+        setDesign(design);
+    });
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
+
+function initDesignCookie(){
+    const livetime = $("language_livetime").val();
+    var design = getCookie("design");
+    if(design == "")
+        design = "design-light";
+    document.cookie = "design=" + design + "; path=/; max-age=" + eval(livetime);
+    setDesign(design);
+}
+
+function initDesign(){
+    initDesignCookie();
+    initDesignSwitcher();
 }
 
 $(document).ready(function(){
@@ -250,4 +297,5 @@ $(document).ready(function(){
     initRegisterTogglePassword();
     initMenuBar();
     initSwitchButtons();
+    initDesign();
 });

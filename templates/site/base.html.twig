@@ -35,8 +35,7 @@
         
         {% block global_data %}
             <input type="hidden" id="language_code" value="{{ globals.current_language.code }}" />
-            <input type="hidden" id="cookiesaccepted_livetime" value="{{ cookiesaccepted_livetime }}" />
-            <input type="hidden" id="language_livetime" value="{{ language_livetime }}" />
+            <input type="hidden" id="cookie_livetime" value="{{ cookie_livetime }}" />
         {% endblock %}
 
         {% block body %}
@@ -98,9 +97,9 @@
                                         </div>
                                         <div class="switch-content">
                                             {% for language in globals.languages %}
-                                                <a href="#" data-languagecode="{{ language.code }}" class="switch-content-button languageswitcher">
+                                                <div data-languagecode="{{ language.code }}" class="switch-content-button languageswitcher">
                                                     {{ language.name }}
-                                                </a>
+                                                </div>
                                             {% endfor %}
                                         </div>
                                     </div>
@@ -110,6 +109,9 @@
                                             Design
                                         </div>
                                         <div class="switch-content">
+                                            <div data-css="system" class="switch-content-button designswitcher">
+                                                System
+                                            </div>
                                             {% for design in globals.designs %}
                                                 <div data-css="{{ design.css }}" class="switch-content-button designswitcher">
                                                     {{ design.name|trans }}
@@ -147,7 +149,7 @@
         {% endblock body %}
 
         {% block cookies %}
-            <div class="cookies" id="cookies">
+            <div class="cookies" id="cookieinfo">
                 <div class="cookiestext">
                     <label>
                         {{ 'cookies.info'|trans }}

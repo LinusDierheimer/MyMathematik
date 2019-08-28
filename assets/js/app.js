@@ -1,29 +1,118 @@
-import $ from "jquery";
+import "jquery";
 import "bootstrap";
 
 import "../scss/app.scss";
 
-function getDesign(){
-    return $("#design").val();
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
-function initCockieInfo(cookieinfo){
-    if(!document.cookie.includes("cookies=true"))
-        cookieinfo.classList.add("cookiesvisible");
+function removeAllClassesStartingWith(element, start){
+    const $elem = $(element);
+    if($elem.length == 0)
+        return;
+    const classes = $elem[0].className.split(" ").filter(c => !c.startsWith(start));
+    $elem[0].className = classes.join(" ").trim();
+    return $elem[0];
 }
 
-function initCookieButton(cookieinfo){
-    $("#cookiesAccepted").click(function(){
-        const livetime = $('#cookiesaccepted_livetime').val();
-        document.cookie = "cookies=true; path=/; max-age=" + eval(livetime);
-        cookieinfo.classList.remove("cookiesvisible");
+function getCookieLivetime() {
+    return eval(
+        $("#cookie_livetime").val()
+    );
+}
+
+function setCookie(name, value, path = '/', livetime = getCookieLivetime()){
+    document.cookie = "" + name + "=" + value + "; path=" + path + "; max-age=" + livetime;
+}
+
+function initMenuBar(){
+
+    if($("#header_mode").val() === "simple")
+        return;
+
+    const $header = $('#header');
+
+    const updateMenuBar = function(){
+        if($(window).scrollTop() < 150 )
+            $header.addClass('header-transparent');
+        else
+            $header.removeClass('header-transparent');
+    }
+
+    $(document).scroll(updateMenuBar);
+    updateMenuBar(); //When page is reloaded, the scroll is saved in modern browsers. So have to check at init;
+
+    $(".switch-header").click(function(){
+        const body = $(this).next(".switch-content");
+        if(body.height() == 0)
+            body.animate({height:body[0].scrollHeight},200);
+        else
+            body.animate({height:0}, 200);
     })
 }
 
 function initCookies(){
-    const cookieinfo = document.getElementById("cookies"); 
-    initCockieInfo(cookieinfo);
-    initCookieButton(cookieinfo);
+
+    const $cookieinfo = $("#cookieinfo");
+
+    if(!document.cookie.includes("cookies=true"))
+        $cookieinfo.addClass("cookiesvisible");
+
+    $("#cookiesAccepted").click(function(){
+        setCookie("cookies", "true");
+        $cookieinfo.removeClass("cookiesvisible");
+    })
+
+}
+
+function initDesign(){
+
+    var prev_design = getCookie("design");
+    if(prev_design == "")
+        prev_design = "system";
+
+    const setDesign = function(design){
+
+        prev_design = design;
+        setCookie("design", design);
+
+        if(design == "" || design == "system"){
+            if(window.matchMedia("(prefers-color-scheme: dark)").matches)
+                design = "design-dark";
+            else
+                design = "design-white";
+        }
+
+        removeAllClassesStartingWith("body", "design-");
+        $("body").addClass(design);
+    }
+
+    setDesign(prev_design);
+
+    const updateWhenSystemDesign = function(e) {
+        if(prev_design == "system")
+            setDesign("system");
+    }
+
+    window.matchMedia("(prefers-color-scheme: dark)").addListener(updateWhenSystemDesign);
+    window.matchMedia("(prefers-color-scheme: light)").addListener(updateWhenSystemDesign);
+
+    $(".designswitcher").click(function(){
+        setDesign($(this).data("css"));
+    });
 }
 
 function initScrollUp(){
@@ -32,40 +121,15 @@ function initScrollUp(){
     });
 }
 
-function initLanguageSwitcher(){
+function initLanguage() {
+
+    const language = $('#language_code').val();
+    setCookie("language", language);  
+    
     $(".languageswitcher").click(function(){
-        document.cookie = "language=" + $(this).data("languagecode") + "; path=/";
+        setCookie("language", $(this).data("languagecode"));
         location.reload();
     });
-}
-
-function initLanguageCookie(){
-    const language = $('#language_code').val();
-    const livetime = $('#language_livetime').val();
-    document.cookie = "language=" + language + "; path=/; max-age=" + eval(livetime);
-}
-
-function initLanguage(){
-    initLanguageCookie();
-    initLanguageSwitcher();
-}
-
-function updateAccordion(){
-    const chapterbuttons = document.getElementsByClassName("chapterheader");
-    for(var i = 0; i < chapterbuttons.length; i++){
-        const header = chapterbuttons[i];
-        const isActive = header.classList.contains("active");
-        const panel = header.nextElementSibling;
-
-        if(isActive){
-            panel.style.maxHeight = panel.scrollHeight + "px";
-            panel.style.paddingTop = "10px";
-        }else{
-            panel.style.maxHeight = null;
-            panel.style.paddingTop = "0";
-        }
-
-    }
 }
 
 function initAccordion(){
@@ -89,91 +153,98 @@ function initAccordion(){
             image.classList.toggle("active");
             this.classList.toggle("active");
 
-            updateAccordion();
-
+            for(var i = 0; i < chapterbuttons.length; i++){
+                const header = chapterbuttons[i];
+                const isActive = header.classList.contains("active");
+                const panel = header.nextElementSibling;
+        
+                if(isActive){
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    panel.style.paddingTop = "10px";
+                }else{
+                    panel.style.maxHeight = null;
+                    panel.style.paddingTop = "0";
+                }
+        
+            }
         });
     }
 }
 
 function initScrollToContent(){
     $('#scrollToContentButton').click(function(){
-        $('html, body').animate(
-            { scrollTop: $('#content').offset().top - $('#header').height() }, 
-        'slow');
-        console.log("Hallo");
+        $('html, body').animate({
+            scrollTop: $('#content').offset().top - $('#header').height()
+        }, 'slow');
     });
 }
 
-function initAdminVideoUploadOptions(){
+function initAdminVideo(){
 
-    const $this = $(this);
-    const $input = $this.find('.videoname');
-    const originValue = $input.val();
-    const $renameOptions = $this.find(".nameoptions");
-    const $videoOptions = $this.find(".videooptions");
-
-    $input.on('input', function(){
-        if($input.val() != originValue)
-            $renameOptions.css("display", "inline-block");
-        else
-            $renameOptions.css("display", "none");
-    });
-
-    $renameOptions.find(".discardrename").click(function(){
-        $renameOptions.css("display", "none");
-        $input.val(originValue);
-    });
-
-    $renameOptions.find(".dorename").click(function(){
-        $renameOptions.css("display", "none");
-        $.ajax("/admin/doaction", {
-            data: {
-                action: "rename",
-                from: $(this).data("file"),
-                to: $input.val(),
-            },
-            success: function(data){
-            },
-            error: function(error){
-                console.error(error);
-                $input.val(originValue);
-            }
-        });
-    });
-
-    $videoOptions.find(".delete").click(function(){
-        if(!confirm("Do you really want to delete the video? It will be deleted from disk. Consider removing it just from the config file."))
-            return;
-        
-        $.ajax("/admin/doaction", {
-            data: {
-                action: "delete",
-                file: $(this).data("file")
-            },
-            success: function(data){
-                $this.remove();
-            },
-            error: function(error){
-                console.error(error);
-            }
-        });
-    });
-}
-
-function initAllAdminVideoUploadOptions(){
-    $(".videofile").each(initAdminVideoUploadOptions);
-}
-
-function initResetAdminVideoConfig(){
     const $editor = $(".editor");
     const originContent = $editor.val();
 
     $("#resetConfig").click(function(){
         $editor.val(originContent);
     })
+
+    $(".videofile").each(function(){
+        const $this = $(this);
+        const $input = $this.find('.videoname');
+        const originValue = $input.val();
+        const $renameOptions = $this.find(".nameoptions");
+        const $videoOptions = $this.find(".videooptions");
+
+        $input.on('input', function(){
+            if($input.val() != originValue)
+                $renameOptions.css("display", "inline-block");
+            else
+                $renameOptions.css("display", "none");
+        });
+
+        $renameOptions.find(".discardrename").click(function(){
+            $renameOptions.css("display", "none");
+            $input.val(originValue);
+        });
+
+        $renameOptions.find(".dorename").click(function(){
+            $renameOptions.css("display", "none");
+            $.ajax("/admin/doaction", {
+                data: {
+                    action: "rename",
+                    from: $(this).data("file"),
+                    to: $input.val(),
+                },
+                success: function(data){
+                },
+                error: function(error){
+                    console.error(error);
+                    $input.val(originValue);
+                }
+            });
+        });
+
+        $videoOptions.find(".delete").click(function(){
+            if(!confirm("Do you really want to delete the video? It will be deleted from disk. Consider removing it just from the config file."))
+                return;
+            
+            $.ajax("/admin/doaction", {
+                data: {
+                    action: "delete",
+                    file: $(this).data("file")
+                },
+                success: function(data){
+                    $this.remove();
+                },
+                error: function(error){
+                    console.error(error);
+                }
+            });
+        });
+    });
 }
 
-function initLoginTogglePassword(){
+function initLogin() {
     const $button = $("#toggle_password");
     const $password_field = $("#password_input");
 
@@ -187,7 +258,7 @@ function initLoginTogglePassword(){
     });
 }
 
-function initRegisterTogglePassword(){
+function initRegister(){
     const $button = $("#toggle_password");
     const $password_field = $("#password_input");
     const $repeat_password_form = $("#password_repeat_form");
@@ -210,92 +281,15 @@ function initRegisterTogglePassword(){
     });
 }
 
-function initMenuBar(){
-
-    if(getDesign() === "simple")
-        return;
-
-    const $header = $('#header');
-
-    function updateMenuBar(){
-        if($(window).scrollTop() < 150 )
-            $header.addClass('header-transparent');
-        else
-            $header.removeClass('header-transparent');
-    }
-
-    $(document).scroll(updateMenuBar);
-    updateMenuBar(); //When page is reloaded, the scroll is saved in modern browsers. So have to check at init;
-}
-
-function initSwitchButtons(){
-    $(".switch-header").click(function(){
-        const body = $(this).next(".switch-content");
-        if(body.height() == 0)
-            body.animate({height:body[0].scrollHeight},200);
-        else
-            body.animate({height:0}, 200);
-    })
-}
-
-function setDesign(design){
-    const body = $("body");
-    body.removeClass (function (index, className) {
-        return (className.match (/(^|\s)design-\S+/g) || []).join(' ');
-    });
-    body.addClass(design);
-}
-
-function initDesignSwitcher(){
-    $(".designswitcher").click(function(){
-        const design = $(this).data("css");
-        const livetime = $("language_livetime").val();
-        document.cookie = "design=" + design + "; path=/; max-age=" + eval(livetime);
-        setDesign(design);
-    });
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-}
-
-function initDesignCookie(){
-    const livetime = $("language_livetime").val();
-    var design = getCookie("design");
-    if(design == "")
-        design = "design-light";
-    document.cookie = "design=" + design + "; path=/; max-age=" + eval(livetime);
-    setDesign(design);
-}
-
-function initDesign(){
-    initDesignCookie();
-    initDesignSwitcher();
-}
-
 $(document).ready(function(){
+    initMenuBar();
     initCookies();
-    initLanguage();
+    initDesign();
     initScrollUp();
+    initLanguage();
     initAccordion();
     initScrollToContent();
-    initAllAdminVideoUploadOptions();
-    initResetAdminVideoConfig();
-    initLoginTogglePassword();
-    initRegisterTogglePassword();
-    initMenuBar();
-    initSwitchButtons();
-    initDesign();
+    initAdminVideo();
+    initLogin();
+    initRegister();
 });

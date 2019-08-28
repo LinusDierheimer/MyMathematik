@@ -27,8 +27,7 @@ parameters:
     default_class: '5'
     default_locale: '%locale%'
 
-    cookiesaccepted_livetime: '60 * 60 * 24 * 365 * 2'
-    language_livetime:        '60 * 60 * 24 * 365 * 2'
+    cookie_livetime: '60 * 60 * 24 * 365 * 2'
 
 services:
     # default configuration for services in *this* file

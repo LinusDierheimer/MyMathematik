@@ -49,11 +49,11 @@
                         <div class="classlinks">
                             {% for key, class in globals.classes %}
                                 <a href="/videos/{{ globals.current_language.code }}/{{ key }}">
-                                    {{ 'header.icons.classes.class'|trans }} {{ class.name }}
+                                    {{ 'header.navigation.classes.class'|trans }} {{ class.name }}
                                 </a>
                             {% else %}
                                 <div>
-                                    {{ 'header.icons.classes.noclass'|trans }}
+                                    {{ 'header.navigation.classes.noclass'|trans }}
                                 </div>
                             {% endfor %}
                         </div>
@@ -64,28 +64,28 @@
                                     {% if app.user is null %}
                                         <a class="menubutton" href="{{ path('route_account_me') }}">
                                             <i class="menu-icon far fa-user"></i>
-                                            {{ 'header.icons.account.me'|trans }}
+                                            {{ 'header.navigation.menu.account.me'|trans }}
                                         </a>
                                         <a class="menubutton" href="{{ path('route_account_login') }}">
                                             <i class="menu-icon fas fa-sign-in-alt"></i>
-                                            {{ 'header.icons.account.login'|trans }}
+                                            {{ 'header.navigation.menu.account.login'|trans }}
                                         </a>
                                         <a class="menubutton" href="{{ path('route_account_register') }}">
                                             <i class="menu-icon fas fa-user-plus"></i>
-                                            {{ 'header.icons.account.register'|trans }}
+                                            {{ 'header.navigation.menu.account.register'|trans }}
                                         </a>
                                     {% else %}
                                         <a class="menubutton" href="{{ path('route_account_me') }}">
                                             <i class="menu-icon fas fa-user"></i>
-                                            {{ 'header.icons.account.me'|trans }}
+                                            {{ 'header.navigation.menu.account.me'|trans }}
                                         </a>
                                         <a class="menubutton" href="{{ path('route_account_logout') }}">
                                             <i class="menu-icon fas fa-sign-out-alt"></i>
-                                            {{ 'header.icons.account.logout'|trans }}
+                                            {{ 'header.navigation.menu.account.logout'|trans }}
                                         </a>
                                         <a class="menubutton" href="{{ path('route_account_login') }}">
                                             <i class="menu-icon fas fa-sync"></i>
-                                            {{ 'header.icons.account.switch'|trans }}
+                                            {{ 'header.navigation.menu.account.switch'|trans }}
                                         </a>
                                     {% endif %}
                                 </div>
@@ -93,7 +93,7 @@
                                     <div class="switch-button">
                                         <div class="switch-header">
                                             <i class="menu-icon fas fa-language"></i>
-                                            Language
+                                            {{ 'header.navigation.menu.settings.language.title'|trans }}
                                         </div>
                                         <div class="switch-content">
                                             {% for language in globals.languages %}
@@ -106,11 +106,11 @@
                                     <div class="switch-button">
                                         <div class="switch-header">
                                             <i class="menu-icon fas fa-palette"></i>
-                                            Design
+                                            {{ 'header.navigation.menu.settings.design.title'|trans }}
                                         </div>
                                         <div class="switch-content">
                                             <div data-css="system" class="switch-content-button designswitcher">
-                                                System
+                                                {{ 'header.navigation.menu.settings.design.options.system'|trans }}
                                             </div>
                                             {% for design in globals.designs %}
                                                 <div data-css="{{ design.css }}" class="switch-content-button designswitcher">

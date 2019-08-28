@@ -3,21 +3,28 @@ site:
 
 header:
     title: "MyMathematik"
-    icons:
+    navigation:
         classes:
             class: "Klasse"
             noclass: "Keine Videos für die ausgewählte Sprache!"
-        account:
-            me: "Mein Account"
-            login: "Login"
-            logout: "Logout"
-            register: "Registrieren"
-            switch: "Benutzer wechseln"
-        design:
-            white: "Weiss"
-            light: "Hell"
-            dark: "Dunkel"
-            black: "Schwarz"
+        menu:
+            account:
+                me: "Mein Account"
+                login: "Login"
+                logout: "Logout"
+                register: "Registrieren"
+                switch: "Benutzer wechseln"
+            settings:
+                language:
+                    title: "Sprache / Language"
+                design:
+                    title: "Design"
+                    options:
+                        system: "System Thema folgen"
+                        white: "Weiss"
+                        light: "Hell"
+                        dark: "Dunkel"
+                        black: "Schwarz"
 
 footer:
     impressum: "Impressum"

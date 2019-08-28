@@ -1,12 +1,12 @@
 1:
-    name: header.icons.design.white
+    name: header.navigation.menu.settings.design.options.white
     css: design-white
 2:
-    name: header.icons.design.light
+    name: header.navigation.menu.settings.design.options.light
     css: design-light
 3:
-    name: header.icons.design.dark
+    name: header.navigation.menu.settings.design.options.dark
     css: design-dark
 4:
-    name: header.icons.design.black
+    name: header.navigation.menu.settings.design.options.black
     css: design-black

@@ -38,21 +38,24 @@ class VideoController extends AbstractController
         if(!array_key_exists($language, $videoConfig))
         {
             return $this->render('site/videos/errorLangauge.html.twig', [
-                'globals' => $util->get_globals()
+                'globals'  => $util->get_globals(),
+                'language' => $language
             ]);
         }
     
         if(!array_key_exists($class, $videoConfig[$language]))
         {
-            return $this->render('site/videos/errorVideos.html.twig', [
-                'globals' => $util->get_globals()
+            return $this->render('site/videos/errorClass.html.twig', [
+                'globals'  => $util->get_globals(),
+                'language' => $language,
+                'class'    => $class
             ]);
         }
 
         return $this->render('site/videos/videolist.html.twig', [
             'globals'       => $util->get_globals(),
-            'videoLanguage'      => $language,
-            'videoClass'         => $class
+            'videoLanguage' => $language,
+            'videoClass'    => $class
         ]);
     }
 

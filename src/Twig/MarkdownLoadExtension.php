@@ -40,7 +40,7 @@ class MarkdownLoadExtension extends AbstractExtension
 
     public function load_local_markdown($file, $locale = null, $extension = "md")
     {
-        $locale = $locale ?? $this->util->get_language()["code"];
+        $locale = $locale ?? $this->util->get_current_language()["code"];
         return $this->load_markdown($file . "." . $locale, $extension);
     }
 }

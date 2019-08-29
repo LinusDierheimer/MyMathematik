@@ -2,6 +2,15 @@
 
 {% block content %}
     
-    {{ dump(error) }}
+    {% if app.environment == 'dev' %}
+        <pre>
+            {{ dump() }}
+        </pre>
+    {% endif %}
+
+    Ooops! Something went wrong!
+
+    {% block details %}
+    {% endblock %}
 
 {% endblock %}

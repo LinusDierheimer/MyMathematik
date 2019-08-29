@@ -68,7 +68,7 @@ class Util
     public function get_cookie($name, $request = null)
     {
         $request = $request ?: $this->get_request();
-        return $request->cookies->get($name);
+        return $request == null ? "" : $request->cookies->get($name);
     }
 
     //Also used by Translation Twig extensions
@@ -82,17 +82,18 @@ class Util
     //Also used by Translation Twig extensions
     public function get_current_language()
     {
+        $locale = $this->get_cookie('language');
+
         $request = $this->get_request();
+        if($locale == null || $locale == "")
+            if($request != null)
+                $locale = $request->getLocale();
+
         $languages = $this->get_languages();
-
-        $locale = 
-            $this->get_cookie('language') ?:
-                $request->getLocale();
-
-        if(\array_key_exists($locale, $this->get_languages()))
+        if(\array_key_exists($locale, $languages))
             return $languages[$locale];
-
-        return $languages[$this->get_parameter("default_locale")];
+        else
+            return $languages[$this->get_parameter("default_locale")];
     }
 
     //Also used by Video controller

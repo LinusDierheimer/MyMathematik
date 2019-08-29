@@ -141,3 +141,15 @@ route_information_redirect_conditions:
         route: route_information_conditions
         permanent: true
         keepQueryParams: true
+
+route_tools_calculator:
+    path: /tools/calculator
+    controller: App\Controller\ToolsController::calculator
+
+route_tools_calculator_redirect:
+    path: /calculator
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_tools_calculator
+        permanent: true
+        keepQueryParams: true

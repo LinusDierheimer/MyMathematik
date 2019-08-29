@@ -1,0 +1,82 @@
+{% extends "site/base-simple.html.twig" %}
+
+{% block content %}
+    <div class="calculator">
+        <div class="output">
+            <div class="calculation"></div>
+            <input type="text" class="result" id="calculatorOutput" />
+        </div>
+        <table class="buttons">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="button calculatorButton">(</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">)</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">%</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">/</div>
+                    </td>
+                    <td>
+                        <div class="button acButton">AC</div>
+                    </td>
+                </tr>
+                <tr>
+                    {% for number in range(1, 3) %}
+                        <td>
+                            <div class="button calculatorButton">{{ number }}</div>
+                        </td>
+                    {% endfor %}
+                    <td>
+                        <div class="button calculatorButton">*</div>
+                    </td>
+                    <td>
+                        <div class="button cButton">C</div>
+                    </td>
+                </tr>
+                <tr>
+                    {% for number in range(4, 6) %}
+                        <td>
+                            <div class="button calculatorButton">{{ number }}</div>
+                        </td>
+                    {% endfor %}
+                    <td>
+                        <div class="button calculatorButton">-</div>
+                    </td>
+                    <td rowspan="3">
+                        <div class="button equalButton">=</div>
+                    </td>
+                </tr>
+                <tr>
+                    {% for number in range(7, 9) %}
+                        <td>
+                            <div class="button calculatorButton">{{ number }}</div>
+                        </td>
+                    {% endfor %}
+                    <td>
+                        <div class="button calculatorButton">+</div>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <div class="button calculatorButton">0</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">.</div>
+                    </td>
+                    <td >
+                        <div class="button ansButton">Ans</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">%</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

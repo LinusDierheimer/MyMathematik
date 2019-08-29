@@ -14,6 +14,8 @@ header:
                 logout: "Logout"
                 register: "Registrieren"
                 switch: "Benutzer wechseln"
+            tools:
+                calculator: "Taschenrechner"
             settings:
                 language:
                     title: "Sprache / Language"

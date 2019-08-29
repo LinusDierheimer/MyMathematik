@@ -253,6 +253,49 @@ function initRegister(){
     });
 }
 
+function initCalculator() {
+    const $output = $("#calculatorOutput");
+    const $calculation = $(".calculation");
+    const $buttons = $(".calculatorButton");
+    const $equalButton = $(".equalButton");
+    const $acButton = $(".acButton");
+    const $cButton = $(".cButton");
+
+    $buttons.click(function(){
+        $output.val($output.val() + $(this).text());
+    })
+
+    $equalButton.click(function(){
+        $calculation.text($output.val());
+        var raw = $output.val()
+            .replace("/", " / ")
+            .replace("*", " * ")
+            .replace("-", " - ")
+            .replace("+", " + ")
+            .replace("π", " Math.PI ")
+            .replace("e", " Math.E ");
+        
+        var res;
+        try {
+            res = eval(raw);
+        } catch (error) {
+            res = error.message;
+            console.error(error);
+        }
+
+        $output.val(res);
+    });
+
+    $acButton.click(function(){
+        $output.val("");
+    });
+
+    $cButton.click(function(){
+        const val = $output.val();
+        $output.val(val.substring(0, val.length - 1));
+    });
+}
+
 $(document).ready(function(){
     initMenuBar();
     initBody();
@@ -265,4 +308,5 @@ $(document).ready(function(){
     initAdminVideo();
     initLogin();
     initRegister();
+    initCalculator();
 });

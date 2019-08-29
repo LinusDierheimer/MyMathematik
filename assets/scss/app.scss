@@ -24,25 +24,31 @@ body {
 @import "footer";
 @import "previewimage";
 
-.content {
-    margin: 25px auto 80px auto;
-    max-width: 900px;
-    padding: 15px;
-    position: relative;
-    display: block;
-    min-height: auto;
+.fullcontent {
+    height: 100%;
 
-    @import "sites/home";
-    @import "sites/videolist";
-    @import "sites/languageconfig";
-    @import "sites/videoconfig";
-    @import "sites/account";
-    @import "sites/register";
-    @import "sites/login";
-}
+    .content {
+        margin: 25px auto 80px auto;
+        max-width: 900px;
+        padding: 15px;
+        position: relative;
+        display: block;
+        min-height: auto;
 
-.content-simple {
-    margin-top: 100px;
+        @import "sites/home";
+        @import "sites/videolist";
+        @import "sites/languageconfig";
+        @import "sites/videoconfig";
+        @import "sites/account";
+        @import "sites/register";
+        @import "sites/login";
+    }
+
+    .content-simple {
+        padding-top: 100px;
+        margin-top: 0;
+    }
+
 }
 
 @import "designs/design-white";

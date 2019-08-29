@@ -71,7 +71,7 @@
 
                             <div class="headerlinks">
                                 <div class="classlinks">
-                                    {% for key, class in globals.classes %}
+                                    {% for key, class in globals.videos[current_language_code] %}
                                         <a href="/videos/{{ current_language_code }}/{{ key }}">
                                             {{ 'header.navigation.classes.class'|trans }} {{ class.name }}
                                         </a>
@@ -154,7 +154,7 @@
                 {% endblock %}
             </div>
 
-            <div class="fullcontent">
+            <div class="fullcontent" id="fullcontent">
                 {% block fullcontent %}{% endblock %}
             </div>
 

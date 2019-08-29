@@ -24,14 +24,18 @@
             .chaptertitle {
                 font-size: 25px;
                 padding: 10px 0;
+                cursor: pointer;
                 .dropdownbutton {
                     float: right;
+                    transition: all 0.5s;
+                }
+                .dropdownbutton-active {
+                    transform: rotate(180deg);
                 }
             }
             .chaptercontent {
                 color: inherit;
-                padding-left: 25px;
-                margin-left: 40px;
+                margin-left: 45px;
                 height: 0;
                 overflow: hidden;
 
@@ -41,6 +45,7 @@
                     display: flex;
                     flex-wrap: wrap;
                     margin-bottom: 40px;
+                    padding-left: 30px;
 
                     .videocontainer {
                         width: 230px;

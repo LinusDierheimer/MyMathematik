@@ -24,28 +24,35 @@ function setCookie(name, value, path = '/', livetime = getCookieLivetime()){
 
 function initMenuBar(){
 
-    if($("#header_mode").val() === "simple")
-        return;
-
-    const $header = $('#header');
-
-    const updateMenuBar = function(){
-        if($(window).scrollTop() < 150 )
-            $header.addClass('header-transparent');
-        else
-            $header.removeClass('header-transparent');
-    }
-
-    $(document).scroll(updateMenuBar);
-    updateMenuBar(); //When page is reloaded, the scroll is saved in modern browsers. So have to check at init;
-
     $(".switch-header").click(function(){
         const body = $(this).next(".switch-content");
         if(body.height() == 0)
             body.animate({height:body[0].scrollHeight},200);
         else
             body.animate({height:0}, 200);
-    })
+    });
+
+    if($("#header_mode").val() !== "simple")
+    {
+        const $header = $('#header');
+
+        const updateMenuBar = function(){
+            if($(window).scrollTop() < 150 )
+                $header.addClass('header-transparent');
+            else
+                $header.removeClass('header-transparent');
+        }
+    
+        $(document).scroll(updateMenuBar);
+        updateMenuBar(); //When page is reloaded, the scroll is saved in modern browsers. So have to check at init;    
+    }
+}
+
+function initBody(){
+    const $fullContent = $("#fullcontent");
+    const minHeight = window.innerHeight - $("#footer").height();
+    if($fullContent.height() < minHeight)
+        $fullContent.height(minHeight);
 }
 
 function initCookies(){
@@ -125,11 +132,14 @@ function initLanguage() {
 
 function initVideoList(){
     $(".chaptertitle").click(function(){
-        const body = $(this).next(".chaptercontent");
-        if(body.height() == 0)
-            body.animate({height:body[0].scrollHeight},200);
-        else
-            body.animate({height:0}, 200);
+        const $this = $(this);
+        const $content = $this.next(".chaptercontent");
+        if($content.height() == 0){
+            $content.animate({height:$content[0].scrollHeight},200);
+        }else{
+            $content.animate({height:0}, 200);
+        }
+        $this.find(".dropdownbutton").toggleClass("dropdownbutton-active");
     })   
 }
 
@@ -245,6 +255,7 @@ function initRegister(){
 
 $(document).ready(function(){
     initMenuBar();
+    initBody();
     initCookies();
     initDesign();
     initScrollUp();

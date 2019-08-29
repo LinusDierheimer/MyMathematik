@@ -1,18 +1,19 @@
 {% extends "site/base-designed.html.twig" %}
 
 {% block content %}
+    {% set class = globals.videos[videoLanguage][videoClass] %}
     <div class="videolist">
         <div class="head">
             <h1>
-                {{ 'videos.class'|trans }} {{ globals.classes[class].name }}
+                {{ 'videos.class'|trans }} {{ class.name }}
             </h1>
-            <a href="{{ globals.classes[class].curriculum }}" rel="noopener noreferrer" target="_blank">
+            <a href="{{ class.curriculum }}" rel="noopener noreferrer" target="_blank">
                 {{ 'videos.curriculum.link'|trans }}
                 <i class="fas fa-link"></i>
             </a>
         </div>
         <div class="list">
-            {% for chapter in chapters %}
+            {% for chapterNumber, chapter in class.chapters %}
                 <div class="chapter">
                     <div class="chaptertitle">
                         {{ chapter.name }}
@@ -20,8 +21,8 @@
                     </div>
                     <div class="chaptercontent">
                         <div class="contentwrapper">
-                            {% for video in chapter.videos %}
-                                <a href="{{ video.source }}" class="videocontainer">
+                            {% for videoNumber, video in chapter.videos %}
+                                <a href="/videos/{{ videoLanguage }}/{{ videoClass }}/{{chapterNumber}}/{{ videoNumber }}" class="videocontainer">
                                     <img
                                         class="videothumbnail"
                                         src="{{ video.thumbnail == "" ? asset('build/images/ThumbnailFallback.png') : video.thumbnail }}"
@@ -38,6 +39,10 @@
                             {% endfor %}
                         </div>
                     </div>
+                </div>
+            {% else %}
+                <div class="nocontent">
+                    {{ 'videos.nocontent'|trans }}
                 </div>
             {% endfor %}
         </div>

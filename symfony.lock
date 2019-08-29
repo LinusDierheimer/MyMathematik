@@ -133,7 +133,7 @@
         "version": "2.0.1"
     },
     "ocramius/package-versions": {
-        "version": "1.5.1"
+        "version": "1.4.0"
     },
     "ocramius/proxy-manager": {
         "version": "2.2.3"

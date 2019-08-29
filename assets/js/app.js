@@ -269,9 +269,13 @@ function initCalculator() {
         $calculation.text($output.val());
         var raw = $output.val()
             .replace("/", " / ")
+            .replace("÷", " / ")
             .replace("*", " * ")
+            .replace("×", " * ")
             .replace("-", " - ")
             .replace("+", " + ")
+            .replace("∞", " Infinity ")
+            .replace("rand", " Math.random() ")
             .replace("π", " Math.PI ")
             .replace("e", " Math.E ");
         
@@ -282,6 +286,8 @@ function initCalculator() {
             res = error.message;
             console.error(error);
         }
+
+        console.log(raw);
 
         $output.val(res);
     });

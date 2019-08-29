@@ -10,6 +10,12 @@
             <tbody>
                 <tr>
                     <td>
+                        <div class="button calculatorButton">π</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">sin</div>
+                    </td>
+                    <td>
                         <div class="button calculatorButton">(</div>
                     </td>
                     <td>
@@ -19,26 +25,38 @@
                         <div class="button calculatorButton">%</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">/</div>
+                        <div class="button calculatorButton">÷</div>
                     </td>
                     <td>
                         <div class="button acButton">AC</div>
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <div class="button calculatorButton">e</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">cos</div>
+                    </td>
                     {% for number in range(1, 3) %}
                         <td>
                             <div class="button calculatorButton">{{ number }}</div>
                         </td>
                     {% endfor %}
                     <td>
-                        <div class="button calculatorButton">*</div>
+                        <div class="button calculatorButton">×</div>
                     </td>
                     <td>
                         <div class="button cButton">C</div>
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <div class="button calculatorButton">∞</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">tan</div>
+                    </td>
                     {% for number in range(4, 6) %}
                         <td>
                             <div class="button calculatorButton">{{ number }}</div>
@@ -47,11 +65,17 @@
                     <td>
                         <div class="button calculatorButton">-</div>
                     </td>
-                    <td rowspan="3">
-                        <div class="button equalButton">=</div>
+                    <td>
+                        <div class="button calculatorButton">Last</div>
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <div class="button calculatorButton">rand</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">log</div>
+                    </td>
                     {% for number in range(7, 9) %}
                         <td>
                             <div class="button calculatorButton">{{ number }}</div>
@@ -60,9 +84,17 @@
                     <td>
                         <div class="button calculatorButton">+</div>
                     </td>
-                    
+                    <td rowspan="2">
+                        <div class="button equalButton">=</div>
+                    </td>
                 </tr>
                 <tr>
+                    <td>
+                        <div class="button calculatorButton">abs()</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton">sqrt</div>
+                    </td>
                     <td>
                         <div class="button calculatorButton">0</div>
                     </td>

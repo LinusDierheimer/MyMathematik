@@ -128,3 +128,7 @@ admin:
             name: "Name: "
             file: "Video Datei: "
             send: "Hochladen"
+
+tools:
+    calculator:
+        title: "Taschenrechner - MyMathematik"

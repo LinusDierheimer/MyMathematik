@@ -1,31 +1,61 @@
 {% extends "site/base-simple.html.twig" %}
 
+{% block title %}
+    {{ 'tools.calculator.title'|trans }}
+{% endblock %}
+
 {% block content %}
     <div class="calculator">
         <div class="output">
             <div class="calculation"></div>
-            <input type="text" class="result" id="calculatorOutput" />
+            <div class="result" contenteditable="true" id="calculatorOutput"></div>
         </div>
         <table class="buttons">
             <tbody>
                 <tr>
                     <td>
-                        <div class="button calculatorButton">π</div>
+                        <div class="button constantButton calculatorButton" data-normal-value="π">π</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">sin</div>
+                        <div
+                            class="button functionButton calculatorButton"
+                            data-normal="sinh()"
+                            data-normal-value="sinh("
+                            data-inverted="asinh()"
+                            data-inverted-value="asinh("
+                        >sinh()</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">(</div>
+                        <div
+                            class="button functionButton calculatorButton"
+                            data-normal="sin()"
+                            data-normal-value="sin("
+                            data-inverted="asin()"
+                            data-inverted-value="asin("
+                        >sin()</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">)</div>
+                        <div
+                            class="button functionButton calculatorButton" data-normal-value="ln(">ln()</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">%</div>
+                        <div
+                            class="button functionButton calculatorButton"
+                            data-normal="pow()"
+                            data-normal-value="pow("
+                        >pow()</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">÷</div>
+                        <div class="button specialButton calculatorButton" data-normal-value="(">(</div>
+                    </td>
+                    <td>
+                        <div class="button specialButton calculatorButton" data-normal-value=")">)</div>
+                    </td>
+                    <td>
+                        <div class="button specialButton calculatorButton" data-normal-value="%">%</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton" data-normal-value="÷">÷</div>
                     </td>
                     <td>
                         <div class="button acButton">AC</div>
@@ -33,18 +63,39 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="button calculatorButton">e</div>
+                        <div class="button constantButton calculatorButton" data-normal-value="ℯ">ℯ</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">cos</div>
+                        <div
+                            class="button functionButton calculatorButton"
+                            data-normal="cosh()"
+                            data-normal-value="cosh("
+                            data-inverted="acosh()"
+                            data-inverted-value="acosh("
+                        >cosh()</div>
+                    </td>
+                    <td>
+                        <div
+                            class="button functionButton calculatorButton"
+                            data-normal="cos()"
+                            data-normal-value="cos("
+                            data-inverted="acos()"
+                            data-inverted-value="acos("
+                        >cos()</div>
+                    </td>
+                    <td>
+                        <div class="button functionButton calculatorButton" data-normal-value="lg(">lg()</div>
+                    </td>
+                    <td>
+                        <div class="button functionButton calculatorButton" data-normal-value="exp(">exp()</div>
                     </td>
                     {% for number in range(1, 3) %}
                         <td>
-                            <div class="button calculatorButton">{{ number }}</div>
+                            <div class="button numberButton calculatorButton" data-normal-value="{{ number }}">{{ number }}</div>
                         </td>
                     {% endfor %}
                     <td>
-                        <div class="button calculatorButton">×</div>
+                        <div class="button calculatorButton" data-normal-value="×">×</div>
                     </td>
                     <td>
                         <div class="button cButton">C</div>
@@ -52,37 +103,67 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="button calculatorButton">∞</div>
+                        <div class="button constantButton calculatorButton" data-normal-value="∞">∞</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">tan</div>
+                        <div
+                            class="button functionButton calculatorButton"
+                            data-normal="tanh()"
+                            data-normal-value="tanh("
+                            data-inverted="atanh()"
+                            data-inverted-value="atanh("
+                        >tanh()</div>
+                    </td>
+                    <td>
+                        <div
+                            class="button functionButton calculatorButton"
+                            data-normal="tan()"
+                            data-normal-value="tan("
+                            data-inverted="atan()"
+                            data-inverted-value="atan("
+                        >tan()</div>
+                    </td>
+                    <td>
+                        <div class="button functionButton calculatorButton" data-normal-value="log(">log()</div>
+                    </td>
+                    <td>
+                        <div class="button functionButton calculatorButton" data-normal-value="fac(">fac()</div>
                     </td>
                     {% for number in range(4, 6) %}
                         <td>
-                            <div class="button calculatorButton">{{ number }}</div>
+                            <div class="button numberButton calculatorButton" data-normal-value="{{ number }}">{{ number }}</div>
                         </td>
                     {% endfor %}
                     <td>
-                        <div class="button calculatorButton">-</div>
+                        <div class="button calculatorButton" data-normal-value="-">-</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">Last</div>
+                        <div class="button lastButton">Last</div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div class="button calculatorButton">rand</div>
+                        <div class="button calculatorButton" data-normal-value=",">,</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">log</div>
+                        <div class="button functionButton calculatorButton" data-normal-value="rand(">rand()</div>
+                    </td>
+                    <td>
+                        <div class="button functionButton calculatorButton" data-normal-value="abs(">abs()</div>
+                    </td>
+                    <td>
+                        <div class="button functionButton calculatorButton" data-normal-value="sqrt(">sqrt()</div>
+                    </td>
+                    <td>
+                        <div class="button functionButton calculatorButton" data-normal-value="cbrt(">cbrt()</div>
                     </td>
                     {% for number in range(7, 9) %}
                         <td>
-                            <div class="button calculatorButton">{{ number }}</div>
+                            <div class="button numberButton calculatorButton" data-normal-value="{{ number }}">{{ number }}</div>
                         </td>
                     {% endfor %}
                     <td>
-                        <div class="button calculatorButton">+</div>
+                        <div class="button calculatorButton" data-normal-value="+">+</div>
                     </td>
                     <td rowspan="2">
                         <div class="button equalButton">=</div>
@@ -90,25 +171,42 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="button calculatorButton">abs()</div>
+                        <div class="button invertButton" data-inverted="false">Inv</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">sqrt</div>
+                        <div class="button functionButton calculatorButton" data-normal-value="floor(">floor()</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">0</div>
+                        <div class="button functionButton calculatorButton" data-normal-value="ceil(">ceil()</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">.</div>
+                        <div class="button functionButton calculatorButton" data-normal-value="round(">round()</div>
+                    </td>
+                    <td>
+                        <div class="button functionButton calculatorButton" data-normal-value="trunc(">trunc()</div>
+                    </td>
+                    <td>
+                        <div class="button numberButton calculatorButton" data-normal-value="0">0</div>
+                    </td>
+                    <td>
+                        <div class="button calculatorButton" data-normal-value=".">.</div>
                     </td>
                     <td >
-                        <div class="button ansButton">Ans</div>
+                        <div class="button specialButton calculatorButton" data-normal-value="ANS">Ans</div>
                     </td>
                     <td>
-                        <div class="button calculatorButton">%</div>
+                        <div class="button calculatorButton" data-normal-value="%">%</div>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <div class="history">
+            <div class="name">
+                <i class="fas fa-history"></i>
+                Verlauf
+            </div>
+            <div class="historyentrys">
+            </div>
+        </div>
     </div>
 {% endblock %}

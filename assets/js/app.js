@@ -253,6 +253,85 @@ function initRegister(){
     });
 }
 
+function addMissingBrackets(raw){
+    var numberOfStartingBrackets = raw.split("(").length - 1;
+    var numberOfClosingBrackets = raw.split(")").length - 1;
+    if(numberOfStartingBrackets > numberOfClosingBrackets)
+        raw = raw + ")".repeat(numberOfStartingBrackets - numberOfClosingBrackets);
+    else if(numberOfStartingBrackets < numberOfClosingBrackets)
+        raw = "(".repeat(numberOfClosingBrackets - numberOfStartingBrackets) + raw;
+    return raw;
+}
+
+function evalMathString(raw, lastResult = "0") {
+    raw = raw
+        .split("÷").join("/")
+        .split("×").join("*")
+        .split("∞").join("Infinity")
+        .split("ANS").join(lastResult)
+        .split("rand(").join("rand(")
+        .split("RAND").join("rand()")
+        .split("sqrt(").join("Math.sqrt(")
+        .split("abs(").join("Math.abs(")
+        .split("sin(").join("Math.sin(")
+        .split("cos(").join("Math.cos(")
+        .split("tan(").join("Math.tan(")
+        .split("sinh(").join("Math.sinh(")
+        .split("cosh(").join("Math.cosh(")
+        .split("tanh(").join("Math.tanh(")
+        .split("asin(").join("Math.asin(")
+        .split("acos(").join("Math.acos(")
+        .split("atan(").join("Math.atan(")
+        .split("asinh(").join("Math.asinh(")
+        .split("acosh(").join("Math.acosh(")
+        .split("atanh(").join("Math.atanh(")
+        .split("ln(").join("Math.log(")
+        .split("lg(").join("Math.log10(")
+        .split("log(").join("log(")
+        .split("pow(").join("Math.pow(")
+        .split("exp(").join("Math.exp(")
+        .split("floor(").join("Math.floor(")
+        .split("ceil(").join("Math.ceil(")
+        .split("round(").join("Math.round(")
+        .split("trunc(").join("Math.trunc(")
+        .split("cbrt(").join("Math.cbrt(")
+        .split("fac(").join("fac(")
+        .split("π").join("Math.PI")
+        .split("ℯ").join("Math.E")
+        .split(";").join(",");
+
+    console.info("Prepaired statement: " + raw);
+
+    function fac(x){
+        return x <= 2 ? 2 : x * fac(x - 1);
+    }
+
+    function log(base, x){
+        return Math.log(x) / Math.log(base);
+    }
+
+    function rand(min, max) {
+        if(min != undefined && max != undefined)
+            return Math.floor(Math.random() * (+max - +min)) + +min;
+        else if(min != undefined)
+            return Math.floor(Math.random() * min)
+        else
+            return Math.random();
+    }
+
+    var res = "";
+    try {
+        res = '' + eval(raw);
+    } catch (error) {
+        res = '<span class="error">' + error.message + '</span>';
+    }
+
+    res = res
+        .split("Infinity").join("∞");
+
+    return res;
+}
+
 function initCalculator() {
     const $output = $("#calculatorOutput");
     const $calculation = $(".calculation");
@@ -260,46 +339,96 @@ function initCalculator() {
     const $equalButton = $(".equalButton");
     const $acButton = $(".acButton");
     const $cButton = $(".cButton");
+    const $lastButton = $(".lastButton");
+    const $invertButton = $(".invertButton");
+    const $history = $(".historyentrys");
+
+    var lastRaw = "";
+    var lastResult = "";
+
+    function isInverted() {
+        return $invertButton.data("inverted") == "true";
+    }
+
+    $invertButton.click(function(){
+        const useNormal = isInverted();
+        $buttons.each(function(){
+            const $e = $(this);
+            if(useNormal){
+                const data = $e.data("normal");
+                if(data)
+                    $e.html(data);
+            }else {
+                const data = $e.data("inverted");
+                if(data)
+                    $e.html(data);
+            }
+        });
+        if(useNormal){
+            $invertButton.data("inverted", "false");
+            $invertButton.css("background", "lightcoral");
+        }else {
+            $invertButton.data("inverted", "true");
+            $invertButton.css("background", "coral");
+        }
+    });
 
     $buttons.click(function(){
-        $output.val($output.val() + $(this).text());
-    })
-
-    $equalButton.click(function(){
-        $calculation.text($output.val());
-        var raw = $output.val()
-            .replace("/", " / ")
-            .replace("÷", " / ")
-            .replace("*", " * ")
-            .replace("×", " * ")
-            .replace("-", " - ")
-            .replace("+", " + ")
-            .replace("∞", " Infinity ")
-            .replace("rand", " Math.random() ")
-            .replace("π", " Math.PI ")
-            .replace("e", " Math.E ");
+        const $this = $(this);
+        const add = $this.data("normal-value");
         
-        var res;
-        try {
-            res = eval(raw);
-        } catch (error) {
-            res = error.message;
-            console.error(error);
+        if(isInverted()){
+            const invertedAdd = $this.data("inverted-value");
+            if(invertedAdd)
+                add = invertedAdd;
         }
 
-        console.log(raw);
+        $output.html($output.html() + add);
+    });
 
-        $output.val(res);
+    $lastButton.click(function(){
+        $output.html(lastRaw);
     });
 
     $acButton.click(function(){
-        $output.val("");
+        $output.html("");
     });
 
     $cButton.click(function(){
-        const val = $output.val();
-        $output.val(val.substring(0, val.length - 1));
+        const str = $output.html();
+        $output.html(str.substring(0, str.length - 1));
     });
+
+    function calculate(){
+        var raw = addMissingBrackets($output.text());
+        $output.text("...");
+
+        var res = evalMathString(raw, lastResult);
+        
+        lastRaw = raw;
+        lastResult = res;
+
+        $history.append(`
+            <div class="entry>
+                <span class="raw">${raw}</span>
+                <span class="equal">=</span>
+                <span class="result">${res}</span>
+            </div>
+        `);
+
+        $calculation.html(raw + " = " + res);
+        $output.html(res);
+    }
+
+    $(document).on('keypress',function(e) {
+        if(e.which == 13){
+            e.preventDefault();
+            e.stopPropagation();
+            calculate();
+        }
+    });
+
+    $equalButton.click(calculate);
 }
 
 $(document).ready(function(){

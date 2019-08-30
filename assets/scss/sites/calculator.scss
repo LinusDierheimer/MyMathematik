@@ -4,7 +4,7 @@
         border: 1px solid lightgrey;
         height: 100%;
         margin: 4px;
-        padding: 1px 3px;
+        padding: 5px 4px 7px 4px;
         .calculation {
             height: 25px;
             font-size: 20px;
@@ -18,22 +18,48 @@
             border: none;
             outline: none;
             font-size: 35px;
+
+            .error {
+                color: red;
+            }
         }
     }
     .buttons {
-        .button {
-            background: rgb(215, 215, 215);
-            border-radius: 4px;
-            margin: 4px;
-            width: 85px;
-            text-align: center;
-            line-height: 40px;
-            cursor: pointer;
+        width: 100%;
+        tr {
+            width: 100%;
+            td {
+                width: 10%;
+                .button {
+                    background: rgb(215, 215, 215);
+                    border-radius: 4px;
+                    margin: 4px;
+                    width: auto;
+                    text-align: center;
+                    line-height: 35px;
+                    cursor: pointer;
+                    color: black !important;
+                }
+                .equalButton {
+                    background: deepskyblue;
+                    line-height: 5.0;
+                }
+                .invertButton {
+                    background: lightcoral;
+                }
+            }
         }
-
-        .equalButton {
-            background: deepskyblue;
-            line-height: 5.6;
+    }
+    .history {
+        border-radius: 4px;
+        border: 1px solid lightgrey;
+        margin: 4px;
+        padding: 10px;
+        .name {
+            color: lightgrey;
+        }
+        .historyentrys {
+            padding-left: 5px;
         }
     }
 }

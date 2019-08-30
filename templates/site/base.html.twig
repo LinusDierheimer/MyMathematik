@@ -18,12 +18,14 @@
         </script>
 
         <title>
-            {% if title is defined %}
-                {{ title }}
-            {% else %}
-                {{ 'site.title'|trans }}
-                {{ app.request.pathinfo|replace({"/": " - "})|trim(' - ', 'right') }}
-            {% endif %}
+            {% block title %}
+                {% if title is defined %}
+                    {{ title }}
+                {% else %}
+                    {{ app.request.pathinfo|split('/')|reverse|join(" - ")|capitalize }}
+                    {{ 'site.title'|trans }}
+                {% endif %}
+            {% endblock title %}
         </title>
 
         {% block css %}

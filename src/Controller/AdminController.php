@@ -50,7 +50,7 @@ class AdminController extends AbstractController
 
         return $this->render('site/admin/videoconfig.html.twig', [
             'globals' => $util->get_globals(),
-            'content' => $util->get_video_config_content(),
+            'content' => $util->get_video_content(),
             'videofiles' => $util->get_video_files(),
         ]);
     }

@@ -13,6 +13,10 @@ rm -f composer.lock
 echo -e "\e[35mdeleting symfony.lock if exist...\e[0m"
 rm -f symfony.lock
 
+echo -e "\e[35mclearing cache...\e[0m"
+php bin/console cache:clear
+chmod 777 -R var/
+
 echo -e "\e[35mchecking for npm updates. This requires globally installed node-check-updates...\e[0m"
 ncu -u
 

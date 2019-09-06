@@ -1,5 +1,36 @@
 {% extends "site/base-designed.html.twig" %}
 
+{% set class = globals.videos[language][class] %}
+{% set chapter = class.chapters[chapter] %}
+{% set video = chapter.videos[index] %}
+
+{% block title %}
+    {{ video.name }} - MyMathematik
+{% endblock %}
+
 {% block content %}
-    hello, world!
+    
+    <div class="videosite">
+        <div class="title">
+            <h1>{{ index + 1 }}. {{ video.name }}</h1>
+        </div>
+        <div class="videocontainer">
+            <video controls class="video">
+                <source src="{{ asset('build/videos/' ~ video.source) }}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+                <source src="{{ asset('build/videos/' ~ video.source)}}" type='video/webm; codecs="vp8, vorbis"' />
+            </video>
+        </div>
+        {# <div class="controls">
+            <div class="navigation">
+                <span class="switchVideo previous">
+                    <i class="fas fa-arrow-left"></i>
+                    Vorheriges Video
+                </span>
+                <span class="swtchVideo next">
+                    Nächstes Video
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+            </div>
+        </div> #}
+    </div>
 {% endblock %}

@@ -24,6 +24,16 @@ function setCookie(name, value, path = '/', livetime = getCookieLivetime()){
 
 function initMenuBar(){
 
+    const $header = $("#header");
+
+    const $content = $("#menucontent");
+    function setMaxHeight() {
+        const maxHeight = window.innerHeight - $header.height() - 2; //we don't want to touch bottom
+        $content.css("max-height", maxHeight);
+    }
+    window.addEventListener('resize', setMaxHeight);
+    setMaxHeight();
+
     $(".switch-header").click(function(){
         const body = $(this).next(".switch-content");
         if(body.height() == 0)
@@ -49,10 +59,14 @@ function initMenuBar(){
 }
 
 function initBody(){
-    const $fullContent = $("#fullcontent");
-    const minHeight = window.innerHeight - $("#footer").height();
-    if($fullContent.height() < minHeight)
-        $fullContent.height(minHeight);
+    function setMinHeight() {
+        const $fullContent = $("#fullcontent");
+        const minHeight = window.innerHeight - $("#footer").height();
+        if ($fullContent.height() < minHeight)
+            $fullContent.css("min-height", minHeight);
+    }
+    window.addEventListener('resize', setMinHeight);
+    setMinHeight();
 }
 
 function initCookies(){
@@ -151,71 +165,6 @@ function initScrollToContent(){
     });
 }
 
-function initAdminVideo(){
-
-    const $editor = $(".editor");
-    const originContent = $editor.val();
-
-    $("#resetConfig").click(function(){
-        $editor.val(originContent);
-    })
-
-    $(".videofile").each(function(){
-        const $this = $(this);
-        const $input = $this.find('.videoname');
-        const originValue = $input.val();
-        const $renameOptions = $this.find(".nameoptions");
-        const $videoOptions = $this.find(".videooptions");
-
-        $input.on('input', function(){
-            if($input.val() != originValue)
-                $renameOptions.css("display", "inline-block");
-            else
-                $renameOptions.css("display", "none");
-        });
-
-        $renameOptions.find(".discardrename").click(function(){
-            $renameOptions.css("display", "none");
-            $input.val(originValue);
-        });
-
-        $renameOptions.find(".dorename").click(function(){
-            $renameOptions.css("display", "none");
-            $.ajax("/admin/doaction", {
-                data: {
-                    action: "rename",
-                    from: $(this).data("file"),
-                    to: $input.val(),
-                },
-                success: function(data){
-                },
-                error: function(error){
-                    console.error(error);
-                    $input.val(originValue);
-                }
-            });
-        });
-
-        $videoOptions.find(".delete").click(function(){
-            if(!confirm("Do you really want to delete the video? It will be deleted from disk. Consider removing it just from the config file."))
-                return;
-            
-            $.ajax("/admin/doaction", {
-                data: {
-                    action: "delete",
-                    file: $(this).data("file")
-                },
-                success: function(data){
-                    $this.remove();
-                },
-                error: function(error){
-                    console.error(error);
-                }
-            });
-        });
-    });
-}
-
 function initLogin() {
     const $button = $("#toggle_password");
     const $password_field = $("#password_input");
@@ -302,6 +251,8 @@ function evalMathString(raw, lastResult = "0") {
 
     console.info("Prepaired statement: " + raw);
 
+    //Functions used by eval()
+
     function fac(x){
         return x <= 2 ? 2 : x * fac(x - 1);
     }
@@ -375,7 +326,7 @@ function initCalculator() {
 
     $buttons.click(function(){
         const $this = $(this);
-        const add = $this.data("normal-value");
+        var add = $this.data("normal-value");
         
         if(isInverted()){
             const invertedAdd = $this.data("inverted-value");
@@ -400,24 +351,23 @@ function initCalculator() {
     });
 
     function calculate(){
-        var raw = addMissingBrackets($output.text());
+        lastRaw = addMissingBrackets($output.text());
         $output.text("...");
 
-        var res = evalMathString(raw, lastResult);
-        
-        lastRaw = raw;
-        lastResult = res;
+        lastResult = evalMathString(lastRaw, lastResult);
 
-        $history.append(`
-            <div class="entry>
-                <span class="raw">${raw}</span>
+        $history.prepend(`
+            <div class="entry">
+                <span class="raw inputsetter">${lastRaw}</span>
                 <span class="equal">=</span>
-                <span class="result">${res}</span>
+                <span class="result inputsetter">${lastResult}</span>
             </div>
-        `);
+        `).find(".inputsetter").unbind('click').click(function(){
+            $output.append($(this).html());
+        });
 
-        $calculation.html(raw + " = " + res);
-        $output.html(res);
+        $calculation.html(lastRaw + " = " + lastResult);
+        $output.html(lastResult);
     }
 
     $(document).on('keypress',function(e) {
@@ -440,7 +390,6 @@ $(document).ready(function(){
     initLanguage();
     initVideoList();
     initScrollToContent();
-    initAdminVideo();
     initLogin();
     initRegister();
     initCalculator();

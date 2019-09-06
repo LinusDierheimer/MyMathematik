@@ -142,6 +142,10 @@ route_information_redirect_conditions:
         permanent: true
         keepQueryParams: true
 
+route_tools:
+    path: /tools
+    controller: App\Controller\ToolsController::tools
+
 route_tools_calculator:
     path: /tools/calculator
     controller: App\Controller\ToolsController::calculator
@@ -153,3 +157,7 @@ route_tools_calculator_redirect:
         route: route_tools_calculator
         permanent: true
         keepQueryParams: true
+
+route_forum:
+    path: /forum
+    controller: App\Controller\ForumController::forum

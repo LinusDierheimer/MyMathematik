@@ -1,0 +1,21 @@
+.videosite {
+    .title {
+        width: 100%;
+        margin-bottom: 25px;
+        h1 {
+            width: 100%;
+        }
+    }
+    .controls {
+        .navigation {
+            .next {
+                float: right;
+            }
+        }
+    }
+    .videocontainer {
+        .video {
+            width: 100%;
+        }
+    }
+}

@@ -1,14 +1,19 @@
 {% extends "site/base-designed.html.twig" %}
 
+{% set class = globals.videos[videoLanguage][videoClass] %}
+
+{% block title %}
+    {{ 'videos.videolist.browsertitle.class'|trans }} {{ class.name }} ({{ videoLanguage }}) - MyMathematik
+{% endblock %}
+
 {% block content %}
-    {% set class = globals.videos[videoLanguage][videoClass] %}
     <div class="videolist">
         <div class="head">
             <h1>
-                {{ 'videos.class'|trans }} {{ class.name }}
+                {{ 'videos.yearlevel'|trans }} {{ class.name }}
             </h1>
             <a href="{{ class.curriculum }}" rel="noopener noreferrer" target="_blank">
-                {{ 'videos.curriculum.link'|trans }}
+                {{ 'videos.videolist.curriculum'|trans }}
                 <i class="fas fa-link"></i>
             </a>
         </div>
@@ -34,7 +39,7 @@
                                 </a>
                             {% else %}
                                 <div class="nocontent">
-                                    {{ 'videos.novideos'|trans }}
+                                    {{ 'videos.videolist.novideos'|trans }}
                                 </div>
                             {% endfor %}
                         </div>
@@ -42,7 +47,7 @@
                 </div>
             {% else %}
                 <div class="nocontent">
-                    {{ 'videos.nocontent'|trans }}
+                    {{ 'videos.videolist.nochapters'|trans }}
                 </div>
             {% endfor %}
         </div>

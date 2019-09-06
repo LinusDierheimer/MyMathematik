@@ -8,5 +8,5 @@ Telefon: (08382) 949530
 Fax: (08382) 9495332
 
 Betreuer: Jan Neuendorf  
-Website erstellt von: Linus Dierheimer
+Website erstellt von: Linus Dierheimer  
 Verantwortlich für den Inhalt der Videos: Alle anderen

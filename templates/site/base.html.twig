@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="menu">
                                     <i class="menuheader fas fa-bars"></i>
-                                    <div class="menucontent">
+                                    <div class="menucontent" id="menucontent">
                                         <div class="menupart">
                                             {% if app.user is null %}
                                                 <a class="menubutton" href="{{ path('route_account_me') }}">
@@ -116,6 +116,10 @@
                                             {% endif %}
                                         </div>
                                         <div class="menupart">
+                                            <a class="menubutton" href="{{ path('route_forum') }}">
+                                                <i class="menu-icon fas fa-users"></i>
+                                                {{ 'header.navigation.menu.forum.title'|trans }}
+                                            </a>
                                             <a class="menubutton" href="{{ path('route_tools_calculator') }}">
                                                 <i class="menu-icon fas fa-calculator"></i>
                                                 {{ 'header.navigation.menu.tools.calculator'|trans }}

@@ -75,7 +75,7 @@ class Util
     public function get_languages()
     {
         if($this->languages == null)
-            $this->languages = self::load_yaml_file($this->get_parameter('languages_file'));
+            $this->languages = self::load_yaml_file($this->get_parameter('file_languages'));
         return $this->languages;
     }
 
@@ -100,7 +100,7 @@ class Util
     public function get_videos()
     {
         if($this->videoconfig == null)
-            $this->videoconfig = self::load_yaml_file($this->get_parameter('video_config_file'));
+            $this->videoconfig = self::load_yaml_file($this->get_parameter('file_videos'));
         return $this->videoconfig;
     }
     
@@ -108,11 +108,11 @@ class Util
     {
         return [
             "videos"           => $this->get_videos(),
-            "informations"     => self::load_yaml_file($this->get_parameter('information_file')),
-            "sponsors"         => self::load_yaml_file($this->get_parameter('sponsors_file')),
+            "informations"     => self::load_yaml_file($this->get_parameter('file_informations')),
+            "sponsors"         => self::load_yaml_file($this->get_parameter('file_sponsors')),
             "languages"        => $this->get_languages(),
             "current_language" => $this->get_current_language(),
-            "designs"          => self::load_yaml_file($this->get_parameter('designs_file')),
+            "designs"          => self::load_yaml_file($this->get_parameter('file_designs')),
             "current_design"   => $this->get_cookie("design") ?: $this->get_parameter("default_design")
         ];
     }

@@ -4,4 +4,27 @@ $design_light_col: black;
 .design-light {
     background-color: $design_light_bg !important;
     color: $design_light_col !important;
+
+    .fullcontent {
+        .content {
+            .calculator {
+                .output {
+                    border-color: grey;
+                }
+                .history {
+                    border-color: grey;
+                    .name {
+                        color: grey;
+                    }
+                    .historyentrys {
+                        .entry {
+                            .inputsetter {
+                                border-color: grey;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

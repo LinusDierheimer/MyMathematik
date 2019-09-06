@@ -58,15 +58,15 @@ $menu_color: rgb(50, 50, 50);
             }
 
             .menucontent {
-                position: absolute;
+                overflow-y: auto;
                 display: none;
+                position: absolute;
                 z-index: 21;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                right: 0;
                 min-width: 275px;
                 background-color: $menu_color;
-                right: 0;
                 cursor: default;
-                overflow-y: auto;
 
                 .menupart {
                     &:not(:first-child){
@@ -143,7 +143,6 @@ $menu_color: rgb(50, 50, 50);
                 }
 
             }
-
         }
     }
 }
@@ -154,10 +153,11 @@ $menu_color: rgb(50, 50, 50);
     padding-top: 20px;
 
     .menu:hover {
-        background-color: rgba($color: $control_color, $alpha: .1) !important;
+        $transparentColor: rgba($color: $control_color, $alpha: .3);
+        background-color: $transparentColor !important;
 
         .menucontent {
-            background-color: rgba($color: $control_color, $alpha: .1);
+            background-color: $transparentColor;
         }
     }
 }

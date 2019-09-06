@@ -11,22 +11,17 @@ parameters:
 
     favicon: 'build/images/Taschenrechner'
 
-    workspace_directory: '%kernel.project_dir%/'
-    config_directory: '%workspace_directory%config/'
-    public_directory: '%workspace_directory%public/'
-    translations_directory: '%workspace_directory%translations/'
-    assets_directory: '%workspace_directory%assets/'
-    videos_directory: '%assets_directory%videos/'
+    content_directory: '%kernel.project_dir%/config/content/'
+    translations_directory: '%kernel.project_dir%/translations/'
 
-    video_config_file: '%config_directory%videos.yaml'
-    languages_file: '%config_directory%languages.yaml'
-    information_file: '%config_directory%informations.yaml'
-    sponsors_file: '%config_directory%sponsors.yaml'
-    designs_file: '%config_directory%designs.yaml'
+    file_videos: '%content_directory%videos.yaml'
+    file_languages: '%content_directory%languages.yaml'
+    file_informations: '%content_directory%informations.yaml'
+    file_sponsors: '%content_directory%sponsors.yaml'
+    file_designs: '%content_directory%designs.yaml'
 
     default_class: '5'
     default_locale: '%locale%'
-
     default_design: 'system'
 
     cookie_livetime: '60 * 60 * 24 * 365 * 2'

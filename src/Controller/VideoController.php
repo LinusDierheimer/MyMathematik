@@ -9,10 +9,12 @@ use App\Util;
 class VideoController extends AbstractController
 {
 
-    public function redirect_with_language(Util $util, $class)
-    {
+    public function redirect_with_language(
+        Util $util,
+        $class
+    ){
         return $this->redirectToRoute('route_videos', [
-            'language' => $util->get_language_code(),
+            'language' => $util->get_current_language()["code"],
             'class' => $class
         ]);
     }
@@ -23,7 +25,7 @@ class VideoController extends AbstractController
     ){
         return $this->redirectToRoute('route_videos', [
             'language' => $language,
-            'class' => $util->get_parameter('default_class')['name']
+            'class' => $util->get_parameter('default_class')
         ]);
     }
 

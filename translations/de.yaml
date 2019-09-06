@@ -14,6 +14,8 @@ header:
                 logout: "Logout"
                 register: "Registrieren"
                 switch: "Benutzer wechseln"
+            forum:
+                title: "Fragen Forum"
             tools:
                 calculator: "Taschenrechner"
             settings:
@@ -60,15 +62,18 @@ home:
     reference: ""
 
 videos:
-    class: "Jahrgangsstufe"
-    notsupported: "Dein Browser unterstützt das HTLM5 <video> tag nicht!"
-    nochaptername: "<Keine Kapitelüberschrift verfügbar>"
-    novideoname: "<Kein Videotitel verfügbar>"
-    novideos: "Noch keine Videos für dieses Kapitel verfügbar!"
-    nochapters: "Noch keine Unterkapitel für dieses Kapitel verfügbar!"
-    nocontent: "Noch keine Kapitel für diese Klasse verfügar!"
-    curriculum:
-        link: "Zum Lehrplan"
+    yearlevel: Jahrgangsstufe
+    videolist:
+        browsertitle:
+            class: "Klasse"
+        nochapters: "Keine Kapitel verfügbar"
+        novideos: "Keine Videos für dieses Kapitel verfügbar"
+        curriculum: "Zum Lehrplan"
+    video:
+        navigation:
+            next: "Nächstes Video"
+            previous: "Vorheriges Video"
+            chapter: "Zur Kapitelübersicht"
 
 account:
     register:

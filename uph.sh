@@ -13,12 +13,8 @@ rm -f composer.lock
 echo -e "\e[35mdeleting symfony.lock if exist...\e[0m"
 rm -f symfony.lock
 
-echo -e "\e[35mclearing cache...\e[0m"
-php bin/console cache:clear
-chmod 777 -R var/
-
-echo -e "\e[35mchecking for npm updates. This requires globally installed node-check-updates...\e[0m"
-ncu -u
+echo -e "\e[35mdeleting var/cache/ if exist...\e[0m"
+rm -rf var/cache/
 
 echo -e "\e[35minstalling npm packages. This requires globally installed npm...\e[0m"
 npm install
@@ -41,5 +37,9 @@ rm -f templates/base.html.twig
 
 echo -e "\e[35mbuilding frontend with updated packages in dev mode. For production mode run 'npm run build' afterwards...\e[0m"
 npm run dev
+
+echo -e "\e[35mwarming up cache...\e[0m"
+php bin/console cache:warmup
+chmod 777 -R var/cache/
 
 echo -e "\e[35mfinished updating packages\e[0m"

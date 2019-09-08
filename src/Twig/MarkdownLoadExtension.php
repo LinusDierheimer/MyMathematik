@@ -33,9 +33,12 @@ class MarkdownLoadExtension extends AbstractExtension
 
     public function load_markdown($file, $extension = "md")
     {
-        return $this->parsedown->text(
-            file_get_contents($this->util->get_parameter("translations_directory") . $file . "." . $extension)
-        );
+        return 
+            '<div class="markdown">' .
+                $this->parsedown->text(
+                    file_get_contents($this->util->get_parameter("translations_directory") . $file . "." . $extension)
+                ) .
+            '</div>';
     }
 
     public function load_local_markdown($file, $locale = null, $extension = "md")

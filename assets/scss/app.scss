@@ -25,7 +25,6 @@ body {
 @import "previewimage";
 
 .fullcontent {
-    height: 100%;
 
     .content {
         margin: 25px auto 80px auto;
@@ -46,9 +45,8 @@ body {
         @import "sites/videosite";
     }
 
-    .content-simple {
-        padding-top: 100px;
-        margin-top: 0;
+    .content-simple-spacer {
+        height: 100px;
     }
 
 }

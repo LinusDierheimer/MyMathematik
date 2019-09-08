@@ -174,7 +174,8 @@ class AccountAuthenticator extends AbstractFormLoginAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        $route = $this->requestStack->getCurrentRequest()->attributes->get("_route");
+        $request = $this->requestStack->getCurrentRequest();
+        $route = $request->attributes->get("_route");
         if($route === "route_account_login")
             return $this->login_get_user($credentials, $request);
         else if($route === "route_account_register")

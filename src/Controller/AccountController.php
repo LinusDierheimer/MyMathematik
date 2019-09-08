@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Util;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\AccountAuthenticator;
@@ -38,17 +37,14 @@ class AccountController extends AbstractController
         return $this->redirectToRoute('route_account_logout');
     }
 
-    public function me(Request $request, Util $util)
+    public function me()
     {
-        return $this->render('site/account/account.html.twig', [
-            'globals' => $util->get_globals()
-        ]);
+        return $this->render('site/account/account.html.twig');
     }
 
-    public function register(Util $util, Request $request): Response
+    public function register(Request $request): Response
     {
         return $this->render("site/account/register.html.twig", [
-            "globals" => $util->get_globals(),
             "errors" => $request->getSession()->get("errors", []),
             "last_email" => $request->getSession()->get("last_email"),
             "last_remember_me" => $request->getSession()->get("last_remember_me", true),
@@ -56,10 +52,9 @@ class AccountController extends AbstractController
         ]);
     }
 
-    public function login(Util $util, Request $request): Response
+    public function login(Request $request): Response
     {
         return $this->render("site/account/login.html.twig", [
-            "globals" => $util->get_globals(),
             "errors" => $request->getSession()->get("errors", []),
             "last_email" => $request->getSession()->get("last_email"),
             "last_remember_me" => $request->getSession()->get("last_remember_me", true),

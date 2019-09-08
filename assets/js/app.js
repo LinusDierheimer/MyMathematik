@@ -62,8 +62,7 @@ function initBody(){
     function setMinHeight() {
         const $fullContent = $("#fullcontent");
         const minHeight = window.innerHeight - $("#footer").height();
-        if ($fullContent.height() < minHeight)
-            $fullContent.css("min-height", minHeight);
+        $fullContent.css("min-height", minHeight);
     }
     window.addEventListener('resize', setMinHeight);
     setMinHeight();

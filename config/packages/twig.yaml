@@ -7,3 +7,4 @@ twig:
         favicon: '%favicon%'
         cookie_livetime: '%cookie_livetime%'
         captcha_website: '%captcha_website%'
+        globals: '@App\Globals'

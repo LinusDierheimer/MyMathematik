@@ -2,7 +2,7 @@
 
 namespace App\Twig;
 
-use App\Util;
+use App\Globals;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -15,7 +15,7 @@ class MarkdownLoadExtension extends AbstractExtension
     protected $util;
     protected $parsedown;
 
-    public function __construct(Util $util)
+    public function __construct(Globals $util)
     {
         $this->util = $util;
         $this->parsedown = new Parsedown();
@@ -40,7 +40,7 @@ class MarkdownLoadExtension extends AbstractExtension
 
     public function load_local_markdown($file, $locale = null, $extension = "md")
     {
-        $locale = $locale ?? $this->util->get_current_language()["code"];
+        $locale = $locale ?? $this->util->current_language["code"];
         return $this->load_markdown($file . "." . $locale, $extension);
     }
 }

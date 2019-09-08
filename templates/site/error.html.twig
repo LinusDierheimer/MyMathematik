@@ -4,11 +4,15 @@
     
     {% if app.environment == 'dev' %}
         <pre>
-            {{ dump() }}
+            {% if app.environment == 'dev' %}
+                {% include 'macros/dump.html.twig' %}
+            {% endif %}
         </pre>
     {% endif %}
 
-    Ooops! Something went wrong!
+    <div style="color:red">
+        Ooops! Something went wrong!
+    </div>
 
     {% block details %}
     {% endblock %}

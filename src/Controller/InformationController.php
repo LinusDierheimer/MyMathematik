@@ -2,46 +2,35 @@
 
 namespace App\Controller;
 
-use App\Util;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class InformationController extends AbstractController
 {
 
-    public function cookies(Util $util)
+    public function cookies()
     {
-        return $this->render('site/information/cookies.html.twig', [
-            'globals' => $util->get_globals()
-        ]);
+        return $this->render('site/information/cookies.html.twig');
     }
 
-    public function contact(Util $util)
+    public function contact()
     {
-        return $this->render('site/information/contact.html.twig', [
-            'globals' => $util->get_globals()
-        ]);
+        return $this->render('site/information/contact.html.twig');
     }
 
-    public function impressum(Util $util)
+    public function impressum()
     {
-        return $this->render('site/information/impressum.html.twig', [
-            'globals' => $util->get_globals()
-        ]);
+        return $this->render('site/information/impressum.html.twig');
     }
 
-    public function sponsors(Util $util)
+    public function sponsors()
     {
-        return $this->render('site/information/sponsors.html.twig', [
-            'globals' => $util->get_globals()
-        ]);
+        return $this->render('site/information/sponsors.html.twig');
     }
 
-    public function conditions(Util $util)
+    public function conditions()
     {
-        return $this->render('site/information/conditions.html.twig', [
-            'globals' => $util->get_globals()
-        ]);
+        return $this->render('site/information/conditions.html.twig');
     }
 
 }

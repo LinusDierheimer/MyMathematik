@@ -1,0 +1,14 @@
+{#
+    Use as following to use dump in code:
+
+    {% if app.environment == 'dev' %}
+        {% include 'macros/dump.html.twig' with {'dump_data': <your_dump_data>} %}
+    {% endif %}
+    
+#}
+
+{% if dump_data is defined %}
+    {{ dump(dump_data) }}
+{% else %}
+    {{ dump() }}
+{% endif %}

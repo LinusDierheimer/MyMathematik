@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Util;
 use App\Form\VideoUploadType;
 use App\Entity\UploadedVideo;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,54 +18,24 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  */
 class AdminController extends AbstractController
 {
-    public function index(Util $util, Request $request)
+    public function index()
     {
-        return $this->render('site/admin/admin.html.twig', [
-            'globals' => $util->get_globals()
-        ]);
+        return $this->render('site/admin/admin.html.twig');
     }
 
-    public function videoconfig(Util $util, Request $request)
+    public function videoconfig()
     {
-
-        if($request->request->has("videoUploadForm"))
-        {   
-            $request->files->get("videoUploadForm")["file"]->move(
-                $this->getParameter("videos_directory"),
-                $request->request->get("videoUploadForm")["name"]
-            );
-            return $this->redirectToRoute("route_admin_videoconfig"); //reset POST request and load page ith GET
-        }
-
-        if($request->request->has("configFileForm"))
-        {
-            file_put_contents(
-                $this->getParameter("videos_directory") . "/index.yaml",
-                $request->request->get("configFileForm")["text"]
-
-            );
-            return $this->redirectToRoute("route_admin_videoconfig"); //reset POST request and load page ith GET
-        }
-
-        return $this->render('site/admin/videoconfig.html.twig', [
-            'globals' => $util->get_globals(),
-            'content' => $util->get_video_content(),
-            'videofiles' => $util->get_video_files(),
-        ]);
+        throw \RuntimeException("Not implemented");
     }
 
-    public function languageconfig(Util $util)
+    public function languageconfig()
     {
-        return $this->render('site/admin/languageconfig.html.twig', [
-            'globals' => $util->get_globals(),
-            'languages_content' => $util->get_languages_content(),
-            'all_translations_content' => $util->get_all_translations_content()
-        ]);
+        throw \RuntimeException("Not implemented");
     }
 
-    public function doaction(util $util, Request $request)
+    public function doaction()
     {
-        return $this->json($util->doaction($request->query));
+        throw \RuntimeException("Not implemented");
     }
 
 }

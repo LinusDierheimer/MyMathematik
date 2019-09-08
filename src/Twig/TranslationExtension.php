@@ -2,7 +2,7 @@
 
 namespace App\Twig;
 
-use App\Util;
+use App\Globals;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
@@ -13,11 +13,11 @@ class TranslationExtension extends AbstractExtension
     protected $util;
     protected $translations;
 
-    public function __construct(Util $util)
+    public function __construct(Globals $util)
     {
         $this->util = $util;
-        $this->translations = Util::load_yaml_file(
-            $util->get_parameter('translations_directory') . $util->get_current_language()['file']
+        $this->translations = Globals::load_yaml_file(
+            $util->get_parameter('translations_directory') . $util->current_language['file']
         );
     }
 
@@ -34,7 +34,7 @@ class TranslationExtension extends AbstractExtension
             return \substr($key, 2);
 
         try{
-            return Util::array_get($this->translations, $key);
+            return Globals::array_get($this->translations, $key);
         }catch(\Throwable $e){
             return "{Couldn't translate.  key='" . $key . "', error='" . $e->getMessage() . "'}";
         }

@@ -1,7 +1,7 @@
 {% import "macros/favicon.html.twig" as favicondrawer %}
 {% htmlcompress %}
 <!DOCTYPE html>
-<html lang="{{ globals.current_language.code }}">
+<html lang="{{ globals.request.locale }}">
     <head>
         <meta charset="UTF-8">
 
@@ -35,7 +35,7 @@
     </head>
     <body>
         
-        {% set current_language_code = globals.current_language.code %}
+        {% set current_language_code = globals.request.locale %}
         {% set current_design = globals.current_design %}
 
         {% block global_data %}
@@ -55,7 +55,7 @@
                                 <label>
                                     {{ 'cookies.info'|trans }}
                                 </label>
-                                <a href="{{ globals.informations.cookies.href }}">
+                                <a href="/information/cookies">
                                     {{ 'cookies.more'|trans }}
                                 </a>
                                 <button id="cookiesAccepted">
@@ -132,10 +132,10 @@
                                                     {{ 'header.navigation.menu.settings.language.title'|trans }}
                                                 </div>
                                                 <div class="switch-content">
-                                                    {% for language in globals.languages %}
-                                                        <div data-languagecode="{{ language.code }}" class="switch-content-button languageswitcher">
-                                                            <i class="far {{ language.code == current_language_code ? "fa-check-circle" : "fa-circle" }}"></i>
-                                                            {{ language.name }}
+                                                    {% for locale, _dummy in globals.videos %}
+                                                        <div data-languagecode="{{ locale }}" class="switch-content-button languageswitcher">
+                                                            <i class="far {{ locale == globals.request.locale ? "fa-check-circle" : "fa-circle" }}"></i>
+                                                            {{ ("header.navigation.menu.settings.language.codes." ~ locale)|trans }}
                                                         </div>
                                                     {% endfor %}
                                                 </div>
@@ -174,11 +174,24 @@
                 <footer class="footer" id="footer">
                     <div class="footercontent">
                         <div class="footerlinks">
-                            {% for info in globals.informations %}
-                                <a href="{{ info.href }}" class="footerlink">
-                                    {{ info.name|trans }}
-                                </a>
-                            {% endfor %}
+                            <a href="/information/impressum" class="footerlink">
+                                {{ 'footer.impressum'|trans }}
+                            </a>
+                            <a href="/information/contact" class="footerlink">
+                                {{ "footer.contact"|trans }}
+                            </a>
+                            <a href="/information/sponsors" class="footerlink">
+                                {{ "footer.sponsors"|trans }}
+                            </a>
+                            <a href="/information/cookies" class="footerlink">
+                                {{ "footer.cookies"|trans }}
+                            </a>
+                            <a href="/information/conditions" class="footerlink">
+                                {{ "footer.conditions"|trans }}
+                            </a>
+                            <a href="https://www.valentin-heider-gymnasium.de/" class="footerlink">
+                                {{ "footer.vhg"|trans }}
+                            </a>
                         </div>
                         <span id="scrollUp" class="goup">
                             {{ 'footer.goup'|trans }}

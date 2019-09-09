@@ -51,6 +51,11 @@ class User implements UserInterface
      */
     private $questionAnswers;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $showName;
+
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -174,4 +179,33 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getShowName(): ?string
+    {
+        return $this->showName;
+    }
+
+    public function setShowName(?string $showName): self
+    {
+        $this->showName = $showName;
+
+        return $this;
+    }
+
+    public function getName(): string 
+    {
+        $showName = $this->getShowName();
+
+        if($showName != null && $showName != "")
+            return $showName;
+
+        $email = $this->getEmail();
+
+        return substr(
+            str_replace("@", " ", $email),
+            0,
+            strrpos($email, ".")
+        );
+    }
+
 }

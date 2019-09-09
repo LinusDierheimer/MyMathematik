@@ -13,16 +13,17 @@ parameters:
 
     content_directory: '%kernel.project_dir%/config/content/'
     translations_directory: '%kernel.project_dir%/translations/'
+    assets_directory: '%kernel.project_dir%/assets/'
+    public_directory: '%kernel.project_dir%/public/'
 
     file_videos: '%content_directory%videos.yaml'
     file_languages: '%content_directory%languages.yaml'
-    file_informations: '%content_directory%informations.yaml'
     file_sponsors: '%content_directory%sponsors.yaml'
     file_designs: '%content_directory%designs.yaml'
 
     default_class: '5'
-    default_locale: '%locale%'
     default_design: 'system'
+    default_user_image: "build/images/UserFallback.jpg"
 
     cookie_livetime: '60 * 60 * 24 * 365 * 2'
 
@@ -46,6 +47,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\EventListener\RequestListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }
 
     nochso\HtmlCompressTwig\Extension:
         arguments:

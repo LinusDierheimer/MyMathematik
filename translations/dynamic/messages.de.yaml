@@ -6,7 +6,7 @@ header:
     navigation:
         classes:
             class: "Klasse"
-            noclass: "Keine Videos für die ausgewählte Sprache!"
+            noclass: "Keine Videos für die ausgewählte Sprache! :( "
         menu:
             account:
                 me: "Mein Account"
@@ -15,12 +15,15 @@ header:
                 register: "Registrieren"
                 switch: "Benutzer wechseln"
             forum:
-                title: "Fragen Forum"
+                title: "Forum"
             tools:
                 calculator: "Taschenrechner"
             settings:
                 language:
                     title: "Sprache / Language"
+                    codes:
+                        de: "Deutsch"
+                        en: "English"
                 design:
                     title: "Design"
                     options:
@@ -66,8 +69,8 @@ videos:
     videolist:
         browsertitle:
             class: "Klasse"
-        nochapters: "Keine Kapitel verfügbar"
-        novideos: "Keine Videos für dieses Kapitel verfügbar"
+        nochapters: "Keine Kapitel bisher verfügbar :("
+        novideos: "Keine Videos für dieses Kapitel bisher verfügbar :("
         curriculum: "Zum Lehrplan"
     video:
         navigation:

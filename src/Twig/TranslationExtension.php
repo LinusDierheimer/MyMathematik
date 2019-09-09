@@ -2,23 +2,20 @@
 
 namespace App\Twig;
 
-use App\Globals;
-
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 class TranslationExtension extends AbstractExtension
 {
 
-    protected $util;
-    protected $translations;
+    protected $translator;
 
-    public function __construct(Globals $util)
-    {
-        $this->util = $util;
-        $this->translations = Globals::load_yaml_file(
-            $util->get_parameter('translations_directory') . $util->current_language['file']
-        );
+    public function __construct(
+        TranslatorInterface $translator
+    ){
+        $this->translator = $translator;
     }
 
     public function getFilters()
@@ -33,10 +30,6 @@ class TranslationExtension extends AbstractExtension
         if(\substr($key, 0, 2) == "> ")
             return \substr($key, 2);
 
-        try{
-            return Globals::array_get($this->translations, $key);
-        }catch(\Throwable $e){
-            return "{Couldn't translate.  key='" . $key . "', error='" . $e->getMessage() . "'}";
-        }
+        return $this->translator->trans($key);
     }
 }

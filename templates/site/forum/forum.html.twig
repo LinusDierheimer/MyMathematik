@@ -1,5 +1,26 @@
 {% extends "site/base-simple.html.twig" %}
 
 {% block content %}
-    Hello, World
+    <div class="forum">
+        <h1 class="title">Forum</h1>
+        {% for question in questions %}
+            {% set user = question.getUser() %}
+            <a class="question" href="forum/{{ question.getId() }}">
+                <div class="logo">
+                    <img src="{{ 
+                        question.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
+                    }}" />
+                </div>
+                <div class="details">
+                    <div class="questiontitle">
+                        {{ question.getTitle() }}
+                    </div>
+                    <div class="user">
+                        Gepostet von {{ user.getName() }} {{ question.getDate().date|ago }}
+                        {% dump(question.getDate()) %}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}

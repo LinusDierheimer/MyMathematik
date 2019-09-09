@@ -11,7 +11,7 @@ Folgende Cookies werden verwendet:
     _`true`_ wenn gesetzt, speichert ob die cookie anfrage bestätigt wurde  
 
 * __`design`__:  
-    _`design-white`_, _`design-light`_, _`design-dark`_ oder _`design-black`_. Speichert das ausgewählte Design  
+    _`system`_, _`design-white`_, _`design-light`_, _`design-dark`_ oder _`design-black`_. Speichert das ausgewählte Design  
 
 * __`language`__:  
     Speichert den Sprach-Code der ausgewählten Sprache. Zum Beispiel _`de`_ oder _`en`_  

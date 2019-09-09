@@ -2,8 +2,8 @@
 
 namespace App\Twig;
 
-use App\Globals;
-
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -12,12 +12,14 @@ use Parsedown;
 class MarkdownLoadExtension extends AbstractExtension
 {
 
-    protected $util;
+    protected $request;
+    protected $container;
     protected $parsedown;
 
-    public function __construct(Globals $util)
+    public function __construct(RequestStack $requestStack, ContainerInterface $container)
     {
-        $this->util = $util;
+        $this->request = $requestStack->getCurrentRequest();
+        $this->container = $container;
         $this->parsedown = new Parsedown();
         $this->parsedown->setSafeMode(false);
         $this->parsedown->setMarkupEscaped(true);
@@ -31,19 +33,32 @@ class MarkdownLoadExtension extends AbstractExtension
         ];
     }
 
-    public function load_markdown($file, $extension = "md")
+    private function load($path)
     {
         return 
             '<div class="markdown">' .
                 $this->parsedown->text(
-                    file_get_contents($this->util->get_parameter("translations_directory") . $file . "." . $extension)
+                    file_get_contents($path)
                 ) .
             '</div>';
     }
 
+    public function load_markdown($file, $extension = "md")
+    {
+        $path = $this->container->getParamter("translations_directory") . "static/" . $file . "." . $extension;
+        return load($path);
+    }
+
     public function load_local_markdown($file, $locale = null, $extension = "md")
     {
-        $locale = $locale ?? $this->util->current_language["code"];
-        return $this->load_markdown($file . "." . $locale, $extension);
+        $locale = $locale ?: $this->request->getLocale();
+
+        $base_path = $this->container->getParameter("translations_directory") . "static/" . $file . ".";
+
+        $path = $base_path . $locale . "." . $extension;
+        if(!file_exists($path))
+            $path = $base_path . $this->container->getParameter("locale") . "." . $extension;
+
+        return $this->load($path);
     }
 }

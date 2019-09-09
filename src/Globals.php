@@ -47,13 +47,11 @@ class Globals
     protected $container;
 
     public $request;
-    public $languages;
-    public $current_language;
     public $videos;
-    public $informations;
     public $sponsors;
     public $designs;
     public $current_design;
+    public $languages;
 
     public function __construct(RequestStack $rs, ContainerInterface $ci)
     {
@@ -61,23 +59,17 @@ class Globals
         $this->container = $ci;
 
         $this->request =  $this->requestStack->getCurrentRequest();
-        $this->languages = self::load_yaml_file($this->container->getParameter('file_languages'));
-
-        $locale = null;
-        if($this->request != null)
-            $locale = $this->request->cookies->get('language');
-        if($locale == null || $locale == "")
-                $locale = $this->request->getLocale();
-        if(\array_key_exists($locale, $this->languages))
-            $this->current_language = $this->languages[$locale];
-        else
-            $this->current_language = $this->languages[$this->container->getParameter("default_locale")];
 
         $this->videos = self::load_yaml_file($this->container->getParameter('file_videos'));
-        $this->informations = self::load_yaml_file($this->container->getParameter('file_informations'));
         $this->sponsors = self::load_yaml_file($this->container->getParameter('file_sponsors'));
         $this->designs = self::load_yaml_file($this->container->getParameter('file_designs'));
-        $this->current_design = $this->request->cookies->get('design') ?: $this->container->getParameter("default_design");
+
+        $this->current_design = $this->request == null ?
+            $this->container->getParameter("default_design") :
+            $this->request->cookies->get('design') ?: 
+                $this->container->getParameter("default_design");
+
+        
     }
 
     public function get_parameter($name)

@@ -1,8 +1,0 @@
-de:
-    name: "Deutsch"
-    code: "de"
-    file: "de.yaml"
-en:
-    name: "English"
-    code: "en"
-    file: "en.yaml"

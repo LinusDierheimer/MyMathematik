@@ -1,0 +1,26 @@
+.createpost {
+    .title {
+        margin-bottom: 35px;
+    }
+    .inputwrapper {
+        margin-bottom: 20px;
+        .titleinput {
+            width: 100%;
+        }
+        .typeinput {
+            input {
+                margin-left: 5px;
+                &:not(:last-child){
+                    margin-right: 10px;
+                }
+            }
+        }
+        .textinput {
+            height: 300px;
+            width: 100%;
+        }
+        .cancelbutton {
+            margin-left: 5px;
+        }
+    }
+}

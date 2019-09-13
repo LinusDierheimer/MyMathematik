@@ -1,0 +1,14 @@
+{% extends "site/base-simple.html.twig" %}
+
+{% block content %}
+    <div class="post">
+        <div class="title">
+            <h1>
+                {{ post.getTitle() }}
+            </h1>
+        </div>
+        <div class="text">
+            {{ post.getText() }}
+        </div>
+    </div>
+{% endblock %}

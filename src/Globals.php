@@ -51,7 +51,6 @@ class Globals
     public $sponsors;
     public $designs;
     public $current_design;
-    public $languages;
 
     public function __construct(RequestStack $rs, ContainerInterface $ci)
     {

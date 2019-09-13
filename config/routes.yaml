@@ -161,3 +161,11 @@ route_tools_calculator_redirect:
 route_forum:
     path: /forum
     controller: App\Controller\ForumController::forum
+
+route_forum_create: #Must be before route_forum_post
+    path: /forum/create
+    controller: App\Controller\ForumController::create
+
+route_forum_post:
+    path: /forum/{id}
+    controller: App\Controller\ForumController::post

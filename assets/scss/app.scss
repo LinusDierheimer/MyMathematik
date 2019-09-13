@@ -34,16 +34,20 @@ body {
         display: block;
         min-height: auto;
 
-        @import "sites/home";
-        @import "sites/videolist";
-        @import "sites/languageconfig";
-        @import "sites/videoconfig";
-        @import "sites/account";
-        @import "sites/register";
-        @import "sites/login";
-        @import "sites/calculator";
-        @import "sites/videosite";
-        @import "sites/forum.scss";
+        @import "sites/home/home.scss";
+
+        @import "sites/video/videolist.scss";
+        @import "sites/video/videosite.scss";
+
+        @import "sites/account/account.scss";
+        @import "sites/account/register.scss";
+        @import "sites/account/login.scss";
+
+        @import "sites/tools/calculator.scss";
+
+        @import "sites/forum/forum.scss";
+        @import "sites/forum/post.scss";
+        @import "sites/forum/createpost.scss";
     }
 
     .content-simple-spacer {

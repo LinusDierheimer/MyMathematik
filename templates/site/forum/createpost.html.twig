@@ -1,0 +1,27 @@
+{% extends "site/base-simple.html.twig" %}
+
+{% block content %}
+    <form class="createpost" method="POST">
+        <h1 class="title">Create Post</h1>
+        <div class="inputwrapper">
+            <label for="post_title">Titel</label>
+            <input class="titleinput" type="text" id="post_title" name="post_title" required />
+        </div>
+        <div class="inputwrapper">
+            <div class="typeinput">
+                <label for="post_type_post">Post</label>
+                <input type="radio" id="post_type_post" name="post_type" value="post" checked>
+                <label for="post_type_question">Frage</label>
+                <input type="radio" id="post_type_question" name="post_type" value="question">
+            </div>
+        </div>
+        <div class="inputwrapper">
+            <label for="post_text">Text</label>
+            <textarea class="textinput" id="post_text" name="post_text" required></textarea>
+        </div>
+        <div class="inputwrapper">
+            <button class="btn btn-primary" type="submit">submit</button>
+            <a href="{{ path('route_forum') }}" class="btn btn-outline-secondary cancelbutton">Cancel</a>
+        </div>
+    </form>
+{% endblock %}

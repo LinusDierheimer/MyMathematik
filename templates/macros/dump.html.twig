@@ -8,7 +8,7 @@
 #}
 
 {% if dump_data is defined %}
-    {{ dump(dump_data) }}
+    {% dump(dump_data) %}
 {% else %}
-    {{ dump() }}
+    {% dump(_context) %}
 {% endif %}

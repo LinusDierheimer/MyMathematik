@@ -2,8 +2,13 @@
 
 {% block content %}
     <div class="forum">
-        <h1 class="title">Forum</h1>
-        {% for question in questions %}
+        <div class="top">
+            <h1 class="title">Forum</h1>
+            <a href="{{ path('route_forum_create') }}" class="create">
+                Create
+            </a>
+        </div>
+        {% for question in questions|reverse %}
             {% set user = question.getUser() %}
             <a class="question" href="forum/{{ question.getId() }}">
                 <div class="logo">
@@ -17,10 +22,11 @@
                     </div>
                     <div class="user">
                         Gepostet von {{ user.getName() }} {{ question.getDate().date|ago }}
-                        {% dump(question.getDate()) %}
                     </div>
                 </div>
             </a>
+        {% else %}
+            Keine Post bisher!
         {% endfor %}
     </div>
 {% endblock %}

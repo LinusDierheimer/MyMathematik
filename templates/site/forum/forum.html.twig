@@ -10,7 +10,7 @@
         </div>
         {% for question in questions|reverse %}
             {% set user = question.getUser() %}
-            <a class="question" href="forum/{{ question.getId() }}">
+            <a class="question" href="/forum/{{ question.getId() }}">
                 <div class="logo">
                     <img src="{{ 
                         question.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')

@@ -1,24 +1,43 @@
 {% extends "site/base-simple.html.twig" %}
 
 {% block title %}
-    Account - MyMathematik
+    {{ user.getName() }} - MyMathematik
 {% endblock %}
 
 {% block content %}
     <div class="account">
-        {% if app.user == null %}
-        You are not loged in!
-        <a href="{{ path('route_account_login') }}">
-            Login
-        </a>
-        <a href="{{ path('route_account_register') }}">
-            Register
-        </a>
-    {% else %}
-        You are logged in as {{ app.user.email }}
-        <a href="{{ path('route_account_logout') }}">
-            Logout
-        </a>
-    {% endif %}
+        {% if user is not null %}
+            <h1 class="name">
+                {{ user.getName() }}
+            </h1>
+            <div class="imagewrapper">
+                <img src="{{ user_image_path(user) }}">
+            </div>
+            Posts:
+            <div class="posts">
+                {% for question in user.getQuestions()|reverse %}
+                    {% set user = question.getUser() %}
+                    <a class="post" href="/forum/{{ question.getId() }}">
+                        <div class="logo">
+                            <img src="{{ 
+                                question.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
+                            }}" />
+                        </div>
+                        <div class="details">
+                            <div class="questiontitle">
+                                {{ question.getTitle() }}
+                            </div>
+                            <div class="user">
+                                Gepostet {{ question.getDate().date|ago }}
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                    Keine Post bisher!
+                {% endfor %}
+            </div>
+        {% else %}
+            Du bist nicht eingelogged!
+        {% endif %}
     </div>
 {% endblock %}

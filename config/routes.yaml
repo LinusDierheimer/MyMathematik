@@ -30,30 +30,6 @@ route_video:
         class: 1|2|3|4|5|6|7|8|9|12
         language: de|en
 
-route_account_redirect:
-    path: /account
-    controller: App\Controller\AccountController::redirect_me
-
-route_account_redirect_login:
-    path: /login
-    controller: App\Controller\AccountController::redirect_login
-
-route_account_redirect_register:
-    path: /register
-    controller: App\Controller\AccountController::redirect_register
-
-route_account_redirect_logout:
-    path: /logout
-    controller: App\Controller\AccountController::redirect_logout
-
-route_account_redirect_me:
-    path: /me
-    controller: App\Controller\AccountController::redirect_me
-
-route_account_me:
-    path: /account/me
-    controller: App\Controller\AccountController::me
-
 route_account_login:
     path: /account/login
     controller: App\Controller\AccountController::login
@@ -65,6 +41,54 @@ route_account_register:
 route_account_logout:
     path: /account/logout
     methods: GET
+
+route_account_me:
+    path: /account/me
+    controller: App\Controller\AccountController::me
+
+route_account_user:
+    path: /account/{id}
+    controller: App\Controller\AccountController::user
+
+route_account:
+    path: /account
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_account_me
+        permanent: true
+        keepQueryParams: true
+
+route_account_redirect_me:
+    path: /me
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_account_me
+        permanent: true
+        keepQueryParams: true
+
+route_account_redirect_login:
+    path: /login
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_account_login
+        permanent: true
+        keepQueryParams: true
+
+route_account_redirect_register:
+    path: /register
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_account_register
+        permanent: true
+        keepQueryParams: true
+
+route_account_redirect_logout:
+    path: /logout
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_account_logout
+        permanent: true
+        keepQueryParams: true
 
 route_admin:
     path: /admin

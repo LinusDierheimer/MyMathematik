@@ -48,7 +48,6 @@ class Globals
 
     public $request;
     public $videos;
-    public $sponsors;
     public $designs;
     public $current_design;
 
@@ -60,7 +59,6 @@ class Globals
         $this->request =  $this->requestStack->getCurrentRequest();
 
         $this->videos = self::load_yaml_file($this->container->getParameter('file_videos'));
-        $this->sponsors = self::load_yaml_file($this->container->getParameter('file_sponsors'));
         $this->designs = self::load_yaml_file($this->container->getParameter('file_designs'));
 
         $this->current_design = $this->request == null ?

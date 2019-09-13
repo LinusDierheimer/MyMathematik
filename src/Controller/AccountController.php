@@ -15,30 +15,31 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class AccountController extends AbstractController
 {
-
-    public function redirect_me()
-    {
-        return $this->redirectToRoute('route_account_me');
-    }
-
-    public function redirect_login()
-    {
-        return $this->redirectToRoute('route_account_login');
-    }
-
-    public function redirect_register()
-    {
-        return $this->redirectToRoute('route_account_register');
-    }
-
-    public function redirect_logout()
-    {
-        return $this->redirectToRoute('route_account_logout');
-    }
-
     public function me()
     {
-        return $this->render('site/account/account.html.twig');
+        return $this->render('site/account/account.html.twig', [
+            "user" => $this->getUser()
+        ]);
+    }
+
+    public function user(
+        UserRepository $userRepository,
+        $id
+    ){
+
+        $user = $userRepository->find($id);
+
+        if($user == null)
+        {
+            return $this->render('site/account/user404.html.twig', [
+                "raw_email" => $email,
+                "email" => $email
+            ]);
+        }
+
+        return $this->render('site/account/account.html.twig', [
+            "user" => $user
+        ]);
     }
 
     public function register(Request $request): Response

@@ -1,5 +1,16 @@
 {% extends "site/base-simple.html.twig" %}
 
 {% block content %}
-    Sponsors
+    <div class="sponsors">
+        <h1 class="title">Sponsoren:</h1>
+        <div class="list">
+            {% for sponsor in sponsors %}
+                <a target="_blank" rel="noopener noreferrer" href="{{ sponsor.website }}" class="sponsor">
+                    <img src="{{ asset(sponsor.image) }}" />
+                </a>
+            {% else %}
+                Keine Sponsoren bis jetzt!
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Question;
+use App\Entity\QuestionAnswer;
 use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +21,7 @@ class ForumController extends AbstractController
 
     public function post(
         QuestionRepository $questionRepository,
+        Request $request,
         $id
     ){
         $post = $questionRepository->find($id);
@@ -28,6 +30,25 @@ class ForumController extends AbstractController
         {
             return $this->render('site/forum/post404.html.twig', [
                 "id" => $id
+            ]);
+        }
+
+        if(
+            $request->isMethod('post') &&
+            $request->request->has('post_text')
+        ) {
+            $answer = new QuestionAnswer();
+            $answer->setQuestion($post);
+            $answer->setText($request->request->get('post_text'));
+            $answer->setUser($this->getUser());
+            $answer->setAccepted(false);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($answer);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('route_forum_post', [
+                'id' => $id
             ]);
         }
 

@@ -58,13 +58,13 @@
                 <div class="group">
                     <div class="form-group">
                         <label
-                            for="password_input"
+                            for="register_password_input"
                             class="input_label"
                         >{{ "account.register.inputs.password.name"|trans }}</label>
                         <input
                             type="{{ show_password ? "text" : "password" }}"
                             name="password_input"
-                            id="password_input"
+                            id="register_password_input"
                             class="input form-control"
                             minlength="6"
                             maxlength="4096"
@@ -73,7 +73,7 @@
                             required
                         />
                         <span
-                            id="toggle_password"
+                            id="register_toggle_password"
                             class="far {{ show_password ? "fa-eye-slash" : "fa-eye" }} show-password">
                         </span>
                         <div class="error">

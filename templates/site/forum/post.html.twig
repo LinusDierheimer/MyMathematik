@@ -1,14 +1,46 @@
 {% extends "site/base-simple.html.twig" %}
 
+{% block title %}
+    {{ post.getTitle() }} - Forum - MyMathematik
+{% endblock %}
+
 {% block content %}
     <div class="post">
-        <div class="title">
-            <h1>
-                {{ post.getTitle() }}
-            </h1>
+        <div class="main">
+            <div class="title">
+                <h1>
+                    {{ post.getTitle() }}
+                </h1>
+            </div>
+            <div class="text">
+                {{ post.getText() }}
+            </div>
         </div>
-        <div class="text">
-            {{ post.getText() }}
+        <div class="info">
+            Gepostet von {{ post.getUser().getName() }} {{ post.getDate().date|ago }}
+        </div>
+        <div class="btn btn-outline-primary float-right createanswerbutton">
+            Antwort erstellen
+        </div>
+        {% set answers = post.getAnswers() %}
+        <div class="answers">
+            {% for answer in answers %}
+                <div class="answer">
+                    {{ answer.getText() }}
+                </div>
+            {% else %}
+                Keine Antworten bisher!
+            {% endfor %}
+        </div>
+        {% if answers|length > 0 %}
+            <div class="btn btn-outline-primary createanswerbutton">
+                Antwort erstellen
+            </div>
+        {% endif %}
+        <form class="createanswer" id="createanswer" method="POST">
+            <textarea name="post_text"></textarea>
+            <button type="submit" class="btn btn-primary">Hochladen</button>
+            <button type="button" class="btn btn-outline-secondary ml-1 canclecreatepost">Abbrechen</button>
         </div>
     </div>
 {% endblock %}

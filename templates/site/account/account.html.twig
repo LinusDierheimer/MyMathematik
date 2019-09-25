@@ -1,7 +1,7 @@
 {% extends "site/base-simple.html.twig" %}
 
 {% block title %}
-    {{ user.getName() }} - MyMathematik
+    {{ user is null ? "Not logged in" : user.getName() }} - MyMathematik
 {% endblock %}
 
 {% block content %}

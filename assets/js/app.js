@@ -165,8 +165,8 @@ function initScrollToContent(){
 }
 
 function initLogin() {
-    const $button = $("#toggle_password");
-    const $password_field = $("#password_input");
+    const $button = $("#login_toggle_password");
+    const $password_field = $("#login_password_input");
 
     $button.click(function(){
         $button.toggleClass("fa-eye fa-eye-slash");
@@ -179,8 +179,8 @@ function initLogin() {
 }
 
 function initRegister(){
-    const $button = $("#toggle_password");
-    const $password_field = $("#password_input");
+    const $button = $("#register_toggle_password");
+    const $password_field = $("#register_password_input");
     const $repeat_password_form = $("#password_repeat_form");
     const $repeat_password_field = $("#password_repeat_input");
     const $register_config = $("#single_password_field");
@@ -380,6 +380,22 @@ function initCalculator() {
     $equalButton.click(calculate);
 }
 
+function initPost(){
+    const $create = $("#createanswer");
+    const $buttons = $(".createanswerbutton");
+    const $cancle = $(".canclecreatepost");
+
+    $buttons.click(function() {
+        $buttons.css("display", "none");
+        $create.css("display", "block");
+    });
+
+    $cancle.click(function() {
+        $buttons.css("display", "inline-block");
+        $create.css("display", "none");
+    })
+}
+
 $(document).ready(function(){
     initMenuBar();
     initBody();
@@ -392,4 +408,5 @@ $(document).ready(function(){
     initLogin();
     initRegister();
     initCalculator();
+    initPost();
 });

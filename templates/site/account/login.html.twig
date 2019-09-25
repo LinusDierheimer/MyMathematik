@@ -51,13 +51,13 @@
     
                 <div class="form-group">
                     <label
-                        for="password_input"
+                        for="login_password_input"
                         class="input_label"
                     >{{ "account.login.inputs.password.name"|trans }}</label>
                     <input
                         type="password"
                         name="password_input"
-                        id="password_input"
+                        id="login_password_input"
                         class="form-control"
                         placeholder="{{ "account.login.inputs.password.placeholder"|trans }}"
                         autocomplete="current-password"
@@ -66,7 +66,7 @@
                         required
                     />
                     <span
-                        id="toggle_password"
+                        id="login_toggle_password"
                         class="far {{ show_password ? "fa-eye-slash" : "fa-eye" }} show-password">
                     </span>
                     <div class="error">

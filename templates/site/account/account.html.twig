@@ -7,33 +7,60 @@
 {% block content %}
     <div class="account">
         {% if user is not null %}
-            <h1 class="name">
-                {{ user.getName() }}
-            </h1>
-            <div class="imagewrapper">
-                <img src="{{ user_image_path(user) }}">
+            <div class="row mb-4">
+                <div class="col-2">
+                    <img class="w-100" src="{{ user_image_path(user) }}">
+                </div>
+                <div class="col-10">
+                    <div style="min-height: 60px">
+                        <div id="user_showname_normal">
+                            <h1 class="d-inline-block mr-2">
+                                {{ user.getName() }}                            
+                            </h1>
+                            {% if user == app.user %}
+                                <u id="user_showname_startedit" class="text-secondary small cursor-pointer">Bearbeiten</u>
+                            {% endif %}
+                        </div>
+                        {% if user == app.user %}
+                            <form method="POST" id="user_showname_edit" class="d-none row ml-0 mr-0">
+                                <input class="col mr-2 form-control" placeholder="Anzuzeigender Name" name="show_name" required>
+                                <button class="col-auto mr-2 btn btn-primary" type="submit">Speichern</button>
+                                <a class="col-auto btn btn-outline-secondary" id="user_showname_cancle">Abbrechen</a>
+                            </form>
+                        {% endif %}
+                    </div>
+                    <div class="text-secondary">
+                        {{ user.getEmail() }}
+                    </div>
+                </div>
             </div>
-            Posts:
-            <div class="posts pt-4">
-                {% for question in user.getQuestions()|reverse %}
-                    <a class="card mb-3 text-decoration-none" href="/forum/{{ question.getId() }}">
-                        <div class="card-body">
-                            <div class="card-text row">
-                                <img class="col-1 dark-invert-color" src="{{ 
-                                    question.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
-                                }}" />
-                                <h2 class="col-11">
-                                    {{ question.getTitle() }}
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="card-footer text-secondary small">
-                             Gepostet {{ question.getDate().date|ago }}
-                        </div>
-                    </a>
-                {% else %}
-                    Keine Post bisher!
-                {% endfor %}
+            <div class="card">
+                <h3 class="card-header">
+                    Forum Posts
+                </h3>
+                <div class="card-body">
+                    <div class="card-text">
+                        {% for question in user.getQuestions()|reverse %}
+                            <a class="card mb-3 text-decoration-none" href="/forum/{{ question.getId() }}">
+                                <div class="card-body">
+                                    <div class="card-text row">
+                                        <img class="col-1 dark-invert-color" src="{{ 
+                                            question.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
+                                        }}" />
+                                        <h2 class="col-11">
+                                            {{ question.getTitle() }}
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-secondary small">
+                                     Gepostet {{ question.getDate().date|ago }}
+                                </div>
+                            </a>
+                        {% else %}
+                            Keine Post bisher!
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         {% else %}
             Du bist nicht eingelogged!

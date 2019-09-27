@@ -10,8 +10,8 @@ body {
 }
 
 /*
-    Bootstrap
-*/
+ * Bootstrap
+ */
 
 .card {
     color: inherit !important;
@@ -22,6 +22,14 @@ body {
     }
 
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+/*
+ * Custom
+ */
 
 .fixed-top {
 
@@ -53,16 +61,10 @@ body {
         @import "sites/video/videolist.scss";
         @import "sites/video/videosite.scss";
 
-        @import "sites/account/account.scss";
         @import "sites/account/register.scss";
         @import "sites/account/login.scss";
 
         @import "sites/tools/calculator.scss";
-
-        @import "sites/forum/forum.scss";
-        @import "sites/forum/createpost.scss";
-
-        @import "sites/informations/sponsors.scss";
     }
 
     .content-simple-spacer {

@@ -15,25 +15,45 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class AccountController extends AbstractController
 {
-    public function me()
+    public function me(Request $request)
     {
-        return $this->render('site/account/account.html.twig', [
-            "user" => $this->getUser()
+        $user = $this->getUser();
+
+        return $this->redirectToRoute('route_account_user', [
+            "id" => $user->getId()
         ]);
     }
 
     public function user(
+        Request $request,
         UserRepository $userRepository,
         $id
     ){
 
-        $user = $userRepository->find($id);
+        $user = null;
+        if($this->getUser()->getId() == $id)
+            $user = $this->getUser();
+        else
+            $user = $userRepository->find($id);
+
+        if(
+            $request->isMethod('post') &&
+            $request->request->has('show_name')
+        ){
+            $user->setShowName($request->request->get('show_name'));
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('route_account_user', [
+                "id" => $id
+            ]);
+        }
 
         if($user == null)
         {
             return $this->render('site/account/user404.html.twig', [
-                "raw_email" => $email,
-                "email" => $email
+                "id" => $id
             ]);
         }
 

@@ -398,6 +398,25 @@ function initPost(){
     })
 }
 
+function initChangeShowName()
+{
+    const $startEdit = $("#user_showname_startedit");
+    const $normal = $("#user_showname_normal");
+    const $edit = $("#user_showname_edit");
+    const $cancle = $("#user_showname_cancle");
+
+    $startEdit.click(function() {
+        $normal.addClass("d-none");
+        $edit.removeClass("d-none");
+    });
+
+    $cancle.click(function() {
+        $edit.addClass("d-none");
+        $normal.removeClass("d-none");
+    })
+
+}
+
 $(document).ready(function(){
     initMenuBar();
     initBody();
@@ -411,4 +430,5 @@ $(document).ready(function(){
     initRegister();
     initCalculator();
     initPost();
+    initChangeShowName();
 });

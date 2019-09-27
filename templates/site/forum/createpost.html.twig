@@ -2,25 +2,30 @@
 
 {% block content %}
     <form class="createpost" method="POST">
-        <h1 class="title">Create Post</h1>
-        <div class="inputwrapper">
+        <h1 class="title mb-4">
+            Post erstellen
+        </h1>
+        <div class="form-group">
             <label for="post_title">Titel</label>
-            <input class="titleinput" type="text" id="post_title" name="post_title" required />
+            <input class="form-control" type="text" id="post_title" name="post_title" required />
         </div>
-        <div class="inputwrapper">
-            <div class="typeinput">
-                <label for="post_type_post">Post</label>
-                <input type="radio" id="post_type_post" name="post_type" value="post" checked>
-                <label for="post_type_question">Frage</label>
-                <input type="radio" id="post_type_question" name="post_type" value="question">
+        <div class="form-group">
+            <div>Art des Post</div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="post_type_post" name="post_type" value="post" checked>
+                <label class="form-check-label" for="post_type_post">Post</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="post_type_question" name="post_type" value="question">
+                <label class="form-check-label" for="post_type_question">Frage</label>
             </div>
         </div>
-        <div class="inputwrapper">
+        <div class="form-group">
             <label for="post_text">Text</label>
-            <textarea class="textinput" id="post_text" name="post_text" required></textarea>
+            <textarea class="form-control" style="min-height: 100px" id="post_text" name="post_text" required></textarea>
         </div>
-        <div class="inputwrapper">
-            <button class="btn btn-primary" type="submit">submit</button>
+        <div class="form-group">
+            <button class="btn btn-primary mr-1" type="submit">submit</button>
             <a href="{{ path('route_forum') }}" class="btn btn-outline-secondary cancelbutton">Cancel</a>
         </div>
     </form>

@@ -88,7 +88,7 @@
                                     <div class="menucontent" id="menucontent">
                                         <div class="menupart">
                                             {% if app.user is null %}
-                                                <a class="menubutton" href="{{ path('route_account') }}">
+                                                <a class="menubutton" href="{{ path('route_account_me') }}">
                                                     <i class="menu-icon far fa-user"></i>
                                                     {{ 'header.navigation.menu.account.me'|trans }}
                                                 </a>
@@ -101,7 +101,7 @@
                                                     {{ 'header.navigation.menu.account.register'|trans }}
                                                 </a>
                                             {% else %}
-                                                <a class="menubutton" href="{{ path('route_account') }}">
+                                                <a class="menubutton" href="{{ path('route_account_me') }}">
                                                     <div class="userimagewrapper">
                                                         <img src="{{ user_image_path(app.user) }}">
                                                     </div>

@@ -5,30 +5,29 @@
 {% endblock %}
 
 {% block content %}
-    <form method="POST" class="register d-flex justify-content-center" name="register_form">
-        <div class="dropdown-menu form">
-            <div class="px-4 py-3">
+    <div class="d-flex justify-content-center">
+        <form method="POST" class="card" style="width: 500px">
+            <div class="card-body">
+                <h1 class="card-title">
+                    {{ "account.register.title"|trans }}
+                </h1>
+                <div class="card-text">
 
-                {% set errors = errors ?? [] %}
+                    {% set errors = errors ?? [] %}
+                    {% set show_password = show_password ?? false %}
 
-                <div class="title">
-                    <h1>{{ "account.register.title"|trans }}</h1>
-                </div>
+                    {% if "invalid_form" in errors %}
+                        {{ "account.register.inputs.invalid_form"|trans }}
+                    {% endif %}
 
-                {% if "invalid_form" in errors %}
-                    {{ "account.register.inputs.invalid_form"|trans }}
-                {% endif %}
+                    {% if "invalid_csrf_token" in errors %}
+                        {{ "account.register.inputs.invalid_csrf_token"|trans }}
+                    {% endif %}
 
-                {% if "invalid_csrf_token" in errors %}
-                    {{ "account.register.inputs.invalid_csrf_token"|trans }}
-                {% endif %}
-
-                <div class="group">
                     <div class="form-group">
-                        <label
-                            for="email_input"
-                            class="input_label"
-                        >{{ "account.register.inputs.email.name"|trans }}</label>
+                        <label for="email_input">
+                            {{ "account.register.inputs.email.name"|trans }}
+                        </label>
                         <input
                             type="email"
                             name="email_input"
@@ -41,7 +40,7 @@
                             required
                             autofocus
                         />
-                        <div class="error">
+                        <div class="text-danger small">
                             {% if "already_used_email" in errors %}
                                 {{ "account.register.inputs.email.errors.already_used"|trans }}
                             {% elseif "invalid_email" in errors %}
@@ -51,16 +50,11 @@
                             {% endif %}
                         </div>
                     </div>
-                </div>
 
-                {% set show_password = show_password ?? false %}
-
-                <div class="group">
                     <div class="form-group">
-                        <label
-                            for="register_password_input"
-                            class="input_label"
-                        >{{ "account.register.inputs.password.name"|trans }}</label>
+                        <label for="register_password_input">
+                            {{ "account.register.inputs.password.name"|trans }}
+                        </label>
                         <input
                             type="{{ show_password ? "text" : "password" }}"
                             name="password_input"
@@ -74,9 +68,10 @@
                         />
                         <span
                             id="register_toggle_password"
-                            class="far {{ show_password ? "fa-eye-slash" : "fa-eye" }} show-password">
-                        </span>
-                        <div class="error">
+                            class="far {{ show_password ? "fa-eye-slash" : "fa-eye" }} float-right cursor-pointer text-dark"
+                            style="margin: -26px 15px 0 5px;"
+                        ></span>
+                        <div class="text-danger small">
                             {% if "too_short_password" in errors %}
                                 {{ "account.register.inputs.password.errors.too_short"|trans }}
                             {% elseif "too_long_password" in errors %}
@@ -85,7 +80,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" id="password_repeat_form"{{ show_password ? ' style="display: none;"' }}>
+                    <div class="form-group mb-4" id="password_repeat_form"{{ show_password ? ' style="display: none;"' }}>
                         <label
                             for="password_repeat_input"
                             class="input_label"
@@ -102,62 +97,54 @@
                             value="{{ show_password ? "dummy" }}"
                             required
                         />
-                        <div class="error">
+                        <div class="text-danger small">
                             {% if "unequal_passwords" in errors %}
                                 {{ "account.register.inputs.repeat_password.errors.unequal"|trans }}
                             {% endif %}
                         </div>
                     </div>
-                </div>
 
-                <div class="group">
                     <div class="form-group">
                         <div
                             class="g-recaptcha justify-content-center"
                             data-sitekey="{{ captcha_website }}">
                         </div>
-                        <div class="error">
+                        <div class="text-danger small">
                             {% if "invalid_captcha" in errors %}
                                 {{ "account.register.inputs.captcha.errors.invalid"|trans }}
                             {% endif %}
                         </div>
                     </div>
-                </div>
 
-                <div class="group">
                     <div class="form-group checkbox-wrapper">
-                        <input
-                            type="checkbox"
-                            class="form-check-input"
-                            id="remember_me_input"
-                            name="remember_me_input"
-                            {{ last_remember_me ? "checked" }}
-                        />
-                        <label
-                            class="rememberme-label"
-                            for="remember_me_input"
-                        >{{ "account.register.inputs.remember_me"|trans }}</label>
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                class="form-check-input"
+                                id="remember_me_input"
+                                name="remember_me_input"
+                                {{ last_remember_me ? "checked" }}
+                            />
+                            <label
+                                class="form-check-label"
+                                for="remember_me_input"
+                            >{{ "account.login.inputs.remember_me"|trans }}</label>
+                        </div>
                     </div>
-                </div>
 
-                <input type="hidden" name="show_password_input" id="show_password_input" value="{{ show_password ? "true" : "false" }}"/>
-                <input type="hidden" name="csrf_token_input" id="csrf_token_input" value="{{ csrf_token('authenticate') }}"/>
+                    <input type="hidden" name="show_password_input" id="show_password_input" value="{{ show_password ? "true" : "false" }}"/>
+                    <input type="hidden" name="csrf_token_input" id="csrf_token_input" value="{{ csrf_token('authenticate') }}"/>
 
-                <div class="buttons">
-                    <button type="submit" class="btn btn-lg btn-primary submit">
+                    <button type="submit" class="btn btn-primary mr-2">
                         {{ "account.register.submit"|trans }}
                     </button>
-                    <a href="{{ path('route_account_login') }}" class="btn btn-lg btn-outline-secondary login">
+                    <a href="{{ path('route_account_login') }}" class="btn btn-outline-secondary">
                         {{ 'account.register.tologin'|trans }}
                     </a>
                 </div>
             </div>
-        </div>
-    </form>    
-{% endblock %}
-
-{% block data %}
-    <input type="hidden" id="header_config" value="simple" />
+        </form>
+    </div>
 {% endblock %}
 
 {% block js %}

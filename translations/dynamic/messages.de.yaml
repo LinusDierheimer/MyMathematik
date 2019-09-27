@@ -10,8 +10,8 @@ header:
         menu:
             account:
                 me: "Mein Account"
-                login: "Login"
-                logout: "Logout"
+                login: "Anmelden"
+                logout: "Abmelden"
                 register: "Registrieren"
                 switch: "Benutzer wechseln"
             forum:

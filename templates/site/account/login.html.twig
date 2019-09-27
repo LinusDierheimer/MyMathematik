@@ -5,108 +5,106 @@
 {% endblock %}
 
 {% block content %}
+    <div class="d-flex justify-content-center">
+        <form method="POST" class="card" style="width: 500px">
+            <div class="card-body">
+                <h1 class="card-title">
+                    {{ "account.login.title"|trans }}
+                </h1>
+                <div class="card-text">
+                    {% set errors = errors ?? [] %}
 
-    <form method="POST" class="login d-flex justify-content-center">
-        <div class="dropdown-menu form">
-            <div class="px-4 py-3">
-    
-                {% set errors = errors ?? [] %}
+                    {% if "invalid_form" in errors %}
+                        {{ "account.login.inputs.invalid_form"|trans }}
+                    {% endif %}
 
-                <div class="title">
-                    <h1>{{ "account.login.title"|trans }}</h1>
-                </div>
+                    {% if "invalid_csrf_token" in errors %}
+                        {{ "account.login.inputs.invalid_csrf_token"|trans }}
+                    {% endif %}
 
-                {% if "invalid_form" in errors %}
-                    {{ "account.login.inputs.invalid_form"|trans }}
-                {% endif %}
+                    <div class="form-group">
+                        <label for="email_input">
+                            {{ "account.login.inputs.email.name"|trans }}
+                        </label>
+                        <input
+                            type="email"
+                            value="{{ last_email ?? "" }}"
+                            name="email_input"
+                            id="email_input"
+                            class="form-control"
+                            placeholder="{{ "account.login.inputs.email.placeholder"|trans }}"
+                            autocomplete="email"
+                            required
+                            autofocus
+                        />
+                        <div class="text-danger small">
+                            {% if "too_long_email" in errors %}
+                                {{ "account.login.inputs.email.errors.too_long"|trans }} 
+                            {% elseif "user_not_found" in errors %}
+                                {{ "account.login.inputs.email.errors.not_found"|trans }}
+                            {% endif %}
+                        </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="login_password_input">
+                            {{ "account.login.inputs.password.name"|trans }}
+                        </label>
+                        <input
+                            type="password"
+                            name="password_input"
+                            id="login_password_input"
+                            class="form-control"
+                            placeholder="{{ "account.login.inputs.password.placeholder"|trans }}"
+                            autocomplete="current-password"
+                            minlength="6"
+                            maxlength="4096"
+                            required
+                        />
+                        <span
+                            id="login_toggle_password"
+                            class="far {{ show_password ? "fa-eye-slash" : "fa-eye" }} float-right cursor-pointer text-dark"
+                            style="margin: -26px 15px 0 5px;"
+                        ></span>
+                        <div class="text-danger small">
+                            {% if "too_short_password" in errors %}
+                                {{ "account.login.inputs.password.errors.too_short"|trans }}
+                            {% elseif "too_long_password" in errors %}
+                                {{ "account.login.inputs.password.errors.too_long"|trans }}
+                            {% elseif "wrong_password" in errors %}
+                                {{ "account.login.inputs.password.errors.wrong"|trans }}
+                            {% endif %}
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                class="form-check-input"
+                                id="remember_me_input"
+                                name="remember_me_input"
+                                {{ last_remember_me ? "checked" }}
+                            />
+                            <label
+                                class="form-check-label"
+                                for="remember_me_input"
+                            >{{ "account.login.inputs.remember_me"|trans }}</label>
+                        </div>
+                    </div>
 
-                {% if "invalid_csrf_token" in errors %}
-                    {{ "account.login.inputs.invalid_csrf_token"|trans }}
-                {% endif %}
-
-                <div class="form-group">
-                    <label
-                        for="email_input"
-                        class="input_label"
-                    >{{ "account.login.inputs.email.name"|trans }}</label>
-                    <input
-                        type="email"
-                        value="{{ last_email ?? "" }}"
-                        name="email_input"
-                        id="email_input"
-                        class="form-control"
-                        placeholder="{{ "account.login.inputs.email.placeholder"|trans }}"
-                        autocomplete="email"
-                        required
-                        autofocus
-                    />
-                    <div class="error">
-                        {% if "too_long_email" in errors %}
-                            {{ "account.login.inputs.email.errors.too_long"|trans }} 
-                        {% elseif "user_not_found" in errors %}
-                            {{ "account.login.inputs.email.errors.not_found"|trans }}
-                        {% endif %}
+                    <input type="hidden" name="csrf_token_input" id="csrf_token_input" value="{{ csrf_token('authenticate') }}">
+        
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-primary mr-2">
+                            {{ "account.login.submit"|trans }}
+                        </button>
+                        <a href="{{ path('route_account_register') }}" class="btn btn-outline-secondary register">
+                                {{ "account.login.toregister"|trans }}
+                        </a>
                     </div>
                 </div>
-    
-                <div class="form-group">
-                    <label
-                        for="login_password_input"
-                        class="input_label"
-                    >{{ "account.login.inputs.password.name"|trans }}</label>
-                    <input
-                        type="password"
-                        name="password_input"
-                        id="login_password_input"
-                        class="form-control"
-                        placeholder="{{ "account.login.inputs.password.placeholder"|trans }}"
-                        autocomplete="current-password"
-                        minlength="6"
-                        maxlength="4096"
-                        required
-                    />
-                    <span
-                        id="login_toggle_password"
-                        class="far {{ show_password ? "fa-eye-slash" : "fa-eye" }} show-password">
-                    </span>
-                    <div class="error">
-                        {% if "too_short_password" in errors %}
-                            {{ "account.login.inputs.password.errors.too_short"|trans }}
-                        {% elseif "too_long_password" in errors %}
-                            {{ "account.login.inputs.password.errors.too_long"|trans }}
-                        {% elseif "wrong_password" in errors %}
-                            {{ "account.login.inputs.password.errors.wrong"|trans }}
-                        {% endif %}
-                    </div>
-                </div>
-        
-                <div class="form-group checkbox-wrapper">
-                    <input
-                        type="checkbox"
-                        class="form-check-input"
-                        id="remember_me_input"
-                        name="remember_me_input"
-                        {{ last_remember_me ? "checked" }}
-                    />
-                    <label
-                        class="rememberme-label"
-                        for="remember_me_input"
-                    >{{ "account.login.inputs.remember_me"|trans }}</label>
-                </div>
-
-                <input type="hidden" name="csrf_token_input" id="csrf_token_input" value="{{ csrf_token('authenticate') }}">
-    
-                <div class="buttons">
-                    <button type="submit" class="btn btn-lg btn-primary submit">
-                        {{ "account.login.submit"|trans }}
-                    </button>
-                    <a href="{{ path('route_account_register') }}" class="btn btn-lg btn-outline-secondary register">
-                            {{ "account.login.toregister"|trans }}
-                    </a>
-                </div>
-        
             </div>
-
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}

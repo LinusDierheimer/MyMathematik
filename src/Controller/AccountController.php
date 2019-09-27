@@ -19,6 +19,11 @@ class AccountController extends AbstractController
     {
         $user = $this->getUser();
 
+        if($user == null)
+        {
+            return $this->render('site/account/not_logged_in.html.twig');
+        }
+
         return $this->redirectToRoute('route_account_user', [
             "id" => $user->getId()
         ]);
@@ -31,8 +36,9 @@ class AccountController extends AbstractController
     ){
 
         $user = null;
-        if($this->getUser()->getId() == $id)
-            $user = $this->getUser();
+        $thisUser = $this->getUser();
+        if($thisUser != null && $thisUser->getId() == $id)
+            $user = $thisUser;
         else
             $user = $userRepository->find($id);
 

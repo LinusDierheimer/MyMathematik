@@ -8,32 +8,48 @@
 
 {% block content %}
     <div class="videolist">
-        <div class="head">
+        <div class="text-center mb-5">
             <h1>
                 {{ 'videos.yearlevel'|trans }} {{ class.name }}
             </h1>
-            <a href="{{ class.curriculum }}" rel="noopener noreferrer" target="_blank">
+            <a href="{{ class.curriculum }}" rel="noopener noreferrer" target="_blank" class="text-secondary">
                 {{ 'videos.videolist.curriculum'|trans }}
                 <i class="fas fa-link"></i>
             </a>
         </div>
-        <div class="list">
+        <div>
             {% for chapterNumber, chapter in class.chapters %}
-                <div class="chapter">
-                    <div class="chaptertitle">
+                <div class="card mb-3">
+                    <div 
+                        class="card-header cursor-pointer collapsed"
+                        data-toggle="collapse"
+                        data-target="#content{{ loop.index }}"
+                        aria-expanded="false"
+                        aria-controls="content{{ loop.index }}"
+                        id="header{{ loop.index }}"
+                        role="button"
+                    >
                         {{ chapter.name }}
-                        <i class="fas fa-angle-down dropdownbutton"></i>
+                        <i class="fas fa-angle-down float-right"></i>
                     </div>
-                    <div class="chaptercontent">
-                        <div class="contentwrapper">
+                    <div 
+                        class="card-body collapse"
+                        id="content{{ loop.index }}"
+                        aria-labelledby="header{{ loop.index }}"
+                    >
+                        <div class="d-flex flex-wrap">
                             {% for videoNumber, video in chapter.videos %}
-                                <a href="/videos/{{ videoLanguage }}/{{ videoClass }}/{{chapterNumber}}/{{ videoNumber }}" class="videocontainer">
+                                <a
+                                    class="text-left m-2 btn flex-fill"
+                                    href="/videos/{{ videoLanguage }}/{{ videoClass }}/{{chapterNumber}}/{{ videoNumber }}"
+                                    style="max-width: 250px"
+                                >
                                     <img
-                                        class="videothumbnail"
                                         src="{{ asset(video.thumbnail == "" ? 'build/images/ThumbnailFallback.png' : video.thumbnail) }}"
                                         alt="{{ video.name }}"
+                                        style="width: 250px"
                                     />
-                                    <div class="videoname">
+                                    <div class="text-secondary">
                                         {{ video.name }}
                                     </div>
                                 </a>

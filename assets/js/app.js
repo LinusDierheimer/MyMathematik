@@ -143,19 +143,6 @@ function initLanguage() {
     });
 }
 
-function initVideoList(){
-    $(".chaptertitle").click(function(){
-        const $this = $(this);
-        const $content = $this.next(".chaptercontent");
-        if($content.height() == 0){
-            $content.animate({height:$content[0].scrollHeight},200);
-        }else{
-            $content.animate({height:0}, 200);
-        }
-        $this.find(".dropdownbutton").toggleClass("dropdownbutton-active");
-    })   
-}
-
 function initScrollToContent(){
     $('#scrollToContentButton').click(function(){
         $('html, body').animate({
@@ -424,7 +411,6 @@ $(document).ready(function(){
     initDesign();
     initScrollUp();
     initLanguage();
-    initVideoList();
     initScrollToContent();
     initLogin();
     initRegister();

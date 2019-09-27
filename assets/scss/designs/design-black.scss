@@ -5,6 +5,14 @@ $design_black_col: whitesmoke;
     background-color:$design_black_bg !important;
     color: $design_black_col !important;
 
+    .card {
+        border-color: lightgrey;
+    }
+
+    .dark-invert-color {
+        filter: invert(1);
+    }
+
     .content {
         .home {
             .welcome {

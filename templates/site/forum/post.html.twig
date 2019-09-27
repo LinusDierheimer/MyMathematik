@@ -6,41 +6,53 @@
 
 {% block content %}
     <div class="post">
-        <div class="main">
-            <div class="title">
-                <h1>
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">
                     {{ post.getTitle() }}
                 </h1>
+                <div class="card-text">
+                    {{ post.getText() }}
+                </div>
             </div>
-            <div class="text">
-                {{ post.getText() }}
+            <div class="card-footer text-secondary small">
+                Gepostet von {{ post.getUser().getName() }} {{ post.getDate().date|ago }}
             </div>
         </div>
-        <div class="info">
-            Gepostet von {{ post.getUser().getName() }} {{ post.getDate().date|ago }}
-        </div>
-        <div class="btn btn-outline-primary float-right createanswerbutton">
-            Antwort erstellen
-        </div>
+        <hr class="mt-4 mb-4">
         {% set answers = post.getAnswers() %}
-        <div class="answers">
+        <div class="answers mt-4">
             {% for answer in answers %}
-                <div class="answer">
-                    {{ answer.getText() }}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="card-text">
+                            {{ answer.getText() }}
+                        </div>
+                    </div>
+                    <div class="card-footer text-secondary small">
+                        Gepostet von {{ post.getUser().getName() }} {{ post.getDate().date|ago }}
+                    </div>
                 </div>
             {% else %}
                 Keine Antworten bisher!
             {% endfor %}
         </div>
-        {% if answers|length > 0 %}
+        <hr class="mt-4 mb-4">
+        {% if app.user is not null %}
             <div class="btn btn-outline-primary createanswerbutton">
                 Antwort erstellen
             </div>
+            <form class="d-none w-100" id="createanswer" method="POST">
+                <textarea class="w-100" style="min-height: 100px;" name="post_text"></textarea>
+                <div>
+                    <button type="submit" class="btn btn-primary">Hochladen</button>
+                    <button type="button" class="btn btn-outline-secondary ml-1 canclecreatepost">Abbrechen</button>
+                </div>
+            </form>
+        {% else %}
+            <a href="{{ path('route_account_login') }}?_target_path={{ globals.request.pathInfo }}" class="text-secondary">
+                Du musst eingeloggt sein um eine Antwort zu erstellen!
+            </a>
         {% endif %}
-        <form class="createanswer" id="createanswer" method="POST">
-            <textarea name="post_text"></textarea>
-            <button type="submit" class="btn btn-primary">Hochladen</button>
-            <button type="button" class="btn btn-outline-secondary ml-1 canclecreatepost">Abbrechen</button>
-        </div>
     </div>
 {% endblock %}

@@ -5,6 +5,10 @@ $design_light_col: black;
     background-color: $design_light_bg !important;
     color: $design_light_col !important;
 
+    .card {
+        border-color: gray;
+    }
+
     .fullcontent {
         .content {
             .calculator {

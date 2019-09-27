@@ -9,6 +9,20 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+/*
+    Bootstrap
+*/
+
+.card {
+    color: inherit !important;
+    background-color: inherit !important;
+
+    .card-footer {
+        border-color: inherit !important;       
+    }
+
+}
+
 .fixed-top {
 
     top: 0;
@@ -46,7 +60,6 @@ body {
         @import "sites/tools/calculator.scss";
 
         @import "sites/forum/forum.scss";
-        @import "sites/forum/post.scss";
         @import "sites/forum/createpost.scss";
 
         @import "sites/informations/sponsors.scss";

@@ -212,6 +212,11 @@ class AccountAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
+        if($request->query->has('_target_path'))
+        {
+            return new RedirectResponse($request->query->get('_target_path'));
+        }
+
         return new RedirectResponse($this->urlGenerator->generate("route_account_me"));
     }
 

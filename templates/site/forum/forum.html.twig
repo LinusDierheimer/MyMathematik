@@ -3,26 +3,34 @@
 {% block content %}
     <div class="forum">
         <div class="top">
-            <h1 class="title">Forum</h1>
-            <a href="{{ path('route_forum_create') }}" class="create">
-                Create
-            </a>
+            <h1 class="title">
+                Forum
+            </h1>
+            {% if app.user is not null %}
+                <a href="{{ path('route_forum_create') }}" class="btn btn-outline-primary float-right">
+                    Post oder Frage erstellen
+                </a>
+            {% else %}
+                <a href="{{ path('route_account_login') }}?_target_path={{ globals.request.pathInfo }}" class="float-right text-secondary">
+                    Du musst eingeloggt sein um einen Post zu erstellen!
+                </a>
+            {% endif %}
         </div>
         {% for question in questions|reverse %}
             {% set user = question.getUser() %}
-            <a class="question" href="/forum/{{ question.getId() }}">
-                <div class="logo">
-                    <img src="{{ 
-                        question.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
-                    }}" />
+            <a class="card mb-3 text-decoration-none" href="/forum/{{ question.getId() }}">
+                <div class="card-body">
+                    <div class="card-text row">
+                        <img class="col-1 dark-invert-color" src="{{ 
+                            question.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
+                        }}" />
+                        <h2 class="col-11">
+                            {{ question.getTitle() }}
+                        </h2>
+                    </div>
                 </div>
-                <div class="details">
-                    <div class="questiontitle">
-                        {{ question.getTitle() }}
-                    </div>
-                    <div class="user">
-                        Gepostet von {{ user.getName() }} {{ question.getDate().date|ago }}
-                    </div>
+                <div class="card-footer text-secondary small">
+                     Gepostet von {{ user.getName() }} {{ question.getDate().date|ago }}
                 </div>
             </a>
         {% else %}

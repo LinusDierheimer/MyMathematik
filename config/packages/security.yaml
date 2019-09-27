@@ -29,7 +29,6 @@ security:
 
             logout:
                 path: route_account_logout
-                target: route_home
 
             remember_me:
                 secret: '%kernel.secret%'

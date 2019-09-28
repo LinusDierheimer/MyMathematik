@@ -50,17 +50,11 @@
                 {% block fixed_top %}
                     
                     {% block cookies %}
-                        <div class="cookies" id="cookieinfo">
-                            <div class="cookiestext">
-                                <label>
-                                    {{ 'cookies.info'|trans }}
-                                </label>
-                                <a href="/information/cookies">
-                                    {{ 'cookies.more'|trans }}
-                                </a>
-                                <button id="cookiesAccepted">
-                                    {{ 'cookies.ok'|trans }}
-                                </button>
+                        <div class="bg-header overflow-hidden border-bottom border-dark" id="cookieinfo" style="height: 0">
+                            <div class="p-3">
+                                <label class="text-white mr-1">{{ 'cookies.info'|trans }}</label>
+                                <a href="{{ path('route_information_cookies') }}" class="text-white">{{ 'cookies.more'|trans }}</a>
+                                <button class="btn btn-danger btn-sm float-right" id="cookiesAccepted">{{ 'cookies.ok'|trans }}</button>
                             </div>
                         </div>
                     {% endblock %}

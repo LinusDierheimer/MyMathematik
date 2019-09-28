@@ -73,13 +73,12 @@ function initCookies(){
     const $cookieinfo = $("#cookieinfo");
 
     if(!document.cookie.includes("cookies=true"))
-        $cookieinfo.addClass("cookiesvisible");
+        $cookieinfo.animate({ height: $cookieinfo[0].scrollHeight }, 10);
 
     $("#cookiesAccepted").click(function(){
         setCookie("cookies", "true");
-        $cookieinfo.removeClass("cookiesvisible");
-    })
-
+        $cookieinfo.animate({ height:0 },200);
+    });
 }
 
 function initDesign(){

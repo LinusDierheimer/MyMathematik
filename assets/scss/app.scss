@@ -27,6 +27,15 @@ body {
     cursor: pointer;
 }
 
+.bg-header {
+    background: $control_color;
+    opacity: .96;
+}
+
+.bg-main {
+    background-color: $main_color;
+}
+
 /*
  * Custom
  */
@@ -38,7 +47,6 @@ body {
     width: 100%;
     z-index: 12345;
 
-    @import "cookies";
     @import "header";
 
 }
@@ -60,7 +68,6 @@ body {
 
         @import "sites/home/home.scss";
 
-        @import "sites/video/videolist.scss";
         @import "sites/video/videosite.scss";
 
         @import "sites/tools/calculator.scss";

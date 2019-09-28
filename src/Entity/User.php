@@ -42,14 +42,14 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="user")
      */
-    private $questions;
+    private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\QuestionAnswer", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\PostAnswer", mappedBy="user")
      */
-    private $questionAnswers;
+    private $postAnswers;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -58,8 +58,8 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->questions = new ArrayCollection();
-        $this->questionAnswers = new ArrayCollection();
+        $this->posts = new ArrayCollection();
+        $this->postAnswers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,30 +119,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Question[]
+     * @return Collection|Post[]
      */
-    public function getQuestions(): Collection
+    public function getPosts(): Collection
     {
-        return $this->questions;
+        return $this->posts;
     }
 
-    public function addQuestion(Question $question): self
+    public function addPost(Post $post): self
     {
-        if (!$this->questions->contains($question)) {
-            $this->questions[] = $question;
-            $question->setUser($this);
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeQuestion(Question $question): self
+    public function removePosts(Post $post): self
     {
-        if ($this->questions->contains($question)) {
-            $this->questions->removeElement($question);
+        if ($this->posts->contains($post)) {
+            $this->posts->removeElement($post);
             // set the owning side to null (unless already changed)
-            if ($question->getUser() === $this) {
-                $question->setUser(null);
+            if ($post->getUser() === $this) {
+                $post->setUser(null);
             }
         }
 
@@ -150,30 +150,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|QuestionAnswer[]
+     * @return Collection|PostAnswer[]
      */
-    public function getQuestionAnswers(): Collection
+    public function getPostAnswers(): Collection
     {
-        return $this->questionAnswers;
+        return $this->postAnswers;
     }
 
-    public function addQuestionAnswer(QuestionAnswer $questionAnswer): self
+    public function addPostAnswer(PostAnswer $postAnswer): self
     {
-        if (!$this->questionAnswers->contains($questionAnswer)) {
-            $this->questionAnswers[] = $questionAnswer;
-            $questionAnswer->setUser($this);
+        if (!$this->postAnswers->contains($postAnswer)) {
+            $this->postAnswers[] = $postAnswer;
+            $postAnswer->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeQuestionAnswer(QuestionAnswer $questionAnswer): self
+    public function removePostAnswer(PostAnswer $postAnswer): self
     {
-        if ($this->questionAnswers->contains($questionAnswer)) {
-            $this->questionAnswers->removeElement($questionAnswer);
+        if ($this->postAnswers->contains($postAnswer)) {
+            $this->postAnswers->removeElement($postAnswer);
             // set the owning side to null (unless already changed)
-            if ($questionAnswer->getUser() === $this) {
-                $questionAnswer->setUser(null);
+            if ($postAnswer->getUser() === $this) {
+                $postAnswer->setUser(null);
             }
         }
 

@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Question;
-use App\Entity\QuestionAnswer;
-use App\Repository\QuestionRepository;
+use App\Entity\Post;
+use App\Entity\PostAnswer;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -12,19 +12,19 @@ class ForumController extends AbstractController
 {
 
     public function forum(
-        QuestionRepository $questionRepository
+        PostRepository $postRepository
     ){
         return $this->render('site/forum/forum.html.twig', [
-            "questions" => $questionRepository->findAll()
+            "posts" => $postRepository->findAll()
         ]);
     }
 
     public function post(
-        QuestionRepository $questionRepository,
+        PostRepository $postRepository,
         Request $request,
         $id
     ){
-        $post = $questionRepository->find($id);
+        $post = $postRepository->find($id);
 
         if(!$post)
         {
@@ -37,8 +37,9 @@ class ForumController extends AbstractController
             $request->isMethod('post') &&
             $request->request->has('post_text')
         ) {
-            $answer = new QuestionAnswer();
-            $answer->setQuestion($post);
+            $answer = new PostAnswer();
+            $answer->setDate(new \DateTime("now"));
+            $answer->setPost($post);
             $answer->setText($request->request->get('post_text'));
             $answer->setUser($this->getUser());
             $answer->setAccepted(false);
@@ -66,15 +67,15 @@ class ForumController extends AbstractController
             $request->request->has('post_text') &&
             $request->request->has('post_type')
         ) {
-            $question = new Question();
-            $question->setDate(new \DateTime("now"));
-            $question->setTitle($request->request->get('post_title'));
-            $question->setText($request->request->get("post_text"));
-            $question->setType($request->request->get('post_type'));
-            $question->setUser($this->getUser());
+            $post = new Post();
+            $post->setDate(new \DateTime("now"));
+            $post->setTitle($request->request->get('post_title'));
+            $post->setText($request->request->get("post_text"));
+            $post->setType($request->request->get('post_type'));
+            $post->setUser($this->getUser());
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($question);
+            $entityManager->persist($post);
             $entityManager->flush();
 
             return $this->redirectToRoute('route_forum');

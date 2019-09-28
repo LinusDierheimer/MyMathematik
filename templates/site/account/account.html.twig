@@ -39,20 +39,20 @@
             </h3>
             <div class="card-body">
                 <div class="card-text">
-                    {% for question in user.getQuestions()|reverse %}
-                        <a class="card mb-3 text-decoration-none" href="/forum/{{ question.getId() }}">
+                    {% for post in user.getPosts()|reverse %}
+                        <a class="card mb-3 text-decoration-none" href="/forum/{{ post.getId() }}">
                             <div class="card-body">
                                 <div class="card-text row">
                                     <img class="col-1 dark-invert-color" src="{{ 
-                                        question.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
+                                        post.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
                                     }}" />
                                     <h2 class="col-11">
-                                        {{ question.getTitle() }}
+                                        {{ post.getTitle() }}
                                     </h2>
                                 </div>
                             </div>
                             <div class="card-footer text-secondary small">
-                                    Gepostet {{ question.getDate().date|ago }}
+                                    Gepostet {{ post.getDate().date|ago }}
                             </div>
                         </a>
                     {% else %}

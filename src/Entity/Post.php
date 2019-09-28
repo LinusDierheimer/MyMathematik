@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  */
-class Question
+class Post
 {
     /**
      * @ORM\Id()
@@ -29,13 +29,13 @@ class Question
     private $text;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="questions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\QuestionAnswer", mappedBy="question", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\PostAnswer", mappedBy="post", orphanRemoval=true)
      */
     private $answers;
 
@@ -96,30 +96,30 @@ class Question
     }
 
     /**
-     * @return Collection|QuestionAnswer[]
+     * @return Collection|PostAnswer[]
      */
     public function getAnswers(): Collection
     {
         return $this->answers;
     }
 
-    public function addAnswer(QuestionAnswer $answer): self
+    public function addAnswer(PostAnswer $answer): self
     {
         if (!$this->answers->contains($answer)) {
             $this->answers[] = $answer;
-            $answer->setQuestion($this);
+            $answer->setPost($this);
         }
 
         return $this;
     }
 
-    public function removeAnswer(QuestionAnswer $answer): self
+    public function removeAnswer(PostAnswer $answer): self
     {
         if ($this->answers->contains($answer)) {
             $this->answers->removeElement($answer);
             // set the owning side to null (unless already changed)
-            if ($answer->getQuestion() === $this) {
-                $answer->setQuestion(null);
+            if ($answer->getPost() === $this) {
+                $answer->setPost(null);
             }
         }
 

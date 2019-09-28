@@ -16,25 +16,29 @@
                 </a>
             {% endif %}
         </div>
-        {% for question in questions|reverse %}
-            {% set user = question.getUser() %}
-            <a class="card mb-3 text-decoration-none" href="/forum/{{ question.getId() }}">
-                <div class="card-body">
-                    <div class="card-text row">
-                        <img class="col-1 dark-invert-color" src="{{ 
-                            question.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
-                        }}" />
-                        <h2 class="col-11">
-                            {{ question.getTitle() }}
-                        </h2>
+        <div>
+            {% for post in posts|reverse %}
+                {% set user = post.getUser() %}
+                <div class="card mb-3">
+                    <a href="{{ path('route_forum_post', {'id': post.getId()}) }}" class="card-body text-decoration-none">
+                        <div class="card-text row">
+                            <img class="col-md-1 col-sm-2 dark-invert-color" src="{{ 
+                                post.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
+                            }}" />
+                            <h2 class="col-auto text-black">
+                                {{ post.getTitle() }}
+                            </h2>
+                        </div>
+                    </a>
+                    <div class="card-footer text-muted small">
+                        Gepostet von 
+                        <a href="{{ path('route_account_user', {'id': user.getId()}) }}" class="text-muted">{{ user.getName() }}</a>
+                        {{ post.getDate().date|ago }}
                     </div>
                 </div>
-                <div class="card-footer text-secondary small">
-                     Gepostet von {{ user.getName() }} {{ question.getDate().date|ago }}
-                </div>
-            </a>
-        {% else %}
-            Keine Post bisher!
-        {% endfor %}
+            {% else %}
+                Keine Post bisher!
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

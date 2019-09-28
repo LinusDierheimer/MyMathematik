@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\QuestionAnswerRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PostAnswerRepository")
  */
-class QuestionAnswer
+class PostAnswer
 {
     /**
      * @ORM\Id()
@@ -27,16 +27,21 @@ class QuestionAnswer
     private $accepted;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Question", inversedBy="answers")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Post", inversedBy="answers")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $question;
+    private $post;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="questionAnswers")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="postAnswers")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
 
     public function getId(): ?int
     {
@@ -67,14 +72,14 @@ class QuestionAnswer
         return $this;
     }
 
-    public function getQuestion(): ?Question
+    public function getPost(): ?Post
     {
-        return $this->question;
+        return $this->post;
     }
 
-    public function setQuestion(?Question $question): self
+    public function setPost(?Post $post): self
     {
-        $this->question = $question;
+        $this->post = $post;
 
         return $this;
     }
@@ -87,6 +92,18 @@ class QuestionAnswer
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

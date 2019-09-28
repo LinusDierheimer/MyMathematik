@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\QuestionAnswer;
+use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method QuestionAnswer|null find($id, $lockMode = null, $lockVersion = null)
- * @method QuestionAnswer|null findOneBy(array $criteria, array $orderBy = null)
- * @method QuestionAnswer[]    findAll()
- * @method QuestionAnswer[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Post|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Post|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Post[]    findAll()
+ * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class QuestionAnswerRepository extends ServiceEntityRepository
+class PostRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, QuestionAnswer::class);
+        parent::__construct($registry, Post::class);
     }
 
     // /**
-    //  * @return QuestionAnswer[] Returns an array of QuestionAnswer objects
+    //  * @return Post[] Returns an array of Post objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class QuestionAnswerRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?QuestionAnswer
+    public function findOneBySomeField($value): ?Post
     {
         return $this->createQueryBuilder('q')
             ->andWhere('q.exampleField = :val')

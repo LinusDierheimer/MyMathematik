@@ -15,8 +15,10 @@
                     {{ post.getText() }}
                 </div>
             </div>
-            <div class="card-footer text-secondary small">
-                Gepostet von {{ post.getUser().getName() }} {{ post.getDate().date|ago }}
+            <div class="card-footer text-muted small">
+                Gepostet von 
+                <a href="{{ path('route_account_user', {'id': post.getUser().getId()}) }}" class="text-muted">{{ post.getUser().getName() }}</a>
+                {{ post.getDate().date|ago }}
             </div>
         </div>
         <hr class="mt-4 mb-4">
@@ -29,8 +31,10 @@
                             {{ answer.getText() }}
                         </div>
                     </div>
-                    <div class="card-footer text-secondary small">
-                        Gepostet von {{ post.getUser().getName() }} {{ post.getDate().date|ago }}
+                    <div class="card-footer text-muted small">
+                        Gepostet von 
+                        <a href="{{ path('route_account_user', {'id': answer.getUser().getId()}) }}" class="text-muted">{{ post.getUser().getName() }}</a>
+                        {{ answer.getDate().date|ago }}
                     </div>
                 </div>
             {% else %}

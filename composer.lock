@@ -1599,18 +1599,18 @@
             "authors": [
                 {
                     "name": "Joost Faassen",
-                    "role": "Packaging for Composer",
-                    "email": "j.faassen@linkorb.com"
+                    "email": "j.faassen@linkorb.com",
+                    "role": "Packaging for Composer"
                 },
                 {
                     "name": "Ryan Grove",
-                    "role": "PHP port",
-                    "email": "ryan@wonko.com"
+                    "email": "ryan@wonko.com",
+                    "role": "PHP port"
                 },
                 {
                     "name": "Adam Gofort",
-                    "role": "Updates to the PHP port",
-                    "email": "aag@adamgoforth.com"
+                    "email": "aag@adamgoforth.com",
+                    "role": "Updates to the PHP port"
                 },
                 {
                     "name": "Douglas Crockford",

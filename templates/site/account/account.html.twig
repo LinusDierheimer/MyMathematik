@@ -28,9 +28,11 @@
                         </form>
                     {% endif %}
                 </div>
-                <div class="text-secondary">
-                    {{ user.getEmail() }}
-                </div>
+                {% if user == app.user %}
+                    <div class="text-secondary">
+                        {{ user.getEmail() }}
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="card">

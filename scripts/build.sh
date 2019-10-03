@@ -2,6 +2,8 @@ echo "removing /var/cache/ if exists..."
 sudo rm -rf /var/cache/
 
 echo "warming up cache... You may need to provide your password"
+php bin/console cache:warmup --env=dev
+php bin/console cache:warmup --env=prod
 php bin/console cache:warmup
 
 echo "setting up file permissions... You may need to provide your password"

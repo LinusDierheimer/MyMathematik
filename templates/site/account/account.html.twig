@@ -46,7 +46,7 @@
                             <div class="card-body">
                                 <div class="card-text row">
                                     <img class="col-1 dark-invert-color" src="{{ 
-                                        post.getType() == "question" ? asset('build/images/Question.png') : asset('build/images/Post.png')
+                                        post.getType() == "question" ? '/content/images/Question.png' : '/content/images/Post.png'
                                     }}" />
                                     <h2 class="col-11">
                                         {{ post.getTitle() }}

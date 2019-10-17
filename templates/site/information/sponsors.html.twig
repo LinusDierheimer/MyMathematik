@@ -6,7 +6,7 @@
         <div>
             {% for sponsor in sponsors %}
                 <a target="_blank" rel="noopener noreferrer" href="{{ sponsor.website }}">
-                    <img src="{{ asset(sponsor.image) }}" />
+                    <img src="{{ sponsor.image }}" />
                 </a>
             {% else %}
                 Keine Sponsoren bis jetzt!

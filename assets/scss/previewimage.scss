@@ -13,7 +13,7 @@
 }
 
 .homeimage{
-    height: 100vh;
+    max-height: 100vh;
     overflow: hidden;
 
     img{
@@ -27,16 +27,18 @@
 
         .preview {
             .message {
-                width: fit-content;
                 font-size: 50px;
                 color: whitesmoke;
                 margin: 0 auto;
                 font-weight: 500;
                 text-shadow: 3px 3px 4px #777;
-    
+                padding: 0 30px;
+
                 .underline {
-                    margin: 0 30px 0 30px;
+                    margin: 0 auto;
                     border: 1px solid $main_color;
+                    width: 100%;
+                    max-width: 530px;
                 }
     
             }

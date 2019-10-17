@@ -44,9 +44,9 @@
                                     href="/videos/{{ videoLanguage }}/{{ videoClass }}/{{chapterNumber}}/{{ videoNumber }}"
                                 >
                                     <img
-                                        src="{{ asset(video.thumbnail == "" ? 'build/images/ThumbnailFallback.png' : video.thumbnail) }}"
+                                        src="{{ video.thumbnail == "" ? '/content/images/ThumbnailFallback.png' : '/content/thumbnails/' ~ video.thumbnail }}"
                                         alt="{{ video.name }}"
-                                        class="w-100"
+                                        class="w-100 h-75"
                                     />
                                     <div class="text-secondary">
                                         {{ video.name }}

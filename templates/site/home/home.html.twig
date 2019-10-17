@@ -19,7 +19,7 @@
         </div>
 
         <div class="vhgimage">
-            <img src="{{ asset('build/images/VHG.jpg') }}" />
+            <img src="/content/images/VHG.jpg" />
         </div>
 
         <div class="seperator"></div>
@@ -36,7 +36,7 @@
                 <div class="sponsorlist">
                     {% for sponsor in sponsors %}
                         <a target="_blank" rel="noopener noreferrer" href="{{ sponsor.website }}" class="sponsor">
-                            <img src="{{ asset(sponsor.image) }}" />
+                            <img src="{{ sponsor.image }}" />
                         </a>
                     {% endfor %}
                 </div>

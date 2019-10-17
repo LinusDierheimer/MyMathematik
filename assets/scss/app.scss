@@ -36,9 +36,14 @@ body {
     background-color: $main_color;
 }
 
-.text-black {
-    color: black !important;
+.text-inherit {
+    color: inherit !important;
 }
+
+.transition-all-3 {
+    transition: all 0.3s;
+}
+
 
 /*
  * Custom
@@ -53,6 +58,34 @@ body {
 
     @import "header";
 
+}
+
+.header-transparent {
+    background-color: transparent;
+    box-shadow: unset !important;
+    padding-top: 20px;
+
+    .menu:hover {
+        $transparentColor: rgba($color: $control_color, $alpha: .3);
+        background-color: $transparentColor !important;
+
+        .menucontent {
+            background-color: $transparentColor;
+        }
+    }
+}
+
+.userimagewrapper {
+    border-radius: 100%;
+    margin-right: 7px;
+    overflow: hidden;
+    height: 25px;
+    width: 25px;
+    display: inline-flex;
+    img {
+        height: 100%;
+        width: 100%;
+    }
 }
 
 @import "footer";

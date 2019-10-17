@@ -16,8 +16,8 @@
         </div>
         <div class="videocontainer">
             <video controls class="video" autoplay>
-                <source src="{{ asset('build/videos/' ~ video.source) }}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-                <source src="{{ asset('build/videos/' ~ video.source)}}" type='video/webm; codecs="vp8, vorbis"' />
+                <source src="/content/videos/{{ video.source }}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+                <source src="/content/videos/{{ video.source }}" type='video/webm; codecs="vp8, vorbis"' />
             </video>
         </div>
         {# <div class="controls">

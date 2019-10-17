@@ -2,30 +2,8 @@ $menu_color: rgb(50, 50, 50);
 
 .header {
 
-    background-color: $control_color;
-    opacity: .96;
-    width: 100%;
-    z-index: 12345;
-    padding: 0;
-    box-shadow: 0 0 5px $control_color;
-    transition: ease-in-out 0.3s;
-
-    .title {
-        margin: 0;
-        padding: 0px 50px;
-        font-size: 37.4px;
-        font-weight: 500;
-        display: inline-block;
-        text-decoration: none;
-        color: whitesmoke;
-    }
-
     .headerlinks{
-        margin-left: 20px;
-        color: whitesmoke;
-        float: right;
-        height: 100%;
-
+        
         > * {
             display: inline-block;
         }
@@ -43,20 +21,16 @@ $menu_color: rgb(50, 50, 50);
 
         .menu {
             cursor: pointer;
-
             .menuheader{
-
                 padding: 1.25em;
-
-                &::before{
-                    height: 100%;
-                    width: 100%;
-                    color: whitesmoke;
-                    text-decoration: none;
-                    font-size: 16px;
-                }
             }
-
+            .menuheader::before {
+                height: 100%;
+                width: 100%;
+                color: whitesmoke;
+                text-decoration: none;
+                font-size: 16px;
+            }
             .menucontent {
                 overflow-y: auto;
                 display: none;
@@ -67,14 +41,7 @@ $menu_color: rgb(50, 50, 50);
                 min-width: 275px;
                 background-color: $menu_color;
                 cursor: default;
-
                 .menupart {
-                    &:not(:first-child){
-                        border-top: 1px solid lightgrey;
-                        padding-top: 10px;
-                        margin-top: 10px;
-                    }
-
                     .menubutton {
                         padding: 15px;
                         display: block;
@@ -83,34 +50,14 @@ $menu_color: rgb(50, 50, 50);
                         color: white;
                         width: 100%;
                         height: 55px;
-
-                        &:hover {
-                            background-color: $main_color;
-                        }
-
                         .menu-icon {
                             width: 25px;
                             margin-right: 7px;
                         }
-
-                        .userimagewrapper {
-                            border-radius: 100%;
-                            margin-right: 7px;
-                            overflow: hidden;
-                            height: 25px;
-                            width: 25px;
-                            display: inline-flex;
-                            img {
-                                height: 100%;
-                                width: 100%;
-                            }
-                        }
-                        .usertextwrapper {
-                            position: absolute;
-                        }
-
                     }
-
+                    .menubutton:hover {
+                        background-color: $main_color;
+                    }
                     .switch-button {
                         .switch-header {
                             @extend .menubutton;
@@ -121,60 +68,36 @@ $menu_color: rgb(50, 50, 50);
                             margin-left: 30px;
                             border-left: 1px solid grey;
                             padding-left: 15px;
-
                             .switch-content-button {
                                 @extend .menubutton;
-
-                                &:hover {
-                                    background-color: inherit;
-                                    color: $main_color;
-                                }
+                            }
+                            .switch-content-button:hover {
+                                background-color: inherit;
+                                color: $main_color;
                             }
                         }
-
-                        &:hover {
-                            .switch-header {
-                                background-color: $main_color;
-                            }
+                    }
+                    .switch-button:hover {
+                        .switch-header {
+                            background-color: $main_color;
                         }
-
-                        &:not(:hover) {
-                            .switch-content {
-                                height: 0;
-                            }
-                        }
-
                     }
                 }
-            }
-
-            &:hover{
-                background-color: $menu_color;
-    
-                .menuheader{
-                    color: $main_color;
+                .menupart:not(:last-child){
+                    border-bottom: 1px solid lightgrey;
+                    padding-bottom: 10px;
+                    margin-bottom: 10px;
                 }
-
-                .menucontent{
-                    display: block;
-                }
-
             }
         }
-    }
-}
-
-.header-transparent {
-    background-color: transparent;
-    box-shadow: unset;
-    padding-top: 20px;
-
-    .menu:hover {
-        $transparentColor: rgba($color: $control_color, $alpha: .3);
-        background-color: $transparentColor !important;
-
-        .menucontent {
-            background-color: $transparentColor;
+        .menu:hover{
+            background-color: $menu_color;
+            .menuheader{
+                color: $main_color;
+            }
+            .menucontent{
+                display: block;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
 
-        {{ favicondrawer.favicon( asset(favicon) , ['svg', 'png']) }}
+        {{ favicondrawer.favicon( '/content/images/Taschenrechner' , ['svg', 'png']) }}
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
@@ -52,21 +52,28 @@
                     {% block cookies %}
                         <div class="bg-header overflow-hidden border-bottom border-dark" id="cookieinfo" style="height: 0">
                             <div class="p-3">
-                                <label class="text-white mr-1">{{ 'cookies.info'|trans }}</label>
-                                <a href="{{ path('route_information_cookies') }}" class="text-white">{{ 'cookies.more'|trans }}</a>
-                                <button class="btn btn-danger btn-sm float-right" id="cookiesAccepted">{{ 'cookies.ok'|trans }}</button>
+                                <span class="text-white mb-0 mr-1 h-100" style="line-height: 1.9">
+                                    {{ 'cookies.info'|trans }}
+                                </span>
+                                <u><a href="{{ path('route_information_cookies') }}" class="text-white">
+                                    {{ 'cookies.more'|trans }}
+                                </a></u> 
+                                <button class="btn btn-danger btn-sm float-right" id="cookiesAccepted">
+                                    {{ 'cookies.ok'|trans }}
+                                </button>
+                                <div style="clear:both"></div>
                             </div>
                         </div>
                     {% endblock %}
 
                     {% block header %}
-                        <header class="header" id="header">
-                            <a href="{{ path('route_home') }}" class="title" rel="home">
-                                {{ "header.title"|trans }}
+                        <header class="header bg-header shadow transition-all-3" id="header">
+                            <a href="{{ path('route_home') }}" rel="home" class="ml-4">
+                                <h2 class="m-0 text-white d-inline-block p-2">{{ "header.title"|trans }}</h2>
                             </a>
 
-                            <div class="headerlinks">
-                                <div class="classlinks">
+                            <div class="headerlinks ml-4 text-white f-right h-100 float-right">
+                                <div class="classlinks d-none d-lg-inline-block">
                                     {% for key, class in globals.videos[current_language_code] %}
                                         <a href="/videos/{{ current_language_code }}/{{ key }}">
                                             {{ 'header.navigation.classes.class'|trans }} {{ class.name }}
@@ -80,6 +87,18 @@
                                 <div class="menu">
                                     <i class="menuheader fas fa-bars"></i>
                                     <div class="menucontent" id="menucontent">
+                                        <div class="menupart d-block d-lg-none">
+                                            {% for key, class in globals.videos[current_language_code] %}
+                                                <a class="menubutton" href="/videos/{{ current_language_code }}/{{ key }}">
+                                                    <i class="menu-icon fas fa-graduation-cap d-inline"></i>
+                                                    {{ 'header.navigation.classes.class'|trans }} {{ class.name }}
+                                                </a>
+                                            {% else %}
+                                                <div class="menubutton">
+                                                    {{ 'header.navigation.classes.noclass'|trans }}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
                                         <div class="menupart">
                                             {% if app.user is null %}
                                                 <a class="menubutton" href="{{ path('route_account_me') }}">
@@ -99,7 +118,7 @@
                                                     <div class="userimagewrapper">
                                                         <img src="{{ user_image_path(app.user) }}">
                                                     </div>
-                                                    <span class="usertextwrapper">
+                                                    <span class="position-absolute">
                                                         {{ 'header.navigation.menu.account.me'|trans }}
                                                     </span>
                                                 </a>
@@ -158,7 +177,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>  
+                            </div>
+                            <div style="clear:both"></div>
                         </header>
                     {% endblock %}
                 {% endblock %}

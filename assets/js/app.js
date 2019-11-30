@@ -101,13 +101,13 @@ function initDesign(){
 
         if(design == "" || design == "system"){
             if(window.matchMedia("(prefers-color-scheme: dark)").matches)
-                design = "design-dark";
+                design = "dark";
             else
-                design = "design-white";
+                design = "white";
         }
 
         removeAllClassesStartingWith("body", "design-");
-        $("body").addClass(design);
+        $("body").addClass("design-" + design);
     }
 
     setDesign(prev_design); //inital design set
@@ -121,7 +121,7 @@ function initDesign(){
     window.matchMedia("(prefers-color-scheme: light)").addListener(updateWhenSystemDesign);
 
     $(".designswitcher").click(function(){
-        setDesign($(this).data("css"));
+        setDesign($(this).data("design-name"));
     });
 }
 

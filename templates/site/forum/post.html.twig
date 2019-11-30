@@ -18,7 +18,7 @@
             <div class="card-footer text-muted small">
                 Gepostet von 
                 <a href="{{ path('route_account_user', {'id': post.getUser().getId()}) }}" class="text-muted">{{ post.getUser().getName() }}</a>
-                {{ post.getDate().date|ago }}
+                {{ post.getDate().getTimestamp()|time_diff }}
             </div>
         </div>
         <hr class="mt-4 mb-4">
@@ -34,7 +34,7 @@
                     <div class="card-footer text-muted small">
                         Gepostet von 
                         <a href="{{ path('route_account_user', {'id': answer.getUser().getId()}) }}" class="text-muted">{{ post.getUser().getName() }}</a>
-                        {{ answer.getDate().date|ago }}
+                        {{ answer.getDate().getTimestamp()|time_diff }}
                     </div>
                 </div>
             {% else %}

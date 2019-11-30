@@ -163,13 +163,13 @@
                                                     {{ 'header.navigation.menu.settings.design.title'|trans }}
                                                 </div>
                                                 <div class="switch-content">
-                                                    {% for design in globals.designs %}
-                                                        <div data-css="{{ design.css }}" class="switch-content-button designswitcher">
+                                                    {% for name, design in globals.designs %}
+                                                        <div data-design-name="{{ name }}" class="switch-content-button designswitcher">
                                                             <i
-                                                                class="far {{ design.css == current_design ? "fa-check-circle" : "fa-circle" }}"
-                                                                id="design-check-circle-{{ design.css }}"
+                                                                class="far fa-circle"
+                                                                id="design-check-circle-{{ name }}"
                                                             ></i>
-                                                            {{ design.name|trans }}
+                                                            {{ design.localiced_name|trans }}
                                                         </div>
                                                     {% endfor %}
                                                 </div>

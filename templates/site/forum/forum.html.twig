@@ -20,12 +20,12 @@
             {% for post in posts|reverse %}
                 {% set user = post.getUser() %}
                 <div class="card mb-3">
-                    <a href="{{ path('route_forum_post', {'id': post.getId()}) }}" class="card-body text-decoration-none">
+                    <a href="{{ path('route_forum_post', {'id': post.getId()}) }}" class="card-body text-decoration-none text-color-inherit">
                         <div class="card-text row">
                             <img class="col-md-1 col-sm-2 dark-invert-color" src="{{ 
                                 post.getType() == "question" ? '/content/images/Question.png' : '/content/images/Post.png'
                             }}" />
-                            <h2 class="col-auto text-inherit">
+                            <h2 class="col-auto text-color-inherit">
                                 {{ post.getTitle() }}
                             </h2>
                         </div>
@@ -33,7 +33,7 @@
                     <div class="card-footer text-muted small">
                         Gepostet von 
                         <a href="{{ path('route_account_user', {'id': user.getId()}) }}" class="text-muted">{{ user.getName() }}</a>
-                        {{ post.getDate().date|ago }}
+                        {{ post.getDate().getTimestamp()|time_diff }}
                     </div>
                 </div>
             {% else %}

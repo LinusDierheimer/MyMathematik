@@ -1,15 +1,15 @@
-0:
-    name: header.navigation.menu.settings.design.options.system
-    css: system
-1:
-    name: header.navigation.menu.settings.design.options.white
-    css: design-white
-2:
-    name: header.navigation.menu.settings.design.options.light
-    css: design-light
-3:
-    name: header.navigation.menu.settings.design.options.dark
-    css: design-dark
-4:
-    name: header.navigation.menu.settings.design.options.black
-    css: design-black
+system:
+    localiced_name: header.navigation.menu.settings.design.options.system
+    dark: false
+white:
+    localiced_name: header.navigation.menu.settings.design.options.white
+    dark: false
+light:
+    localiced_name: header.navigation.menu.settings.design.options.light
+    dark: false
+dark:
+    localiced_name: header.navigation.menu.settings.design.options.dark
+    dark: true
+black:
+    localiced_name: header.navigation.menu.settings.design.options.black
+    dark: false

@@ -23,7 +23,7 @@ parameters:
 
     default_class: '5'
     default_design: 'system'
-    default_user_image: "/build/images/UserFallback.jpg"
+    default_user_image: "/content/images/UserFallback.jpg"
 
     cookie_livetime: '60 * 60 * 24 * 365 * 2'
 
@@ -55,5 +55,10 @@ services:
     nochso\HtmlCompressTwig\Extension:
         arguments:
             - true
+        tags:
+            - twig.extension
+
+    twig.extension.date:
+        class: Twig_Extensions_Extension_Date
         tags:
             - twig.extension

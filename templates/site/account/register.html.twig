@@ -107,7 +107,9 @@
                     <div class="form-group">
                         <div
                             class="g-recaptcha justify-content-center"
-                            data-sitekey="{{ captcha_website }}">
+                            data-sitekey="{{ captcha_website }}"
+                            data-theme="{{ globals.designs[current_design].dark ? 'dark' : 'light' }}"
+                        >
                         </div>
                         <div class="text-danger small">
                             {% if "invalid_captcha" in errors %}
@@ -149,5 +151,6 @@
 
 {% block js %}
     {{ parent() }}
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?hl={{ globals.request.locale }}" async defer>
+    </script>
 {% endblock %}

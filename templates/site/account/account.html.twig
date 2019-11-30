@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="card-footer text-secondary small">
-                                    Gepostet {{ post.getDate().date|ago }}
+                                Gepostet {{ post.getDate().getTimestamp()|time_diff }}
                             </div>
                         </a>
                     {% else %}

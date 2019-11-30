@@ -33,7 +33,18 @@ de:
                 videos: []
 
             -   name: 3. Natürliche und ganze Zahlen - Multiplikation und Division
-                videos: []
+                videos:
+                    -   name: Multiplikation ganzer Zahlen
+                        source: de_5_3_1.mp4
+                        thumbnail: ""
+
+                    -   name: Division ganzer Zahlen
+                        source: de_5_3_2.mp4
+                        thumbnail: ""
+                    
+                    -   name: Verbindung der Grundrechenarten bei ganzen Zahlen
+                        source: de_5_3_3_3.mp4
+                        thumbnail: ""
 
             -   name: 4. Größen und Einheiten
                 videos:
@@ -48,6 +59,10 @@ de:
                     -   name: Flächeninhalt von Quadrat und Rechteck
                         source: de_5_4_3.mp4
                         thumbnail: de_5_4_3.png
+                    
+                    -   name: Größe und ihre Einheit
+                        source: de_5_4_4.mp4
+                        thumbnail: ""
     6:
         name: 6
         curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/6/mathematik
@@ -55,5 +70,10 @@ de:
     7:
         name: 7
         curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/7/mathematik
-        chapters: []
+        chapters:
+            -   name: Aufstellen und Interpretieren von Termen
+                videos:
+                    -   name: Aufstellen und Interpretieren von Termen
+                        source: de_7_1_1.mp4
+                        thumbnail: ""
 en: []

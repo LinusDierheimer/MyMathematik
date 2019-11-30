@@ -61,12 +61,13 @@ class Globals
         $this->videos = self::load_yaml_file($this->container->getParameter('file_videos'));
         $this->designs = self::load_yaml_file($this->container->getParameter('file_designs'));
 
-        $this->current_design = $this->request == null ?
-            $this->container->getParameter("default_design") :
-            $this->request->cookies->get('design') ?: 
-                $this->container->getParameter("default_design");
-
-        
+        $this->current_design = $this->container->getParameter("default_design");
+        if($this->request != null)
+        {
+            $cookie_design = $this->request->cookies->get("design");
+            if($cookie_design != null ?? array_key_exists($cookie_design, $this->designs))
+                $this->current_design = $cookie_design;
+        }      
     }
 
     public function get_parameter($name)

@@ -1,5 +1,3 @@
-scripts/build.sh
-
 npm run build
 
 echo "creating zip..."

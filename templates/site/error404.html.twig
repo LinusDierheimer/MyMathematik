@@ -3,10 +3,15 @@
 {% block details %}
 
     <div>
-        The searched site couldn't be found
+        Error 404: The searched site couldn't be found
     </div>
 
-    {% block info %}
-    {% endblock %}
+    Possible Solution:
+    <div style="margin: 5px 0 0 10px;">
+        {% block info %}
+            Error template was not overriden. Can't give specific help.<br>
+            {{ app.request.attributes.get('_template') }}
+        {% endblock %}
+    </div>
 
 {% endblock %}

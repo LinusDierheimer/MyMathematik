@@ -1,0 +1,6 @@
+{% extends "site/error.html.twig" %}
+
+{% block details %}
+    Unknown html error that doesn't match any other error template. <br>
+    {{ app.request.attributes.get('_template') }}
+{% endblock %}

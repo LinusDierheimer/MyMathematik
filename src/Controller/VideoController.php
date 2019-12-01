@@ -2,19 +2,20 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Globals;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class VideoController extends AbstractController
 {
 
     public function redirect_with_language(
-        Globals $util,
+        Request $request,
         $class
     ){
         return $this->redirectToRoute('route_videos', [
-            'language' => $util->current_language["code"],
+            'language' => $request->getLocale(),
             'class' => $class
         ]);
     }

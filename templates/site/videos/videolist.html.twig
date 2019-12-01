@@ -29,8 +29,10 @@
                         id="header{{ loop.index }}"
                         role="button"
                     >
-                        {{ chapter.name }}
-                        <i class="fas fa-angle-down float-right"></i>
+                        {{ chapter.name }} ({{ chapter.videos|length }})
+                        <span class="float-right">
+                            <i class="fas fa-angle-down"></i>
+                        </span>
                     </div>
                     <div 
                         class="card-body collapse p-0"

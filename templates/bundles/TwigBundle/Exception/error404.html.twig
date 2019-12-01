@@ -1,7 +1,6 @@
 {% extends "site/error404.html.twig" %}
 
 {% block info %}
-    <div>
-        Unknown
-    </div>
+    Unknown html 404 Error that doesn't match any more specific error templates. Can't give any help :(<br>
+    {{ app.request.attributes.get('_template') }}
 {% endblock %}

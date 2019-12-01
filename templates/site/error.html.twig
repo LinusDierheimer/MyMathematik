@@ -11,8 +11,13 @@
     <div style="color:red">
         Ooops! Something went wrong!
     </div>
-
-    {% block details %}
-    {% endblock %}
+    <a style="text-decoration: underline;" href="{{ path('route_home') }}">Go Home</a>
+    <div style="margin-top: 15px;">
+        Details:
+    </div>
+    <div style="margin: 5px 0 0 10px;">
+        {% block details %}
+        {% endblock %}
+    </div>
 
 {% endblock %}

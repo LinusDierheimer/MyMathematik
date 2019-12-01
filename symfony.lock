@@ -127,13 +127,13 @@
         "version": "2.0.1"
     },
     "ocramius/proxy-manager": {
-        "version": "2.5.0"
+        "version": "2.2.3"
     },
     "patchwork/jsqueeze": {
         "version": "v2.0.5"
     },
     "php": {
-        "version": "7.4"
+        "version": "7.2"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"

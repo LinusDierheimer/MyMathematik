@@ -1,5 +1,5 @@
 echo "installing missing composer dependencies"
-composer install
+php72 /usr/bin/composer install
 
 echo "install missing npm dependencies"
 npm install

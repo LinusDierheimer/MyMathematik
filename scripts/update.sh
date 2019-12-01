@@ -21,7 +21,7 @@ echo -e "\e[35mtrying to fix possible security issues...\e[0m"
 npm audit fix
 
 echo -e "\e[35mupdating and installing composer dependencies...\e[0m"
-composer update
+php72 /usr/bin/composer update
 
 echo -e "\e[35mdeleting files that were created by composer but are not needed..\e[0m"
 rm -rf assets/css/

@@ -66,7 +66,24 @@ de:
     6:
         name: 6
         curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/6/mathematik
-        chapters: []
+        chapters:
+            -   name: Bruchtteile und Bruchzahlen
+                videos:
+                    -   name: Einführung Brüche und Kreisdiagramme
+                        source: de_6_1_1.mp4
+                        thumbnail: ""
+
+                    -   name: Bruchteile und Anteile
+                        source: de_6_1_2.mp4
+                        thumbnail: ""
+                    
+                    -   name: Erweitern und Kürzen
+                        source: de_6_1_3.mp4
+                        thumbnail: ""
+                    
+                    -   name: Addition und Subtraktion von Brüchen
+                        source: de_6_1_4.mp4
+                        thumbnail: ""
     7:
         name: 7
         curriculum: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/7/mathematik

@@ -1,7 +1,7 @@
 # Setup und Benützung des Projekts
 
 ## Benötigte Programme:   
-* [PHP 7.x.x](http://php.net/downloads.php)  
+* [PHP 7.2.x](http://php.net/downloads.php)  
 * [Composer](https://getcomposer.org/download/)  
 * [Git](https://git-scm.com/download/) + [Github Account](https://github.com/)  
 * [MySQL](https://dev.mysql.com/downloads/mysql/)
@@ -28,8 +28,8 @@
     `npm run dev`
 
 ## Benützen des Projektes:
-* PHPs eingebauter Webserver (einfach zu benützen aber sehr langsam), erreichbar im Browser über localhost:8000. Zum starten:  
-    `php bin/console server:run`  
+* PHPs eingebauter Webserver (einfach zu benützen aber sehr langsam), erreichbar im Browser über localhost:8000. Zum starten (Benötigt symfony binary):  
+    `symfony serve`
 * Vollwertiger Webserver (z.b. Apache oder Nginx), erreichbar im Browser über localhost, localhost:80 oder IP-Adresse des Computers
 Public/ Ordner entspricht "Server/DocumentRoot,"  alle anderen Ordner dürfen nicht erreichbar sein!
 Darin enthaltenes index.php File muss mit einem PHP-Mod geladen werden  

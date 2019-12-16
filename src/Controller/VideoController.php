@@ -32,6 +32,7 @@ class VideoController extends AbstractController
 
     public function list(
         Globals $util,
+        Request $request,
         $language,
         $class
     ){
@@ -53,9 +54,14 @@ class VideoController extends AbstractController
             ]);
         }
 
+        $open = 0;
+        if($request->query->has("open"))
+            $open = $request->query->get("open");
+
         return $this->render('site/videos/videolist.html.twig', [
-            'videoLanguage' => $language,
-            'videoClass'    => $class
+            'video_language' => $language,
+            'video_class'    => $class,
+            'open'           => $open
         ]);
     }
 
@@ -66,6 +72,22 @@ class VideoController extends AbstractController
         $chapter,
         $index
     ){
+
+        //If somebody or old code i forgot about try to acces 0, redirect to 1
+        if($chapter == 0)
+            return $this->redirectToRoute('route_video', [
+                'language' => $language,
+                'class' => $class,
+                'chapter' => $chapter + 1,
+                'index' => $index
+            ]);
+        if($index == 0)
+            return $this->redirectToRoute('route_video', [
+                'language' => $language,
+                'class' => $class,
+                'chapter' => $chapter,
+                'index' => $index + 1
+            ]);
 
         $current = $util->videos;
 
@@ -87,32 +109,32 @@ class VideoController extends AbstractController
         $current = $current[$class];
 
         $current = $current["chapters"];
-        if(!array_key_exists($chapter, $current))
+        if(!array_key_exists($chapter - 1, $current))
         {
             return $this->render('site/videos/errorChapter.html.twig', [
                 'language' => $language,
                 'class'    => $class,
-                'chapter'  => $chapter
+                'chapter'  => $chapter - 1
             ]);
         }
-        $current = $current[$chapter];
+        $current = $current[$chapter - 1];
 
         $current = $current["videos"];
-        if(!array_key_exists($index, $current))
+        if(!array_key_exists($index - 1, $current))
         {
             return $this->render('site/videos/errorVideo.html.twig', [
                 'language' => $language,
                 'class'    => $class,
-                'chapter'  => $chapter,
-                'index'    => $index
+                'chapter'  => $chapter - 1,
+                'index'    => $index - 1
             ]);
         }
 
         return $this->render('site/videos/video.html.twig', [
-            'language' => $language,
-            'class'    => $class,
-            'chapter'  => $chapter,
-            'index'    => $index
+            'video_language' => $language,
+            'video_class'    => $class,
+            'chapter_index'  => $chapter - 1,
+            'video_index'    => $index - 1
         ]);
     }
 }

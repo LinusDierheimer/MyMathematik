@@ -1,8 +1,8 @@
 {% extends "site/base-designed.html.twig" %}
 
-{% set class = globals.videos[language][class] %}
-{% set chapter = class.chapters[chapter] %}
-{% set video = chapter.videos[index] %}
+{% set chapter = globals.videos[video_language][video_class].chapters[chapter_index] %}
+{% set videos  = chapter.videos %}
+{% set video   = videos[video_index] %}
 
 {% block title %}
     {{ video.name }} - MyMathematik
@@ -10,27 +10,72 @@
 
 {% block content %}
     
-    <div class="videosite">
+    <div class="videosite p-4">
         <div class="title">
-            <h1>{{ index + 1 }}. {{ video.name }}</h1>
+            <a class="text-muted ml-4" href="{{ path('route_videos', {language: video_language, class: video_class}) }}?open={{ chapter_index + 1 }}">
+                {{ chapter.name }}
+            </a>
+            <h1>
+                {{ video_index + 1 }}. {{ video.name }}
+            </h1>
         </div>
-        <div class="videocontainer">
-            <video controls class="video" autoplay>
-                <source src="/content/videos/{{ video.source }}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-                <source src="/content/videos/{{ video.source }}" type='video/webm; codecs="vp8, vorbis"' />
-            </video>
-        </div>
-        {# <div class="controls">
-            <div class="navigation">
-                <span class="switchVideo previous">
-                    <i class="fas fa-arrow-left"></i>
-                    Vorheriges Video
-                </span>
-                <span class="swtchVideo next">
-                    Nächstes Video
-                    <i class="fas fa-arrow-right"></i>
-                </span>
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <div class="videocontainer">
+                    <video controls class="video" autoplay>
+                        <source src="/content/videos/{{ video.source }}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+                        <source src="/content/videos/{{ video.source }}" type='video/webm; codecs="vp8, vorbis"' />
+                    </video>
+                </div>
             </div>
-        </div> #}
+            <div class="col-lg-4 col-sm-12">
+                {% if video_index != 0 %}
+                    {% set prev_video = videos[video_index - 1] %}
+                    <div>
+                        <h5 class="mb-3">
+                            Vorheriges Video:
+                        </h5>
+                        <a class="row m-0" style="height: 150px;" href="{{ path("route_video", {language: video_language, class: video_class, chapter: chapter_index + 1, index: video_index }) }}">
+                            <div class="col p-0 h-100">
+                                <img
+                                    src="{{ prev_video.thumbnail == "" ? '/content/images/ThumbnailFallback.png' : '/content/thumbnails/' ~ prev_video.thumbnail }}"
+                                    alt="{{ prev_video.name }}"
+                                    class="h-100 w-100"
+                                />
+                            </div>
+                            <div class="col text-muted">
+                                {{ prev_video.name }}
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}
+
+                {% set chapter_length = videos|length %}
+                {% if chapter_length - 1 > video_index %}
+                    <div{% if video_index != 0 %} class="mt-5"{% endif %}>
+                        <h5 class="mb-3">
+                            Nächsten Videos:
+                        </h5>
+                        {% set left = chapter_length - video_index - 1 %}
+                        {% set max = left < 3 ? left : 3%}
+                        {% for i in range(1, max)%}
+                            {% set next_video = videos[video_index + i] %}
+                            <a class="row m-0 mb-4" style="height: 150px;" href="{{ path("route_video", {language: video_language, class: video_class, chapter: chapter_index + 1, index: video_index + 1 + i}) }}">
+                                <div class="col p-0 h-100">
+                                    <img
+                                        src="{{ next_video.thumbnail == "" ? '/content/images/ThumbnailFallback.png' : '/content/thumbnails/' ~ next_video.thumbnail }}"
+                                        alt="{{ next_video.name }}"
+                                        class="h-100 w-100"
+                                    />
+                                </div>
+                                <div class="col text-muted">
+                                    {{ next_video.name }}
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}

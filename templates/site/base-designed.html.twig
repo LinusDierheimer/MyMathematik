@@ -9,7 +9,9 @@
     <div class="headerimage">
         <img src="/content/images/Header.jpg" alt="HeaderImage" />
     </div>
-    <div class="content" id="content">
-        {% block content %}{% endblock %}
-    </div>
+    {% block designed_content %}
+        <div class="content" id="content">
+                {% block content %}{% endblock %}
+        </div>
+    {% endblock %}
 {% endblock %}

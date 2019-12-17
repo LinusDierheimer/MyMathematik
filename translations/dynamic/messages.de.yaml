@@ -101,8 +101,8 @@ account:
                     too_short: "Passwort muss länger mindestens 6 Zeichen lang sein"
                     too_long: "Passwort muss darf nicht länger als 4096 Zeichen sein"
             repeat_password:
-                name: "Passwort wiederhohlen"
-                placeholder: "Passwort wiederhohlen"
+                name: "Passwort wiederholen"
+                placeholder: "Passwort wiederholen"
                 errors:
                     unequal: "Passwörter stimmen nicht überein"
             captcha:
@@ -129,14 +129,6 @@ account:
                     wrong: "Falsches Passwort"
                     too_short: "Passwort muss länger mindestens 6 Zeichen lang sein"
                     too_long: "Passwort muss darf nicht länger als 4096 Zeichen sein"
-
-admin:
-    videoconfig:
-        upload:
-            name: "Name: "
-            file: "Video Datei: "
-            send: "Hochladen"
-
 tools:
     calculator:
         title: "Taschenrechner - MyMathematik"

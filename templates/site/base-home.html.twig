@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block fullcontent %}
-    <div class="homeimage">
+    <div class="homeimage d-none d-md-block">
         <img src="/content/images/Startseite.jpg" />
         <div class="slider">
             <div class="preview">
@@ -21,6 +21,9 @@
                 </button>
             </div>
         </div>
+    </div>
+    <div class="headerimage d-block d-md-none">
+        <img src="/content/images/Header.jpg" alt="HeaderImage" />
     </div>
 
     <div class="content content-centered" id="content">

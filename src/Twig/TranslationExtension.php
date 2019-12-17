@@ -2,6 +2,7 @@
 
 namespace App\Twig;
 
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Twig\Extension\AbstractExtension;
@@ -13,9 +14,12 @@ class TranslationExtension extends AbstractExtension
     protected $translator;
 
     public function __construct(
-        TranslatorInterface $translator
+        TranslatorInterface $translator,
+        RequestStack $request
     ){
         $this->translator = $translator;
+        if($request->getCurrentRequest() != null && $request->getCurrentRequest()->getLocale() != null)
+            $this->translator->setlocale($request->getCurrentRequest()->getLocale());
     }
 
     public function getFilters()

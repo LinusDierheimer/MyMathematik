@@ -14,11 +14,16 @@ header:
                 logout: "Logout"
                 register: "Register"
                 switch: "Switch user"
+            forum:
+                title: "Forum"
             tools:
                 calculator: "Calculator"
             settings:
                 language:
                     title: "Language / Sprache"
+                    codes:
+                        de: "Deutsch"
+                        en: "English"
                 design:
                     title: "Design"
                     options:

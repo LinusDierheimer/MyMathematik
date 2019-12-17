@@ -19,10 +19,12 @@ class RequestListener
     {
         $request = $event->getRequest();
 
-        $locale = $request->cookies->get("language") ?: 
-            $request->getLocale();
-
-        $request->setLocale($locale);
+        if($request->cookies->has("language"))
+        {
+            $request->setLocale(
+                $request->cookies->get("language")
+            );
+        }
 
         //Return error site for Internet Explorer users, to make the web a better place
         $userAgent = $request->headers->get("User-Agent");

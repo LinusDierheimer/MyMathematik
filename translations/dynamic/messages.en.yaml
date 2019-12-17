@@ -30,108 +30,99 @@ header:
 
 footer:
     impressum: "Impressum"
-    contact: "Kontakt"
-    sponsors: "Sponsoren"
+    contact: "Contact"
+    sponsors: "Sponsors"
     cookies: "Cookies"
     vhg: "VHG"
-    conditions: "AGB"
-    goup: "Zum Seitenanfang"
+    conditions: "Conditions"
+    goup: "Go to start"
 
 cookies:
-    info: "Diese Seite benützt cookies"
-    more: "Mehr erfahren"
-    ok: "Alle cookies akzeptieren"
+    info: "This site is using cookies"
+    more: "Learn more"
+    ok: "Accept all cookies"
 
 home:
     preview:
-        welcome: "Willkommen zu MyMathematik"
-        start: "Los gehts"
+        welcome: "Welcome to MyMathematik"
+        start: "Lets start"
     welcome:
-        start: "Willkommen zu MyMathematik"
+        start: "Welcome MyMathematik"
         school: ""
         end: ""
-    info: > 
-        Wir, das P-Seminar Mathematik unter der Leitung von Herrn Neuendorf,
-        haben es uns zur Aufgabe gemacht, Mathematik für alle Jahrgangsstufen verständlich zu machen.
+    info: "Lets do some cool math!"
     sponsors:
         thanks:
-            single: "Wir danken unserem Sponsor:"
-            multiple: "Wir danken unseren Sponsoren:"
+            single: "we thank our sponsor:"
+            multiple: "we thank our sponsors:"
     reference: ""
 
 videos:
-    yearlevel: Jahrgangsstufe
+    yearlevel: "Year level"
     videolist:
         browsertitle:
-            class: "Klasse"
-        nochapters: "Keine Kapitel verfügbar"
-        novideos: "Keine Videos für dieses Kapitel verfügbar"
-        curriculum: "Zum Lehrplan"
+            class: "Class"
+        nochapters: "No chapters yet :("
+        novideos: "No videos yet :("
+        curriculum: "To curriculum"
     video:
         navigation:
-            next: "Nächstes Video"
-            previous: "Vorheriges Video"
-            chapter: "Zur Kapitelübersicht"
+            next: "Next video"
+            previous: "Previous video"
+            chapter: "To chapters"
 
 account:
     register:
-        title: "Registrieren"
-        submit: "Registrieren"
-        tologin: "Stattdessen anmelden"
+        title: "Register"
+        submit: "Register"
+        tologin: "Login instead"
         inputs:
             invalid_form: "Die Registrierungs-Form scheint unvollständig zu sein. Bitte aktualisiere das Fenster und versuche es erneut"
             invalid_csrf_token: "Ein interner Sicherheitsmechanismus (CSRF) hat einen Fehler gemeldet. Bitte aktualisiere das Fenster und versuche es erneut"
-            remember_me: "Angemeldet bleiben"
+            remember_me: "Stay logged in"
             email:
                 name: "Email"
-                placeholder: "email@example.de"
+                placeholder: "email@example.com"
                 errors:
-                    invalid: "Ungültige Email-Adresse"
-                    too_long: "Email muss kürzer als 4096 Zeichen sein"
-                    already_used: "Email wird bereits von einem anderen Konto benützt"
+                    invalid: "Invalid email address"
+                    too_long: "Email must be shorter than 4096 characters"
+                    already_used: "Email is already in use"
             password:
-                name: "Passwort"
-                placeholder: "Mindestens 6 Zeichen"
+                name: "Password"
+                placeholder: "At least 6 characters"
                 errors:
-                    too_short: "Passwort muss länger mindestens 6 Zeichen lang sein"
-                    too_long: "Passwort muss darf nicht länger als 4096 Zeichen sein"
+                    too_short: "Password must be at least 6 characters"
+                    too_long: "Password must be shorter than 4096 characters"
             repeat_password:
-                name: "Passwort wiederhohlen"
-                placeholder: "Passwort wiederhohlen"
+                name: "Repeat Password"
+                placeholder: "Repeat password"
                 errors:
-                    unequal: "Passwörter stimmen nicht überein"
+                    unequal: "Passwords don't match"
             captcha:
                 errors:
-                    invalid: "Bitte bestätige das Captcha"
+                    invalid: "Please tick the Captcha"
     login:
-        title: "Anmelden"
-        submit: "Anmelden"
-        toregister: "Stattdessen registrieren"
+        title: "Login"
+        submit: "Login"
+        toregister: "register instead"
         inputs:
             invalid_form: "Die Registrierungs-Form scheint unvollständig zu sein. Bitte aktualisiere das Fenster und versuche es erneut"
             invalid_csrf_token: "Ein interner Sicherheitsmechanismus (CSRF) hat einen Fehler gemeldet. Bitte aktualisiere das Fenster und versuche es erneut"
-            remember_me: "Angemeldet bleiben"
+            remember_me: "Stay logged in"
             email:
                 name: "Email"
-                placeholder: "email@example.de"
+                placeholder: "email@example.com"
                 errors:
-                    not_found: "Email nicht gefunden"
-                    too_long: "Email muss kürzer als 4096 Zeichen sein"
+                    not_found: "Email not found"
+                    too_long: "Email must be shorter than 4096 characters"
             password:
-                name: "Passwort"
-                placeholder: "Mindestens 6 Zeichen"
+                name: "Password"
+                placeholder: "At least 6 chararcters"
                 errors:
-                    wrong: "Falsches Passwort"
-                    too_short: "Passwort muss länger mindestens 6 Zeichen lang sein"
+                    wrong: "Wrong password"
+                    too_short: "Password must be at least 6 characters"
                     too_long: "Passwort muss darf nicht länger als 4096 Zeichen sein"
-
-admin:
-    videoconfig:
-        upload:
-            name: "Name: "
-            file: "Video Datei: "
-            send: "Hochladen"
 
 tools:
     calculator:
-        title: "Taschenrechner - MyMathematik"
+        title: "Calculator - MyMathematik"

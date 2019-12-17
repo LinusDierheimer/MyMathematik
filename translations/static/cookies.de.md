@@ -16,8 +16,8 @@ Folgende Cookies werden verwendet:
 * __`language`__:  
     Speichert den Sprach-Code der ausgewählten Sprache. Zum Beispiel _`de`_ oder _`en`_  
 
-* __`PHPSESSID`__:
+* __`PHPSESSID`__:  
     Speichert die verschlüsselte Session ID eines angemeldeten Benutzers  
     
-* __`REMEMBERME`__:
+* __`REMEMBERME`__:  
     Speichert die verschlüselte ID eines Benutzers, um ihm auch nach Ende der Session wieder anzumelden. Wird gesetzt, wenn beim Anmelden oder Regestrieren das Kästchen _angemeldet bleiben_ ausgewählt wird

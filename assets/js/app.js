@@ -356,7 +356,7 @@ function initCalculator() {
     }
 
     $(document).on('keypress',function(e) {
-        if(e.which == 13){
+        if((e.which== 13) && ($(e.target)[0]!=$("textarea")[0])){
             e.preventDefault();
             e.stopPropagation();
             calculate();
@@ -403,6 +403,23 @@ function initChangeShowName()
 
 }
 
+function initTextAreas()
+{
+    $(document)
+        .one('focus.autoexpand', 'textarea.autoexpand', function(){
+            var savedValue = this.value;
+            this.value = '';
+            this.baseScrollHeight = this.scrollHeight;
+            this.value = savedValue;
+        })
+        .on('input.autoexpand', 'textarea.autoexpand', function(){
+            var minRows = this.getAttribute('data-min-rows')|0, rows;
+            this.rows = minRows;
+            rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+            this.rows = minRows + rows;
+        });
+}
+
 $(document).ready(function(){
     initMenuBar();
     initBody();
@@ -416,4 +433,5 @@ $(document).ready(function(){
     initCalculator();
     initPost();
     initChangeShowName();
+    initTextAreas();
 });

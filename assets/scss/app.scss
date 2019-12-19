@@ -40,10 +40,19 @@ body {
     color: inherit !important;
 }
 
+.bg-color-inherit {
+    background-color: inherit !important;
+}
+
 .transition-all-3 {
     transition: all 0.3s;
 }
 
+.appearance-none {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
 
 /*
  * Custom

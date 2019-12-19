@@ -1,5 +1,97 @@
 {% extends "site/base-simple.html.twig" %}
 
 {% block content %}
-    {{ load_local_markdown("contact") }}
+    <div class="contact">
+        <h1 class="pb-3 mb-5 w-100 border-bottom">
+            {{ 'information.contact.title'|trans }}
+        </h1>
+        <div class="row">
+            <form method="POST" class="col border-right">
+
+                {% if "invalid_form" in errors %}
+                    {{ "information.contact.form.invalid_form"|trans }}
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="email">{{ 'information.contact.form.email'|trans }}</label>
+                    <input
+                        class="input form-control"
+                        type="email"
+                        name="email"
+                        id="email"
+                        maxlength="4096"
+                        autocomplete="email"
+                        placeholder="{{ 'information.contact.form.email_placeholder'|trans }}"
+                        required
+                        autofocus
+                    />
+                    <div class="text-danger small">
+                        {% if "invalid_email" in errors %}
+                            {{ "information.contact.form.invalid_email"|trans }}
+                        {% elseif "too_long_email" in errors %}
+                            {{ "information.contact.form.toolong_email"|trans }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text">{{ 'information.contact.form.text'|trans }}</label>
+                    <textarea
+                        class="input form-control autoexpand"
+                        name="text"
+                        id="text"
+                        maxlength="16384"
+                        rows="4"
+                        data-min-rows="4"
+                        autocomplete="off"
+                        required
+                    ></textarea>
+                    {% if "too_short_text" in errors %}
+                        {{ "information.contact.form.too_short_text"|trans }}
+                    {% elseif "too_long_text" in errors %}
+                        {{ "information.contact.form.too_long_text"|trans }}
+                    {% endif %}
+                </div>
+                <div class="form-group row m-0">
+                    <div class="col p-0 mb-2 mr-2 ">
+                        <div
+                            class="g-recaptcha justify-content-center"
+                            data-sitekey="{{ captcha_website }}"
+                            data-theme="{{ globals.designs[current_design].dark ? 'dark' : 'light' }}"
+                        ></div>
+                        <div class="text-danger small">
+                            {% if "invalid_captcha" in errors %}
+                                {{ "information.contact.form.invalid_captcha"|trans }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col p-0">
+                        <button
+                            class="col btn btn-primary"
+                            type="submit"
+                            name="submit"
+                            id="submit"
+                        >Senden</button>
+                    </div>
+                </div>
+            </form>
+            <div class="col">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-color-inherit">
+                        <i class="fas fa-at mr-2"></i>
+                        <a href="mailto:contact@mymathematik.com" class="text-color-inherit">contact@mymathematik.com</a>
+                    </li>
+                    <li class="list-group-item bg-color-inherit">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Ludwig Kick Straße 19, 88131 Lindau, Germany
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    <script src="https://www.google.com/recaptcha/api.js?hl={{ globals.request.locale }}" async defer>
+    </script>
 {% endblock %}

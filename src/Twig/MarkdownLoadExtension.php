@@ -45,7 +45,7 @@ class MarkdownLoadExtension extends AbstractExtension
 
     public function load_markdown($file, $extension = "md")
     {
-        $path = $this->container->getParamter("translations_directory") . "static/" . $file . "." . $extension;
+        $path = $this->container->getParamter("translations_directory") . "markdown/" . $file . "." . $extension;
         return load($path);
     }
 
@@ -53,7 +53,7 @@ class MarkdownLoadExtension extends AbstractExtension
     {
         $locale = $locale ?: $this->request->getLocale();
 
-        $base_path = $this->container->getParameter("translations_directory") . "static/" . $file . ".";
+        $base_path = $this->container->getParameter("translations_directory") . "markdown/" . $file . ".";
 
         $path = $base_path . $locale . "." . $extension;
         if(!file_exists($path))

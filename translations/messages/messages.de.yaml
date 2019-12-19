@@ -129,6 +129,21 @@ account:
                     wrong: "Falsches Passwort"
                     too_short: "Passwort muss länger mindestens 6 Zeichen lang sein"
                     too_long: "Passwort muss darf nicht länger als 4096 Zeichen sein"
-tools:
+
+                    tools:
     calculator:
         title: "Taschenrechner - MyMathematik"
+
+information:
+    contact:
+        title: "Kontakt"
+        form:
+            invalid_form: "Die Registrierungs-Form scheint unvollständig zu sein. Bitte aktualisiere das Fenster und versuche es erneut"
+            email: "Email Adresse für Antworten und Rückfragen:"
+            email_placeholder: "email@example.de"
+            invalid_email: "Ungültige Email Adresse"
+            toolong_email: "Email > 4096 Zeichen"
+            text: "Deine Nachricht:"
+            too_short_text: "Du musst eine Nachricht senden!"
+            too_long_text: "Nachricht > 16384 Zeichen"
+            invalid_captcha: "Bitte bestätige das Captcha"

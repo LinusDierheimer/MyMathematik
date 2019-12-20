@@ -41,14 +41,14 @@
                         aria-labelledby="header{{ chapter_index }}"
                     >
                         <div class="row m-0 m-3">
-                            {% for videoNumber, video in chapter.videos %}
+                            {% for video in chapter.videos %}
                                 {% set video_index = loop.index %}
                                 <a
                                     class="text-left btn col-lg-4 col-md-6 col-sm-12"
                                     href="{{ path('route_video', {language: video_language, class: video_class, chapter: chapter_index, index: video_index}) }}"
                                 >
                                     <img
-                                        src="{{ video.thumbnail == "" ? '/content/images/ThumbnailFallback.png' : '/content/thumbnails/' ~ video.thumbnail }}"
+                                        src="{{ video.thumbnail == "" ? asset('/build/images/ThumbnailFallback.png') : asset('/build/images/thumbnails/' ~ video.thumbnail) }}"
                                         alt="{{ video.name }}"
                                         class="w-100 h-75"
                                     />

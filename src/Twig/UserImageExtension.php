@@ -31,7 +31,7 @@ class UserImageExtension extends AbstractExtension
 
         foreach([".jpg", ".png"] as $ext)
         {
-            $path = "/content/userimages/" . $id . $ext;
+            $path = "/data/images/users/" . $id . $ext;
             if(file_exists($pub_dir . $path))
                 return $path;
         }

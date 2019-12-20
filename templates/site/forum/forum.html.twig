@@ -23,7 +23,7 @@
                     <a href="{{ path('route_forum_post', {'id': post.getId()}) }}" class="card-body text-decoration-none text-color-inherit">
                         <div class="card-text row">
                             <img class="col-md-1 col-sm-2 dark-invert-color" src="{{ 
-                                post.getType() == "question" ? '/content/images/Question.png' : '/content/images/Post.png'
+                                post.getType() == "question" ? asset('/build/images/forum/Question.png') : asset('/build/images/forum/Post.png')
                             }}" />
                             <h2 class="col-auto text-color-inherit">
                                 {{ post.getTitle() }}

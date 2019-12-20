@@ -23,8 +23,8 @@
             <div class="col-lg-8 col-sm-12">
                 <div class="videocontainer">
                     <video controls class="video" autoplay>
-                        <source src="/content/videos/{{ video.source }}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-                        <source src="/content/videos/{{ video.source }}" type='video/webm; codecs="vp8, vorbis"' />
+                        <source src="{{ asset('/build/videos/' ~  video.source) }}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+                        <source src="{{ asset('/build/videos/' ~  video.source) }}" type='video/webm; codecs="vp8, vorbis"' />
                     </video>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         <a class="row m-0" style="height: 150px;" href="{{ path("route_video", {language: video_language, class: video_class, chapter: chapter_index + 1, index: video_index }) }}">
                             <div class="col p-0 h-100">
                                 <img
-                                    src="{{ prev_video.thumbnail == "" ? '/content/images/ThumbnailFallback.png' : '/content/thumbnails/' ~ prev_video.thumbnail }}"
+                                    src="{{ prev_video.thumbnail == "" ? asset('/build/images/ThumbnailFallback.png') : asset('/build/images/thumbnails/' ~ prev_video.thumbnail) }}"
                                     alt="{{ prev_video.name }}"
                                     class="h-100 w-100"
                                 />
@@ -63,7 +63,7 @@
                             <a class="row m-0 mb-4" style="height: 150px;" href="{{ path("route_video", {language: video_language, class: video_class, chapter: chapter_index + 1, index: video_index + 1 + i}) }}">
                                 <div class="col p-0 h-100">
                                     <img
-                                        src="{{ next_video.thumbnail == "" ? '/content/images/ThumbnailFallback.png' : '/content/thumbnails/' ~ next_video.thumbnail }}"
+                                        src="{{ next_video.thumbnail == "" ? asset('/build/images/ThumbnailFallback.png') : asset('/build/images/thumbnails/' ~ next_video.thumbnail) }}"
                                         alt="{{ next_video.name }}"
                                         class="h-100 w-100"
                                     />

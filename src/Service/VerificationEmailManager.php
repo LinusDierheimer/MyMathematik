@@ -8,6 +8,7 @@ use App\Repository\PendingEmailVerificationRepository;
 use App\Repository\UserRepository;
 use DateTime;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -18,17 +19,20 @@ class VerificationEmailManager
     protected $userRepository;
     protected $mailer;
     protected $translator;
+    protected $container;
 
     public function __construct(
         PendingEmailVerificationRepository $pendingEmailVerificationRepository,
         UserRepository $userRepository,
         MailerInterface $mailer,
-        TranslatorInterface $translator
+        TranslatorInterface $translator,
+        ContainerInterface $container
     ) {
         $this->pendingEmailVerificationRepository = $pendingEmailVerificationRepository;
         $this->userRepository = $userRepository;
         $this->mailer = $mailer;
         $this->translator = $translator;
+        $this->container = $container;
     }
 
     private function small_enough(DateTime $dateTime)
@@ -91,13 +95,15 @@ class VerificationEmailManager
 
         $this->pendingEmailVerificationRepository->save($pendingEmailVerification);
 
+        $server = $this->container->getParameter('server_address');
+
         $email = (new TemplatedEmail())
             ->from("noreply@mymathematik.com")
             ->to($user->getEmail())
             ->subject($this->translator->trans("email.verify.subject"))
             ->htmlTemplate("email/verifyEmail.html.twig")
             ->context([
-                "url" => "localhost:8000/account/verify?id=$userId&secret=$secret"
+                "url" => "$server/account/verify?id=$userId&secret=$secret"
             ])
         ;
 

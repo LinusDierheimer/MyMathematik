@@ -8,6 +8,7 @@ parameters:
     ga_tracking: 'UA-134811098-1'
     captcha_website: '%env(string:CAPTCHA_WEBSITE)%'
     captcha_secret: '%env(string:CAPTCHA_SECRET)%'
+    server_address: '%env(string:SERVER_ADDRESS)%'
 
     favicon: 'build/images/Taschenrechner'
 

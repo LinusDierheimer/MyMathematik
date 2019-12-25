@@ -2,20 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\RegistrationFormType;
-use App\Security\AccountAuthenticator;
 use App\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\Response;
+use App\Service\VerificationEmailManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class AccountController extends AbstractController
 {
-    public function me(Request $request)
+
+    public function me()
     {
         $user = $this->getUser();
 
@@ -29,9 +25,70 @@ class AccountController extends AbstractController
         ]);
     }
 
+    public function action(
+        Request $request,
+        VerificationEmailManager $verificationEmailManager
+    ) {
+
+        $user = $this->getUser();
+
+        if($user == null)
+        {
+            return $this->json([
+                "successfull" => false,
+                "errorId" => 1,
+                "error" => "Request from an not logged in user"
+            ]);
+        }
+
+        if($request->query->has("show_name"))
+        {
+            $user->setShowName($request->query->get('show_name'));
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+        }
+
+        if($request->query->has("verify_email"))
+        { 
+            $verificationEmailManager->send($user);
+        }
+
+        return $this->json([
+            "successfull" => true
+        ]);
+
+    }
+
+    public function verify(
+        Request $request,
+        VerificationEmailManager $verificationEmailManager
+    ){
+        if(
+            !$request->query->has("id") ||
+            !$request->query->has("secret")
+        ) {
+            $request->getSession()->set("account_errors", ["account.show.errors.invalid_query"]);
+            return $this->redirectToRoute('route_account_me');
+        }
+
+        $res = $verificationEmailManager->verify($request->query->get("id"), $request->query->get("secret"));
+
+        if(strpos($res, "infos") === false)
+            $request->getSession()->set("account_errors", [$res]);
+        else
+            $request->getSession()->set("account_infos", [$res]);
+
+        return $this->redirectToRoute("route_account_user", [
+            "id" => $request->query->get("id")
+        ]);
+
+    }
+
     public function user(
         Request $request,
         UserRepository $userRepository,
+        VerificationEmailManager $verificationEmailManager,
         $id
     ){
 
@@ -42,20 +99,6 @@ class AccountController extends AbstractController
         else
             $user = $userRepository->find($id);
 
-        if(
-            $request->isMethod('post') &&
-            $request->request->has('show_name')
-        ){
-            $user->setShowName($request->request->get('show_name'));
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->flush();
-
-            return $this->redirectToRoute('route_account_user', [
-                "id" => $id
-            ]);
-        }
-
         if($user == null)
         {
             return $this->render('site/account/user404.html.twig', [
@@ -63,9 +106,55 @@ class AccountController extends AbstractController
             ]);
         }
 
-        return $this->render('site/account/account.html.twig', [
-            "user" => $user
+        if($request->isMethod("post"))
+        {
+
+            if($thisUser == null)
+                return $this->json([
+                    "errorId" => 1,
+                    "error" => "Request from an not logged in user",
+                    "requestId" => $id,
+                    "ownId" => -1
+                ]);
+
+            if($thisUser->getId() != $id)
+                return $this->json([
+                    "errorId" => 2,
+                    "error" => "Request to an alien user",
+                    "requestedId" => $id,
+                    "ownId" => $thisUser->getId()
+                ]);
+
+            if($request->request->has("show_name"))
+            {
+                $thisUser->setShowName($request->request->get('show_name'));
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->flush();
+
+                return $this->redirectToRoute('route_account_user', [
+                    "id" => $id
+                ]);
+            }
+
+            if($request->request->has("sendVerifyEmail"))
+            {
+                $verificationEmailManager->send($user);
+            }
+
+        }
+
+        $result =  $this->render('site/account/account.html.twig', [
+            "user" => $user,
+            "errors" => $request->getSession()->get("account_errors", []),
+            "infos" => $request->getSession()->get("account_infos", [])
         ]);
+
+        $request->getSession()->set("account_errors", []);
+        $request->getSession()->set("account_infos", []);
+
+        return $result;
+
     }
 
     public function register(Request $request): Response

@@ -17,11 +17,15 @@
                     {% set show_password = show_password ?? false %}
 
                     {% if "invalid_form" in errors %}
-                        {{ "account.register.inputs.invalid_form"|trans }}
+                        <div class="text-danger small">
+                            {{ "account.register.inputs.invalid_form"|trans }}                        
+                        </div>
                     {% endif %}
 
                     {% if "invalid_csrf_token" in errors %}
-                        {{ "account.register.inputs.invalid_csrf_token"|trans }}
+                        <div class="text-danger small">
+                            {{ "account.register.inputs.invalid_csrf_token"|trans }}
+                        </div>
                     {% endif %}
 
                     <div class="form-group">

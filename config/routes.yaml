@@ -46,8 +46,16 @@ route_account_me:
     path: /account/me
     controller: App\Controller\AccountController::me
 
+route_account_action:
+    path: /account/action
+    controller: App\Controller\AccountController::action
+
+route_account_verify:
+    path: /account/verify
+    controller: App\Controller\AccountController::verify
+
 route_account_user:
-    path: /account/{id}
+    path: /account/show/{id}
     controller: App\Controller\AccountController::user
 
 route_account:

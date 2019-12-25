@@ -56,6 +56,11 @@ class User implements UserInterface
      */
     private $showName;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $email_verified;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -206,6 +211,18 @@ class User implements UserInterface
             0,
             strrpos($email, ".")
         );
+    }
+
+    public function getEmailVerified(): ?bool
+    {
+        return $this->email_verified;
+    }
+
+    public function setEmailVerified(bool $email_verified): self
+    {
+        $this->email_verified = $email_verified;
+
+        return $this;
     }
 
 }

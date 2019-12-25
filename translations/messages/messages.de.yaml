@@ -108,6 +108,7 @@ account:
             captcha:
                 errors:
                     invalid: "Bitte bestätige das Captcha"
+
     login:
         title: "Anmelden"
         submit: "Anmelden"
@@ -130,7 +131,17 @@ account:
                     too_short: "Passwort muss länger mindestens 6 Zeichen lang sein"
                     too_long: "Passwort muss darf nicht länger als 4096 Zeichen sein"
 
-                    tools:
+    show:
+        errors:
+            invalid_query: "Die Anfrage enthält formale Fehler. Bitte benutze den richtigen Link."
+            not_found: "Der angegebene Benutzer konnte nicht gefunden werde. Bitte benutze den richtigen Link."
+            already_verified: "Deine Email wurde bereits bestätigt."
+            wrong_secret: "Das secret ist falsch. Bitte benutze den richtigen Link."
+            out_of_date: "Dein Link ist zu alt. Bitte lass dir eine neue Email zusenden."
+        infos:
+            successfull_verified: "Deine Account Email ist jetzt bestätigt!"
+
+tools:
     calculator:
         title: "Taschenrechner - MyMathematik"
 
@@ -147,3 +158,10 @@ information:
             too_short_text: "Du musst eine Nachricht senden!"
             too_long_text: "Nachricht > 16384 Zeichen"
             invalid_captcha: "Bitte bestätige das Captcha"
+
+email:
+    verify:
+        subject: "MyMathematik Email bestätigung"
+        text:
+            info: "Bitte bestätigen sie ihre Email Adresse für MyMathematik"
+            button: "Bestätigen!"

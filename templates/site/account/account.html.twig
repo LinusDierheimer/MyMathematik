@@ -6,6 +6,25 @@
 
 {% block content %}
     <div class="account">
+        <div>
+            {% if errors %}
+                {% for error in errors %}
+                    <div class="w-100 border border-warning p-1 m-1 text-center text-warning rounded-lg">
+                        {{ error|trans }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if infos %}
+                {% for info in infos %}
+                    <div class="w-100 border border-primary p-1 m-1 text-center text-primary rounded-lg">
+                        {{ info|trans }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% if infos or errors %}
+            <div class="mb-5"></div>
+        {% endif %}
         <div class="row mb-4">
             <div class="col-2">
                 <img class="w-100" src="{{ user_image_path(user) }}">
@@ -13,7 +32,7 @@
             <div class="col-10">
                 <div style="min-height: 60px">
                     <div id="user_showname_normal">
-                        <h1 class="d-inline-block mr-2">
+                        <h1 id="user_showname_name" class="d-inline-block mr-2">
                             {{ user.getName() }}                            
                         </h1>
                         {% if user == app.user %}
@@ -21,17 +40,27 @@
                         {% endif %}
                     </div>
                     {% if user == app.user %}
-                        <form method="POST" id="user_showname_edit" class="d-none row ml-0 mr-0">
-                            <input class="col mr-2 form-control" placeholder="Anzuzeigender Name" name="show_name" required>
-                            <button class="col-auto mr-2 btn btn-primary" type="submit">Speichern</button>
-                            <a class="col-auto btn btn-outline-secondary" id="user_showname_cancle">Abbrechen</a>
-                        </form>
+                        <div id="user_showname_edit" class="d-none row ml-0 mr-0">
+                            <input id="user_showname_input" class="col mr-2 form-control" placeholder="Anzuzeigender Name" required>
+                            <button id="user_showname_save" class="col-auto mr-2 btn btn-primary">Speichern</button>
+                            <a id="user_showname_cancle" class="col-auto btn btn-outline-secondary">Abbrechen</a>
+                        </div>
                     {% endif %}
                 </div>
                 {% if user == app.user %}
                     <div class="text-secondary">
                         {{ user.getEmail() }}
                     </div>
+                    {% if not user.getEmailVerified() %}
+                        <div>
+                            <span class="text-danger">
+                                Email nicht bestätigt!
+                            </span>
+                            <u id="user_verify_email" class="text-secondary cursor-pointer">
+                                Email erneut senden
+                            </u>
+                        </div>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

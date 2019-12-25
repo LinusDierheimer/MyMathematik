@@ -21,12 +21,11 @@ class VideoController extends AbstractController
     }
 
     public function redirect_with_class(
-        Globals $util,
         $language
     ){
         return $this->redirectToRoute('route_videos', [
             'language' => $language,
-            'class' => $util->get_parameter('default_class')
+            'class' => $this->getParameter('default_class')
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace App\Security;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Service\VerificationEmailManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +14,6 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -34,6 +34,7 @@ class AccountAuthenticator extends AbstractFormLoginAuthenticator
     private $userRepository;
     private $container;
     private $requestStack;
+    private $verificationEmailManager;
 
     public function __construct(
         EntityManagerInterface $entityManager,
@@ -42,7 +43,8 @@ class AccountAuthenticator extends AbstractFormLoginAuthenticator
         UserPasswordEncoderInterface $passwordEncoder,
         UserRepository $userRepository,
         ContainerInterface $container,
-        RequestStack $requestStack
+        RequestStack $requestStack,
+        VerificationEmailManager $verificationEmailManager
         
     ){
         $this->entityManager = $entityManager;
@@ -52,6 +54,7 @@ class AccountAuthenticator extends AbstractFormLoginAuthenticator
         $this->userRepository = $userRepository;
         $this->container = $container;
         $this->requestStack = $requestStack;
+        $this->verificationEmailManager = $verificationEmailManager;
     }
 
     public function supports(Request $request)
@@ -167,7 +170,10 @@ class AccountAuthenticator extends AbstractFormLoginAuthenticator
         );
         $user->setEmail($credentials["email"]);
         $user->setRoles([]);
-        $this->userRepository->registerUser($user);
+        $user->setEmailVerified(false);
+        $this->userRepository->save($user);
+
+        $this->verificationEmailManager->send($user);
 
         return $user;
     }

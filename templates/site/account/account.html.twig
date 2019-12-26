@@ -9,7 +9,7 @@
         <div>
             {% if errors %}
                 {% for error in errors %}
-                    <div class="w-100 border border-warning p-1 m-1 text-center text-warning rounded-lg">
+                    <div class="w-100 border border-danger p-1 m-1 text-center text-danger rounded-lg">
                         {{ error|trans }}
                     </div>
                 {% endfor %}
@@ -61,6 +61,17 @@
                             </u>
                         </div>
                     {% endif %}
+                    <div class="mb-4 w-100">
+                        <a class="text-secondary collapsed w-100 d-block" href="#collapseSettings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseSettings">
+                            Erweiterte Einstellungen
+                            <i class="fas fa-angle-down"></i>
+                        </a>
+                        <div class="collapse ml-4 pl-4 border-left border-secondary" id="collapseSettings">
+                            <a href="{{ path('route_account_delete') }}" class="text-danger">
+                                Account löschen
+                            </a>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
         </div>

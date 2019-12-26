@@ -43,16 +43,22 @@
         </div>
         <hr class="mt-4 mb-4">
         {% if app.user is not null %}
-            <div class="btn btn-outline-primary createanswerbutton">
-                Antwort erstellen
-            </div>
-            <form class="d-none w-100" id="createanswer" method="POST">
-                <textarea class="w-100" style="min-height: 100px;" name="post_text"></textarea>
-                <div>
-                    <button type="submit" class="btn btn-primary">Hochladen</button>
-                    <button type="button" class="btn btn-outline-secondary ml-1 canclecreatepost">Abbrechen</button>
+            {% if app.user.getEmailVerified() %}
+                <div class="btn btn-outline-primary createanswerbutton">
+                    Antwort erstellen
                 </div>
-            </form>
+                <form class="d-none w-100" id="createanswer" method="POST">
+                    <textarea class="w-100" style="min-height: 100px;" name="post_text"></textarea>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Hochladen</button>
+                        <button type="button" class="btn btn-outline-secondary ml-1 canclecreatepost">Abbrechen</button>
+                    </div>
+                </form>
+            {% else %}
+                <a href="{{ path('route_account_me') }}" class="text-secondary">
+                    Du musst deine Email bestätigen um eine Antwort zu erstellen zu können!
+                </a>
+            {% endif %}
         {% else %}
             <a href="{{ path('route_account_login') }}?_target_path={{ globals.request.pathInfo }}" class="text-secondary">
                 Du musst eingeloggt sein um eine Antwort zu erstellen!

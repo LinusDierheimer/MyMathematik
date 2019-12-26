@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\UserRepository;
+use App\Service\UserDeletionManager;
 use App\Service\VerificationEmailManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,13 +12,22 @@ use Symfony\Component\HttpFoundation\Request;
 class AccountController extends AbstractController
 {
 
-    public function me()
-    {
+    public function me(
+        Request $request
+    ) {
         $user = $this->getUser();
 
         if($user == null)
         {
-            return $this->render('site/account/not_logged_in.html.twig');
+            $result =  $this->render('site/account/not_logged_in.html.twig', [
+                "errors" => $request->getSession()->get("account_errors", []),
+                "infos" => $request->getSession()->get("account_infos", [])
+            ]);
+    
+            $request->getSession()->set("account_errors", []);
+            $request->getSession()->set("account_infos", []);
+    
+            return $result;
         }
 
         return $this->redirectToRoute('route_account_user', [
@@ -79,10 +89,28 @@ class AccountController extends AbstractController
         else
             $request->getSession()->set("account_infos", [$res]);
 
-        return $this->redirectToRoute("route_account_user", [
-            "id" => $request->query->get("id")
-        ]);
+        if($this->getUser() !== null)
+        {
+            return $this->redirectToRoute("route_account_user", [
+                "id" => $this->getUser()->getId()
+            ]);
+        }
+        else
+        {
+            return $this->redirectToRoute("route_account_me");
+        }
 
+    }
+
+    public function delete(
+        UserDeletionManager $userDeletionManager
+    ) {
+        $user = $this->getUser();
+
+        if($user != null)
+            $userDeletionManager->delete($user);
+
+        return $this->redirectToRoute("route_home");
     }
 
     public function user(

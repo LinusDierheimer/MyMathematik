@@ -5,5 +5,22 @@
 {% endblock %}
 
 {% block content %}
+    {% if errors %}
+        {% for error in errors %}
+            <div class="w-100 border border-danger p-1 m-1 text-center text-danger rounded-lg">
+                {{ error|trans }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if infos %}
+        {% for info in infos %}
+            <div class="w-100 border border-primary p-1 m-1 text-center text-primary rounded-lg">
+                {{ info|trans }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if infos or errors %}
+        <div class="mb-5"></div>
+    {% endif %}
     Du bist nicht eingelogged!
 {% endblock %}

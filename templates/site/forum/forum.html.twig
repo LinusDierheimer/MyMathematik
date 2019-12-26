@@ -7,9 +7,15 @@
                 Forum
             </h1>
             {% if app.user is not null %}
-                <a href="{{ path('route_forum_create') }}" class="btn btn-outline-primary float-right">
-                    Post oder Frage erstellen
-                </a>
+                {% if app.user.getEmailVerified() %}
+                    <a href="{{ path('route_forum_create') }}" class="btn btn-outline-primary float-right">
+                        Post oder Frage erstellen
+                    </a>
+                {% else %}
+                    <a href="{{ path('route_account_me') }}" class="float-right text-secondary">
+                        Du musst deine Email noch bestätigen um einen Post zu erstellen!
+                    </a>
+                {% endif %}
             {% else %}
                 <a href="{{ path('route_account_login') }}?_target_path={{ globals.request.pathInfo }}" class="float-right text-secondary">
                     Du musst eingeloggt sein um einen Post zu erstellen!

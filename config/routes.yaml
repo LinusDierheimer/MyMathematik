@@ -54,6 +54,10 @@ route_account_verify:
     path: /account/verify
     controller: App\Controller\AccountController::verify
 
+route_account_delete:
+    path: /account/delete
+    controller: App\Controller\AccountController::delete
+
 route_account_user:
     path: /account/show/{id}
     controller: App\Controller\AccountController::user

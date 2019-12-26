@@ -2,20 +2,9 @@
 
 namespace App\Controller;
 
-use App\Form\VideoUploadType;
-use App\Entity\UploadedVideo;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-/*
- * @IsGranted("ROLE_ADMIN")
- */
 class AdminController extends AbstractController
 {
     public function index()
@@ -25,17 +14,17 @@ class AdminController extends AbstractController
 
     public function videoconfig()
     {
-        throw \RuntimeException("Not implemented");
+        throw new RuntimeException("Not implemented");
     }
 
     public function languageconfig()
     {
-        throw \RuntimeException("Not implemented");
+        throw new RuntimeException("Not implemented");
     }
 
     public function doaction()
     {
-        throw \RuntimeException("Not implemented");
+        throw new RuntimeException("Not implemented");
     }
 
 }

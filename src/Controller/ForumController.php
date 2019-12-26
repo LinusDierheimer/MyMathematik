@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Entity\PostAnswer;
+use App\Repository\PostAnswerRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,8 +21,9 @@ class ForumController extends AbstractController
     }
 
     public function post(
-        PostRepository $postRepository,
         Request $request,
+        PostRepository $postRepository,
+        PostAnswerRepository $postAnswerRepository,
         $id
     ){
         $post = $postRepository->find($id);
@@ -37,6 +39,16 @@ class ForumController extends AbstractController
             $request->isMethod('post') &&
             $request->request->has('post_text')
         ) {
+
+            if($this->getUser() == null)
+                return $this->redirectToRoute('route_account_register');
+        
+            if(!$this->getUser()->getEmailVerified())
+            {
+                $request->getSession()->set("account_errors", ["> Bitte bestätige deine Email zuerst"]);
+                return $this->redirectToRoute("route_account_me");
+            }
+
             $answer = new PostAnswer();
             $answer->setDate(new \DateTime("now"));
             $answer->setPost($post);
@@ -44,9 +56,7 @@ class ForumController extends AbstractController
             $answer->setUser($this->getUser());
             $answer->setAccepted(false);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($answer);
-            $entityManager->flush();
+            $postAnswerRepository->save($answer);
 
             return $this->redirectToRoute('route_forum_post', [
                 'id' => $id
@@ -59,8 +69,19 @@ class ForumController extends AbstractController
     }
 
     public function create(
-        Request $request
+        Request $request,
+        PostRepository $postRepository
     ){
+
+        if($this->getUser() == null)
+            return $this->redirectToRoute('route_account_register');
+        
+        if(!$this->getUser()->getEmailVerified())
+        {
+            $request->getSession()->set("account_errors", ["> Bitte bestätige deine Email zuerst"]);
+            return $this->redirectToRoute("route_account_me");
+        }
+
         if(
             $request->isMethod('post') &&
             $request->request->has('post_title') &&
@@ -68,15 +89,13 @@ class ForumController extends AbstractController
             $request->request->has('post_type')
         ) {
             $post = new Post();
-            $post->setDate(new \DateTime("now"));
+            $post->setDate(new \DateTime());
             $post->setTitle($request->request->get('post_title'));
             $post->setText($request->request->get("post_text"));
             $post->setType($request->request->get('post_type'));
             $post->setUser($this->getUser());
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($post);
-            $entityManager->flush();
+            $postRepository->save($post);
 
             return $this->redirectToRoute('route_forum');
         }

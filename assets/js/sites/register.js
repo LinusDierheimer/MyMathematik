@@ -3,7 +3,7 @@ function initRegisterTogglePassword(){
     const $password_field = $("#register_password_input");
     const $repeat_password_form = $("#password_repeat_form");
     const $repeat_password_field = $("#password_repeat_input");
-    const $register_config = $("#single_password_field");
+    const $register_config = $("#show_password_input");
 
     $button.click(function(){
         $button.toggleClass("fa-eye fa-eye-slash");

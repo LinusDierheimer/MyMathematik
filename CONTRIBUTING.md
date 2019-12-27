@@ -1,1 +1,1 @@
-[Linus D](https://github.com/LinusDierheimer/)
+[Linus Dierheimer](https://github.com/LinusDierheimer/)

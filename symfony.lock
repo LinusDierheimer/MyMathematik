@@ -88,10 +88,10 @@
         ]
     },
     "egulias/email-validator": {
-        "version": "2.1.12"
+        "version": "2.1.13"
     },
     "erusev/parsedown": {
-        "version": "1.7.3"
+        "version": "1.7.4"
     },
     "jalle19/php-yui-compressor": {
         "version": "1.0.1"
@@ -133,7 +133,7 @@
         "version": "v2.0.5"
     },
     "php": {
-        "version": "7.4"
+        "version": "7.2"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -502,7 +502,7 @@
         ]
     },
     "twig/twig": {
-        "version": "v2.12.2"
+        "version": "v2.12.3"
     },
     "websharks/css-minifier": {
         "version": "150820"

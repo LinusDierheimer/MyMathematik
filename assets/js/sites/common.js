@@ -68,7 +68,7 @@ function initCookies(){
     const $cookieinfo = $("#cookieinfo");
 
     if(!document.cookie.includes("cookies=true"))
-        $cookieinfo.animate({ height: $cookieinfo[0].scrollHeight }, 10);
+        $cookieinfo.animate({ height: $cookieinfo[0].scrollHeight }, 350);
 
     $("#cookiesAccepted").click(function(){
         setCookie("cookies", "true");

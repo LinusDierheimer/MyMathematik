@@ -14,11 +14,11 @@ elif [ $APP_ENV = "dev" ]; then
 else
     echo "Warning, unrecognized env! using dev mode for npm build and cache with dev"
     npm run dev
-    php72 bin/console cache:warmup --env=dev
+    php73 bin/console cache:warmup --env=dev
 fi
 
 echo "warming up cache... You may need to provide your password"
-php72 bin/console cache:warmup
+php73 bin/console cache:warmup
 
 echo "setting up file permissions... You may need to provide your password"
 sudo chmod 777 -R var/cache/

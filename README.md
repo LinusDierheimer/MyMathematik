@@ -1,7 +1,7 @@
 # Setup und Benützung des Projekts
 
 ## Benötigte Programme:   
-* [PHP 7.2.x](http://php.net/downloads.php)  
+* [PHP 7.3.x](http://php.net/downloads.php)  
 * [Composer](https://getcomposer.org/download/)  
 * [Git](https://git-scm.com/download/) + [Github Account](https://github.com/)  
 * [MySQL](https://dev.mysql.com/downloads/mysql/)

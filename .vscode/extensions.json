@@ -1,7 +1,7 @@
 {
     "recommendations": [
         "bajdzis.vscode-twig-pack",
-        "felixfbecker.php-intellisense",
+        "bmewburn.vscode-intelephense-client",
         "editorconfig.editorconfig",
         "mikestead.dotenv",
         "cssho.vscode-svgviewer",

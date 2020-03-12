@@ -1,6 +1,7 @@
 import "../scss/app.scss";
 
 import "jquery";
+import "popper.js"
 import "bootstrap";
 
 import { initCommon } from "./sites/common.js";

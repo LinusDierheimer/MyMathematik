@@ -84,7 +84,7 @@ class VerificationEmailManager
 
         $pendingEmailVerification = $this->pendingEmailVerificationRepository->findOneByUserId($userId);
 
-        if($pendingEmailVerification == null)
+        if($pendingEmailVerification === null)
         {
             $pendingEmailVerification = new PendingEmailVerification();
             $pendingEmailVerification->setUserId($userId);
@@ -95,7 +95,7 @@ class VerificationEmailManager
 
         $this->pendingEmailVerificationRepository->save($pendingEmailVerification);
 
-        $server = $this->container->getParameter('server_address');
+        $server = $this->container->getParameter("server_address");
 
         $email = (new TemplatedEmail())
             ->from("noreply@mymathematik.com")

@@ -58,6 +58,18 @@ route_account_delete:
     path: /account/delete
     controller: App\Controller\AccountController::delete
 
+route_account_request_password_reset:
+    path: /account/requestpasswordreset
+    controller: App\Controller\AccountController::request_password_reset
+
+route_account_perform_password_reset:
+    path: /account/performpasswordreset
+    controller: App\Controller\AccountController::perform_password_reset
+
+route_account_action_perform_password_reset:
+    path: /account/actionperformpasswordreset
+    controller: App\Controller\AccountController::action_perform_password_reset
+
 route_account_user:
     path: /account/show/{id}
     controller: App\Controller\AccountController::user

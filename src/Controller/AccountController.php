@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\UserRepository;
 use App\Service\UserDeletionManager;
+use App\Service\UserPasswordResetManager;
 use App\Service\VerificationEmailManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -113,6 +114,95 @@ class AccountController extends AbstractController
         return $this->redirectToRoute("route_home");
     }
 
+    public function request_password_reset(
+        Request $request,
+        UserPasswordResetManager $userPasswordResetManager
+    ) {
+
+        $errors = [];
+
+        if($request->isMethod("POST"))
+        {
+            if(!$request->request->has("email"))
+            {
+                array_push($errors, "invalid_request");
+            }
+            else
+            {
+                $email = $request->request->get("email");
+
+                if(strlen($email) > 4096)
+                    \array_push($errors, "too_long_email");
+                else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+                    \array_push($errors, "invalid_email");
+                else
+                    if(!$userPasswordResetManager->request_reset_if_email_exist($email))
+                        \array_push($errors, "No accout with this email");
+            }
+
+            if(count($errors) === 0)
+            {
+                return $this->redirectToRoute('route_account_login');
+            }
+        }
+
+        return $this->render("site/account/request_password_reset.html.twig", [
+            "last_email" => $request->getSession()->get("last_email"),
+            "errors" => $errors
+        ]);
+    }
+
+    public function perform_password_reset(
+        Request $request,
+        UserPasswordResetManager $userPasswordResetManager,
+        UserRepository $userRepository
+    ) {
+
+        if(
+            !$request->query->has("id") ||
+            !$request->query->has("secret")
+        ) {
+            $request->getSession()->set("account_errors", ["account.show.errors.invalid_query"]);
+            return $this->redirectToRoute('route_account_me');
+        }
+
+        $userId = $request->query->get("id");
+        $secret = $request->query->get("secret");
+
+        $res = $userPasswordResetManager->validateResetParams($userId, $secret);
+        
+        if($res["error"])
+        {
+            $request->getSession()->set("account_errors", [$res["message"]]);
+            return $this->redirectToRoute("route_account_me");
+        }            
+
+        return $this->render("site/account/perform_password_reset.html.twig", [
+            "user" => $userRepository->find($userId),
+            "secret" => $secret,
+            "show_password" => $request->getSession()->get("last_show_password", false)
+        ]);
+    
+    }
+
+    public function action_perform_password_reset(
+        Request $request
+    ) {
+        if(!$request->isMethod("POST"))
+        {
+            $request->getSession->set("account_errors", ["actionperformpasswordreset must be called POST"]);
+            return $this->redirectToRoute("route_account_me");
+        }
+
+        if(
+            !$request->request->has("userId") ||
+            !$request->request->has("secret") ||
+            !$request->request->has("password")
+        ) {
+            
+        }
+    }
+
     public function user(
         Request $request,
         UserRepository $userRepository,
@@ -187,21 +277,29 @@ class AccountController extends AbstractController
 
     public function register(Request $request): Response
     {
-        return $this->render("site/account/register.html.twig", [
+        $res = $this->render("site/account/register.html.twig", [
             "errors" => $request->getSession()->get("errors", []),
             "last_email" => $request->getSession()->get("last_email"),
             "last_remember_me" => $request->getSession()->get("last_remember_me", true),
             "show_password" => $request->getSession()->get("last_show_password", false)
         ]);
+
+        $request->getSession()->remove("errors");
+
+        return $res;
     }
 
     public function login(Request $request): Response
     {
-        return $this->render("site/account/login.html.twig", [
+        $res = $this->render("site/account/login.html.twig", [
             "errors" => $request->getSession()->get("errors", []),
             "last_email" => $request->getSession()->get("last_email"),
             "last_remember_me" => $request->getSession()->get("last_remember_me", true),
             "show_password" => $request->getSession()->get("last_show_password", false)
         ]);
+
+        $request->getSession()->remove("errors");
+
+        return $res;
     }
 }

@@ -165,3 +165,5 @@ email:
         text:
             info: "Bitte bestätigen sie ihre Email Adresse für MyMathematik"
             button: "Bestätigen!"
+    PasswordReset:
+        subject: "MyMathematik Passwort wiederherstellung"

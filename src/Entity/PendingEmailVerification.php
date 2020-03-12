@@ -3,9 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PendingEmailVerificationRepository")
+ * @UniqueEntity(
+ *     fields={"user_id"},
+ *     message="The user id already exists"
+ * )
  */
 class PendingEmailVerification
 {
@@ -27,7 +32,7 @@ class PendingEmailVerification
     private $date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", unique=true)
      */
     private $user_id;
 

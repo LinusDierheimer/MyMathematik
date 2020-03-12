@@ -30,7 +30,7 @@
                             type="email"
                             value="{{ last_email ?? "" }}"
                             name="email_input"
-                            id="email_input"
+                            id="login_email_input"
                             class="form-control"
                             placeholder="{{ "account.login.inputs.email.placeholder"|trans }}"
                             autocomplete="email"
@@ -73,6 +73,9 @@
                                 {{ "account.login.inputs.password.errors.too_long"|trans }}
                             {% elseif "wrong_password" in errors %}
                                 {{ "account.login.inputs.password.errors.wrong"|trans }}
+                                <a href="{{ path('route_account_request_password_reset') }}" class="text-secondary">
+                                    Passwort zurücksetzen
+                                </a>
                             {% endif %}
                         </div>
                     </div>
@@ -99,7 +102,7 @@
                         <button type="submit" class="btn btn-primary mr-2">
                             {{ "account.login.submit"|trans }}
                         </button>
-                        <a href="{{ path('route_account_register') }}" class="btn btn-outline-secondary register">
+                        <a href="{{ path('route_account_register') }}" class="btn btn-outline-secondary">
                                 {{ "account.login.toregister"|trans }}
                         </a>
                     </div>

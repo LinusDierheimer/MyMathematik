@@ -4,6 +4,7 @@ Encore
     .setOutputPath("public/build/")
     .setPublicPath("/build")
     .addEntry("app", "./assets/js/app.js")
+    .addEntry("plotter", "./assets/js/plotter.js")
     .copyFiles({
         from: './assets/images',
         to: 'images/[path][name].[ext]'

@@ -12,17 +12,20 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress"
     },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5",
+        "bootstrap": "^4",
+        "clone-deep": "^4",
+        "d3": "^3.5.17",
+        "function-plot": "^1.19.1",
+        "jquery": "^3",
+        "popper.js": "^1"
+    },
     "devDependencies": {
         "@symfony/webpack-encore": "^0",
         "webpack-notifier": "^1",
         "node-sass": "^4",
         "sass-loader": "^7",
         "markdown-loader": "^5"
-    },
-    "dependencies": {
-        "@fortawesome/fontawesome-free": "^5",
-        "bootstrap": "^4",
-        "jquery": "^3",
-        "popper.js": "^1"
     }
 }

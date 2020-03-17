@@ -17,4 +17,9 @@ class ToolsController extends AbstractController
     {
         return $this->render('site/tools/calculator.html.twig');
     }
+
+    public function plotter() 
+    {
+        return $this->render('site/tools/plotter.html.twig');
+    }
 }

@@ -206,6 +206,18 @@ route_tools_calculator_redirect:
         permanent: true
         keepQueryParams: true
 
+route_tools_plotter:
+    path: /tools/plotter
+    controller: App\Controller\ToolsController::plotter
+
+route_tools_plotter_redirect:
+    path: /plotter
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: route_tools_plotter
+        permanent: true
+        keepQueryParams: true
+
 route_forum:
     path: /forum
     controller: App\Controller\ForumController::forum

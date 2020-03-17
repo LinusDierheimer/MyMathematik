@@ -1,0 +1,155 @@
+{% extends "site/base-simple.html.twig" %}
+
+{% block title %}
+    Funktionsplotter - MyMathematik
+{% endblock %}
+
+{% block content %}
+    <div class="plotter">
+        <div class="row">
+            <div class="col-12 col-md-6">
+
+                <template id="function_template_normal">
+                    <div id="function_§" class="border p-2 mb-2">
+                        <div>
+                            <span class="h5">Funktion:</span>
+                            <i class="far fa-trash-alt float-right cursor-pointer" id="function_delete_§" style="margin-top: 2px;"></i>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">y =</div>
+                            </div>
+                            <input type="text" class="form-control" id="function_input_§" value="x" placeholder="x">
+                        </div>
+                        <div class="form-row text-dark mt-1" style="font-size: smaller;">
+                            <div class="col-2">
+                                Farbe:   
+                            </div>
+                            <div class="col-2">
+                                Closed:
+                            </div>
+                            <div class="col-3">
+                                Tip:
+                            </div>
+                            <div class="col">
+                                From:
+                            </div>
+                            <div class="col">
+                                To:
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-2">
+                                <input type="color" id="function_color_§" class="form-control form-control-sm p-0">  
+                            </div>
+                            <div class="col-2">
+                                <div class="custom-control custom-switch" style="transform: scale(1.3); margin-left: 6px; margin-top: 2px;">
+                                    <input type="checkbox" class="custom-control-input" id="function_closed_§">
+                                    <label class="custom-control-label" for="function_closed_§"></label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <select class="form-control form-control-sm" id="function_tip_§">
+                                    <option value="point">Point</option>
+                                    <option value="line">Line</option>
+                                    <option value="none">None</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="function_from_§" placeholder="-∞">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="function_to_§" placeholder="∞">
+                            </div>
+                        </div>
+                        <div id="function_container_§" class="mt-2 border-left ml-2 pl-3"></div>
+                        <div class="text-right mt-2">
+                            <button class="btn btn-secondary btn-sm mr-1" id="function_secant_§">Add Secant</button>
+                            <button class="btn btn-secondary btn-sm mr-1" id="function_tangent_§">Add Tangent</button>
+                            <button class="btn btn-secondary btn-sm"      id="function_derivative_§">Add Derivative</button>
+                        </div>
+                    </div>
+                </template>
+
+                <template id="function_template_secant">
+                    <div id="function_§" class="border p-2 mb-2">
+                        <div>
+                            <span class="h5">Secant:</span>
+                            <i class="far fa-trash-alt float-right cursor-pointer" id="function_delete_§" style="margin-top: 2px;"></i>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-5 input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">x₁ =</div>
+                                </div>
+                                <input type="number" class="form-control" id="function_x0input_§" value="1" placeholder="x">
+                            </div>
+                            <div class="col-7 input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">x₂ =</div>
+                                </div>
+                                <input type="number" class="form-control" id="function_x1input_§" value="2" placeholder="x">
+                                <label class="form-control" style="display: none;" id="function_mouse_§">Mouse</label>
+                                <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <button class="dropdown-item" id="function_set_input_§">Fixed</button>
+                                    <button class="dropdown-item" id="function_set_mouse_§">Mouse</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row text-dark mt-1" style="font-size: smaller;">
+                            <div class="col-2">
+                                Farbe:   
+                            </div>
+                            <div class="col-2">
+                                Closed:
+                            </div>
+                            <div class="col">
+                                From:
+                            </div>
+                            <div class="col">
+                                To:
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-2">
+                                <input type="color" id="function_color_§" class="form-control form-control-sm p-0">  
+                            </div>
+                            <div class="col-2">
+                                <div class="custom-control custom-switch" style="transform: scale(1.3); margin-left: 6px; margin-top: 2px;">
+                                    <input type="checkbox" class="custom-control-input" id="function_closed_§">
+                                    <label class="custom-control-label" for="function_closed_§"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="function_from_§" placeholder="-∞">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="function_to_§" placeholder="∞">
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <div id="function_container" class="mb-2"></div>
+
+                <div class="dropdown">
+                    <button class="btn btn-primary float-right dropdown-toggle" type="button" id="plotter_add_function" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Add Function
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="plotter_add_function">
+                      <button class="dropdown-item" id="function_add_normal">Normal</button>
+                    </div>
+                  </div>
+
+            </div>
+            <div class="col-12 col-md-6">
+                <div id="plotter_result"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    {{ encore_entry_script_tags('plotter') }}
+{% endblock %}

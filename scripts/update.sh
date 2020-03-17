@@ -17,6 +17,8 @@ echo -e "\e[35mupdating and installing npm dependencies...\e[0m"
 npm install
 npm update
 
+rm -r node_modules/function-plot/.git/
+
 echo -e "\e[35mtrying to fix possible security issues...\e[0m"
 npm audit fix
 

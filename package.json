@@ -24,7 +24,7 @@
     "devDependencies": {
         "@symfony/webpack-encore": "^0",
         "webpack-notifier": "^1",
-        "node-sass": "^4",
+        "node-sass": "^7",
         "sass-loader": "^8",
         "markdown-loader": "^5"
     }
